@@ -1,3 +1,4 @@
+allwpilib/
 /Debug/
 build/*
 .settings/
