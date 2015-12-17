@@ -8,7 +8,7 @@ sysProps.xml
 .cproject
 .directory
 .project
-build.*
+#build.*
 *.xml
 /Simulate/
 wpilib/*
