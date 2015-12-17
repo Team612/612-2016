@@ -3,4 +3,4 @@ language: cpp
 compiler:
   - gcc
 # Change this to your needs
-script: ls ./build.sh
+script: ls ; ./build.sh
