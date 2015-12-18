@@ -1,7 +1,9 @@
-[![Build Status](https://travis-ci.org/Chantilly612Code/612-2016.svg?branch=master)](https://travis-ci.org/Chantilly612Code/612-2016)
-
 612-2016
 ========
+
+## Travis CI Build Status: 
+
+[![Build Status](https://travis-ci.org/Chantilly612Code/612-2016.svg?branch=master)](https://travis-ci.org/Chantilly612Code/612-2016)
 
 This repository holds the robot code for the [Chantilly Robotics](http://chantillyrobotics.org/) [FIRST](http://www.usfirst.org/roboticsprograms/frc/) Team 612 robot, competing in the 2015-2016 season game [FIRST Stronghold](http://www.firstinspires.org/robotics/frc/welcome-to-first-stronghold).
 
@@ -34,13 +36,13 @@ Sponsors:
 Contributors:
 =============
 
-# Mentors:
+### Mentors:
 | Name            | Github Username |
 |-----------------|-----------------|
 | Zack Alfakir    | ZackAlfakir     |
 | Travis Axtell   | ToasterTaster   |
 
-#Students:
+### Students:
 
 | Name            | Github Username |
 |-----------------|-----------------|
