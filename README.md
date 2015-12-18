@@ -1,7 +1,7 @@
 612-2016
 ========
 
-###### Travis CI Build Status: 
+###### Travis CI Build Status:
 
 [![Build Status](https://travis-ci.org/Chantilly612Code/612-2016.svg?branch=master)](https://travis-ci.org/Chantilly612Code/612-2016)
 
