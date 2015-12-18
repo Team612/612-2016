@@ -10,5 +10,5 @@ deploy:
     file: ./.build/FRCUserProgram
     skip_cleanup: true
     on:
-        tags: true
+        #tags: true
         branch: travis
