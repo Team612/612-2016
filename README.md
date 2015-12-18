@@ -8,12 +8,10 @@
 This repository holds the robot code for the [Chantilly Robotics](http://chantillyrobotics.org/) [FIRST](http://www.usfirst.org/roboticsprograms/frc/) Team 612 robot, competing in the 2015-2016 season game [FIRST Stronghold](http://www.firstinspires.org/robotics/frc/welcome-to-first-stronghold).
 
 ##Documentation:
-==============
 
 Chantilly Robotics' programming team uses the C++ programming language and [WPILib](http://first.wpi.edu/FRC/) to program our robot. Documentation for this library can be found [here](https://chantilly612code.github.io/612-2016). [WPILib](http://first.wpi.edu/FRC/) is a programming library with C++, Java, Python, and other bindings written and maintained by the [Worcester Polytechnic Institute](http://www.wpi.edu/), containing software used to interface with sensors, motors, and other useful objects.
 
 ##Sponsors:
-==============
 
 | Company Name     | Website                                         |
 |------------------|-------------------------------------------------|
@@ -34,7 +32,6 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 |Jen Griem         |Personal Contribution                            |
 
 ##Contributors:
-=============
 
 ###### Mentors:
 | Name            | Github Username |
