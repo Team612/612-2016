@@ -5,6 +5,7 @@
 #include "OI.h"
 #include "WPILib.h"
 #include "RobotMap.h"
+#include "Subsystems/NavX.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -18,6 +19,7 @@ public:
 	CommandBase();
 	static void init();
 	static OI* oi;
+	static NavX * navx;
 };
 
 #endif

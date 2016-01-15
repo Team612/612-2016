@@ -2,7 +2,7 @@
 #define ROBOT_H
 
 #include "OI.h"
-#include "AHRS.h"
+
 
 class Robot: public IterativeRobot
 {
@@ -13,9 +13,6 @@ private:
 
 	//LIVEWINDOW
 	LiveWindow* lw;
-
-	//AHRS object (navx-mxp)
-	AHRS* navx;
 
 	Robot* robot;
 public:
