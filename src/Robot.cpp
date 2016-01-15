@@ -20,6 +20,7 @@ void Robot::RobotInit()
 	{
 		DriverStation::ReportError("Error instantiating navX-MXP: " + ex.what()); //report to driver station
 	}
+
 	if(navx->IsConnected())
 	{
 		LiveWindow::GetInstance()->AddSensor("IMU", "Gyro", navx); //add sensor to livewindow
