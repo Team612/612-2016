@@ -9,7 +9,7 @@ This repository holds the robot code for the [Chantilly Robotics](http://chantil
 
 ##Documentation:
 
-Chantilly Robotics' programming team uses the C++ programming language and [WPILib](http://first.wpi.edu/FRC/) to program our robot. Documentation for this library can be found [here](https://chantilly612code.github.io/612-2016) ACTUALLY IT'S [HERE](http://first.wpi.edu/FRC/roborio/release/docs/cpp/). [WPILib](http://first.wpi.edu/FRC/) is a programming library with C++, Java, Python, and other bindings written and maintained by the [Worcester Polytechnic Institute](http://www.wpi.edu/), containing software used to interface with sensors, motors, and other useful objects.
+Chantilly Robotics' programming team uses the C++ programming language and [WPILib](http://first.wpi.edu/FRC/) to program our robot. Documentation for this library can be found [here](http://first.wpi.edu/FRC/roborio/release/docs/cpp/) (temporarily). [WPILib](http://first.wpi.edu/FRC/) is a programming library with C++, Java, Python, and other bindings written and maintained by the [Worcester Polytechnic Institute](http://www.wpi.edu/), containing software used to interface with sensors, motors, and other useful objects.
 
 ##Sponsors:
 
