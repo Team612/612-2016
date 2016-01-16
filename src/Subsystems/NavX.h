@@ -3,7 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "AHRS.h"
+#include "../Libraries/NavX/include/AHRS.h"
 
 class NavX: public Subsystem, public AHRS //protected so no calls to AHRS except through NavX
 {
