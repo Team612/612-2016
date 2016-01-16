@@ -11,7 +11,23 @@ void Robot::RobotInit()
 	lw = LiveWindow::GetInstance();
 	robot = this;
 	autonomousCommand = NULL;
-	navx = new NavX(SPI::Port::kMXP);
+	try //instaniating navx pointer object
+	{
+		/* Communicate w/navX-MXP via the MXP SPI Bus.       */
+	    /* Alternatively:  I2C::Port::kMXP, SerialPort::Port::kMXP or SerialPort::Port::kUSB */
+	    /* See http://navx-mxp.kauailabs.com/guidance/selecting-an-interface/ for details.   */
+	    navx = new NavX(SPI::Port::kMXP);
+	}
+	catch (std::exception ex ) //report errors to driver station
+	{
+		std::string err_string = "Error instantiating navX-MXP:  ";
+		err_string += ex.what();
+		DriverStation::ReportError(err_string.c_str());
+	}
+	//add sensor to livewindow if navx works
+	if (navx) {
+	     LiveWindow::GetInstance()->AddSensor("IMU", "Gyro", navx);
+	}
 }
 
 void Robot::DisabledInit()
@@ -59,6 +75,31 @@ void Robot::TeleopPeriodic()
 		robot_status = TELEOPPERIODIC;
 	Scheduler::GetInstance()->Run();
 	lw->Run();
+	if(navx->IsConnected()) //display values to driver station
+	{
+		SmartDashboard::PutBoolean( "IMU_Connected",		navx->IsConnected());
+		SmartDashboard::PutNumber(  "IMU_Yaw",      		navx->GetYaw());
+		SmartDashboard::PutNumber(  "IMU_Pitch",    		navx->GetPitch());
+		SmartDashboard::PutNumber(  "IMU_Roll",     		navx->GetRoll());
+		SmartDashboard::PutNumber(  "IMU_CompassHeading",   navx->GetCompassHeading());
+		SmartDashboard::PutNumber(  "IMU_Update_Count",     navx->GetUpdateCount());
+		SmartDashboard::PutNumber(  "IMU_Byte_Count",       navx->GetByteCount());
+
+		/* These functions are compatible w/the WPI Gyro Class */
+		SmartDashboard::PutNumber(  "IMU_TotalYaw", 		navx->GetAngle());
+		SmartDashboard::PutNumber(  "IMU_YawRateDPS",       navx->GetRate());
+
+		SmartDashboard::PutNumber(  "IMU_Accel_X",  		navx->GetWorldLinearAccelX());
+		SmartDashboard::PutNumber(  "IMU_Accel_Y",  		navx->GetWorldLinearAccelY());
+		SmartDashboard::PutBoolean( "IMU_IsMoving", 		navx->IsMoving());
+		SmartDashboard::PutNumber(  "IMU_Temp_C",   		navx->GetTempC());
+		SmartDashboard::PutBoolean( "IMU_IsCalibrating",    navx->IsCalibrating());
+
+		SmartDashboard::PutNumber(  "Velocity_X",   		navx->GetVelocityX() );
+		SmartDashboard::PutNumber(  "Velocity_Y",   		navx->GetVelocityY() );
+		SmartDashboard::PutNumber(  "Displacement_X",       navx->GetDisplacementX() );
+		SmartDashboard::PutNumber(  "Displacement_Y",       navx->GetDisplacementY() );
+	}
 }
 
 void Robot::TestInit()
