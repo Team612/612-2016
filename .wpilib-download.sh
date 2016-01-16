@@ -11,7 +11,7 @@
 # rather than a hard coded file name.
 # The latest version can be determined from
 # http://first.wpi.edu/FRC/roborio/release/eclipse/site.xml
-version="0.1.0.201601072029"
+version="0.1.0.201601151923"
 
 source wpilib/version.txt
 if [ ! "$version" = "$downloaded_version" ] ; then
