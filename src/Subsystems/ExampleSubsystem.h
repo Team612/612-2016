@@ -1,3 +1,5 @@
+/* Commented out to get rid of errors
+
 #ifndef EXAMPLE_SUBSYSTEM_H
 #define EXAMPLE_SUBSYSTEM_H
 
@@ -15,3 +17,5 @@ public:
 };
 
 #endif
+
+*/

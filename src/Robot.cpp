@@ -11,7 +11,7 @@ void Robot::RobotInit()
 	lw = LiveWindow::GetInstance();
 	robot = this;
 	autonomousCommand = NULL;
-
+	navx = new NavX(SPI::Port::kMXP);
 }
 
 void Robot::DisabledInit()

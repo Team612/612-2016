@@ -19,7 +19,6 @@ public:
 	CommandBase();
 	static void init();
 	static OI* oi;
-	static NavX * navx;
 };
 
 #endif

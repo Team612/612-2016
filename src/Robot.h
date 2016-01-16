@@ -2,7 +2,7 @@
 #define ROBOT_H
 
 #include "OI.h"
-
+#include "Subsystems/NavX.h"
 
 class Robot: public IterativeRobot
 {
@@ -13,6 +13,8 @@ private:
 
 	//LIVEWINDOW
 	LiveWindow* lw;
+
+	NavX* navx;
 
 	Robot* robot;
 public:

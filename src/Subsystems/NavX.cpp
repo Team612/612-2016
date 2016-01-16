@@ -1,7 +1,7 @@
 #include "NavX.h"
 #include "../RobotMap.h"
 
-NavX::NavX(SPI::Port portId):Subsystem("NavX"):AHRS(portID)
+NavX::NavX(SPI::Port portId):Subsystem("NavX"),AHRS(portId)
 {
 
 }

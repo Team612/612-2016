@@ -1,8 +1,9 @@
+/* Commented out to get rid of errors
+
 #include "ExampleSubsystem.h"
 #include "../RobotMap.h"
 
-ExampleSubsystem::ExampleSubsystem() :
-		Subsystem("ExampleSubsystem")
+ExampleSubsystem::ExampleSubsystem():Subsystem("ExampleSubsystem")
 {
 
 }
@@ -16,3 +17,4 @@ void ExampleSubsystem::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+*/
