@@ -11,11 +11,12 @@
 # rather than a hard coded file name.
 # The latest version can be determined from
 # http://first.wpi.edu/FRC/roborio/release/eclipse/site.xml
-version="0.1.0.201502241928"
+
+version="$(wget http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
 
 source wpilib/version.txt
 if [ ! "$version" = "$downloaded_version" ] ; then
-	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_$version.jar
+	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_*.jar
 	unzip wpicpp.zip resources/cpp.zip
 	mkdir wpilib
 	mv resources/cpp.zip ./
@@ -28,5 +29,5 @@ if [ ! "$version" = "$downloaded_version" ] ; then
 else
 	echo "Already at latest version"
 fi
-
+rm index.html
 echo "Version = $version"
