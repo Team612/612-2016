@@ -13,10 +13,12 @@
 # http://first.wpi.edu/FRC/roborio/release/eclipse/site.xml
 
 version="$(wget http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
-
+echo $?
+echo $downloaded_version
 source wpilib/version.txt
+
 if [ ! "$version" = "$downloaded_version" ] ; then
-	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_*.jar
+	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_$version.jar
 	unzip wpicpp.zip resources/cpp.zip
 	mkdir wpilib
 	mv resources/cpp.zip ./
