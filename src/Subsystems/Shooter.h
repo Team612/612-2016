@@ -18,7 +18,8 @@
  *
  * @author ExampleAuthor
  */
-class Shooter: public Subsystem {
+class Shooter: public Subsystem
+{
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities

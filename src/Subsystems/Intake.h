@@ -18,7 +18,8 @@
  *
  * @author ExampleAuthor
  */
-class Intake: public Subsystem {
+class Intake: public Subsystem
+{
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities

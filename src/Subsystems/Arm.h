@@ -18,7 +18,8 @@
  *
  * @author ExampleAuthor
  */
-class Arm: public Subsystem {
+class Arm: public Subsystem
+{
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities

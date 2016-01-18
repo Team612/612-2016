@@ -18,7 +18,8 @@
  *
  * @author ExampleAuthor
  */
-class Drivetrain: public Subsystem {
+class Drivetrain: public Subsystem
+{
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities
