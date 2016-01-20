@@ -42,3 +42,12 @@ void Drivetrain::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
+	robotDrive::TankDrive(leftPower, rightPower, true);
+	//should the bool value (SquaredInputs) be true? don't know what it does
+}
+
+void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
+	robotDrive::ArcadeDrive(movePower, rotatePower, true);
+	//also don't know what squaredInputs (bool) does
+}
