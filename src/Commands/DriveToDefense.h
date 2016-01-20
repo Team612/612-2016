@@ -13,7 +13,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-#include <TalonSRX.h>
+#include <CanTalonSRX.h>
 /**
  *
  *
