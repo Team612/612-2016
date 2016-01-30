@@ -55,3 +55,4 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | Grey Golla      | bobobalink      |
 | Nayana Suvarna  | nls5260         |
 | Jeffrey Wang    | Jeffrey-Wang    |
+| Dakshesh Nimishe| dnimishe	    |
