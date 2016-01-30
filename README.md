@@ -51,3 +51,5 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | David Fuimano   | DavidFiumano    |
 | Shaun Wu        | Alexbay218      |
 | Paola Henriquez | PaolaHenriquez  |
+| Grey Golla      | bobobalink      |
+| Nayana Suvarna  | nls5260         |
