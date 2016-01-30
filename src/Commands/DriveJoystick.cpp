@@ -37,7 +37,16 @@ void DriveJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveJoystick::Execute()
 {
-
+/*the way the drive system works, there should be a dead zone on both axes individually. 
+(i.e. if axis one is 0.08 and axis two is 0.6, then the output to the motors should be 0 and 0.6, not 0 and 0).
+Finally, when i refer to Joystick, i am talking about the Joystick class which can be found here: 
+http://first.wpi.edu/FRC/roborio/release/docs/cpp/classJoystick.html 
+SetTankDrive, SetArcadeDrive, and SetManualDrive are all methods that will be put in the Drivetrain subststem file. 
+They will be called from commands. Commands are called in a few different ways. 
+They can be called automatically by a button press, they can be called by a command group, 
+or they can be called manually by calling the Command's Start() method. M
+ore info on how this works can be found here: 
+http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-joystick-input*/
 }
 
 // Make this return true when this Command no longer needs to run execute()
