@@ -56,5 +56,6 @@ void DriveJoystick::End()
 // subsystems is scheduled to run
 void DriveJoystick::Interrupted()
 {
-
+	DriveJoystick::End();
+	//is this possible in cpp? know this from java
 }
