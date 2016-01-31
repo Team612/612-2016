@@ -11,7 +11,7 @@ cd ./.build
 rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake Makefile
 
 echo "build.sh: Generating Makefiles..."
-cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=./arm.cmake robot.cmake ..
+cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=./arm.cmake robot.cmake .. > /dev/null
 make VERBOSE=1
 
 #Delete cmake files to keep Eclipse working
