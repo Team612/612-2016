@@ -15,7 +15,7 @@
 version="$(wget --quiet http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
 echo $?
 echo $downloaded_version
-source wpilib/version.txt
+source wpilib/version.txt > /dev/null 2>&1
 
 if [ ! "$version" = "$downloaded_version" ] ; then
 	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_$version.jar
@@ -27,9 +27,9 @@ if [ ! "$version" = "$downloaded_version" ] ; then
 
 	rm -rf cpp.zip
 	rm -rf wpicpp.zip
-	echo "downloaded_version=$version" > wpilib/version.txt
+	echo "WPILIB downloaded_version=$version" > wpilib/version.txt
 else
-	echo "Already at latest version"
+	echo "Already at latest WPILIB version"
 fi
 rm index.html
-echo "Version = $version"
+echo "WPILIB Version = $version"

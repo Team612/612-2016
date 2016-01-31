@@ -4,10 +4,11 @@
 # Using -qq and -y on apt-get is considered redundant,
 # but it is unlikely that the redundancy is well known,
 # so we do both anyways.
+# Also, the -qq must go before the command (update, install)
 
 dpkg-query -s frc-toolchain
 if [ $? = 1 ]; then
-	sudo apt-add-repository -y ppa:wpilib/toolchain
-	sudo apt-get update -qqy
-	sudo apt-get install -qqy frc-toolchain
+	sudo apt-add-repository -y ppa:wpilib/toolchain > /dev/null
+	sudo apt-get -qq update -y
+	sudo apt-get -qq install -y frc-toolchain
 fi
