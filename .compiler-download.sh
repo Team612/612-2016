@@ -14,6 +14,6 @@ if command_exists arm-frc-linux-gnueabi-gcc ; then
 	:
 else
 	sudo apt-add-repository -y ppa:wpilib/toolchain > /dev/null 2>&1
-	sudo apt-get -qq update -y > /dev/null
-	sudo apt-get -qq install -y frc-toolchain > /dev/null
+	sudo apt-get -qq update -y > /dev/null 2>&1
+	sudo apt-get -qq install -y frc-toolchain > /dev/null 2>&1
 fi
