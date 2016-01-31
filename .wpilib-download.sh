@@ -12,9 +12,9 @@
 # The latest version can be determined from
 # http://first.wpi.edu/FRC/roborio/release/eclipse/site.xml
 
+# most recent version available from the internet
 version="$(wget --quiet http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
-echo $?
-echo $downloaded_version
+# most recent downloaded version (for usage outside of Travis CI)
 source wpilib/version.txt > /dev/null 2>&1
 
 if [ ! "$version" = "$downloaded_version" ] ; then
