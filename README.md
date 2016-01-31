@@ -1,6 +1,6 @@
 612-2016
 ========
-Hello world!
+Hello world
 ###### Travis CI Build Status:
 
 [![Build Status](https://travis-ci.org/Chantilly612Code/612-2016.svg?branch=master)](https://travis-ci.org/Chantilly612Code/612-2016)
