@@ -19,11 +19,11 @@ source wpilib/version.txt
 
 if [ ! "$version" = "$downloaded_version" ] ; then
 	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_$version.jar
-	unzip wpicpp.zip resources/cpp.zip
+	unzip -qq wpicpp.zip resources/cpp.zip
 	mkdir wpilib
 	mv resources/cpp.zip ./
 	rm -rf resources
-	unzip -d wpilib/ cpp.zip
+	unzip -qqd wpilib/ cpp.zip
 
 	rm -rf cpp.zip
 	rm -rf wpicpp.zip
