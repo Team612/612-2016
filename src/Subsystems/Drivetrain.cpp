@@ -48,11 +48,11 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 // here. Call these from Commands.
 
 void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
-	robotDrive::TankDrive(leftPower, rightPower, true);
+	robotDrive->TankDrive(leftPower, rightPower, true);
 	//should the bool value (SquaredInputs) be true? don't know what it does
 }
 
 void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
-	robotDrive::ArcadeDrive(movePower, rotatePower, true);
+	robotDrive->ArcadeDrive(movePower, rotatePower, true);
 	//also don't know what squaredInputs (bool) does
 }

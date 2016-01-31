@@ -24,7 +24,6 @@
 #include "Commands/BreachSallyPort.h"
 #include "Commands/DriveJoystick.h"
 #include "Commands/DriveSet.h"
-#include "Commands/DriveToDefense.h"
 #include "Commands/FireShooter.h"
 #include "Commands/PrepareShooter.h"
 
@@ -46,7 +45,6 @@ OI::OI()
 	// SmartDashboard Buttons
 	SmartDashboard::PutData("PrepareShooter", new PrepareShooter());
 	SmartDashboard::PutData("FireShooter", new FireShooter());
-	SmartDashboard::PutData("DriveToDefense", new DriveToDefense());
 	SmartDashboard::PutData("Autonomous", new Autonomous());
 	SmartDashboard::PutData("BreachLowBar", new BreachLowBar());
 	SmartDashboard::PutData("BreachRoughTerrain", new BreachRoughTerrain());
