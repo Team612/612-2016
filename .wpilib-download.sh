@@ -12,7 +12,7 @@
 # The latest version can be determined from
 # http://first.wpi.edu/FRC/roborio/release/eclipse/site.xml
 
-version="$(wget http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
+version="$(wget --quiet http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
 echo $?
 echo $downloaded_version
 source wpilib/version.txt

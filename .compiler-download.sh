@@ -7,7 +7,7 @@
 
 dpkg-query -s frc-toolchain
 if [ $? = 1 ]; then
-	sudo apt-add-repository -qqy ppa:wpilib/toolchain
+	sudo apt-add-repository -y ppa:wpilib/toolchain
 	sudo apt-get update -qqy
 	sudo apt-get install -qqy frc-toolchain
 fi
