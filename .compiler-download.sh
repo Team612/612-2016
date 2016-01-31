@@ -6,7 +6,7 @@
 # so we do both anyways.
 # Also, the -qq must go before the command (update, install)
 
-frcavail ="$(dpkg-query -s frc-toolchain)"
+frcavail="$(dpkg-query -s frc-toolchain)"
 if [ "$frcavail" = "1" ]; then
 	sudo apt-add-repository -y ppa:wpilib/toolchain > /dev/null
 	sudo apt-get -qq update -y > /dev/null
