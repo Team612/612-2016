@@ -13,5 +13,6 @@ deploy:
   skip_cleanup: true
   on:
     repo: Chantilly612Code/612-2016
+    tags: true
 #    branch: travis
 
