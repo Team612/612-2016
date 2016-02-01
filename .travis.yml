@@ -14,5 +14,6 @@ deploy:
   on:
     repo: Chantilly612Code/612-2016
     tags: true
+    all_branches: true 
 #    branch: travis
 
