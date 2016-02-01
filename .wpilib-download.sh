@@ -11,22 +11,25 @@
 # rather than a hard coded file name.
 # The latest version can be determined from
 # http://first.wpi.edu/FRC/roborio/release/eclipse/site.xml
-version="0.1.0.201601151923"
 
-source wpilib/version.txt
+# most recent version available from the internet
+version="$(wget --quiet http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/ && cat index.html | grep wpilib.plugins.cpp | sed -r 's/^.*wpilib.plugins.cpp_(.*).jar.*$/\1/')"
+# most recent downloaded version (for usage outside of Travis CI)
+source wpilib/version.txt > /dev/null 2>&1
+
 if [ ! "$version" = "$downloaded_version" ] ; then
 	wget --quiet -O wpicpp.zip http://first.wpi.edu/FRC/roborio/release/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_$version.jar
-	unzip wpicpp.zip resources/cpp.zip
+	unzip -qq wpicpp.zip resources/cpp.zip
 	mkdir wpilib
 	mv resources/cpp.zip ./
 	rm -rf resources
-	unzip -d wpilib/ cpp.zip
+	unzip -qqd wpilib/ cpp.zip
 
 	rm -rf cpp.zip
 	rm -rf wpicpp.zip
-	echo "downloaded_version=$version" > wpilib/version.txt
+	echo "WPILIB downloaded_version=$version" > wpilib/version.txt
 else
-	echo "Already at latest version"
+	echo "Already at latest WPILIB version"
 fi
-
-echo "Version = $version"
+rm index.html
+echo "WPILIB Version = $version"
