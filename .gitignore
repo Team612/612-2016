@@ -26,4 +26,4 @@ wpilib/*
 .build/CMakeCache.txt
 .build/CMakeFiles/Progress/
 .build/CMakeFiles/cmake.check_cache
-
+build.properties

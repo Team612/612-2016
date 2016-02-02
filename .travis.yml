@@ -1,6 +1,19 @@
 sudo: required
+dist: trusty
 language: cpp
 compiler:
   - gcc
 # Change this to your needs
 script: ./build.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: Ida0uwC+CpP8xi8o3v33tXf2vRHl1T+Gbc7lLlP1JozGZIAcymBjYpHVgjx9PoKggHh/fOSB339gkcPNtMArs2fkizradAjmlB1ZgKG+dc2ujBcOR3DLE40qmWze+OZKvzNQFdhqCwd5/7KcJh+RgeIIDqBHPa0LqYLaLwL1KBprZfXGk9WXig8Hw9MYxZwCnEZ3kLHr3/84AnZtAe1FOPa2Ez2PUt+6LIoiNDYP7J655UxfTUEChMNBFshGL92kfkbmNJ5SYs9OM8N1pIAQGb0p/gaAtE6zFT/6r5Kx9Zj7soUczDrkxRMlBOgWi5SbtlOu6W3ZcwrQOkZt4RBF5U8uzhBLWN8rnyrp4jNhzCno9IVRE1hbuTwy0uc0B0pdTaeeTakw5sEJ6rrOdHTI/yIjVDXwReUxBV0JzMWl0i6X8MSgYll9a+hMx/bjiYRvmAJf5M7c2hJIqgvVr8jz0eqo/1K68Uo8c0BnETC5WTFiUwL3aRs3vUCX5AbTKW/fc/Rx5+/WJTt4iIkymDfwtDqqkIVhdlrWDTbWokI/9vVxe9A4bCIDKYzNgeig9k1gGT+YqS23f66u2fXcYkRN7TqU+ahXeC6DCoY2O+zvDpt1Fpi7Ohky1ThC/m1+I89GgCHhUvVGUcJ/Lv9KGrMLO7u9eSQEDucRE6FFx1izJoo=
+  file: ./.build/FRCUserProgram
+  skip_cleanup: true
+  on:
+    repo: Chantilly612Code/612-2016
+    tags: true
+    all_branches: true 
+#    branch: travis
+
