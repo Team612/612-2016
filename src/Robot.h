@@ -14,8 +14,6 @@ private:
 	//LIVEWINDOW
 	LiveWindow* lw;
 
-	NavX* navx;
-
 	Robot* robot;
 public:
 	//CONSTRUCTOR
