@@ -51,6 +51,7 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | Dakshesh Nimishe| dnimishe	      |
 | Aru Rajpurohit  | arajpurohit     |
 | Anvitha N       | anvitha2828     |
+| Goodwin Lu      | Mister-GoodwinLu|
 
 ###### Mentors:
 | Name            | Github Username |
