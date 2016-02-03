@@ -59,5 +59,5 @@ void DriveSet::End()
 // subsystems is scheduled to run
 void DriveSet::Interrupted()
 {
-	Robot::drivetrain.get()->SetManualDrive(0.0f,0.0f);
+	Robot::drivetrain->SetManualDrive(0.0f,0.0f);
 }
