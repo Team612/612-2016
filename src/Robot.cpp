@@ -67,6 +67,7 @@ void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 	vision->PullValues();
+
 }
 
 void Robot::TeleopInit()

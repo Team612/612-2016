@@ -22,11 +22,10 @@ void Vision::PullValues()
 	std::vector<double> vec = table->GetNumberArray("BOUNDING_COORDINATES", arr);
 
 	for(int x = 0; x < vec.size(); x++) {
-		printf("%u ",vec[x]);
+		printf("%u ", (int)vec[x]);
 	}
 
 	printf("\n");
-
 
 	printf("Key 0: %u \n", table->ContainsKey("BOUNDING_COORDINATES"));
 }
