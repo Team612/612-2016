@@ -18,20 +18,20 @@ void ShooterLever::InitDefaultCommand()
 
 void ShooterLever::SetServoPosition(float position)
 {
-    LeverServo1->Set(position);
+        LeverServo1->Set(position);
 }
 
 void ShooterLever::SetServoAngle(float angle)
 {
-    LeverServo1->SetAngle(angle);
+        LeverServo1->SetAngle(angle);
 }
 
 float ShooterLever::GetServoPosition()
 {
-    return LeverServo1->Get();
+        return LeverServo1->Get();
 }
 
 float ShooterLever::GetServoAngle()
 {
-    return LeverServo1->GetAngle();
+        return LeverServo1->GetAngle();
 }

@@ -13,10 +13,10 @@ private:
 public:
 	ShooterLever();
 	void InitDefaultCommand();
-    	void SetServoPosition(float position);
-    	void SetServoAngle(float angle);
-    	float GetServoPosition();
-    	float GetServoAngle();
+        void SetServoPosition(float position);
+        void SetServoAngle(float angle);
+        float GetServoPosition();
+        float GetServoAngle();
 };
 
 #endif
