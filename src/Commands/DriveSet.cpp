@@ -40,7 +40,7 @@ void DriveSet::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveSet::Execute()
 {
-	Robot::drivetrain.get()->SetManualDrive(outputPower, curveSharpness);
+	Robot::drivetrain->SetManualDrive(outputPower, curveSharpness);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -52,12 +52,12 @@ bool DriveSet::IsFinished()
 // Called once after isFinished returns true
 void DriveSet::End()
 {
-	Drivetrain::SetManualDrive(0.0f, 0.0f);
+	Robot::drivetrain->SetManualDrive(0.0f, 0.0f);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void DriveSet::Interrupted()
 {
-	Drivetrain::SetManualDrive(0.0f,0.0f);
+	Robot::drivetrain.get()->SetManualDrive(0.0f,0.0f);
 }
