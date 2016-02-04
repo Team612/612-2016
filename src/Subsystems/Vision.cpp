@@ -1,11 +1,13 @@
 #include "Vision.h"
 #include "../RobotMap.h"
 
-Vision::Vision() :
+Vision::Vision(const char* camera) :
 		Subsystem("Vision")
 {
 	NetworkTable::SetPort(1735);
 	table = NetworkTable::GetTable("Vision");
+	CameraServer::GetInstance()->SetQuality(100);
+	SetCamera(camera);
 }
 
 
@@ -28,6 +30,11 @@ void Vision::PullValues()
 	printf("\n");
 
 	printf("Key 0: %u \n", table->ContainsKey("BOUNDING_COORDINATES"));
+}
+
+void Vision::SetCamera(const char* camera)
+{
+	CameraServer::GetInstance()->StartAutomaticCapture(camera);
 }
 
 // Put methods for controlling this subsystem

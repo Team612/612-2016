@@ -10,9 +10,14 @@ private:
 	std::shared_ptr<NetworkTable> table;
 
 public:
-	Vision();
+	Vision(const char* initialCamera=CAMERA_FRONT);
 	void InitDefaultCommand();
 	void PullValues();
+	void SetCamera(const char* camera);
+
+	static constexpr char* CAMERA_FRONT = "cam0";
+	static constexpr char* CAMERA_REAR = "cam1";
+	static constexpr char* CAMERA_SHOOTER = "cam2";
 };
 
 #endif
