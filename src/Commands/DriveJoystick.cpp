@@ -31,7 +31,8 @@ DriveJoystick::DriveJoystick() :
 // Called just before this Command runs the first time
 void DriveJoystick::Initialize()
 {
-
+	isXbox = OI::driver->GetIsXbox();
+	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -47,6 +48,8 @@ They can be called automatically by a button press, they can be called by a comm
 or they can be called manually by calling the Command's Start() method. M
 ore info on how this works can be found here: 
 http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-joystick-input*/
+
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -58,7 +61,7 @@ bool DriveJoystick::IsFinished()
 // Called once after isFinished returns true
 void DriveJoystick::End()
 {
-
+	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
 }
 
 // Called when another command which requires one or more of the same
