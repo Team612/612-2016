@@ -10,7 +10,9 @@ ServoPush::ServoPush()
 // Called just before this Command runs the first time
 void ServoPush::Initialize()
 {
-	Robot::shooterlever.get()
+	/* TODO: The following code does not execute any action
+	 */
+	Robot::shooterlever.get();
 }
 
 // Called repeatedly when this Command is scheduled to run
