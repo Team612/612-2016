@@ -52,7 +52,7 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | Aru Rajpurohit  | arajpurohit     |
 | Anvitha N       | anvitha2828     |
 | Goodwin Lu      | Mister-GoodwinLu|
-| Benny Blue      | DoctorVolt      |
+| Benjamin Blue   | DoctorVolt      |
 
 ###### Mentors:
 | Name            | Github Username |
