@@ -48,10 +48,11 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | Grey Golla      | bobobalink      |
 | Nayana Suvarna  | nls5260         |
 | Jeffrey Wang    | Jeffrey-Wang    |
-| Dakshesh Nimishe| dnimishe	      |
+| Dakshesh Nimishe| dnimishe	    |
 | Aru Rajpurohit  | arajpurohit     |
 | Anvitha N       | anvitha2828     |
 | Goodwin Lu      | Mister-GoodwinLu|
+| Benny Blue      | DoctorVolt      |
 
 ###### Mentors:
 | Name            | Github Username |
