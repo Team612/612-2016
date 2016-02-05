@@ -17,7 +17,7 @@ void ArmMove::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute()
 {
-	Robot::arm->moveArm(gj->GetY())l //The arm moves according to the value of the gunner's Y axis
+	Robot::arm->moveArm(gj->GetY()); //The arm moves according to the value of the gunner's Y axis
 }
 
 // Make this return true when this Command no longer needs to run execute()
