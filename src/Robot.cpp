@@ -76,7 +76,7 @@ void Robot::TeleopInit()
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-	armMoveCommand->Start();
+	//armMoveCommand->Start();
 }
 
 void Robot::TeleopPeriodic()

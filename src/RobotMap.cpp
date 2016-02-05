@@ -43,7 +43,7 @@ void RobotMap::init()
 			new RobotDrive(drivetrainCANTalon1, drivetrainCANTalon2,
 					drivetrainCANTalon3, drivetrainCANTalon4));
 
-	shooterLeverServo1.reset(new Servo(1));
+	shooterLeverServo1.reset(new Servo(2));
 	lw->AddActuator("ShooterLever", "LeverServo1", shooterLeverServo1);
 
 	armAdjust.reset(new CANTalon(4));
