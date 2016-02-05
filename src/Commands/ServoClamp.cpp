@@ -10,6 +10,11 @@ ServoClamp::ServoClamp()
 // Called just before this Command runs the first time
 void ServoClamp::Initialize()
 {
+  /* TODO: Fix the following code.
+   * LeverServo1 is the object, but it is not necessary to call it here.
+   * The ShooterLever subsystem provides the SetServoAngle(angle)
+   * method.
+   */
 	Robot::shooterlever.get()->  LeverServo1(0.0f);
 }
 
