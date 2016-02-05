@@ -1,9 +1,7 @@
 612-2016
 ========
 
-###### Travis CI Build Status:    [![Build Status](https://travis-ci.org/Chantilly612Code/612-2016.svg?branch=master)](https://travis-ci.org/Chantilly612Code/612-2016)
-
-###### Gitter Chat Room:    [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Chantilly612Code?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+###### Travis CI Build Status: &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/Chantilly612Code/612-2016.svg?branch=master)](https://travis-ci.org/Chantilly612Code/612-2016)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gitter Chat Room:  &nbsp;&nbsp;&nbsp; [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Chantilly612Code?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
 This repository holds the robot code for the [Chantilly Robotics](http://chantillyrobotics.org/) [FIRST](http://www.usfirst.org/roboticsprograms/frc/) Team 612 robot, competing in the 2015-2016 season game [FIRST Stronghold](http://www.firstinspires.org/robotics/frc/welcome-to-first-stronghold).
 
