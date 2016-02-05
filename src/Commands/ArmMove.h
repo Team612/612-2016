@@ -6,6 +6,8 @@
 #include "Joystick.h"
 
 #include "../Subsystems/Arm.h"
+#include "../Robot.h"
+#include "../RobotMap.h"
 
 class ArmMove: public CommandBase
 {
