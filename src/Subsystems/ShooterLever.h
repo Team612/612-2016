@@ -9,10 +9,10 @@ class ShooterLever: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	std::shared_ptr<Servo> LeverServo1;
 public:
 	ShooterLever();
 	void InitDefaultCommand();
+	std::shared_ptr<Servo> LeverServo1;
 };
 
 #endif
