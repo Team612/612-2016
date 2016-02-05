@@ -13,6 +13,10 @@ public:
 	ShooterLever();
 	void InitDefaultCommand();
 	std::shared_ptr<Servo> LeverServo1;
+	void SetServoPosition(float position);
+	void SetServoAngle(float angle);
+	float GetServoPosition();
+	float GetServoAngle();
 };
 
 #endif

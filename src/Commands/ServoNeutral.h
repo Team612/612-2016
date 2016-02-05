@@ -1,10 +1,10 @@
 #ifndef ServoNeutral_H
 #define ServoNeutral_H
 
-#include "WPILib.h"
-#include "Subsystems/ShooterLever.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
-class ServoNeutral: public CommandBase
+class ServoNeutral: public Command
 {
 public:
 	ServoNeutral();
@@ -14,7 +14,6 @@ public:
 	void End();
 	void Interrupted();
 private:
-	Servo* temp;
 };
 
 #endif
