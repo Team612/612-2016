@@ -1,18 +1,11 @@
 #ifndef ArmMove_H
 #define ArmMove_H
 
-#include "../CommandBase.h"
-#include "WPILib.h"
-#include "Joystick.h"
-
-#include "../Subsystems/Arm.h"
+#include "Commands/Subsystem.h"
 #include "../Robot.h"
-#include "../RobotMap.h"
 
-class ArmMove: public CommandBase
+class ArmMove: public Command
 {
-private:
-	std::shared_ptr<Joystick> gj;
 public:
 	ArmMove();
 	void Initialize();
