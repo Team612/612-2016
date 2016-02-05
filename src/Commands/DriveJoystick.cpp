@@ -32,7 +32,7 @@ DriveJoystick::DriveJoystick() :
 // Called just before this Command runs the first time
 void DriveJoystick::Initialize()
 {
-	isXbox = OI::driver->GetIsXbox();
+	isXbox = Robot::oi->getDriver()->GetIsXbox();
 	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
 }
 
@@ -50,8 +50,8 @@ or they can be called manually by calling the Command's Start() method. M
 ore info on how this works can be found here: 
 http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-joystick-input*/
 
-	leftPos = OI::driver->GetY(OI::driver->kLeftHand);
-	rightPos = OI::driver->GetY(OI::driver->kRightHand);
+	leftPos = Robot::oi->getDriver()->GetY(OI::driver->kLeftHand);
+	rightPos = Robot::oi->getDriver()->GetY(OI::driver->kRightHand);
 
 	if (!isXbox) {
 		leftPos = -1 * leftPos;
