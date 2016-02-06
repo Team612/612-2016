@@ -10,13 +10,14 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
+	std::shared_ptr<Servo> LeverServo1;
 	ShooterLever();
 	void InitDefaultCommand();
-	std::shared_ptr<Servo> LeverServo1;
-	void SetServoPosition(float position);
-	void SetServoAngle(float angle);
-	float GetServoPosition();
-	float GetServoAngle();
+    void SetServoPosition(float position);
+    void SetServoAngle(float angle);
+    float GetServoPosition();
+    float GetServoAngle();
+    std::shared_ptr<Servo> getLeverServo1();
 };
 
 #endif
