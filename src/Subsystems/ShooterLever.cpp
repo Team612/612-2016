@@ -35,3 +35,8 @@ float ShooterLever::GetServoAngle()
 {
         return LeverServo1->GetAngle();
 }
+
+std::shared_ptr<Servo> ShooterLever::getLeverServo1()
+{
+	return LeverServo1;
+}

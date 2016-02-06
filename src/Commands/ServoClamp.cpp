@@ -15,7 +15,7 @@ void ServoClamp::Initialize()
    * The ShooterLever subsystem provides the SetServoAngle(angle)
    * method.
    */
-	Robot::shooterlever.get()->  LeverServo1(0.0f);
+	Robot::shooterlever.get()->SetServoPosition(0.0f);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -27,7 +27,7 @@ void ServoClamp::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ServoClamp::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
