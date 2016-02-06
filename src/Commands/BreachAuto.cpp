@@ -22,7 +22,7 @@ void BreachAuto::Execute()
 			break;
 		case Robot::Defense::CHEVAL_DE_FRISE:
 			break;
-		case Robot::Defense::DRAWBRIDGE:
+		case Robot::Defense::DRAW_BRIDGE:
 			break;
 		case Robot::Defense::LOW_BAR:
 			break;
