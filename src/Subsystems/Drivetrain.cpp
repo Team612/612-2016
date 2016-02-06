@@ -58,5 +58,5 @@ void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
 }
 
 void Drivetrain::SetManualDrive(float outputPower, float curveSharpness) {
-    robotDrive->Drive(outputPower, curveSharpness);
+    	robotDrive->Drive(outputPower, curveSharpness);
 }
