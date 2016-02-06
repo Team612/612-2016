@@ -12,7 +12,7 @@ void ServoPush::Initialize()
 {
 	/* TODO: The following code does not execute any action
 	 */
-	Robot::shooterlever.get();
+	Robot::shooterlever.get()->SetServoPosition(0.5f); //I doubt this is right.
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -24,7 +24,7 @@ void ServoPush::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ServoPush::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
