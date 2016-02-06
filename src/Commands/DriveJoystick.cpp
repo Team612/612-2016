@@ -50,30 +50,48 @@ or they can be called manually by calling the Command's Start() method. M
 ore info on how this works can be found here: 
 http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-joystick-input*/
 
-	leftPos = Robot::oi->getDriver()->GetY(Robot::oi->getDriver()->kLeftHand);
-	rightPos = Robot::oi->getDriver()->GetY(Robot::oi->getDriver()->kRightHand);
+	if (isXbox) {
+		leftPos = Robot::oi->getDriver()->GetRawAxis(02) * (-1);
+		rightPos = Robot::oi->getDriver()->GetRawAxis(05) * (-1);
 
-	if (!isXbox) {
-		leftPos = -1 * leftPos;
-		rightPos = -1 * rightPos;
-	} //invert input when traditional joysticks are used
+		if (leftPos > XDEADZONE) {
+			leftPos = (leftPos - XDEADZONE) * ((float)1 / ((float)1 - XDEADZONE));
+		}
+		else if (leftPos < -XDEADZONE) {
+			leftPos = (leftPos + XDEADZONE) * ((float)1 / ((float)1 - XDEADZONE));
+		} else leftPos = 0.0f;
+		//scale input to non-XDEADZONE area, unless within XDEADZONE in which input is set to 0
 
-	if (leftPos > DEADZONE) {
-		leftPos = (leftPos - DEADZONE) * ((float)1 / ((float)1 - DEADZONE));
+		if (rightPos > XDEADZONE) {
+			rightPos = (rightPos - XDEADZONE) * ((float)1 / ((float)1 - XDEADZONE));
+		}
+		else if (rightPos < -XDEADZONE) {
+			rightPos = (rightPos + XDEADZONE) * ((float)1 / ((float)1 - XDEADZONE));
+		} else rightPos = 0.0f;
+
+		Robot::drivetrain->SetTankDrive(leftPos, rightPos);
 	}
-	else if (leftPos < -DEADZONE) {
-		leftPos = (leftPos + DEADZONE) * ((float)1 / ((float)1 - DEADZONE));
-	} else leftPos = 0.0f;
-	//scale input to non-deadzone area, unless within deadzone in which input is set to 0
+	else {
+		leftPos = Robot::oi->getDriver()->GetY();
+		rightPos = Robot::oi->getDriver()->GetTwist();
 
-	if (rightPos > DEADZONE) {
-		rightPos = (rightPos - DEADZONE) * ((float)1 / ((float)1 - DEADZONE));
+		if (leftPos > JDEADZONE) {
+			leftPos = (leftPos - JDEADZONE) * ((float)1 / ((float)1 - JDEADZONE));
+		}
+		else if (leftPos < -JDEADZONE) {
+			leftPos = (leftPos + JDEADZONE) * ((float)1 / ((float)1 - JDEADZONE));
+		} else leftPos = 0.0f;
+		//scale input to non-JDEADZONE area, unless within JDEADZONE in which input is set to 0
+
+		if (rightPos > JDEADZONE) {
+			rightPos = (rightPos - JDEADZONE) * ((float)1 / ((float)1 - JDEADZONE));
+		}
+		else if (rightPos < -JDEADZONE) {
+			rightPos = (rightPos + JDEADZONE) * ((float)1 / ((float)1 - JDEADZONE));
+		} else rightPos = 0.0f;
+
+		Robot::drivetrain->SetArcadeDrive(leftPos, rightPos);
 	}
-	else if (rightPos < -DEADZONE) {
-		rightPos = (rightPos + DEADZONE) * ((float)1 / ((float)1 - DEADZONE));
-	} else rightPos = 0.0f;
-
-	Robot::drivetrain->SetTankDrive(leftPos, rightPos);
 }
 
 // Make this return true when this Command no longer needs to run execute()
