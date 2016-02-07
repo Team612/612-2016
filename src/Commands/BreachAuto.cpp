@@ -1,8 +1,9 @@
 #include "BreachAuto.h"
 
-BreachAuto::BreachAuto()
+BreachAuto::BreachAuto(Robot::Defense defense)
 {
 	Requires(Robot::drivetrain.get());
+	this->defense = defense;
 }
 
 void BreachAuto::Initialize()
