@@ -68,6 +68,7 @@ void Robot::AutonomousInit()
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	CommandBase::vision->PullValues();
 
 }
 
