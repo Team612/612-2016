@@ -9,7 +9,7 @@
 class BreachAuto: public Command
 {
 private:
-    Robot::Defense defense;
+	Robot::Defense defense;
 public:
 	BreachAuto();
 	void Initialize();
