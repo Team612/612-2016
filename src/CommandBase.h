@@ -22,7 +22,6 @@ public:
 	// Create a single static instance of all of your subsystems
 	static std::unique_ptr<ExampleSubsystem> examplesubsystem;
 	static std::unique_ptr<OI> oi;
-	static std::unique_ptr<Vision> vision;
 };
 
 #endif

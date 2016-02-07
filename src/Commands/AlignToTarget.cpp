@@ -2,7 +2,7 @@
 
 AlignToTarget::AlignToTarget() : PIDCommand("AlignToTarget", 1, 0, 0)
 {
-	Requires(CommandBase::vision.get());
+	Requires(Robot::vision.get());
 }
 
 // Called just before this Command runs the first time
@@ -15,13 +15,13 @@ void AlignToTarget::Initialize()
 void AlignToTarget::Execute()
 {
 	//Populate VisionTarget vector
-	CommandBase::vision->PullValues();
+	Robot::vision->PullValues();
 
 	//Only if we need to FIND a target
 	//TODO: Add timeout so it doesn't keep trying forever
 	if (!hasTarget)
 	{
-		std::shared_ptr<NetworkTable> table = CommandBase::vision->GetRawTable();
+		std::shared_ptr<NetworkTable> table = Robot::vision->GetRawTable();
 
 		llvm::ArrayRef<double> arr;
 
@@ -49,9 +49,9 @@ void AlignToTarget::Execute()
 void AlignToTarget::FindTarget()
 {
 	//Only executes if RoboRealm has actually detected targets
-	if (CommandBase::vision->GetTargetAmount() > 0) {
+	if (Robot::vision->GetTargetAmount() > 0) {
 		//Uses the FindClosestAspect static method to find the target with the closest aspect ratio to that of the real target
-		currentTarget = VisionTarget::FindClosestAspect(TARGET_ASPECT, CommandBase::vision->GetAllTargets());
+		currentTarget = VisionTarget::FindClosestAspect(TARGET_ASPECT, Robot::vision->GetAllTargets());
 		hasTarget = true;
 	}
 }
@@ -64,7 +64,7 @@ double AlignToTarget::CalculateDistance() {
 //Inherited from PID Command, returns the input from the vision targets
 double AlignToTarget::ReturnPIDInput() {
 	//Makes sure that the target still exists, if not, it goes bye bye
-	if (!CommandBase::vision->TargetExists(currentTarget->GetID()))
+	if (!Robot::vision->TargetExists(currentTarget->GetID()))
 	{
 		hasTarget = false;
 		PIDUserDisabled = true;

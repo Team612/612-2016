@@ -1,7 +1,7 @@
 #ifndef AlignToTarget_H
 #define AlignToTarget_H
 
-#include "../CommandBase.h"
+#include "../Robot.h"
 #include "WPILib.h"
 
 class AlignToTarget: public PIDCommand //PID for rotation
