@@ -3,6 +3,7 @@
 
 #include "../Robot.h"
 #include "WPILib.h"
+#include "../VisionTarget.h"
 
 class AlignToTarget: public PIDCommand //PID for rotation
 {
