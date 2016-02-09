@@ -48,29 +48,29 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 // here. Call these from Commands.
 
 void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
-	if (RobotMap::isRobotReversed){
-		robotDrive->TankDrive(-leftPower, -rightPower, true);
-	} else
+	//if (RobotMap::isRobotReversed){
+	//	robotDrive->TankDrive(-leftPower, -rightPower, true);
+	//} else
 	robotDrive->TankDrive(leftPower, rightPower, true);
 	//should the bool value (SquaredInputs) be true? don't know what it does
 }
 
 void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
-	if (RobotMap::isRobotReversed) {
-		robotDrive->ArcadeDrive(-movePower, -rotatePower, true);
-	}
+	//if (RobotMap::isRobotReversed) {
+	//	robotDrive->ArcadeDrive(-movePower, -rotatePower, true);
+	//}
 	robotDrive->ArcadeDrive(movePower, rotatePower, true);
 	//also don't know what squaredInputs (bool) does
 }
 
 void Drivetrain::SetManualDrive(float outputPower, float curveSharpness) {
-	if (RobotMap::isRobotReversed) {
-		robotDrive->Drive(-outputPower, -curveSharpness);
-	}
+	//if (RobotMap::isRobotReversed) {
+	//	robotDrive->Drive(-outputPower, -curveSharpness);
+	//}
     robotDrive->Drive(outputPower, curveSharpness);
 }
 
-void Drivetrain::SetFlip(bool flipping) {
+/*void Drivetrain::SetFlip(bool flipping) {
 	RobotMap::isRobotReversed = flipping;
 }
 bool Drivetrain::ToggleFlip(void) {
@@ -80,3 +80,4 @@ bool Drivetrain::ToggleFlip(void) {
 bool Drivetrain::GetFlip(void) {
 	return RobotMap::isRobotReversed;
 }
+*/
