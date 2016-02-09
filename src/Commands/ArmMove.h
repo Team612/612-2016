@@ -1,5 +1,5 @@
-#ifndef ArmMove_H
-#define ArmMove_H
+#ifndef ARMMOVE_H
+#define ARMMOVE_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
@@ -13,6 +13,13 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+
+private:
+	std::shared_ptr<Joystick> myController;
+	short int myAxis = 02; //axis to use with Xbox control, set to left Y axis here
+	bool isXbox;
+	float myVal;
+	float DEADZONE = 0.1;
 };
 
 #endif
