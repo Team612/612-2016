@@ -48,15 +48,35 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 // here. Call these from Commands.
 
 void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
+	if (isFlipped){
+		robotDrive->TankDrive(-leftPower, -rightPower, true);
+	} else
 	robotDrive->TankDrive(leftPower, rightPower, true);
 	//should the bool value (SquaredInputs) be true? don't know what it does
 }
 
 void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
+	if (isFlipped) {
+		robotDrive->ArcadeDrive(-movePower, -rotatePower, true);
+	}
 	robotDrive->ArcadeDrive(movePower, rotatePower, true);
 	//also don't know what squaredInputs (bool) does
 }
 
 void Drivetrain::SetManualDrive(float outputPower, float curveSharpness) {
+	if (isFlipped) {
+		robotDrive->Drive(-outputPower, -curveSharpness);
+	}
     robotDrive->Drive(outputPower, curveSharpness);
+}
+
+void Drivetrain::SetFlip(bool flipping) {
+	isFlipped = flipping;
+}
+bool Drivetrain::ToggleFlip(void) {
+	isFlipped = !isFlipped;
+	return isFlipped;
+}
+bool Drivetrain::GetFlip(void) {
+	return isFlipped;
 }
