@@ -45,9 +45,9 @@ private:
 	float leftPos; //also joystickY
 	float rightPos; //also joystickTwist
 
-	bool isFlipped;
-	short int flipswitch = 03; //button id for flip button
-	bool wasPressed; //prevents flip from toggling multiple times in a button press
+	//bool isFlipped;
+	//short int flipswitch = 03; //button id for flip button
+	//bool wasPressed; //prevents flip from toggling multiple times in a button press
 };
 
 #endif
