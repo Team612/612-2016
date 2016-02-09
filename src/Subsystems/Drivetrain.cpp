@@ -48,7 +48,7 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 // here. Call these from Commands.
 
 void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
-	if (isFlipped){
+	if (RobotMap::isRobotReversed){
 		robotDrive->TankDrive(-leftPower, -rightPower, true);
 	} else
 	robotDrive->TankDrive(leftPower, rightPower, true);
@@ -56,7 +56,7 @@ void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
 }
 
 void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
-	if (isFlipped) {
+	if (RobotMap::isRobotReversed) {
 		robotDrive->ArcadeDrive(-movePower, -rotatePower, true);
 	}
 	robotDrive->ArcadeDrive(movePower, rotatePower, true);
@@ -64,19 +64,19 @@ void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
 }
 
 void Drivetrain::SetManualDrive(float outputPower, float curveSharpness) {
-	if (isFlipped) {
+	if (RobotMap::isRobotReversed) {
 		robotDrive->Drive(-outputPower, -curveSharpness);
 	}
     robotDrive->Drive(outputPower, curveSharpness);
 }
 
 void Drivetrain::SetFlip(bool flipping) {
-	isFlipped = flipping;
+	RobotMap::isRobotReversed = flipping;
 }
 bool Drivetrain::ToggleFlip(void) {
-	isFlipped = !isFlipped;
-	return isFlipped;
+	RobotMap::isRobotReversed = !RobotMap::isRobotReversed;
+	return RobotMap::isRobotReversed;
 }
 bool Drivetrain::GetFlip(void) {
-	return isFlipped;
+	return RobotMap::isRobotReversed;
 }
