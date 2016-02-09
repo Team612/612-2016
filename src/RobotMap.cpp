@@ -46,6 +46,10 @@ void RobotMap::init()
 
 	lw->AddActuator("ShooterLever", "LeverServo1", shooterLeverServo1);
 
+	shooterLeverDetector.reset(new AnalogInput(0));
+
+	lw->AddActuator("ShooterLeverDetector", "LeverDetector1", shooterLeverDetector);
+
 	drivetrainRobotDrive->SetSafetyEnabled(true);
 	drivetrainRobotDrive->SetExpiration(0.1);
 	drivetrainRobotDrive->SetSensitivity(0.5);
