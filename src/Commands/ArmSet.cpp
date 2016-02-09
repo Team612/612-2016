@@ -34,12 +34,15 @@ bool ArmSet::IsFinished()
 // Called once after isFinished returns true
 void ArmSet::End()
 {
-
+	Robot::arm->moveArm(0.0f);
+	myTimer.Stop();
+	myTimer.Reset();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ArmSet::Interrupted()
 {
-
+	Robot::arm->moveArm(0.0f);
+	myTimer.Stop();
 }
