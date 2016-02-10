@@ -20,10 +20,10 @@ void ArmMove::Initialize()
 void ArmMove::Execute()
 {
 	if (isXbox) {
-		myVal = -(Robot::oi->getGunner()->GetRawAxis(myAxis));
+		myVal = -(myController->GetRawAxis(myAxis));
 	}
 	else {
-		myVal = Robot::oi->getGunner()->GetY();
+		myVal = myController->GetY();
 	}
 
 	if (myVal > DEADZONE) {
