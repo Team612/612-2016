@@ -47,16 +47,69 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
+void Drivetrain::SetTankDrive(float leftPower, float rightPower)
+{
 	robotDrive->TankDrive(leftPower, rightPower, true);
 	//should the bool value (SquaredInputs) be true? don't know what it does
 }
 
-void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
+void Drivetrain::SetArcadeDrive(float movePower, float rotatePower)
+{
 	robotDrive->ArcadeDrive(movePower, rotatePower, true);
 	//also don't know what squaredInputs (bool) does
 }
 
-void Drivetrain::SetManualDrive(float outputPower, float curveSharpness) {
+void Drivetrain::SetManualDrive(float outputPower, float curveSharpness)
+{
 	robotDrive->Drive(outputPower, curveSharpness);
+}
+
+void Drivetrain::BreachPortcullis()
+{
+
+}
+
+void Drivetrain::BreachChevalDeFrise()
+{
+
+}
+
+void Drivetrain::BreachMoat()
+{
+
+}
+
+void Drivetrain::BreachRamparts()
+{
+
+}
+
+void Drivetrain::BreachDrawBridge()
+{
+
+}
+
+void Drivetrain::BreachSallyPort()
+{
+
+}
+
+void Drivetrain::BreachRockWall()
+{
+
+}
+
+void Drivetrain::BreachRoughTerrain()
+{
+
+}
+
+void Drivetrain::BreachLowBar()
+{
+
+}
+
+void Drivetrain::BreachNone()
+{
+
 }

@@ -3,7 +3,7 @@
 BreachAuto::BreachAuto(Robot::Defense _defense)
 {
 	Requires(Robot::drivetrain.get());
-	this->defense = _defense;
+	defense = _defense;
 }
 
 void BreachAuto::Initialize()
@@ -16,25 +16,25 @@ void BreachAuto::Execute()
 	switch (defense)
 	{
 		case Robot::Defense::PORTCULLIS:
-			break;
+			Robot::drivetrain.get()->BreachPortcullis();
 		case Robot::Defense::CHEVAL_DE_FRISE:
-			break;
+			Robot::drivetrain.get()->BreachChevalDeFrise();
 		case Robot::Defense::DRAW_BRIDGE:
-			break;
+			Robot::drivetrain.get()->BreachDrawBridge();
 		case Robot::Defense::LOW_BAR:
-			break;
+			Robot::drivetrain.get()->BreachLowBar();
 		case Robot::Defense::MOAT:
-			break;
+			Robot::drivetrain.get()->BreachMoat();
 		case Robot::Defense::RAMPARTS:
-			break;
+			Robot::drivetrain.get()->BreachRamparts();
 		case Robot::Defense::ROCK_WALL:
-			break;
+			Robot::drivetrain.get()->BreachRockWall();
 		case Robot::Defense::SALLY_PORT:
-			break;
+			Robot::drivetrain.get()->BreachSallyPort();
 		case Robot::Defense::ROUGH_TERRAIN:
-			break;
+			Robot::drivetrain.get()->BreachRoughTerrain();
 		case Robot::Defense::NONE:
-			break;
+			Robot::drivetrain.get()->BreachNone();
 		default:
 			break;
 	}
