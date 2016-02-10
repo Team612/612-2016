@@ -60,3 +60,26 @@ void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
 void Drivetrain::SetManualDrive(float outputPower, float curveSharpness) {
 	robotDrive->Drive(outputPower, curveSharpness);
 }
+
+void Drivetrain::SetInversion(bool is_inverted)
+{
+	Talon1->SetInverted(is_inverted);
+	Talon2->SetInverted(is_inverted);
+	Talon3->SetInverted(is_inverted);
+	Talon4->SetInverted(is_inverted);
+
+	controls_inverted = is_inverted;
+}
+
+bool Drivetrain::GetInversion()
+{
+	if(Talon1->GetInverted() && Talon2->GetInverted() && Talon3->GetInverted() && Talon4->GetInverted())
+	{
+		return true;
+	}else if(!Talon1->GetInverted() && !Talon2->GetInverted() && !Talon3->GetInverted() && !Talon4->GetInverted())	{
+		return false;
+	}else{
+		SetInversion(false); //To ensure that output is predictible in the event of an unexpected issue, I did this
+		return false;
+	}
+}
