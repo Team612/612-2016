@@ -134,7 +134,8 @@ bool Drivetrain::GetInversion()
 	{
 		return false;
 	}
-	else {
+	else
+	{
 		SetInversion(false); // To ensure that output is predictible in the event of an unexpected issue, I did this
 		return false;
 	}
