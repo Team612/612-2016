@@ -12,18 +12,17 @@ ArmMove::ArmMove()
 // Called just before this Command runs the first time
 void ArmMove::Initialize()
 {
-	myController = Robot::oi->getGunner();
-	isXbox = myController->GetIsXbox();
+	isXbox = Robot::oi->getGunner()->GetIsXbox();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute()
 {
 	if (isXbox) {
-		myVal = -(myController->GetRawAxis(myAxis));
+		myVal = -(Robot::oi->getGunner()->GetRawAxis(myAxis));
 	}
 	else {
-		myVal = myController->GetY();
+		myVal = Robot::oi->getGunner()->GetY();
 	}
 
 	if (myVal > DEADZONE) {

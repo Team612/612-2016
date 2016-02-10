@@ -15,7 +15,6 @@ public:
 	void Interrupted();
 
 private:
-	std::shared_ptr<Joystick> myController;
 	short int myAxis = 02; //axis to use with Xbox control, set to left Y axis here
 	bool isXbox;
 	float myVal;
