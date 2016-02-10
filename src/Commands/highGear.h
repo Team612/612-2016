@@ -1,10 +1,10 @@
 #ifndef highGear_H
 #define highGear_H
 
-#include "../CommandBase.h"
+#include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class highGear: public CommandBase
+class highGear: public Command
 {
 public:
 	highGear();
