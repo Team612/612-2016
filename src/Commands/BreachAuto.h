@@ -11,7 +11,7 @@ class BreachAuto: public Command
 private:
 	Robot::Defense defense;
 public:
-	BreachAuto(Robot::Defense defense);
+	BreachAuto(Robot::Defense _defense);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
