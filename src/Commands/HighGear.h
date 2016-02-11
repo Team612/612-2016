@@ -1,13 +1,13 @@
-#ifndef highGear_H
-#define highGear_H
+#ifndef HighGear_H
+#define HighGear_H
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class highGear: public Command
+class HighGear: public Command
 {
 public:
-	highGear();
+	HighGear();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,3 +16,4 @@ public:
 };
 
 #endif
+

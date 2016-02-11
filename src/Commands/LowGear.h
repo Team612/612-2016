@@ -1,13 +1,13 @@
-#ifndef lowGear_H
-#define lowGear_H
+#ifndef LowGear_H
+#define LowGear_H
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class lowGear: public Command
+class LowGear: public Command
 {
 public:
-	lowGear();
+	LowGear();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
