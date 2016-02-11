@@ -3,6 +3,8 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "AnalogInput.h"
+#include <cmath>
 
 class ShooterLever: public Subsystem
 {
@@ -11,13 +13,16 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	std::shared_ptr<Servo> LeverServo1;
+	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterLever();
 	void InitDefaultCommand();
     void SetServoPosition(float position);
     void SetServoAngle(float angle);
+    float getIRInInches(std::shared_ptr<AnalogInput> ir);
     float GetServoPosition();
     float GetServoAngle();
     std::shared_ptr<Servo> getLeverServo1();
+    std::shared_ptr<AnalogInput> getBallDetector();
 };
 
 #endif
