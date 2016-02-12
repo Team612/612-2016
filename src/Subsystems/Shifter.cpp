@@ -15,6 +15,9 @@ void Shifter::InitDefaultCommand()
 }
 void Shifter::SetShifter(float shiftPower)
 {
+	ShifterServo1->Set(shiftPower);
+	ShifterServo2->Set(shiftPower);
+
 
 }
 float Shifter::GetShifter()
