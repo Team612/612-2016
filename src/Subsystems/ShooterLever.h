@@ -2,6 +2,7 @@
 #define ShooterLever_H
 
 #include "Commands/Subsystem.h"
+#include "Commands/AutoServo.h"
 #include "WPILib.h"
 #include "AnalogInput.h"
 #include <cmath>

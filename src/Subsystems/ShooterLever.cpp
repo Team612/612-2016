@@ -11,6 +11,7 @@ void ShooterLever::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new AutoServo());
 }
 
 // Put methods for controlling this subsystem
