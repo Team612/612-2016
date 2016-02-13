@@ -37,7 +37,7 @@ float ShooterLever::GetServoAngle()
 	return LeverServo1->GetAngle();
 }
 
-std::shared_ptr<Servo> ShooterLever::getLeverServo1()
+/*std::shared_ptr<Servo> ShooterLever::getLeverServo1()
 {
 	return LeverServo1;
 }
@@ -45,9 +45,9 @@ std::shared_ptr<Servo> ShooterLever::getLeverServo1()
 std::shared_ptr<AnalogInput> ShooterLever::getBallDetector()
 {
 	return RobotMap::shooterLeverDetect;
-}
+}*/
 
-float ShooterLever::getIRInInches(std::shared_ptr<AnalogInput> ir)
+float ShooterLever::getIRInInches(AnalogInput* ir)
 {
 	return ((27.86f * pow(ir->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
 }

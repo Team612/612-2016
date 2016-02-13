@@ -19,11 +19,11 @@ public:
 	void InitDefaultCommand();
     void SetServoPosition(float position);
     void SetServoAngle(float angle);
-    float getIRInInches(std::shared_ptr<AnalogInput> ir);
+    float getIRInInches(AnalogInput* ir);
     float GetServoPosition();
     float GetServoAngle();
-    std::shared_ptr<Servo> getLeverServo1();
-    std::shared_ptr<AnalogInput> getBallDetector();
+    //Servo* getLeverServo1();
+    //AnalogInput* getBallDetector();
 };
 
 #endif
