@@ -14,6 +14,8 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	std::shared_ptr<Servo> LeverServo1;
+	std::shared_ptr<AnalogInput> irsensor;
+	
 	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterLever();
 	void InitDefaultCommand();

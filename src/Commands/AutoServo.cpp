@@ -16,7 +16,7 @@ void AutoServo::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void AutoServo::Execute()
 {
-	if( (Robot::shooterlever.get()->getIRInInches(Robot::shooterlever.get()->getBallDetector())) > (2.0f)) //nothing is seen for at least 5 inches
+	if( (Robot::shooterlever.get()->getIRInInches()) > (2.0f)) //nothing is seen for at least 5 inches
 		Robot::shooterlever.get()->SetServoAngle(0.5f);
 	else
 		Robot::shooterlever.get()->SetServoAngle(0.0f);

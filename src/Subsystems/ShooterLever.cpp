@@ -5,6 +5,7 @@ ShooterLever::ShooterLever() :
 		Subsystem("ShooterLever")
 {
 	LeverServo1 = RobotMap::shooterLeverServo1;
+	irsensor = RobotMap::shooterLeverDetect;
 }
 
 void ShooterLever::InitDefaultCommand()
@@ -47,7 +48,7 @@ std::shared_ptr<AnalogInput> ShooterLever::getBallDetector()
 	return RobotMap::shooterLeverDetect;
 }*/
 
-float ShooterLever::getIRInInches(AnalogInput* ir)
+float ShooterLever::getIRInInches()
 {
-	return ((27.86f * pow(ir->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
+	return ((27.86f * pow(->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
 }
