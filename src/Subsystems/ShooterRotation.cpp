@@ -11,6 +11,7 @@ void ShooterRotation::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new ShooterJoystick());
 }
 
 // Put methods for controlling this subsystem
