@@ -3,7 +3,8 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include <CANSpeedController.h>
+#include "CANSpeedController.h"
+#include "CANTalon.h"
 
 class ShooterRotation: public Subsystem
 {
