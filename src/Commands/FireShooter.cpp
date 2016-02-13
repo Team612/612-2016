@@ -6,4 +6,5 @@ FireShooter::FireShooter()
 {
 	AddSequential(new WheelSet(this->MAXSPEED));
 	AddSequential(new ServoPush());
+	AddSequential(new WheelSet(0));
 }
