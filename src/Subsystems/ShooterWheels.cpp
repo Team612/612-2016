@@ -22,19 +22,12 @@ void ShooterWheels::setWheelSpeed(float speed)
 
 float ShooterWheels::getLeftWheelSpeed()
 {
-
 	return 	CANTalon1->Get();
 }
 
-
-
-
 float ShooterWheels::getRightWheelSpeed()
 {
-
-
 	return 	CANTalon2->Get();
-
 }
 
 
