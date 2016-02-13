@@ -1,10 +1,10 @@
 #ifndef WheelSet_H
 #define WheelSet_H
 
-#include "../CommandBase.h"
+#include "Commands/Command.h"
 #include "WPILib.h"
 
-class WheelSet: public CommandBase
+class WheelSet: public Command
 {
 public:
 	WheelSet();
