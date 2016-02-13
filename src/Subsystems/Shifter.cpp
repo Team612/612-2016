@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 Shifter::Shifter() :
-		Subsystem("ExampleSubsystem")
+		Subsystem("Shifter")
 {
 	ShifterServo1 = RobotMap::ShifterServo1;
 	ShifterServo2 = RobotMap::ShifterServo2;
