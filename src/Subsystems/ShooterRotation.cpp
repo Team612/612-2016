@@ -4,7 +4,7 @@
 ShooterRotation::ShooterRotation() :
 		Subsystem("ShooterRotation")
 {
-	RotateMotor = RobotMap::shooterRotateMotor
+	RotateMotor = RobotMap::shooterRotateMotor;
 }
 
 void ShooterRotation::InitDefaultCommand()

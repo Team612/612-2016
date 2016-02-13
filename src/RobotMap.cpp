@@ -50,7 +50,7 @@ void RobotMap::init()
 	lw->AddActuator("Arm", "Arm Motor", armAdjust);
 
 	shooterRotateMotor.reset(new CANTalon(3));
-	lw->AddActuator("ShooterRotate", "RotateMotor", shooterRotateMotor)
+	lw->AddActuator("ShooterRotate", "RotateMotor", shooterRotateMotor);
 
 	drivetrainRobotDrive->SetSafetyEnabled(true);
 	drivetrainRobotDrive->SetExpiration(0.1);
