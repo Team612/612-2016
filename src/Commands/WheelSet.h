@@ -1,17 +1,17 @@
-#ifndef BreachAuto_H
-#define BreachAuto_H
+#ifndef WheelSet_H
+#define WheelSet_H
 
 #include "Commands/Command.h"
 #include "WPILib.h"
 
-#include "../Robot.h"
-
-class BreachAuto: public Command
+class WheelSet: public Command
 {
 private:
-	Robot::Defense defense;
+	float speed;
+	bool isDone = false;
+	const float THRESHHOLD = 100.0f;
 public:
-	BreachAuto(Robot::Defense _defense);
+	WheelSet(float speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
