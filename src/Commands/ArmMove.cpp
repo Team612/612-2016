@@ -9,13 +9,13 @@ ArmMove::ArmMove()
 // Called just before this Command runs the first time
 void ArmMove::Initialize()
 {
-
+	driverJoystick = Robot::oi->getDriver();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute()
 {
-	Robot::arm->moveArm(Robot::oi->getGunner()->GetY()); //The arm moves according to the value of the gunner's Y axis
+	//Robot::arm->moveArm(Robot::oi->getGunner()->GetY()); //The arm moves according to the value of the gunner's Y axis;
 }
 
 // Make this return true when this Command no longer needs to run execute()

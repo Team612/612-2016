@@ -6,6 +6,9 @@
 
 class ArmMove: public Command
 {
+private:
+	std::shared_ptr<Joystick> driverJoystick;
+
 public:
 	ArmMove();
 	void Initialize();

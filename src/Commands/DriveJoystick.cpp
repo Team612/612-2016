@@ -68,7 +68,7 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 		else if (rightPos < -XDEADZONE) {
 			rightPos = (rightPos + XDEADZONE) * ((float)1 / ((float)1 - XDEADZONE));
 		} else rightPos = 0.0f;
-		if(Drivetrain::controls_inverted)
+		if(Robot::drivetrain->GetInversion())
 		{
 			Robot::drivetrain->SetTankDrive(rightPos, leftPos);
 		}else{
@@ -96,7 +96,7 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 
 		//Checks if the driver wants to go backwards before applying values
 		//controls_inverted is set by the InvertControls command
-		if(Drivetrain::controls_inverted)
+		if(Robot::drivetrain->GetInversion())
 		{
 			Robot::drivetrain->SetArcadeDrive(rightPos, leftPos);
 		}else{

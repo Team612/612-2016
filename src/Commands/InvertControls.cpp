@@ -19,6 +19,9 @@ void InvertControls::Execute()
 {
 	if(driverJoy->GetRawAxis(3) > 0.5)
 	{
+		Robot::drivetrain->SetInversion(true);
+	}else if(driverJoy->GetRawAxis(3) < 0.5)
+	{
 		Robot::drivetrain->SetInversion(false);
 	}
 

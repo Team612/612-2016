@@ -86,7 +86,8 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
 	Scheduler::GetInstance()->Run();
-	invertcontrols->Execute(); //checks to see if LT is pressed then keeps controls inverted
+	Robot::invertcontrols->Start(); //checks to see if LT is pressed then keeps controls inverted
+	Robot::armMoveCommand->Start();
 }
 
 void Robot::TestPeriodic()
