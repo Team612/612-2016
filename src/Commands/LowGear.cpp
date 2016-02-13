@@ -1,5 +1,5 @@
 #include "LowGear.h"
-
+#include "Robot.h"
 LowGear::LowGear()
 {
 	// Use Requires() here to declare subsystem dependencies
