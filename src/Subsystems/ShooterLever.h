@@ -4,8 +4,6 @@
 #include <cmath>
 #include "WPILib.h"
 #include "AnalogInput.h"
-#include "Commands/Subsystem.h"
-#include "Commands/AutoServo.h"
 
 class ShooterLever: public Subsystem
 {
