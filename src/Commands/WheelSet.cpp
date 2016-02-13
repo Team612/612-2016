@@ -1,5 +1,4 @@
 #include <Robot.h>
-#include <stdlib.h>
 #include "WheelSet.h"
 
 WheelSet::WheelSet(float speed)
@@ -19,7 +18,7 @@ void WheelSet::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void WheelSet::Execute()
 {
-	if ((abs(Robot::shooterwheels->getLeftWheelSpeed() - this->speed) < this->THRESHHOLD) && (abs(Robot::shooterwheels->getRightWheelSpeed() - this->speed) < this->THRESHHOLD)) {
+	if ((fabs(Robot::shooterwheels->getLeftWheelSpeed() - this->speed) < this->THRESHHOLD) && (fabs(Robot::shooterwheels->getRightWheelSpeed() - this->speed) < this->THRESHHOLD)) {
 		this->isDone = true;
 	}
 }
