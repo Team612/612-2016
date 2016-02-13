@@ -1,5 +1,6 @@
 #include "FireShooter.h"
-#include "../Robot.h"
+#include "WheelSet.h"
+#include "ServoPush.h"
 
 FireShooter::FireShooter()
 {
