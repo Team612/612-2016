@@ -15,7 +15,7 @@ public:
 	ShooterRotation();
 	void SetShooter(float position);
 	float GetShooter();
-	void SetShooterMode(ControlMode mode);
+	void SetShooterMode(CANTalon::ControlMode mode);
 	void InitDefaultCommand();
 };
 
