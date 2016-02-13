@@ -6,8 +6,10 @@
 
 class WheelSet: public Command
 {
+private:
+	float speed;
 public:
-	WheelSet();
+	WheelSet(float speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

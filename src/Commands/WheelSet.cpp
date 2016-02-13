@@ -1,9 +1,12 @@
+#include <Robot.h>
 #include "WheelSet.h"
 
-WheelSet::WheelSet()
+WheelSet::WheelSet(float speed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	this->speed = speed;
+	Robot::shooterwheels->setWheelSpeed(speed);
 }
 
 // Called just before this Command runs the first time
