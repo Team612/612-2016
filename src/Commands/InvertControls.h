@@ -6,6 +6,9 @@
 
 class InvertControls: public Command
 {
+private:
+	std::shared_ptr<Joystick> driverJoy;
+
 public:
 	InvertControls();
 	void Initialize();
