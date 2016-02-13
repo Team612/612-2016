@@ -50,5 +50,5 @@ std::shared_ptr<AnalogInput> ShooterLever::getBallDetector()
 
 float ShooterLever::getIRInInches()
 {
-	return ((27.86f * pow(->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
+	return ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
 }
