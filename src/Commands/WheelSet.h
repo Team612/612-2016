@@ -8,6 +8,8 @@ class WheelSet: public Command
 {
 private:
 	float speed;
+	bool isDone;
+	const float THRESHHOLD = 100.0f;
 public:
 	WheelSet(float speed);
 	void Initialize();
