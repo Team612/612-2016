@@ -1,4 +1,5 @@
 #include "AutoServo.h"
+#include "../Robot.h"
 
 AutoServo::AutoServo()
 {

@@ -3,7 +3,6 @@
 
 #include "Commands/Command.h"
 #include "WPILib.h"
-#include "Robot.h"
 
 class AutoServo: public Command
 {
