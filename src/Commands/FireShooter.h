@@ -6,6 +6,8 @@
 
 class FireShooter: public CommandGroup
 {
+private:
+	const float MAXSPEED = 1000.0f;
 public:
 	FireShooter();
 };
