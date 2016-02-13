@@ -1,0 +1,159 @@
+<head><version>2.79.21</version></head>
+<Color_Depth>
+  <colors>12</colors>
+</Color_Depth>
+<Camera_Properties>
+  <brightness_value>130</brightness_value>
+  <camera>Microsoft® LifeCam HD-3000</camera>
+  <contrast_value>10</contrast_value>
+  <exposure_value>-9</exposure_value>
+  <force_settings>FALSE</force_settings>
+  <horizontal_flip>FALSE</horizontal_flip>
+  <saturation_value>83</saturation_value>
+  <sharp_value>25</sharp_value>
+  <software_auto_exposure>FALSE</software_auto_exposure>
+  <tab_selected>1</tab_selected>
+  <vertical_flip>FALSE</vertical_flip>
+  <video_bitcount>16</video_bitcount>
+  <video_rate>30</video_rate>
+  <wait_for_image>TRUE</wait_for_image>
+  <whitebalance_value>auto</whitebalance_value>
+</Camera_Properties>
+<Color_Filter>
+  <adjust_lighting>FALSE</adjust_lighting>
+  <colors>#6BDBCE
+
+#10797B
+
+#185542
+
+#004131
+
+#00594A
+
+#004D39
+
+</colors>
+  <color_bias>5</color_bias>
+  <match_distance>50</match_distance>
+  <min_color>50</min_color>
+  <min_intensity>80</min_intensity>
+  <result_type>2</result_type>
+</Color_Filter>
+<Blob_Size>
+  <limit>1024</limit>
+  <mask>FALSE</mask>
+  <max_area>0</max_area>
+  <min_area>300</min_area>
+  <threshold>106</threshold>
+  <treat_as_color_image>FALSE</treat_as_color_image>
+</Blob_Size>
+<Blob_Replace>
+  <color_index>2</color_index>
+  <fill_shape>TRUE</fill_shape>
+  <order_array_on_x>FALSE</order_array_on_x>
+  <order_array_on_y>FALSE</order_array_on_y>
+  <shape_index>13</shape_index>
+  <thickness>1</thickness>
+</Blob_Replace>
+<Blob_Tracking>
+  <absent_after_frames>2</absent_after_frames>
+  <aspect_weight>1.0</aspect_weight>
+  <blob_image>Current</blob_image>
+  <color_weight>1.0</color_weight>
+  <display_as_annotation>FALSE</display_as_annotation>
+  <display_id>TRUE</display_id>
+  <display_trail>TRUE</display_trail>
+  <graphic_color_index>4</graphic_color_index>
+  <histogram_weight>1.0</histogram_weight>
+  <id_font_size_index>3</id_font_size_index>
+  <length_limit>150</length_limit>
+  <location_weight>1.0</location_weight>
+  <match_threshold>0.80</match_threshold>
+  <neg_x_length_limit>0</neg_x_length_limit>
+  <neg_y_length_limit>0</neg_y_length_limit>
+  <orientation_weight>1.0</orientation_weight>
+  <overlap_weight>1.0</overlap_weight>
+  <present_after_frames>2</present_after_frames>
+  <present_after_pixels>0</present_after_pixels>
+  <raw_image>Source</raw_image>
+  <remove_untracked_blobs>FALSE</remove_untracked_blobs>
+  <shape_weight>1.0</shape_weight>
+  <show_score_index>1</show_score_index>
+  <size_weight>1.0</size_weight>
+  <tracking_precision>1.0</tracking_precision>
+  <track_aspect>FALSE</track_aspect>
+  <track_color>FALSE</track_color>
+  <track_histogram>FALSE</track_histogram>
+  <track_location>FALSE</track_location>
+  <track_orientation>FALSE</track_orientation>
+  <track_overlap>FALSE</track_overlap>
+  <track_shape>FALSE</track_shape>
+  <track_size>TRUE</track_size>
+  <trail_length>5</trail_length>
+  <x_length_limit>0</x_length_limit>
+  <y_length_limit>0</y_length_limit>
+</Blob_Tracking>
+<Blob_Filter>
+  <create_blob_array_variable>FALSE</create_blob_array_variable>
+  <filters>
+    <tab>
+      <filter>
+        <count_threshold>0</count_threshold>
+        <create_array>0</create_array>
+        <filter_id>63</filter_id>
+        <invert_count>0</invert_count>
+        <invert_threshold>0</invert_threshold>
+        <ratio>01.6666666</ratio>
+        <weight_threshold>0.5</weight_threshold>
+      </filter>
+    </tab>
+    <tab:2/>
+    <tab:3/>
+    <tab:4/>
+    <tab:5/>
+    <tab:6/>
+  </filters>
+  <font_size>Normal (10pt)</font_size>
+  <largest_is_background>FALSE</largest_is_background>
+  <show_weights>FALSE</show_weights>
+  <sort_array_on_x>FALSE</sort_array_on_x>
+  <sort_array_on_y>FALSE</sort_array_on_y>
+</Blob_Filter>
+<Display_Variables>
+  <dim_background>FALSE</dim_background>
+  <display_as_annotation>FALSE</display_as_annotation>
+  <display_value_only>FALSE</display_value_only>
+  <font_color>white</font_color>
+  <font_size>Large (12pt)</font_size>
+  <northwest>MEP_COORDINATES
+</northwest>
+  <west>BLOB_TRACKING_IDS
+</west>
+</Display_Variables>
+<Math>
+  <all_channels>TRUE</all_channels>
+  <bias>0</bias>
+  <divisor>1</divisor>
+  <function>1</function>
+  <image1>Current</image1>
+  <image2>Source</image2>
+</Math>
+<NetworkTables>
+  <delay>100</delay>
+  <filter_type_index>0</filter_type_index>
+  <hostname>169.254.170.70</hostname>
+  <port>1735</port>
+  <prefix>/Vision/</prefix>
+  <variables_to_send>BLOB_TRACKING_IDS</variables_to_send>
+  <variable_type_index>0</variable_type_index>
+</NetworkTables>
+<NetworkTables>
+  <delay>100</delay>
+  <filter_type_index>0</filter_type_index>
+  <hostname>169.254.170.70</hostname>
+  <port>1735</port>
+  <prefix>/Vision/</prefix>
+  <variables_to_send>BOUNDING_COORDINATES</variables_to_send>
+  <variable_type_index>0</variable_type_index>
+</NetworkTables>
