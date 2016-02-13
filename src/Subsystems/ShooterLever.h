@@ -1,8 +1,10 @@
 #ifndef ShooterLever_H
 #define ShooterLever_H
 
-#include "Commands/Subsystem.h"
+#include <cmath>
 #include "WPILib.h"
+#include "AnalogInput.h"
+#include "../Commands/AutoServo.h"
 
 class ShooterLever: public Subsystem
 {
@@ -11,13 +13,18 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	std::shared_ptr<Servo> LeverServo1;
+	std::shared_ptr<AnalogInput> irsensor;
+
+	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterLever();
 	void InitDefaultCommand();
     void SetServoPosition(float position);
     void SetServoAngle(float angle);
+    float getIRInInches();
     float GetServoPosition();
     float GetServoAngle();
-    std::shared_ptr<Servo> getLeverServo1();
+    //Servo* getLeverServo1();
+    //AnalogInput* getBallDetector();
 };
 
 #endif
