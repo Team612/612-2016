@@ -1,5 +1,5 @@
 #include "HighGear.h"
-
+#include "Robot.h"
 HighGear::HighGear()
 {
 	// Use Requires() here to declare subsystem dependencies
@@ -9,7 +9,7 @@ HighGear::HighGear()
 // Called just before this Command runs the first time
 void HighGear::Initialize()
 {
-
+	Robot::shifter->SetShifter(1.0f);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -21,7 +21,7 @@ void HighGear::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool HighGear::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true

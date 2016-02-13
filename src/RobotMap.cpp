@@ -19,6 +19,7 @@ std::shared_ptr<Talon> RobotMap::drivetrainTalon4;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 std::shared_ptr<Servo> RobotMap::shooterLeverServo1;
 std::shared_ptr<CANTalon> RobotMap::armAdjust;
+std::shared_ptr<CANTalon> RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> RobotMap::shooterLeverDetect;
 std::shared_ptr<Servo> RobotMap::ShifterServo1;
 std::shared_ptr<Servo> RobotMap::ShifterServo2;
@@ -53,6 +54,8 @@ void RobotMap::init()
 	armAdjust.reset(new CANTalon(4));
 	lw->AddActuator("Arm", "Arm Motor", armAdjust);
 
+	shooterRotateMotor.reset(new CANTalon(3));
+	lw->AddActuator("ShooterRotate", "RotateMotor", shooterRotateMotor);
 
 	shooterLeverDetect.reset(new AnalogInput(1));
 	lw->AddActuator("ShooterLever", "Ball Detector IR", shooterLeverDetect);
@@ -62,7 +65,6 @@ void RobotMap::init()
 
     rightFlywheel.reset(new CANTalon(6));
 	    lw->AddActuator("ShooterWheels", "FlywheelMotor2", rightFlywheel);
-
 
 	drivetrainRobotDrive->SetSafetyEnabled(true);
 	drivetrainRobotDrive->SetExpiration(0.1);
