@@ -48,7 +48,8 @@ http://wpilib.screenstepslive.com/s/4485/m/13810/l/241904-running-commands-on-jo
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
+void Drivetrain::SetTankDrive(float leftPower, float rightPower)
+{
 	//if (RobotMap::isRobotReversed){
 	//	robotDrive->TankDrive(-leftPower, -rightPower, true);
 	//} else
@@ -56,7 +57,8 @@ void Drivetrain::SetTankDrive(float leftPower, float rightPower) {
 	//should the bool value (SquaredInputs) be true? don't know what it does
 }
 
-void Drivetrain::SetArcadeDrive(float movePower, float rotatePower) {
+void Drivetrain::SetArcadeDrive(float movePower, float rotatePower)
+{
 	//if (RobotMap::isRobotReversed) {
 	//	robotDrive->ArcadeDrive(-movePower, -rotatePower, true);
 	//}
@@ -72,6 +74,56 @@ void Drivetrain::SetManualDrive(float outputPower, float curveSharpness)
     robotDrive->Drive(outputPower, curveSharpness);
 }
 
+void Drivetrain::BreachPortcullis()
+{
+
+}
+
+void Drivetrain::BreachChevalDeFrise()
+{
+
+}
+
+void Drivetrain::BreachMoat()
+{
+
+}
+
+void Drivetrain::BreachRamparts()
+{
+
+}
+
+void Drivetrain::BreachDrawBridge()
+{
+
+}
+
+void Drivetrain::BreachSallyPort()
+{
+
+}
+
+void Drivetrain::BreachRockWall()
+{
+
+}
+
+void Drivetrain::BreachRoughTerrain()
+{
+
+}
+
+void Drivetrain::BreachLowBar()
+{
+
+}
+
+void Drivetrain::BreachNone()
+{
+
+}
+
 void Drivetrain::SetInversion(bool is_inverted)
 {
 	Talon1->SetInverted(is_inverted);
@@ -84,16 +136,17 @@ void Drivetrain::SetInversion(bool is_inverted)
 
 bool Drivetrain::GetInversion()
 {
-	if(Talon1->GetInverted() && Talon2->GetInverted() && Talon3->GetInverted() && Talon4->GetInverted())
+	if (Talon1->GetInverted() && Talon2->GetInverted() && Talon3->GetInverted() && Talon4->GetInverted())
 	{
 		return true;
 	}
-	else if(!Talon1->GetInverted() && !Talon2->GetInverted() && !Talon3->GetInverted() && !Talon4->GetInverted())
+	else if (!Talon1->GetInverted() && !Talon2->GetInverted() && !Talon3->GetInverted() && !Talon4->GetInverted())
 	{
 		return false;
-	}else
+	}
+	else
 	{
-		SetInversion(false); //To ensure that output is predictible in the event of an unexpected issue, I did this
+		SetInversion(false); // To ensure that output is predictible in the event of an unexpected issue, I did this
 		return false;
 	}
 }

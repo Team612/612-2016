@@ -39,6 +39,17 @@ public:
 	void SetInversion(bool is_inverted);
 	bool GetInversion();
 	void InitDefaultCommand();
+	void BreachPortcullis();
+	void BreachChevalDeFrise();
+	void BreachMoat();
+	void BreachRamparts();
+	void BreachDrawBridge();
+	void BreachSallyPort();
+	void BreachRockWall();
+	void BreachRoughTerrain();
+	void BreachLowBar();
+	void BreachNone();
+
 	//void SetFlip(bool flipping);
 	//bool ToggleFlip(void);
 	//bool GetFlip(void);
