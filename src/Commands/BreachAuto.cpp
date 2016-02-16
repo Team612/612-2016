@@ -11,41 +11,89 @@ void BreachAuto::Initialize()
 
 }
 
+void BreachAuto::BreachPortcullis()
+{
+
+}
+
+void BreachAuto::BreachChevalDeFrise()
+{
+
+}
+
+void BreachAuto::BreachMoat()
+{
+
+}
+
+void BreachAuto::BreachRamparts()
+{
+
+}
+
+void BreachAuto::BreachDrawBridge()
+{
+
+}
+
+void BreachAuto::BreachSallyPort()
+{
+
+}
+
+void BreachAuto::BreachRockWall()
+{
+
+}
+
+void BreachAuto::BreachRoughTerrain()
+{
+
+}
+
+void BreachAuto::BreachLowBar()
+{
+
+}
+
+void BreachAuto::BreachNone()
+{
+
+}
+
 void BreachAuto::Execute()
 {
 	switch (defense)
 	{
 		case Robot::Defense::PORTCULLIS:
-			Robot::drivetrain.get()->BreachPortcullis();
+			BreachPortcullis();
 			break;
 		case Robot::Defense::CHEVAL_DE_FRISE:
-			Robot::drivetrain.get()->BreachChevalDeFrise();
+			BreachChevalDeFrise();
 			break;
 		case Robot::Defense::DRAW_BRIDGE:
-			Robot::drivetrain.get()->BreachDrawBridge();
+			BreachDrawBridge();
 			break;
 		case Robot::Defense::LOW_BAR:
-			Robot::drivetrain.get()->BreachLowBar();
+			BreachLowBar();
 			break;
 		case Robot::Defense::MOAT:
-			Robot::drivetrain.get()->BreachMoat();
+			BreachMoat();
 			break;
 		case Robot::Defense::RAMPARTS:
-			Robot::drivetrain.get()->BreachRamparts();
+			BreachRamparts();
 			break;
 		case Robot::Defense::ROCK_WALL:
-			Robot::drivetrain.get()->BreachRockWall();
+			BreachRockWall();
 			break;
 		case Robot::Defense::SALLY_PORT:
-			Robot::drivetrain.get()->BreachSallyPort();
+			BreachSallyPort();
 			break;
 		case Robot::Defense::ROUGH_TERRAIN:
-			Robot::drivetrain.get()->BreachRoughTerrain();
+			BreachRoughTerrain();
 			break;
 		case Robot::Defense::NONE:
-			Robot::drivetrain.get()->BreachNone();
-			break;
-		default:
+			BreachNone();
 			break;
 	}
 }

@@ -74,56 +74,6 @@ void Drivetrain::SetManualDrive(float outputPower, float curveSharpness)
     robotDrive->Drive(outputPower, curveSharpness);
 }
 
-void Drivetrain::BreachPortcullis()
-{
-
-}
-
-void Drivetrain::BreachChevalDeFrise()
-{
-
-}
-
-void Drivetrain::BreachMoat()
-{
-
-}
-
-void Drivetrain::BreachRamparts()
-{
-
-}
-
-void Drivetrain::BreachDrawBridge()
-{
-
-}
-
-void Drivetrain::BreachSallyPort()
-{
-
-}
-
-void Drivetrain::BreachRockWall()
-{
-
-}
-
-void Drivetrain::BreachRoughTerrain()
-{
-
-}
-
-void Drivetrain::BreachLowBar()
-{
-
-}
-
-void Drivetrain::BreachNone()
-{
-
-}
-
 void Drivetrain::SetInversion(bool is_inverted)
 {
 	Talon1->SetInverted(is_inverted);
