@@ -35,7 +35,6 @@ class Robot: public IterativeRobot
 public:
 	enum Defense {PORTCULLIS, CHEVAL_DE_FRISE, MOAT, RAMPARTS, DRAW_BRIDGE, SALLY_PORT, ROCK_WALL, ROUGH_TERRAIN, LOW_BAR, NONE};
 	std::unique_ptr<Command> autonomousCommand;
-	std::unique_ptr<Command> armMoveCommand;
 	std::unique_ptr<Command> invertcontrols;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
