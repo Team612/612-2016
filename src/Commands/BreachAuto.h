@@ -21,7 +21,7 @@ private:
 	void BreachLowBar();
 	void BreachNone();
 public:
-	BreachAuto(Robot::Defense _defense);
+	BreachAuto(Robot::Defense defense);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

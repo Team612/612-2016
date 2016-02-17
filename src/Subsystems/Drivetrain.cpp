@@ -84,6 +84,10 @@ void Drivetrain::SetInversion(bool is_inverted)
 	controls_inverted = is_inverted;
 }
 
+void Drivetrain::Stop() {
+	SetManualDrive(0, 0);
+}
+
 bool Drivetrain::GetInversion()
 {
 	if (Talon1->GetInverted() && Talon2->GetInverted() && Talon3->GetInverted() && Talon4->GetInverted())
