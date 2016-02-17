@@ -24,7 +24,7 @@ void BreachAuto::BreachChevalDeFrise()
 
 void BreachAuto::BreachMoat()
 {
-	Robot::drivetrain->SetTankDrive(1f, 1f);
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
 }
 
 void BreachAuto::BreachRamparts()
@@ -49,7 +49,7 @@ void BreachAuto::BreachRockWall()
 
 void BreachAuto::BreachRoughTerrain()
 {
-	Robot::drivetrain->SetTankDrive(1f, 1f);
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
 }
 
 void BreachAuto::BreachLowBar()
