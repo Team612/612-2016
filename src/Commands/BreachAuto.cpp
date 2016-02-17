@@ -24,12 +24,12 @@ void BreachAuto::BreachChevalDeFrise()
 
 void BreachAuto::BreachMoat()
 {
-	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);  // Stub to be tuned later
 }
 
 void BreachAuto::BreachRamparts()
 {
-
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);  // Stub to be tuned later
 }
 
 void BreachAuto::BreachDrawBridge()
@@ -54,7 +54,7 @@ void BreachAuto::BreachRoughTerrain()
 
 void BreachAuto::BreachLowBar()
 {
-
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
 }
 
 void BreachAuto::BreachNone()
