@@ -3,9 +3,10 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-
+#include "Robot.h"
 class ShooterJoystick: public Command
 {
+private:
 public:
 	ShooterJoystick();
 	void Initialize();
