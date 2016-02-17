@@ -26,6 +26,10 @@ void ShooterRotation::SetShooter(float position) {
 	RotateMotor->Set(position);
 }
 
+void ShooterRotation::ShooterHome() {
+    this->SetShooter(this->HOME_POS);
+}
+
 void ShooterRotation::SetShooterMode(CANTalon::ControlMode mode) {
 	RotateMotor->SetControlMode(mode);
 }
