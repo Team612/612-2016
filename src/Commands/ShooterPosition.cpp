@@ -2,7 +2,6 @@
 
 ShooterPosition::ShooterPosition(float shootpos)
 {
-	float shooterthing;
 	shooterthing = shootpos;
 	Requires(Robot::shooterrotation.get());
 
