@@ -38,7 +38,7 @@ void ArmMove::Execute()
 	}
 	else myVal = 0.0f;
 
-	Robot::arm->moveArm(myVal);
+	Robot::arm->SetArm(myVal);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -50,12 +50,12 @@ bool ArmMove::IsFinished()
 // Called once after isFinished returns true
 void ArmMove::End()
 {
-	Robot::arm->moveArm(0.0f);
+	Robot::arm->SetArm(0.0f);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ArmMove::Interrupted()
 {
-	Robot::arm->moveArm(0.0f);
+	Robot::arm->SetArm(0.0f);
 }
