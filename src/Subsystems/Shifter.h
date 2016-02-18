@@ -7,12 +7,11 @@
 class Shifter: public Subsystem
 {
 private:
-
-	std::shared_ptr<Servo> ShifterServo1;
-	std::shared_ptr<Servo> ShifterServo2;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
+	std::shared_ptr<Servo> ShifterServo1;
+	std::shared_ptr<Servo> ShifterServo2;
 	Shifter();
 	void InitDefaultCommand();
 	void SetShifter(float shiftPower);

@@ -37,8 +37,10 @@ public:
 	void SetArcadeDrive(float movePower, float rotatePower);
 	void SetTankDrive(float leftPower, float rightPower);
 	void SetInversion(bool is_inverted);
+	void Stop();
 	bool GetInversion();
 	void InitDefaultCommand();
+
 	//void SetFlip(bool flipping);
 	//bool ToggleFlip(void);
 	//bool GetFlip(void);

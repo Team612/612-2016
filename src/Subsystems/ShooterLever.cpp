@@ -28,6 +28,21 @@ void ShooterLever::SetServoAngle(float angle)
 	LeverServo1->SetAngle(angle);
 }
 
+void ShooterLever::SetClamp()
+{
+    this->SetServoPosition(this->CLAMP_POS);
+}
+
+void ShooterLever::SetNeutral()
+{
+    this->SetServoPosition(this->NEUTRAL_POS);
+}
+
+void ShooterLever::SetPush()
+{
+    this->SetServoPosition(this->PUSH_POS);
+}
+
 float ShooterLever::GetServoPosition()
 {
 	return LeverServo1->Get();

@@ -2,16 +2,33 @@
 #include "../RobotMap.h"
 
 ShooterWheels::ShooterWheels() :
-		Subsystem("ExampleSubsystem")
+		Subsystem("ShooterWheels")
 {
-
+	CANTalon1 = RobotMap::leftFlywheel;
+	CANTalon2 = RobotMap::rightFlywheel;
 }
 
 void ShooterWheels::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+
+}
+void ShooterWheels::setWheelSpeed(float speed)
+{
+	CANTalon1->Set(speed);
+	CANTalon2->Set(speed);
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+float ShooterWheels::getLeftWheelSpeed()
+{
+	return 	CANTalon1->Get();
+}
+
+float ShooterWheels::getRightWheelSpeed()
+{
+	return 	CANTalon2->Get();
+}
+
+
+

@@ -1,40 +1,42 @@
-#include "HighGear.h"
-#include "Robot.h"
-HighGear::HighGear()
+#include "ShooterPosition.h"
+
+ShooterPosition::ShooterPosition(float shootpos)
 {
+	shooterthing = shootpos;
+	Requires(Robot::shooterrotation.get());
+
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void HighGear::Initialize()
+void ShooterPosition::Initialize()
 {
-	Robot::shifter->SetShifter(1.0f);
+	Robot::shooterrotation->SetShooterMode(CANTalon::kPosition);
+	Robot::shooterrotation->SetShooter(shooterthing);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void HighGear::Execute()
+void ShooterPosition::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool HighGear::IsFinished()
+bool ShooterPosition::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void HighGear::End()
+void ShooterPosition::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void HighGear::Interrupted()
+void ShooterPosition::Interrupted()
 {
 
 }
-
-// Called once after isFinished returns true

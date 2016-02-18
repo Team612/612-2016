@@ -40,7 +40,7 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | Ahmad Bamba     | Ahmad-Bamba     |
 | Calvin Godfrey  | ggodfrey        |
 | Zach Perkins    | ZachPerkins1    |
-| David Fuimano   | DavidFiumano    |
+| David Fiumano   | DavidFiumano    |
 | Shaun Wu        | Alexbay218      |
 | Dominic Philip  | domi-a-philip   |
 | Paola Henriquez | PaolaHenriquez  |
@@ -52,6 +52,7 @@ Chantilly Robotics' programming team uses the C++ programming language and [WPIL
 | Anvitha N       | anvitha2828     |
 | Goodwin Lu      | Mister-GoodwinLu|
 | Benjamin Blue   | DoctorVolt      |
+| Abby Denman     | AbDen           |
 
 ###### Mentors:
 | Name            | Github Username |
