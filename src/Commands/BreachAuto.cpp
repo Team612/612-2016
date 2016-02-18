@@ -5,61 +5,13 @@ BreachAuto::BreachAuto(Robot::Defense defense)
 	Requires(Robot::drivetrain.get());
 	Requires(Robot::arm.get());
 	this->defense = defense;
+	time = new Timer();
 }
 
 void BreachAuto::Initialize()
 {
-
-}
-
-void BreachAuto::BreachPortcullis()
-{
-
-}
-
-void BreachAuto::BreachChevalDeFrise()
-{
-
-}
-
-void BreachAuto::BreachMoat()
-{
-	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);  // Stub to be tuned later
-}
-
-void BreachAuto::BreachRamparts()
-{
-	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);  // Stub to be tuned later
-}
-
-void BreachAuto::BreachDrawBridge()
-{
-
-}
-
-void BreachAuto::BreachSallyPort()
-{
-
-}
-
-void BreachAuto::BreachRockWall()
-{
-
-}
-
-void BreachAuto::BreachRoughTerrain()
-{
-	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
-}
-
-void BreachAuto::BreachLowBar()
-{
-	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
-}
-
-void BreachAuto::BreachNone()
-{
-	// Robot::drivetrain->Stop(); To be implemented later if necessary
+	time->Reset(); //safety
+	time->Start();
 }
 
 void BreachAuto::Execute()
@@ -67,34 +19,91 @@ void BreachAuto::Execute()
 	switch (defense)
 	{
 		case Robot::Defense::PORTCULLIS:
-			BreachPortcullis();
+			//needs arm, do once PID loop is figured out
+			//lower arm to ground
+			//drive forwards
+			//raise arm (and gate)
+			//drive forward
+			//reset arm
 			break;
 		case Robot::Defense::CHEVAL_DE_FRISE:
-			BreachChevalDeFrise();
+			//needs arm, do once PID loop is figured out
+			//raise arm
+			//drive forward
+			//lower arm
+			//drive forward
+			//reset arm
 			break;
 		case Robot::Defense::DRAW_BRIDGE:
-			BreachDrawBridge();
+			//needs arm, do once PID loop is figured out
+			//lower arm to ground
+			//drive forwards
+			//raise arm (and gate)
+			//drive forward
+			//reset arm
 			break;
 		case Robot::Defense::LOW_BAR:
-			BreachLowBar();
+			if(time->Get() < 3)
+			{
+				Robot::drivetrain->SetArcadeDrive(0.7f, 0.7f);
+			}
+			else
+			{
+				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+			}
 			break;
 		case Robot::Defense::MOAT:
-			BreachMoat();
+			if(time->Get() < 5)
+			{
+				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
+			}
+			else
+			{
+				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+			}
 			break;
 		case Robot::Defense::RAMPARTS:
-			BreachRamparts();
+			if(time->Get() < 5)
+			{
+				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
+			}
+			else
+			{
+				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+			}
 			break;
 		case Robot::Defense::ROCK_WALL:
-			BreachRockWall();
+			if(time->Get() < 5)
+			{
+				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
+			}
+			else
+			{
+				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+			}
 			break;
 		case Robot::Defense::SALLY_PORT:
-			BreachSallyPort();
+			//needs arm, do once PID loop is figured out
+			//raise arm
+			//drive forward
+			//lower arm (on sally port)
+			//drive backward (open gate)
+			//drive forward (through gate)
 			break;
 		case Robot::Defense::ROUGH_TERRAIN:
-			BreachRoughTerrain();
+			if(time->Get() < 5)
+			{
+				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
+			}
+			else
+			{
+				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+			}
 			break;
 		case Robot::Defense::NONE:
-			BreachNone();
+			//leave blank for now
+			break;
+		default:
 			break;
 	}
 }
@@ -106,10 +115,12 @@ bool BreachAuto::IsFinished()
 
 void BreachAuto::End()
 {
-
+	time->Stop();
+	//delete time;
 }
 
 void BreachAuto::Interrupted()
 {
-
+	time->Stop();
+	delete time;
 }

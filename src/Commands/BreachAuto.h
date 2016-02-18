@@ -3,6 +3,7 @@
 
 #include "Commands/Command.h"
 #include "WPILib.h"
+#include "Timer.h"
 
 #include "../Robot.h"
 
@@ -10,16 +11,8 @@ class BreachAuto: public Command
 {
 private:
 	Robot::Defense defense;
-	void BreachPortcullis();
-	void BreachChevalDeFrise();
-	void BreachMoat();
-	void BreachRamparts();
-	void BreachDrawBridge();
-	void BreachSallyPort();
-	void BreachRockWall();
-	void BreachRoughTerrain();
-	void BreachLowBar();
-	void BreachNone();
+	Timer* time;
+
 public:
 	BreachAuto(Robot::Defense defense);
 	void Initialize();
