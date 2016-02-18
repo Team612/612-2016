@@ -116,7 +116,7 @@ bool BreachAuto::IsFinished()
 void BreachAuto::End()
 {
 	time.Stop();
-	delete time;
+	//delete time;
 }
 
 void BreachAuto::Interrupted()
