@@ -1,9 +1,10 @@
 #include "BreachAuto.h"
 
-BreachAuto::BreachAuto(Robot::Defense _defense)
+BreachAuto::BreachAuto(Robot::Defense defense)
 {
 	Requires(Robot::drivetrain.get());
-	defense = _defense;
+	Requires(Robot::arm.get());
+	this->defense = defense;
 }
 
 void BreachAuto::Initialize()
@@ -23,12 +24,12 @@ void BreachAuto::BreachChevalDeFrise()
 
 void BreachAuto::BreachMoat()
 {
-
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);  // Stub to be tuned later
 }
 
 void BreachAuto::BreachRamparts()
 {
-
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);  // Stub to be tuned later
 }
 
 void BreachAuto::BreachDrawBridge()
@@ -48,17 +49,17 @@ void BreachAuto::BreachRockWall()
 
 void BreachAuto::BreachRoughTerrain()
 {
-
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
 }
 
 void BreachAuto::BreachLowBar()
 {
-
+	Robot::drivetrain->SetTankDrive(1.0f, 1.0f);
 }
 
 void BreachAuto::BreachNone()
 {
-
+	// Robot::drivetrain->Stop(); To be implemented later if necessary
 }
 
 void BreachAuto::Execute()
