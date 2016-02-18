@@ -11,7 +11,7 @@ class BreachAuto: public Command
 {
 private:
 	Robot::Defense defense;
-	Timer time;
+	Timer* time;
 
 public:
 	BreachAuto(Robot::Defense defense);

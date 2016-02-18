@@ -5,13 +5,13 @@ BreachAuto::BreachAuto(Robot::Defense defense)
 	Requires(Robot::drivetrain.get());
 	Requires(Robot::arm.get());
 	this->defense = defense;
-	time = Timer();
+	time = new Timer();
 }
 
 void BreachAuto::Initialize()
 {
-	time.Reset(); //safety
-	time.Start();
+	time->Reset(); //safety
+	time->Start();
 }
 
 void BreachAuto::Execute()
@@ -43,7 +43,7 @@ void BreachAuto::Execute()
 			//reset arm
 			break;
 		case Robot::Defense::LOW_BAR:
-			if(time.Get() < 3)
+			if(time->Get() < 3)
 			{
 				Robot::drivetrain->SetArcadeDrive(0.7f, 0.7f);
 			}
@@ -53,7 +53,7 @@ void BreachAuto::Execute()
 			}
 			break;
 		case Robot::Defense::MOAT:
-			if(time.Get() < 5)
+			if(time->Get() < 5)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
 			}
@@ -63,7 +63,7 @@ void BreachAuto::Execute()
 			}
 			break;
 		case Robot::Defense::RAMPARTS:
-			if(time.Get() < 5)
+			if(time->Get() < 5)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
 			}
@@ -73,7 +73,7 @@ void BreachAuto::Execute()
 			}
 			break;
 		case Robot::Defense::ROCK_WALL:
-			if(time.Get() < 5)
+			if(time->Get() < 5)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
 			}
@@ -91,7 +91,7 @@ void BreachAuto::Execute()
 			//drive forward (through gate)
 			break;
 		case Robot::Defense::ROUGH_TERRAIN:
-			if(time.Get() < 5)
+			if(time->Get() < 5)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
 			}
@@ -115,11 +115,12 @@ bool BreachAuto::IsFinished()
 
 void BreachAuto::End()
 {
-	time.Stop();
+	time->Stop();
 	//delete time;
 }
 
 void BreachAuto::Interrupted()
 {
-	time.Stop();
+	time->Stop();
+	delete time;
 }
