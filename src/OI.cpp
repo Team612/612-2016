@@ -16,7 +16,6 @@
 #include "Commands/DriveJoystick.h"
 #include "Commands/DriveSet.h"
 #include "Commands/FireShooter.h"
-#include "Commands/PrepareShooter.h"
 #include "Commands/InvertControls.h"
 #include "Commands/ServoPush.h"
 #include "Commands/ServoClamp.h"
@@ -42,24 +41,18 @@ OI::OI()
 	//DRIVER
 	driver.reset(new Joystick(0));
 
-	resetButton.reset(new JoystickButton(driver.get(), 2));
-	resetButton->WhenPressed(new DriveJoystick());
+	//resetButton.reset(new JoystickButton(driver.get(), 2));
+	//resetButton->WhenPressed(new DriveJoystick());
 
 	lowGear.reset(new JoystickButton(driver.get(), 5));
 	//lowGear->WhenPressed(new lowGear()); TODO fix when new shifter stuff is added
 
 	highGear.reset(new JoystickButton(driver.get(), 6));
-	//highGear->WhenPressed(new highGear()); TODO fix
-	/*std::shared_ptr<Joystick> driver;
-	std::shared_ptr<JoystickButton> resetButton; //wot?
-	std::shared_ptr<JoystickButton> reverseControls; //while held
-	std::shared_ptr<JoystickButton> lowGear; //when pressed
-	std::shared_ptr<JoystickButton> highGear;*/
+
 
 
 
 	// SmartDashboard Buttons
-	SmartDashboard::PutData("PrepareShooter", new PrepareShooter());
 	SmartDashboard::PutData("FireShooter", new FireShooter());
 	SmartDashboard::PutData("Autonomous", new Autonomous());
 	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));

@@ -5,6 +5,7 @@ WheelSet::WheelSet(float speed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::shooterwheels.get());
 	this->speed = speed;
 	Robot::shooterwheels->setWheelSpeed(speed);
 }
@@ -18,7 +19,11 @@ void WheelSet::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void WheelSet::Execute()
 {
-	if ((fabs(Robot::shooterwheels->getLeftWheelSpeed() - this->speed) < this->THRESHHOLD) && (fabs(Robot::shooterwheels->getRightWheelSpeed() - this->speed) < this->THRESHHOLD)) {
+	if ((fabs(Robot::shooterwheels->getLeftWheelSpeed() - this->speed)
+			< this->THRESHHOLD)
+			&& (fabs(Robot::shooterwheels->getRightWheelSpeed() - this->speed)
+					< this->THRESHHOLD))
+	{
 		this->isDone = true;
 	}
 }
