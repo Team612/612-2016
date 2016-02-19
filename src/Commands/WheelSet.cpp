@@ -24,14 +24,14 @@ void WheelSet::Execute()
 			&& (fabs(Robot::shooterwheels->getRightWheelSpeed() - this->speed)
 					< this->THRESHHOLD))
 	{
-		this->isDone = true;
+		//this->isDone = true;
 	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool WheelSet::IsFinished()
 {
-	return this->isDone;
+	return false;
 }
 
 // Called once after isFinished returns true
