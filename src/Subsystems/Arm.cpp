@@ -25,7 +25,6 @@ Arm::Arm() :
 	adjust = RobotMap::armAdjust;
 }
 
-
 void Arm::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
@@ -37,19 +36,18 @@ void Arm::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-float Arm::GetArm() {
-	return adjust ->Get();
+float Arm::GetArm()
+{
+	return adjust->Get();
 }
 
-void  Arm::SetArm(float x) {
+void Arm::SetArm(float x)
+{
 	adjust->Set(x);
 }
 
-void Arm::SetArmMode(CANTalon::ControlMode mode) {
+void Arm::SetArmMode(CANTalon::ControlMode mode)
+{
 	adjust->SetControlMode(mode);
 }
-
-
-
-
 
