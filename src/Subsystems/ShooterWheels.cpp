@@ -5,10 +5,10 @@ ShooterWheels::ShooterWheels() :
 {
 	CANTalonLeft = RobotMap::leftFlywheel;
 	CANTalonRight = RobotMap::rightFlywheel;
-	this->hallCounterLeft = new PIDEdgeCounter(RobotMap::leftFlywheelHall);
-	this->wheelControllerLeft = new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft, CANTalonLeft.get());
-	this->hallCounterRight = new PIDEdgeCounter(RobotMap::rightFlywheelHall);
-	this->wheelControllerRight = new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft, CANTalonRight.get());
+	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
+	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
+	this->hallCounterRight.reset(new PIDEdgeCounter(RobotMap::rightFlywheelHall));
+	this->wheelControllerRight.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonRight.get()));
 }
 
 void ShooterWheels::InitDefaultCommand()
