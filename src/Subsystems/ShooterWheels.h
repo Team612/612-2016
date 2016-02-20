@@ -21,6 +21,9 @@ private:
 	std::shared_ptr<PIDEdgeCounter> hallCounterRight;
 	std::shared_ptr<PIDController> wheelControllerLeft;
 	std::shared_ptr<PIDController> wheelControllerRight;
+
+	float leftLastErr = 999.9f;
+	float rightLastErr = 999.9f;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:

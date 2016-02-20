@@ -46,10 +46,15 @@ float ShooterWheels::getRightWheelSpeed()
 
 bool ShooterWheels::upToSpeed()
 {
-	std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetSetpoint());
-	std::printf("Right: %f %f\n", this->wheelControllerRight->GetError(), this->wheelControllerRight->GetSetpoint());
-	std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
-	//std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetAvgError());
+    if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetAvgError()) < 1.0f || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
+    {
+        std::printf("Left: %f %f\n", this->wheelControllerLeft->GetAvgError(), this->wheelControllerLeft->GetSetpoint());
+        std::printf("Right: %f %f\n", this->wheelControllerRight->GetAvgError(), this->wheelControllerRight->GetSetpoint());
+        std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
+        this->leftLastErr = this->wheelControllerLeft->GetAvgError();
+        this->rightLastErr = this->wheelControllerRight->GetAvgError();
+    }
+    //std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetAvgError());
     //std::printf("RightEror: %f %f\n", this->wheelControllerRight->GetError(), this->wheelControllerRight->GetAvgError());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
