@@ -1,10 +1,48 @@
 #include "FireShooter.h"
-#include "WheelSet.h"
-#include "ServoPush.h"
+#include "Robot.h"
 
 FireShooter::FireShooter()
 {
-	AddSequential(new WheelSet(this->MAXSPEED));
-	AddSequential(new ServoPush());
-	AddSequential(new WheelSet(0));
+
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
+    Requires(Robot::shooterwheels.get());
+    Requires(Robot::shooterlever.get());
+}
+
+// Called just before this Command runs the first time
+void FireShooter::Initialize()
+{
+    Robot::shooterwheels->setWheelSpeed(RobotMap::flywheelShootSpeed);
+    Robot::shooterlever->SetClamp();
+}
+
+// Called repeatedly when this Command is scheduled to run
+void FireShooter::Execute()
+{
+    if(Robot::shooterwheels->upToSpeed())
+    {
+        Robot::shooterlever->SetPush();
+        Robot::shooterwheels->setWheelSpeed(0.0f);
+        this->fired = true;
+    }
+}
+
+// Make this return true when this Command no longer needs to run execute()
+bool FireShooter::IsFinished()
+{
+	return this->fired;
+}
+
+// Called once after isFinished returns true
+void FireShooter::End()
+{
+
+}
+
+// Called when another command which requires one or more of the same
+// subsystems is scheduled to run
+void FireShooter::Interrupted()
+{
+
 }

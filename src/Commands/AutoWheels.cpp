@@ -18,9 +18,9 @@ void AutoWheels::Initialize()
 void AutoWheels::Execute()
 {
 	if(Robot::oi->getGunner()->GetRawAxis(3) > TOLERANCE) //Left trigger pressed down
-		Robot::shooterwheels->setWheelSpeed(1.0f);
+		Robot::shooterwheels->setWheelSpeed(RobotMap::flywheelShootSpeed);
 	else if(Robot::oi->getGunner()->GetRawAxis(2) > TOLERANCE) //Right trigger pressed down
-		Robot::shooterwheels->setWheelSpeed(-0.75f);
+		Robot::shooterwheels->setWheelSpeed(RobotMap::flywheelIntakeSpeed);
 	else if(Robot::oi->getGunner()->GetRawAxis(2) < TOLERANCE && Robot::oi->getGunner()->GetRawAxis(3) < TOLERANCE) //both released
 		Robot::shooterwheels->setWheelSpeed(0.0f);
 }
