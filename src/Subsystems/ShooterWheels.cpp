@@ -46,5 +46,7 @@ float ShooterWheels::getRightWheelSpeed()
 
 bool ShooterWheels::upToSpeed()
 {
+    std::printf("LeftError: %f", this->wheelControllerLeft->GetAvgError());
+    std::printf("RightEror: %f", this->wheelControllerRight->GetAvgError());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
