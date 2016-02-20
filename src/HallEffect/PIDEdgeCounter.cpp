@@ -7,5 +7,5 @@ PIDEdgeCounter::PIDEdgeCounter(int channel) : Counter(channel)
 
 double PIDEdgeCounter::PIDGet() 
 {
-        return 1.0 / GetPeriod();
+    return 1.0 / GetPeriod();
 }
