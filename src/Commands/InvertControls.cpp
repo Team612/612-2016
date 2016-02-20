@@ -4,7 +4,7 @@ InvertControls::InvertControls()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(Robot::drivetrain.get());
+	//Requires(Robot::drivetrain.get());
 }
 
 // Called just before this Command runs the first time

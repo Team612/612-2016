@@ -4,9 +4,6 @@ ArmMove::ArmMove()
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(Robot::arm.get());
-
-	isXbox = true;
-	myVal = 0.0f;
 }
 
 // Called just before this Command runs the first time
@@ -19,26 +16,14 @@ void ArmMove::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute()
 {
-	if (isXbox)
-	{
-		myVal = -(Robot::oi->getGunner()->GetRawAxis(myAxis));
-	}
+	if(Robot::oi->getDriver()->GetPOV() == 0 || Robot::oi->getDriver()->GetPOV() == 7 || Robot::oi->getDriver()->GetPOV() == 1)
+		Robot::arm->SetArm(0.8f);
+	else if(Robot::oi->getDriver()->GetPOV() == 5 || Robot::oi->getDriver()->GetPOV() == 4 || Robot::oi->getDriver()->GetPOV() == 3)
+		Robot::arm->SetArm(-0.8f);
+	else if(Robot::oi->getDriver()->GetPOV() == -01)
+		Robot::arm->SetArm(0.0f);
 	else
-	{
-		myVal = Robot::oi->getGunner()->GetY();
-	}
-
-	if (myVal > DEADZONE)
-	{
-		myVal = (myVal - DEADZONE) * ((float)1 / ((float)1 - DEADZONE));
-	}
-	else if (myVal < -DEADZONE)
-	{
-		myVal = (myVal + DEADZONE) * ((float)1 / ((float)1 - DEADZONE));
-	}
-	else myVal = 0.0f;
-
-	Robot::arm->SetArm(myVal);
+		Robot::arm->SetArm(0.0f);
 }
 
 // Make this return true when this Command no longer needs to run execute()

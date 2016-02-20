@@ -13,6 +13,8 @@ private:
 	Robot::Defense defense;
 	Timer* time;
 
+	bool finished;
+
 public:
 	BreachAuto(Robot::Defense defense);
 	void Initialize();
