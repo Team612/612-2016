@@ -13,7 +13,8 @@ FireShooter::FireShooter()
 // Called just before this Command runs the first time
 void FireShooter::Initialize()
 {
-    Robot::shooterwheels->setWheelSpeed(RobotMap::flywheelShootSpeed);
+	std::printf("FIRESHOOTER\n");
+	Robot::shooterwheels->setWheelSpeed(RobotMap::flywheelShootSpeed);
     Robot::shooterlever->SetClamp();
 }
 

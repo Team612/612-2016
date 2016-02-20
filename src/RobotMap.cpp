@@ -66,7 +66,7 @@ void RobotMap::init()
 	shooterRotateMotor.reset(new CANTalon(1));
 	lw->AddActuator("ShooterRotate", "Shooter Rotate Motor", shooterRotateMotor);
 
-	leftFlywheel.reset(new CANTalon(2));
+	leftFlywheel.reset(new CANTalon(7));
 	lw->AddActuator("ShooterWheels", "Flywheel Motor (1)", leftFlywheel);
 
     rightFlywheel.reset(new CANTalon(3));

@@ -10,11 +10,11 @@ ShooterWheels::ShooterWheels() :
 	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
 	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
 	this->wheelControllerLeft->SetTolerance(this->kTol);
-	this->CANTalonLeft->SetControlMode(CANSpeedController::kCurrent);
+	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
 	this->hallCounterRight.reset(new PIDEdgeCounter(RobotMap::rightFlywheelHall));
 	this->wheelControllerRight.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonRight.get()));
 	this->wheelControllerRight->SetTolerance(this->kTol);
-    this->CANTalonRight->SetControlMode(CANSpeedController::kCurrent);
+    this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
 }
 
 void ShooterWheels::InitDefaultCommand()
@@ -46,7 +46,10 @@ float ShooterWheels::getRightWheelSpeed()
 
 bool ShooterWheels::upToSpeed()
 {
-    std::printf("LeftError: %f", this->wheelControllerLeft->GetAvgError());
-    std::printf("RightEror: %f", this->wheelControllerRight->GetAvgError());
+	std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetSetpoint());
+	std::printf("Right: %f %f\n", this->wheelControllerRight->GetError(), this->wheelControllerRight->GetSetpoint());
+	std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
+	//std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetAvgError());
+    //std::printf("RightEror: %f %f\n", this->wheelControllerRight->GetError(), this->wheelControllerRight->GetAvgError());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
