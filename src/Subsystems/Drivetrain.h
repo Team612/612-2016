@@ -41,6 +41,7 @@ public:
 	void Stop();
 	bool GetInversion();
 	void InitDefaultCommand();
+	Talon GetTalons(int id);
 
 	//void SetFlip(bool flipping);
 	//bool ToggleFlip(void);

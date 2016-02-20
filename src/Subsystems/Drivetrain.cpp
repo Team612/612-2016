@@ -106,6 +106,27 @@ bool Drivetrain::GetInversion()
 	}
 }
 
+Talon Drivetrain::GetTalons(int id)
+{
+	switch(id)
+	{
+	case 1:
+		return Talon1;
+		break;
+	case 2:
+		return Talon2;
+		break;
+	case 3:
+		return Talon3;
+		break;
+	case 4:
+		return Talon4;
+		break;
+	default:
+		return NULL;
+		break;
+	}
+}
 /*void Drivetrain::SetFlip(bool flipping) {
 	RobotMap::isRobotReversed = flipping;
 }

@@ -17,11 +17,11 @@ void InvertControls::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void InvertControls::Execute()
 {
-	if(Robot::oi->getDriver()->GetRawAxis(3) > 0.5)
+	if(Robot::oi->getDriver()->GetRawAxis(3) > 0.5 && !Robot::drivetrain->GetInversion())
 	{
 		Robot::drivetrain->SetInversion(true);
 	}
-	else if(Robot::oi->getDriver()->GetRawAxis(3) < 0.5)
+	else if(Robot::oi->getDriver()->GetRawAxis(3) < 0.5 && Robot::drivetrain->GetInversion())
 	{
 		Robot::drivetrain->SetInversion(false);
 	}
