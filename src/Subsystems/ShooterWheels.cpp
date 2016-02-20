@@ -22,7 +22,7 @@ void ShooterWheels::InitDefaultCommand()
 void ShooterWheels::setWheelSpeed(float speed)
 {
     this->wheelControllerLeft->Enable();
-    this->wheelControllerLeft->SetOutputRange(-1.00, 1.00);
+    this->wheelControllerLeft->SetOutputRange(-1.00f, 1.00f);
     this->wheelControllerLeft->SetSetpoint(speed);
     this->wheelControllerRight->Enable();
     this->wheelControllerRight->SetOutputRange(-1.00, 1.00);
@@ -36,7 +36,7 @@ float ShooterWheels::getLeftWheelSpeed()
 
 float ShooterWheels::getRightWheelSpeed()
 {
-    return	this->wheelControllerRight->Get();
+    return this->wheelControllerRight->Get();
 }
 
 bool ShooterWheels::upToSpeed()

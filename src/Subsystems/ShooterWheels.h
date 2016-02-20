@@ -11,10 +11,10 @@ class ShooterWheels: public Subsystem
 {
 private:
     // PID values
-    const float kP = 0.01;
-    const float kI = 0.01;
-    const float kD = 0.01;
-    const float kTol = 0.05;  // tolerance (within kTol * output)
+    const float kP = 0.01f;
+    const float kI = 0.01f;
+    const float kD = 0.01f;
+    const float kTol = 0.05f;  // tolerance (within kTol * output)
 	std::shared_ptr<CANTalon> CANTalonLeft;
 	std::shared_ptr<CANTalon> CANTalonRight;
 	std::shared_ptr<PIDEdgeCounter> hallCounterLeft;
