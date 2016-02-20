@@ -15,12 +15,12 @@ private:
     const float kI = 0.01;
     const float kD = 0.01;
     const float kTol = 2.0;  // tolerance
-	std::shared_ptr<CANTalon>CANTalon1;
-	std::shared_ptr<CANTalon>CANTalon2;
+	std::shared_ptr<CANTalon> CANTalonLeft;
+	std::shared_ptr<CANTalon> CANTalonRight;
 	PIDEdgeCounter* hallCounterLeft;
 	PIDEdgeCounter* hallCounterRight;
-	std::shared_ptr<PIDController> wheelControllerLeft;
-	std::shared_ptr<PIDController> wheelControllerRight;
+	PIDController* wheelControllerLeft;
+	PIDController* wheelControllerRight;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
