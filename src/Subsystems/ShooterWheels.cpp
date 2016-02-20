@@ -1,11 +1,12 @@
 #include "ShooterWheels.h"
-#include "../RobotMap.h"
 
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")
 {
 	CANTalon1 = RobotMap::leftFlywheel;
 	CANTalon2 = RobotMap::rightFlywheel;
+	this->hallCounterLeft = new PIDEdgeCounter(RobotMap::leftFlywheelHall);
+	this->wheelControllerLeft = new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft);
 }
 
 void ShooterWheels::InitDefaultCommand()
