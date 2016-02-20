@@ -1,5 +1,5 @@
 #include "ShooterFire.h"
-
+#include "Robot.h"
 ShooterFire::ShooterFire()
 {
 	// Use Requires() here to declare subsystem dependencies
@@ -9,7 +9,8 @@ ShooterFire::ShooterFire()
 // Called just before this Command runs the first time
 void ShooterFire::Initialize()
 {
-
+ // this is where you set the angl for the shooter thing
+	Robot::shooterwheels->setWheelSpeed(1.0);
 }
 
 // Called repeatedly when this Command is scheduled to run

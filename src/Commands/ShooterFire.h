@@ -1,10 +1,10 @@
 #ifndef ShooterFire_H
 #define ShooterFire_H
 
-#include "../CommandBase.h"
+#include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class ShooterFire: public CommandBase
+class ShooterFire: public Command
 {
 public:
 	ShooterFire();
