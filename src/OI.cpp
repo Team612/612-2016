@@ -31,11 +31,6 @@ OI::OI()
 	fireButton.reset(new JoystickButton(gunner.get(), 1));
 	fireButton->WhenPressed(new FireShooter());
 
-	servoPush.reset(new JoystickButton(gunner.get(), 5));
-	servoPush->WhileHeld(new ServoPush());
-
-	servoClamp.reset(new JoystickButton(gunner.get(), 6));
-	servoClamp->WhileHeld(new ServoClamp());
 	//DRIVER
 	driver.reset(new Joystick(0));
 
