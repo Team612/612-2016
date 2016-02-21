@@ -24,7 +24,6 @@ void FireShooter::Execute()
     if(Robot::shooterwheels->upToSpeed())
     {
         Robot::shooterlever->SetPush();
-        Robot::shooterwheels->setWheelSpeed(0.0f);
         this->fired = true;
     }
 }
@@ -38,7 +37,7 @@ bool FireShooter::IsFinished()
 // Called once after isFinished returns true
 void FireShooter::End()
 {
-
+	Robot::shooterwheels->setWheelSpeed(0.0f);
 }
 
 // Called when another command which requires one or more of the same
