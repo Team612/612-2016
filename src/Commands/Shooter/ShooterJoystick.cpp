@@ -1,6 +1,7 @@
 #include "ShooterJoystick.h"
 #include <CANSpeedController.h>
 #include "OI.h"
+
 ShooterJoystick::ShooterJoystick()
 {
 	// Use Requires() here to declare subsystem dependencies

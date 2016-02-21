@@ -1,8 +1,8 @@
 #ifndef ServoNeutral_H
 #define ServoNeutral_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include <Commands/Subsystem.h>
+#include "Robot.h"
 
 class ServoNeutral: public Command
 {

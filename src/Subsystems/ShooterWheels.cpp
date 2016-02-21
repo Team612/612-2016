@@ -1,6 +1,6 @@
 #include "ShooterWheels.h"
-#include "../RobotMap.h"
-#include "../Commands/AutoWheels.h"
+#include "RobotMap.h"
+#include "Commands/Autonomous/AutoWheels.h"
 
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")

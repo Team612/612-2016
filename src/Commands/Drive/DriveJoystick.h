@@ -11,8 +11,8 @@
 #ifndef DRIVEJOYSTICK_H
 #define DRIVEJOYSTICK_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include <Commands/Subsystem.h>
+#include "Robot.h"
 
 /**
  *

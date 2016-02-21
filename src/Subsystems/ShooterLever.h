@@ -2,9 +2,9 @@
 #define ShooterLever_H
 
 #include <cmath>
-#include "WPILib.h"
-#include "AnalogInput.h"
-#include "../Commands/AutoServo.h"
+#include <WPILib.h>
+#include <AnalogInput.h>
+#include "Commands/Autonomous/AutoServo.h"
 
 class ShooterLever: public Subsystem
 {

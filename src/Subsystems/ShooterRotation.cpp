@@ -1,6 +1,6 @@
 #include "ShooterRotation.h"
-#include "../RobotMap.h"
-#include "../Commands/ShooterJoystick.h"
+#include "RobotMap.h"
+#include "Commands/Shooter/ShooterJoystick.h"
 
 ShooterRotation::ShooterRotation() :
 		Subsystem("ShooterRotation")

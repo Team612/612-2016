@@ -1,5 +1,5 @@
 #include "AutoWheels.h"
-#include "../Robot.h"
+#include "Robot.h"
 
 AutoWheels::AutoWheels()
 {
