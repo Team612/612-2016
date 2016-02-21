@@ -1,15 +1,20 @@
 #ifndef FireShooter_H
 #define FireShooter_H
 
-#include "Commands/CommandGroup.h"
+#include "Commands/Command.h"
 #include "WPILib.h"
 
-class FireShooter: public CommandGroup
+class FireShooter: public Command
 {
 private:
-	const float MAXSPEED = 1000.0f;
+    bool fired = false;
 public:
 	FireShooter();
+	void Initialize();
+	void Execute();
+	bool IsFinished();
+	void End();
+	void Interrupted();
 };
 
 #endif

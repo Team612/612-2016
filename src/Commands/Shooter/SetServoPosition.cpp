@@ -1,44 +1,46 @@
-#include "ServoClamp.h"
+#include "SetServoPosition.h"
 
-ServoClamp::ServoClamp()
+SetServoPosition::SetServoPosition(ShooterServoPosition pos)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
     Requires(Robot::shooterlever.get());
+    // TODO: These values need to be tested: 0 for clamp, .5 for neutral, 1 for push.
+    this->position = pos;
 }
 
 // Called just before this Command runs the first time
-void ServoClamp::Initialize()
+void SetServoPosition::Initialize()
 {
   /* TODO: Fix the following code.
    * LeverServo1 is the object, but it is not necessary to call it here.
    * The ShooterLever subsystem provides the SetServoAngle(angle)
    * method.
    */
-	Robot::shooterlever.get()->SetServoPosition(0.0f);
+	Robot::shooterlever.get()->SetServoPosition(position);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ServoClamp::Execute()
+void SetServoPosition::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ServoClamp::IsFinished()
+bool SetServoPosition::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ServoClamp::End()
+void SetServoPosition::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ServoClamp::Interrupted()
+void SetServoPosition::Interrupted()
 {
 
 }

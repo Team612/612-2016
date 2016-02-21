@@ -10,9 +10,11 @@ ShooterWheels::ShooterWheels() :
 	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
 	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
 	this->wheelControllerLeft->SetTolerance(this->kTol);
+	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
 	this->hallCounterRight.reset(new PIDEdgeCounter(RobotMap::rightFlywheelHall));
 	this->wheelControllerRight.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonRight.get()));
 	this->wheelControllerRight->SetTolerance(this->kTol);
+    this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
 }
 
 void ShooterWheels::InitDefaultCommand()
@@ -22,6 +24,7 @@ void ShooterWheels::InitDefaultCommand()
 	SetDefaultCommand(new AutoWheels());
 
 }
+
 void ShooterWheels::setWheelSpeed(float speed)
 {
     this->wheelControllerLeft->Enable();
@@ -44,5 +47,15 @@ float ShooterWheels::getRightWheelSpeed()
 
 bool ShooterWheels::upToSpeed()
 {
+    if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetAvgError()) < 1.0f || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
+    {
+        std::printf("Left: %f %f\n", this->wheelControllerLeft->GetAvgError(), this->wheelControllerLeft->GetSetpoint());
+        std::printf("Right: %f %f\n", this->wheelControllerRight->GetAvgError(), this->wheelControllerRight->GetSetpoint());
+        std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
+        this->leftLastErr = this->wheelControllerLeft->GetAvgError();
+        this->rightLastErr = this->wheelControllerRight->GetAvgError();
+    }
+    //std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetAvgError());
+    //std::printf("RightEror: %f %f\n", this->wheelControllerRight->GetError(), this->wheelControllerRight->GetAvgError());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }

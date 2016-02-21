@@ -6,6 +6,13 @@
 #include <AnalogInput.h>
 #include "Commands/Autonomous/AutoServo.h"
 
+enum ShooterServoPosition
+{
+    Clamp,
+    Neutral,
+    Push
+};
+
 class ShooterLever: public Subsystem
 {
 private:
@@ -21,6 +28,7 @@ public:
 	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterLever();
 	void InitDefaultCommand();
+    void SetServoPosition(ShooterServoPosition position);
     void SetServoPosition(float position);
     void SetServoAngle(float angle);
     void SetNeutral();
