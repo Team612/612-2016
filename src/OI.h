@@ -44,7 +44,6 @@ public:
 	std::shared_ptr<JoystickButton> getButton(uint32_t button);
 	void RumbleStick(Stick stick, RumbleSide side, float power);
 
-
 };
 
 #endif

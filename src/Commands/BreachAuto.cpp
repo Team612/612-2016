@@ -6,6 +6,7 @@ BreachAuto::BreachAuto(Robot::Defense defense)
 	Requires(Robot::arm.get());
 	this->defense = defense;
 	time = new Timer();
+	finished = false;
 }
 
 void BreachAuto::Initialize()
@@ -106,11 +107,13 @@ void BreachAuto::Execute()
 		default:
 			break;
 	}
+
+	finished = true;
 }
 
 bool BreachAuto::IsFinished()
 {
-	return true;
+	return finished;
 }
 
 void BreachAuto::End()

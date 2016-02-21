@@ -18,10 +18,7 @@ public:
 	void Interrupted();
 
 private:
-	short int myAxis = 02; //axis to use with Xbox control, set to left Y axis here
-	bool isXbox;
-	float myVal;
-	float DEADZONE = 0.1;
+
 };
 
 #endif
