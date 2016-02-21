@@ -18,6 +18,25 @@ void ShooterLever::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void ShooterLever::SetServoPosition(ShooterServoPosition position)
+{
+	switch(position)
+	{
+		case Clamp:
+			SetClamp();
+			break;
+		case Neutral:
+			SetNeutral();
+			break;
+		case Push:
+			SetPush();
+			break;
+		default:
+			printf("Trying to set shooter lever servo position to an invalid or not defined value!");
+			break;
+	}
+}
+
 void ShooterLever::SetServoPosition(float position)
 {
 	LeverServo1->Set(position);

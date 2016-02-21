@@ -5,14 +5,6 @@
 #include <WPILib.h>
 #include "Robot.h"
 
-
-enum ShooterServoPosition
-{
-    Clamp,
-    Neutral,
-    Push
-};
-
 class SetServoPosition: public Command
 {
 public:
@@ -23,7 +15,7 @@ public:
 	void End();
 	void Interrupted();
 private:
-	float position;
+	ShooterServoPosition position;
 };
 
 #endif

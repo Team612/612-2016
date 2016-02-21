@@ -6,11 +6,7 @@ SetServoPosition::SetServoPosition(ShooterServoPosition pos)
 	// eg. Requires(chassis);
     Requires(Robot::shooterlever.get());
     // TODO: These values need to be tested: 0 for clamp, .5 for neutral, 1 for push.
-    this->position = 
-    pos == ShooterServoPosition::Clamp ? 0 : 
-    (
-        pos == ShooterServoPosition::Push ? 0.5 : 1.0
-    );
+    this->position = pos;
 }
 
 // Called just before this Command runs the first time
