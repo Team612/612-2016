@@ -22,6 +22,7 @@ void ShooterWheels::InitDefaultCommand()
 	SetDefaultCommand(new AutoWheels());
 
 }
+
 void ShooterWheels::setWheelSpeed(float speed)
 {
     this->wheelControllerLeft->Enable();
