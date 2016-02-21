@@ -16,6 +16,9 @@ public:
 	void InitDefaultCommand();
 	void SetShifter(float shiftPower);
 	float GetShifter();
+
+	static constexpr float LOW = 0.0f;
+	static constexpr float HIGH = 1.0f;
 };
 
 #endif

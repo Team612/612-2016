@@ -4,8 +4,8 @@
 Shifter::Shifter() :
 		Subsystem("Shifter")
 {
-	ShifterServo1 = RobotMap::ShifterServo1;
-	ShifterServo2 = RobotMap::ShifterServo2;
+	ShifterServo1 = RobotMap::shifterServo1;
+	ShifterServo2 = RobotMap::shifterServo2;
 }
 
 void Shifter::InitDefaultCommand()
@@ -17,8 +17,6 @@ void Shifter::SetShifter(float shiftPower)
 {
 	ShifterServo1->Set(shiftPower);
 	ShifterServo2->Set(shiftPower);
-
-
 }
 float Shifter::GetShifter()
 {
