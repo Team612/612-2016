@@ -17,7 +17,7 @@ void SetServoPosition::Initialize()
    * The ShooterLever subsystem provides the SetServoAngle(angle)
    * method.
    */
-	Robot::shooterlever.get()->SetServoPosition(0.0f);
+	Robot::shooterlever.get()->SetServoPosition(position);
 }
 
 // Called repeatedly when this Command is scheduled to run
