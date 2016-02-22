@@ -18,9 +18,9 @@ void AutoServo::Initialize()
 void AutoServo::Execute()
 {
 	if( (Robot::shooterlever.get()->getIRInInches()) > (2.0f)) //nothing is seen for at least 5 inches
-		Robot::shooterlever.get()->SetServoAngle(0.5f);
+		Robot::shooterlever.get()->SetAngle(0.5f);
 	else
-		Robot::shooterlever.get()->SetServoAngle(0.0f);
+		Robot::shooterlever.get()->SetAngle(0.0f);
 }
 
 // Make this return true when this Command no longer needs to run execute()

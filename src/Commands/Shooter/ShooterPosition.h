@@ -9,12 +9,12 @@ class ShooterPosition: public Command
 private:
 	float shooterthing;
 public:
-            	ShooterPosition(float shootpos);
-            	void Initialize();
-            	void Execute();
-            	bool IsFinished();
-            	void End();
-            	void Interrupted();
+	ShooterPosition(float shootpos);
+	void Initialize();
+	void Execute();
+	bool IsFinished();
+	void End();
+	void Interrupted();
 };
 
 #endif

@@ -28,10 +28,10 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	ShooterWheels();
-	float getLeftWheelSpeed();
-	float getRightWheelSpeed();
-	bool upToSpeed();
-	void setWheelSpeed(float speed);
+	float GetLeftWheelSpeed();
+	float GetRightWheelSpeed();
+	bool UpToSpeed();
+	void SetWheelSpeed(float speed);
 
 	void InitDefaultCommand();
 };

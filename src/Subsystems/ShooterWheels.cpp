@@ -25,7 +25,7 @@ void ShooterWheels::InitDefaultCommand()
 
 }
 
-void ShooterWheels::setWheelSpeed(float speed)
+void ShooterWheels::SetWheelSpeed(float speed)
 {
     this->wheelControllerLeft->Enable();
     this->wheelControllerLeft->SetOutputRange(-1.00f, 1.00f);
@@ -35,17 +35,17 @@ void ShooterWheels::setWheelSpeed(float speed)
     this->wheelControllerRight->SetSetpoint(speed);
 }
 
-float ShooterWheels::getLeftWheelSpeed()
+float ShooterWheels::GetLeftWheelSpeed()
 {
 	return this->wheelControllerLeft->Get();
 }
 
-float ShooterWheels::getRightWheelSpeed()
+float ShooterWheels::GetRightWheelSpeed()
 {
     return this->wheelControllerRight->Get();
 }
 
-bool ShooterWheels::upToSpeed()
+bool ShooterWheels::UpToSpeed()
 {
     if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetAvgError()) < 1.0f || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
     {

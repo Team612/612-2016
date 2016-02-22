@@ -18,22 +18,23 @@ void ShooterRotation::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-float ShooterRotation::GetShooter()
+float ShooterRotation::GetSpeed()
 {
 	return RotateMotor->Get();
 }
 
-void ShooterRotation::SetShooter(float position)
+void ShooterRotation::SetSpeed(float speed)
 {
-	RotateMotor->Set(position);
+	RotateMotor->Set(speed);
 }
 
 void ShooterRotation::ShooterHome()
 {
-	this->SetShooter(this->HOME_POS);
+	this->SetSpeed(this->HOME_POS);
+	//TODO: Actually make this return to the home pos
 }
 
-void ShooterRotation::SetShooterMode(CANTalon::ControlMode mode)
+void ShooterRotation::SetMode(CANTalon::ControlMode mode)
 {
 	RotateMotor->SetControlMode(mode);
 }

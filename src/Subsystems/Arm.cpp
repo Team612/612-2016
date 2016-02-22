@@ -36,17 +36,17 @@ void Arm::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-float Arm::GetArm()
+float Arm::Get()
 {
 	return adjust->Get();
 }
 
-void Arm::SetArm(float x)
+void Arm::Set(float x)
 {
 	adjust->Set(x);
 }
 
-void Arm::SetArmMode(CANTalon::ControlMode mode)
+void Arm::SetMode(CANTalon::ControlMode mode)
 {
 	adjust->SetControlMode(mode);
 }

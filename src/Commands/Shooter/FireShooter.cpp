@@ -14,14 +14,14 @@ FireShooter::FireShooter()
 void FireShooter::Initialize()
 {
 	std::printf("FIRESHOOTER\n");
-	Robot::shooterwheels->setWheelSpeed(RobotMap::flywheelShootSpeed);
+	Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
     Robot::shooterlever->SetClamp();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void FireShooter::Execute()
 {
-    if(Robot::shooterwheels->upToSpeed())
+    if(Robot::shooterwheels->UpToSpeed())
     {
         Robot::shooterlever->SetPush();
         this->fired = true;
@@ -37,7 +37,7 @@ bool FireShooter::IsFinished()
 // Called once after isFinished returns true
 void FireShooter::End()
 {
-	Robot::shooterwheels->setWheelSpeed(0.0f);
+	Robot::shooterwheels->SetWheelSpeed(0.0f);
 }
 
 // Called when another command which requires one or more of the same

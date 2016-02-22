@@ -101,7 +101,7 @@ void Robot::TeleopInit()
 	//armmove->Start();
 	//autowheels->Start();
 	invertcontrols->Start();
-	shifter->SetShifter(Shifter::HIGH);
+	shifter->Set(Shifter::HIGH);
 }
 
 void Robot::TeleopPeriodic()

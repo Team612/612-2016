@@ -13,12 +13,12 @@ void Shifter::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
-void Shifter::SetShifter(float shiftPower)
+void Shifter::Set(float shiftPower)
 {
 	ShifterServo1->Set(shiftPower);
 	ShifterServo2->Set(shiftPower);
 }
-float Shifter::GetShifter()
+float Shifter::Get()
 {
 	 return (ShifterServo1->Get() + ShifterServo2 ->Get()) / 2;
 }

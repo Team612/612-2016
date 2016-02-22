@@ -9,7 +9,7 @@ SetGear::SetGear(float gear)
 // Called just before this Command runs the first time
 void SetGear::Initialize()
 {
-	Robot::shifter->SetShifter(gear);
+	Robot::shifter->Set(gear);
 }
 
 // Called repeatedly when this Command is scheduled to run

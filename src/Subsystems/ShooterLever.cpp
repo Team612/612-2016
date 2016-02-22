@@ -18,7 +18,7 @@ void ShooterLever::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void ShooterLever::SetServoPosition(ShooterServoPosition position)
+void ShooterLever::SetPosition(ShooterServoPosition position)
 {
 	switch(position)
 	{
@@ -37,37 +37,37 @@ void ShooterLever::SetServoPosition(ShooterServoPosition position)
 	}
 }
 
-void ShooterLever::SetServoPosition(float position)
+void ShooterLever::SetPosition(float position)
 {
 	LeverServo1->Set(position);
 }
 
-void ShooterLever::SetServoAngle(float angle)
+void ShooterLever::SetAngle(float angle)
 {
 	LeverServo1->SetAngle(angle);
 }
 
 void ShooterLever::SetClamp()
 {
-    this->SetServoPosition(this->CLAMP_POS);
+    this->SetPosition(this->CLAMP_POS);
 }
 
 void ShooterLever::SetNeutral()
 {
-    this->SetServoPosition(this->NEUTRAL_POS);
+    this->SetPosition(this->NEUTRAL_POS);
 }
 
 void ShooterLever::SetPush()
 {
-    this->SetServoPosition(this->PUSH_POS);
+    this->SetPosition(this->PUSH_POS);
 }
 
-float ShooterLever::GetServoPosition()
+float ShooterLever::GetPosition()
 {
 	return LeverServo1->Get();
 }
 
-float ShooterLever::GetServoAngle()
+float ShooterLever::GetAngle()
 {
 	return LeverServo1->GetAngle();
 }
