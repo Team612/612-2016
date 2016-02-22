@@ -37,9 +37,10 @@ OI::OI()
 	//resetButton->WhenPressed(new DriveJoystick());
 
 	lowGear.reset(new JoystickButton(driver.get(), 5));
-	//lowGear->WhenPressed(new lowGear()); TODO fix when new shifter stuff is added
+	lowGear->WhenPressed(new SetGear(Shifter::LOW));
 
 	highGear.reset(new JoystickButton(driver.get(), 6));
+	highGear->WhenPressed(new SetGear(Shifter::HIGH));
 
 
 

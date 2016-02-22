@@ -1,39 +1,38 @@
-#include "LowGear.h"
-#include "Robot.h"
-LowGear::LowGear()
+#include "SetGear.h"
+
+SetGear::SetGear(float gear)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(Robot::shifter.get());
+	this->gear = gear;
 }
 
 // Called just before this Command runs the first time
-void LowGear::Initialize()
+void SetGear::Initialize()
 {
-	Robot::shifter->SetShifter(0.0f);
+	Robot::shifter->SetShifter(gear);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void LowGear::Execute()
+void SetGear::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool LowGear::IsFinished()
+bool SetGear::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void LowGear::End()
+void SetGear::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LowGear::Interrupted()
+void SetGear::Interrupted()
 {
 
 }
