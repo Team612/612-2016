@@ -1,0 +1,174 @@
+<head><version>2.79.21</version></head>
+<Axis_Internet_Camera>
+  <auto_back_light>TRUE</auto_back_light>
+  <auto_exposure>TRUE</auto_exposure>
+  <auto_white_balance>TRUE</auto_white_balance>
+  <brightness_value>42</brightness_value>
+  <color_level_value>50</color_level_value>
+  <compression_index>5</compression_index>
+  <contrast_value>55</contrast_value>
+  <exposure_value>9</exposure_value>
+  <ip_address>10.6.12.20</ip_address>
+  <is_active>TRUE</is_active>
+  <mirrot>FALSE</mirrot>
+  <password>Team_612</password>
+  <port>80</port>
+  <resolution>640x480</resolution>
+  <sharpness_value>53</sharpness_value>
+  <username>root</username>
+</Axis_Internet_Camera>
+<Color_Depth>
+  <colors>5</colors>
+</Color_Depth>
+<RGB_Filter>
+  <channel>10</channel>
+  <hue_value>104</hue_value>
+  <hysteresis>0</hysteresis>
+  <min_value>117</min_value>
+  <result_type>2</result_type>
+</RGB_Filter>
+<Blob_Size>
+  <limit>1024</limit>
+  <mask>FALSE</mask>
+  <max_area>0</max_area>
+  <min_area>204</min_area>
+  <threshold>5</threshold>
+  <treat_as_color_image>FALSE</treat_as_color_image>
+</Blob_Size>
+<Display_Rectangle>
+  <clear_image>0</clear_image>
+  <color_index>green</color_index>
+  <display_as_annotation>0</display_as_annotation>
+  <display_mode_index>0</display_mode_index>
+  <fill_shape>1</fill_shape>
+  <thickness>1</thickness>
+  <xy_list_map/>
+  <x_1>14</x_1>
+  <x_1_map>BLOB_TRACKING_44_Y</x_1_map>
+  <x_2>0</x_2>
+  <x_2_map/>
+  <x_3>0</x_3>
+  <x_3_map/>
+  <x_4>14</x_4>
+  <x_4_map/>
+  <y_1>0</y_1>
+  <y_1_map/>
+  <y_2>0</y_2>
+  <y_2_map/>
+  <y_3>4</y_3>
+  <y_3_map/>
+  <y_4>4</y_4>
+  <y_4_map/>
+</Display_Rectangle>
+<Blob_Replace>
+  <color_index>5</color_index>
+  <fill_shape>FALSE</fill_shape>
+  <order_array_on_x>FALSE</order_array_on_x>
+  <order_array_on_y>FALSE</order_array_on_y>
+  <thickness>1</thickness>
+</Blob_Replace>
+<Blob_Tracking>
+  <absent_after_frames>2</absent_after_frames>
+  <aspect_weight>1.0</aspect_weight>
+  <blob_image>Current</blob_image>
+  <color_mode>1</color_mode>
+  <color_weight>1.0</color_weight>
+  <display_as_annotation>FALSE</display_as_annotation>
+  <display_id>TRUE</display_id>
+  <display_trail>TRUE</display_trail>
+  <graphic_color_index>6</graphic_color_index>
+  <histogram_weight>1.0</histogram_weight>
+  <id_font_size_index>1</id_font_size_index>
+  <length_limit>150</length_limit>
+  <location_weight>1.0</location_weight>
+  <match_threshold>0.75</match_threshold>
+  <neg_x_length_limit>0</neg_x_length_limit>
+  <neg_y_length_limit>0</neg_y_length_limit>
+  <orientation_weight>1.0</orientation_weight>
+  <overlap_weight>1.0</overlap_weight>
+  <present_after_frames>2</present_after_frames>
+  <present_after_pixels>0</present_after_pixels>
+  <raw_image>Source</raw_image>
+  <remove_untracked_blobs>FALSE</remove_untracked_blobs>
+  <shape_weight>1.0</shape_weight>
+  <size_weight>1.0</size_weight>
+  <tracking_precision>1.0</tracking_precision>
+  <track_aspect>FALSE</track_aspect>
+  <track_color>FALSE</track_color>
+  <track_histogram>FALSE</track_histogram>
+  <track_location>TRUE</track_location>
+  <track_orientation>FALSE</track_orientation>
+  <track_overlap>FALSE</track_overlap>
+  <track_shape>FALSE</track_shape>
+  <track_size>FALSE</track_size>
+  <trail_length>5</trail_length>
+  <x_length_limit>0</x_length_limit>
+  <y_length_limit>0</y_length_limit>
+</Blob_Tracking>
+<Display_Variables>
+  <dim_background>FALSE</dim_background>
+  <display_as_annotation>FALSE</display_as_annotation>
+  <display_value_only>FALSE</display_value_only>
+  <font_size>Tiny (6pt)</font_size>
+  <northwest>BLOB_TRACKING_IDS
+BOUNDING_COORDINATES
+</northwest>
+</Display_Variables>
+<Math>
+  <all_channels>TRUE</all_channels>
+  <bias>0</bias>
+  <divisor>1</divisor>
+  <function>1</function>
+  <image1>Current</image1>
+  <image2>Source</image2>
+</Math>
+<NetworkTables>
+  <delay>100</delay>
+  <filter_type_index>0</filter_type_index>
+  <hostname>roboRIO-612-FRC.local</hostname>
+  <port>1735</port>
+  <prefix>/Vision/</prefix>
+  <variables_to_send>BLOB_TRACKING_IDS</variables_to_send>
+  <variable_type_index>0</variable_type_index>
+</NetworkTables>
+<NetworkTables>
+  <delay>100</delay>
+  <filter_type_index>0</filter_type_index>
+  <hostname>roboRIO-612-FRC.local</hostname>
+  <port>1735</port>
+  <prefix>/Vision/</prefix>
+  <variables_to_send>BOUNDING_COORDINATES</variables_to_send>
+  <variable_type_index>0</variable_type_index>
+</NetworkTables>
+<Write_Text>
+  <append_to_file>FALSE</append_to_file>
+  <filename>C:\vision\bounding.coordinates</filename>
+  <overwrite_each_time>FALSE</overwrite_each_time>
+  <text_body>[BOUNDING_COORDINATES]</text_body>
+  <write_only_on_change>TRUE</write_only_on_change>
+</Write_Text>
+<Display_Rectangle>
+  <clear_image>0</clear_image>
+  <color_index>green</color_index>
+  <display_as_annotation>1</display_as_annotation>
+  <display_mode_index>0</display_mode_index>
+  <fill_shape>0</fill_shape>
+  <thickness>1</thickness>
+  <xy_list_map/>
+  <x_1>320</x_1>
+  <x_1_map/>
+  <x_2>320</x_2>
+  <x_2_map/>
+  <x_3>320</x_3>
+  <x_3_map/>
+  <x_4>320</x_4>
+  <x_4_map/>
+  <y_1>0</y_1>
+  <y_1_map/>
+  <y_2>0</y_2>
+  <y_2_map/>
+  <y_3>480</y_3>
+  <y_3_map/>
+  <y_4>480</y_4>
+  <y_4_map/>
+</Display_Rectangle>
