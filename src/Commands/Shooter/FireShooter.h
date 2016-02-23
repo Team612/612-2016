@@ -1,17 +1,15 @@
-#ifndef WheelSet_H
-#define WheelSet_H
+#ifndef FireShooter_H
+#define FireShooter_H
 
 #include "Commands/Command.h"
 #include "WPILib.h"
 
-class WheelSet: public Command
+class FireShooter: public Command
 {
 private:
-	float speed;
-	bool isDone = false;
-	const float THRESHHOLD = 100.0f;
+    bool fired = false;
 public:
-	WheelSet(float speed);
+	FireShooter();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

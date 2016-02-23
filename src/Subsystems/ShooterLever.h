@@ -2,9 +2,16 @@
 #define ShooterLever_H
 
 #include <cmath>
-#include "WPILib.h"
-#include "AnalogInput.h"
-#include "../Commands/AutoServo.h"
+#include <WPILib.h>
+#include <AnalogInput.h>
+#include "Commands/Autonomous/AutoServo.h"
+
+enum ShooterServoPosition
+{
+    Clamp,
+    Neutral,
+    Push
+};
 
 class ShooterLever: public Subsystem
 {
@@ -21,14 +28,15 @@ public:
 	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterLever();
 	void InitDefaultCommand();
-    void SetServoPosition(float position);
-    void SetServoAngle(float angle);
+    void SetPosition(ShooterServoPosition position);
+    void SetPosition(float position);
+    void SetAngle(float angle);
     void SetNeutral();
     void SetClamp();
     void SetPush();
     float getIRInInches();
-    float GetServoPosition();
-    float GetServoAngle();
+    float GetPosition();
+    float GetAngle();
     //Servo* getLeverServo1();
     //AnalogInput* getBallDetector();
 };

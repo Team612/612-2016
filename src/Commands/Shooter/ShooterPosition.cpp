@@ -1,41 +1,42 @@
-#include "ServoPush.h"
+#include "ShooterPosition.h"
 
-ServoPush::ServoPush()
+ShooterPosition::ShooterPosition(float shootpos)
 {
+	shooterthing = shootpos;
+	Requires(Robot::shooterrotation.get());
+
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(Robot::shooterlever.get());
 }
 
 // Called just before this Command runs the first time
-void ServoPush::Initialize()
+void ShooterPosition::Initialize()
 {
-	/* TODO: The following code does not execute any action
-	 */
-	Robot::shooterlever.get()->SetServoPosition(0.5f); //I doubt this is right.
+	Robot::shooterrotation->SetMode(CANTalon::kPosition);
+	Robot::shooterrotation->SetSpeed(shooterthing);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ServoPush::Execute()
+void ShooterPosition::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ServoPush::IsFinished()
+bool ShooterPosition::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ServoPush::End()
+void ShooterPosition::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ServoPush::Interrupted()
+void ShooterPosition::Interrupted()
 {
 
 }

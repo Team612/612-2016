@@ -11,8 +11,8 @@ class ShooterWheels: public Subsystem
 {
 private:
     // PID values
-    const float kP = 0.01f;
-    const float kI = 0.01f;
+    const float kP = 0.1f;
+    const float kI = 0.0f;
     const float kD = 0.01f;
     const float kTol = 0.05f;  // tolerance (within kTol * output)
 	std::shared_ptr<CANTalon> CANTalonLeft;
@@ -21,14 +21,17 @@ private:
 	std::shared_ptr<PIDEdgeCounter> hallCounterRight;
 	std::shared_ptr<PIDController> wheelControllerLeft;
 	std::shared_ptr<PIDController> wheelControllerRight;
+
+	float leftLastErr = 999.9f;
+	float rightLastErr = 999.9f;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
 	ShooterWheels();
-	float getLeftWheelSpeed();
-	float getRightWheelSpeed();
-	bool upToSpeed();
-	void setWheelSpeed(float speed);
+	float GetLeftWheelSpeed();
+	float GetRightWheelSpeed();
+	bool UpToSpeed();
+	void SetWheelSpeed(float speed);
 
 	void InitDefaultCommand();
 };

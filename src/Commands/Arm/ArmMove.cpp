@@ -17,13 +17,13 @@ void ArmMove::Initialize()
 void ArmMove::Execute()
 {
 	if(Robot::oi->getDriver()->GetPOV() == 0 || Robot::oi->getDriver()->GetPOV() == 7 || Robot::oi->getDriver()->GetPOV() == 1)
-		Robot::arm->SetArm(0.8f);
+		Robot::arm->Set(0.8f);
 	else if(Robot::oi->getDriver()->GetPOV() == 5 || Robot::oi->getDriver()->GetPOV() == 4 || Robot::oi->getDriver()->GetPOV() == 3)
-		Robot::arm->SetArm(-0.8f);
+		Robot::arm->Set(-0.8f);
 	else if(Robot::oi->getDriver()->GetPOV() == -01)
-		Robot::arm->SetArm(0.0f);
+		Robot::arm->Set(0.0f);
 	else
-		Robot::arm->SetArm(0.0f);
+		Robot::arm->Set(0.0f);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -35,12 +35,12 @@ bool ArmMove::IsFinished()
 // Called once after isFinished returns true
 void ArmMove::End()
 {
-	Robot::arm->SetArm(0.0f);
+	Robot::arm->Set(0.0f);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ArmMove::Interrupted()
 {
-	Robot::arm->SetArm(0.0f);
+	Robot::arm->Set(0.0f);
 }
