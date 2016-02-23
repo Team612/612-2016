@@ -1,18 +1,20 @@
-#ifndef ServoClamp_H
-#define ServoClamp_H
+#ifndef SET_GEAR_H
+#define SET_GEAR_H
 
-#include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "Robot.h"
-class ServoClamp: public Command
+
+class SetGear: public Command
 {
 public:
-	ServoClamp();
+	SetGear(float gear); //Use Shifter::HIGH and Shifter::LOW
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	float gear;
 };
 
 #endif

@@ -1,6 +1,7 @@
-#include "ServoNeutral.h"
+#include "AutoServo.h"
+#include "Robot.h"
 
-ServoNeutral::ServoNeutral()
+AutoServo::AutoServo()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -8,32 +9,35 @@ ServoNeutral::ServoNeutral()
 }
 
 // Called just before this Command runs the first time
-void ServoNeutral::Initialize()
+void AutoServo::Initialize()
 {
-	Robot::shooterlever.get()->SetServoPosition(0.5f);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ServoNeutral::Execute()
+void AutoServo::Execute()
 {
-
+	if( (Robot::shooterlever.get()->getIRInInches()) > (2.0f)) //nothing is seen for at least 5 inches
+		Robot::shooterlever.get()->SetAngle(0.5f);
+	else
+		Robot::shooterlever.get()->SetAngle(0.0f);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ServoNeutral::IsFinished()
+bool AutoServo::IsFinished()
 {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
-void ServoNeutral::End()
+void AutoServo::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ServoNeutral::Interrupted()
+void AutoServo::Interrupted()
 {
 
 }
