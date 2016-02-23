@@ -15,10 +15,10 @@ private:
 	const float HOME_POS = 0.0;
 public:
 	ShooterRotation();
-	void SetShooter(float position);
+	void SetSpeed(float speed);
 	void ShooterHome();
-	float GetShooter();
-	void SetShooterMode(CANTalon::ControlMode mode);
+	float GetSpeed();
+	void SetMode(CANTalon::ControlMode mode);
 	void InitDefaultCommand();
 };
 

@@ -1,5 +1,5 @@
 #include "AutoWheels.h"
-#include "../Robot.h"
+#include "Robot.h"
 
 AutoWheels::AutoWheels()
 {
@@ -18,11 +18,20 @@ void AutoWheels::Initialize()
 void AutoWheels::Execute()
 {
 	if(Robot::oi->getGunner()->GetRawAxis(3) > TOLERANCE) //Left trigger pressed down
-		Robot::shooterwheels->setWheelSpeed(1.0f);
+	{
+		Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
+		std::printf("FLYWHEEL->SHOOT\n");
+	}
 	else if(Robot::oi->getGunner()->GetRawAxis(2) > TOLERANCE) //Right trigger pressed down
-		Robot::shooterwheels->setWheelSpeed(-0.75f);
+	{
+		Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelIntakeSpeed);
+		std::printf("FLYWHEEL->INTAKE\n");
+	}
 	else if(Robot::oi->getGunner()->GetRawAxis(2) < TOLERANCE && Robot::oi->getGunner()->GetRawAxis(3) < TOLERANCE) //both released
-		Robot::shooterwheels->setWheelSpeed(0.0f);
+	{
+	    Robot::shooterwheels->SetWheelSpeed(0.0f);
+	    std::printf("FLYWHEEL->STOP\n");
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

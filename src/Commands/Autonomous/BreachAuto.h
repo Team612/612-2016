@@ -1,11 +1,11 @@
 #ifndef BreachAuto_H
 #define BreachAuto_H
 
-#include "Commands/Command.h"
-#include "WPILib.h"
-#include "Timer.h"
+#include <Commands/Command.h>
+#include <WPILib.h>
+#include <Timer.h>
 
-#include "../Robot.h"
+#include "Robot.h"
 
 class BreachAuto: public Command
 {

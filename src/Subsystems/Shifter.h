@@ -14,8 +14,11 @@ public:
 	std::shared_ptr<Servo> ShifterServo2;
 	Shifter();
 	void InitDefaultCommand();
-	void SetShifter(float shiftPower);
-	float GetShifter();
+	void Set(float shiftPower);
+	float Get();
+
+	static constexpr float LOW = 0.0f;
+	static constexpr float HIGH = 1.0f;
 };
 
 #endif

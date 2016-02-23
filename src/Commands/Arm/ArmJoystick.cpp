@@ -10,7 +10,7 @@ ArmJoystick::ArmJoystick()
 // Called just before this Command runs the first time
 void ArmJoystick::Initialize()
 {
-	Robot::arm->SetArmMode(CANSpeedController::kPercentVbus);
+	Robot::arm->SetMode(CANSpeedController::kPercentVbus);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -21,10 +21,10 @@ void ArmJoystick::Execute()
 
 
 	if (dpadValue == 0) {
-		Robot::arm->SetArm(1);
+		Robot::arm->Set(1);
 	}
 	else if (dpadValue == 4) {
-		Robot::arm->SetArm(-1);
+		Robot::arm->Set(-1);
 	}
 
 	//Robot::arm->SetArm(Robot::oi->getDriver()->GetPOV(6));

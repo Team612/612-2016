@@ -1,8 +1,8 @@
 #ifndef ARMMOVE_H
 #define ARMMOVE_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include <Commands/Subsystem.h>
+#include "Robot.h"
 
 class ArmMove: public Command
 {
