@@ -10,6 +10,7 @@
 
 #include "Robot.h"
 
+#include "Commands/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Arm/ArmMove.h"
 #include "Commands/Autonomous/AutoWheels.h"
@@ -104,7 +105,6 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic()
 {
-	//invertcontrols->Start();
 	Scheduler::GetInstance()->Run();
 }
 
