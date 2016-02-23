@@ -100,11 +100,12 @@ void Robot::TeleopInit()
 	//drivejoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
-	invertcontrols->Start();
+
 }
 
 void Robot::TeleopPeriodic()
 {
+	invertcontrols->Start();
 	Scheduler::GetInstance()->Run();
 }
 
