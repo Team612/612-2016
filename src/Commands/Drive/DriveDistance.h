@@ -14,9 +14,12 @@ public:
 	void End();
 	void Interrupted();
 
+	double ReturnPIDInput();
+
 private:
 	float end_distance;
 	const float STARTING_DISTANCE = 0.0f;
+	const float SPEED             = 0.7f;
 };
 
 #endif

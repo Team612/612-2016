@@ -8,20 +8,23 @@ DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 1
 	Requires(Robot::drivetrain.get());
 	this->end_distance = end_distance;
 
-	GetPIDController()->SetContinuous(true); //I think...
-
-
+	GetPIDController()->SetContinuous(true); //?
 }
 
 // Called just before this Command runs the first time
 void DriveDistance::Initialize()
 {
-	GetPIDController()->SetSetpoint(end_distance);
+	GetPIDController()->SetSetpoint(end_distance); //point we are trying to get to
+	Robot::drivetrain.get()->SetTankDrive(SPEED, SPEED);
+	GetPIDController()->SetInputRange(STARTING_DISTANCE, end_distance);
+	GetPIDController()->Enable();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveDistance::Execute()
 {
+	std::printf("PID Value: %f\n",  GetPIDController()->Get());
 
 }
 
@@ -42,4 +45,9 @@ void DriveDistance::End()
 void DriveDistance::Interrupted()
 {
 
+}
+
+double DriveDistance::ReturnPIDInput()
+{
+	return Robot::drivetrain.get()->GetEncoderDistance();
 }
