@@ -112,6 +112,20 @@ double Drivetrain::GetEncoderDistance()
 	return encoder->GetDistance(); //this is so we can change this later
 }
 
+Talon Drivetrain::GetTalons(int id)
+{
+	switch(id)
+	{
+		case 1: return RobotMap::drivetrainTalon1;
+				break;
+		case 2: return RobotMap::drivetrainTalon2;
+				break;
+		case 3: return RobotMap::drivetrainTalon3;
+				break;
+		case 4: return RobotMap::drivetrainTalon4;
+				break;
+	}
+}
 /*void Drivetrain::SetFlip(bool flipping) {
 	RobotMap::isRobotReversed = flipping;
 }
