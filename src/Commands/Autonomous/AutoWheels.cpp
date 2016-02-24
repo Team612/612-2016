@@ -17,21 +17,28 @@ void AutoWheels::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void AutoWheels::Execute()
 {
-	if(Robot::oi->getGunner()->GetRawAxis(3) > TOLERANCE) //Left trigger pressed down
-	{
+	auto gunner = Robot::oi->getGunner()->GetRawAxis(1);
+	if(gunner > TOLERANCE)
 		Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
-		std::printf("FLYWHEEL->SHOOT\n");
-	}
-	else if(Robot::oi->getGunner()->GetRawAxis(2) > TOLERANCE) //Right trigger pressed down
-	{
+	else if (gunner < -TOLERANCE)
 		Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelIntakeSpeed);
-		std::printf("FLYWHEEL->INTAKE\n");
-	}
-	else if(Robot::oi->getGunner()->GetRawAxis(2) < TOLERANCE && Robot::oi->getGunner()->GetRawAxis(3) < TOLERANCE) //both released
-	{
-	    Robot::shooterwheels->SetWheelSpeed(0.0f);
-	    std::printf("FLYWHEEL->STOP\n");
-	}
+	else
+		Robot::shooterwheels->SetWheelSpeed(0.0);
+//	if(Robot::oi->getGunner()->GetRawAxis(3) > TOLERANCE) //Left trigger pressed down
+//	{
+//		Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
+////		std::printf("FLYWHEEL->SHOOT\n");
+//	}
+//	else if(Robot::oi->getGunner()->GetRawAxis(2) > TOLERANCE) //Right trigger pressed down
+//	{
+//		Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelIntakeSpeed);
+////		std::printf("FLYWHEEL->INTAKE\n");
+//	}
+//	else if(Robot::oi->getGunner()->GetRawAxis(2) < TOLERANCE && Robot::oi->getGunner()->GetRawAxis(3) < TOLERANCE) //both released
+//	{
+//	    Robot::shooterwheels->SetWheelSpeed(0.0f);
+////	    std::printf("FLYWHEEL->STOP\n");
+//	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

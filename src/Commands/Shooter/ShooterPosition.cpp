@@ -12,7 +12,6 @@ ShooterPosition::ShooterPosition(float shootpos)
 // Called just before this Command runs the first time
 void ShooterPosition::Initialize()
 {
-	Robot::shooterrotation->SetMode(CANTalon::kPosition);
 	Robot::shooterrotation->SetSpeed(shooterthing);
 }
 
