@@ -99,7 +99,7 @@ void Robot::TeleopInit()
 	drivejoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
-	shifter->Set(Shifter::HIGH);
+	shifter->Set(Shifter::LOW);
 }
 
 void Robot::TeleopPeriodic()
