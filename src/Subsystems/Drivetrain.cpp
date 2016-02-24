@@ -112,7 +112,7 @@ double Drivetrain::GetEncoderDistance()
 	return encoder->GetDistance(); //this is so we can change this later
 }
 
-Talon Drivetrain::GetTalons(int id)
+std::shared_ptr<Talon> Drivetrain::GetTalons(int id)
 {
 	switch(id)
 	{

@@ -43,7 +43,7 @@ public:
 	bool GetInversion();
 	double GetEncoderDistance();
 	void InitDefaultCommand();
-	Talon GetTalons(int id);
+	std::shared_ptr<Talon> GetTalons(int id);
 
 	//void SetFlip(bool flipping);
 	//bool ToggleFlip(void);
