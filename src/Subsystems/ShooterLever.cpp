@@ -1,5 +1,6 @@
 #include "ShooterLever.h"
-#include "../RobotMap.h"
+#include "Commands/Shooter/SetServoPosition.h"
+#include "RobotMap.h"
 
 ShooterLever::ShooterLever() :
 		Subsystem("ShooterLever")
@@ -12,7 +13,7 @@ void ShooterLever::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new AutoServo());
+	SetDefaultCommand(new SetServoPosition(ShooterServoPosition::Neutral));
 }
 
 // Put methods for controlling this subsystem
