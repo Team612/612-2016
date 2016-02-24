@@ -36,7 +36,6 @@ public:
 	std::unique_ptr<Command> invertcontrols;
 	//std::unique_ptr<Command> drivejoystick;
 	//std::unique_ptr<Command> armmove;
-
 	std::unique_ptr<Command> autowheels;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();

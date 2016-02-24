@@ -4,6 +4,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 {
 	Requires(Robot::arm.get());
 	Requires(Robot::drivetrain.get());
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -122,6 +123,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			}
 			break;
 		case Robot::Defense::MOAT:
+			time->Start();
 			if(time->Get() < 5000)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
@@ -129,9 +131,12 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			else
 			{
 				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+				time->Stop();
+				time->Reset();
 			}
 			break;
 		case Robot::Defense::RAMPARTS:
+			time->Start();
 			if(time->Get() < 5000)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
@@ -139,6 +144,8 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			else
 			{
 				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
+				time->Stop();
+				time->Reset();
 			}
 			break;
 		case Robot::Defense::ROCK_WALL:
@@ -170,7 +177,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				//lower arm (on sally port)
 			AddSequential(new ArmToPosition(180));
 				//drive backward (open gate)
-			time-Start();
+			time->Start();
 			if(time->Get() < 3000)
 			{
 				Robot::drivetrain->SetArcadeDrive(-0.7f, -0.7f);
@@ -184,12 +191,15 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				//drive forward (through gate)
 			break;
 		case Robot::Defense::ROUGH_TERRAIN:
+			time->Start();
 			if(time->Get() < 5000)
 			{
 				Robot::drivetrain->SetArcadeDrive(1.0f, 1.0f);
 			}
 			else
 			{
+				time->Stop();
+				time->Reset();
 				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 			}
 			break;
