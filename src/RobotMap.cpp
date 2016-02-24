@@ -19,6 +19,7 @@ std::shared_ptr<Talon> RobotMap::drivetrainTalon4;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 std::shared_ptr<Servo> RobotMap::shooterLeverServo1;
 std::shared_ptr<CANTalon> RobotMap::armAdjust;
+std::shared_ptr<AnalogInput> RobotMap::armRotationDetect;
 std::shared_ptr<CANTalon> RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> RobotMap::shooterLeverDetect;
 std::shared_ptr<Servo> RobotMap::shifterServo1;
@@ -82,6 +83,7 @@ void RobotMap::init()
 	 //Analog I/O
 	shooterLeverDetect.reset(new AnalogInput(1));
 	lw->AddActuator("ShooterLever", "Ball Detector IR", shooterLeverDetect);
+
 
 	shooterEncoder.reset(new AnalogInput(2));
 	lw->AddActuator("ShooterRotation", "Shooter Rotation Encoder", shooterEncoder);

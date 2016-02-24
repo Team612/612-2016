@@ -11,6 +11,7 @@
 #include "Robot.h"
 
 #include "Commands/InvertControls.h"
+#include "Commands/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Arm/ArmMove.h"
 #include "Commands/Autonomous/AutoWheels.h"
