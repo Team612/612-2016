@@ -81,7 +81,7 @@ void Robot::AutonomousInit()
 {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-
+	shooterrotation->SetAngle(3);
 }
 
 void Robot::AutonomousPeriodic()
@@ -108,6 +108,7 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(3));
 }
 
 void Robot::TestPeriodic()

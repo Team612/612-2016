@@ -18,7 +18,7 @@ Autonomous::Autonomous()
 {
 	AddSequential(new ArmToPosition(0));
 	AddSequential(new AutoBreach(Robot::Defense::LOW_BAR)); //change this before every match
-	AddSequential(new DriveSet(0.5f, 0f));
+	AddSequential(new DriveSet(0.5f, 0.5f));
 	//TODO AddSequential(new AutoAlign(FindTarget::RIGHT));
 	/*
 	 * When we have the Jetson machine learning running, we'll have a command that reads values from the Jetson to the roboRIO.
