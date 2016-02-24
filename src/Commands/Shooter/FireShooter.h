@@ -7,7 +7,7 @@
 class FireShooter: public Command
 {
 private:
-    bool fired = false;
+    bool fired;
 public:
 	FireShooter();
 	void Initialize();

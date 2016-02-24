@@ -9,7 +9,14 @@ SetGear::SetGear(float gear)
 // Called just before this Command runs the first time
 void SetGear::Initialize()
 {
-	Robot::shifter->Set(gear);
+	if(gear == 1.0f)
+		Robot::shifter->Set(0.0f);
+	else if(gear == 0.0f)
+		Robot::shifter->Set(1.0f);
+	else
+		std::printf("This is stupid.jpg\n");
+
+	//TODO: Change this to boolean? idk.
 }
 
 // Called repeatedly when this Command is scheduled to run

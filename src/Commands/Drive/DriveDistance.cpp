@@ -25,7 +25,7 @@ void DriveDistance::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveDistance::Execute()
 {
-	std::printf("PID Value: %f\n",  GetPIDController()->Get());
+	std::printf("PID Value: %f\n",  GetPIDController()->Get()); //debugging
 
 }
 

@@ -19,11 +19,12 @@ void ArmJoystick::Execute()
 
 	dpadValue = Robot::oi->getDriver()->GetPOV(6);
 
-
-	if (dpadValue == 0) {
+	if (dpadValue == 0)
+	{
 		Robot::arm->Set(1);
 	}
-	else if (dpadValue == 4) {
+	else if (dpadValue == 4)
+	{
 		Robot::arm->Set(-1);
 	}
 

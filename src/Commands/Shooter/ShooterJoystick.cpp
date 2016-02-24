@@ -37,5 +37,5 @@ void ShooterJoystick::End()
 // subsystems is scheduled to run
 void ShooterJoystick::Interrupted()
 {
-
+	Robot::shooterrotation->SetSpeed(0.0f);
 }

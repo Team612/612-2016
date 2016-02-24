@@ -43,11 +43,16 @@ void DriveJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveJoystick::Execute()
 {
-	if(Robot::oi->getDriver()->GetRawAxis(3) <= 0.1) {
-		Robot::drivetrain->SetTankDrive(Robot::oi->getDriver()->GetRawAxis(1),Robot::oi->getDriver()->GetRawAxis(5));
+	if (Robot::oi->getDriver()->GetRawAxis(3) <= 0.1)
+	{
+		Robot::drivetrain->SetTankDrive(Robot::oi->getDriver()->GetRawAxis(1),
+				Robot::oi->getDriver()->GetRawAxis(5));
 	}
-	else {
-		Robot::drivetrain->SetTankDrive(Robot::oi->getDriver()->GetRawAxis(5)*-1,Robot::oi->getDriver()->GetRawAxis(1)*-1);
+	else
+	{
+		Robot::drivetrain->SetTankDrive(
+				Robot::oi->getDriver()->GetRawAxis(5) * -1,
+				Robot::oi->getDriver()->GetRawAxis(1) * -1);
 	}
 }
 
@@ -69,6 +74,7 @@ void DriveJoystick::End()
 void DriveJoystick::Interrupted()
 {
 	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
+	std::printf("ERROR: DriveJoystick interrupted!\n");
 	//isFlipped = false;
 }
 
