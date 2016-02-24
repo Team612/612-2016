@@ -15,6 +15,7 @@ public:
 	void Interrupted();
 
 	double ReturnPIDInput();
+	void UsePIDOutput(double output);
 
 private:
 	float end_distance;
