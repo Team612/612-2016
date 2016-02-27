@@ -16,7 +16,7 @@ void ArmMove::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute()
 {
-	Robot::arm.get()->GetDegrees();
+	Robot::arm.get()->getArmPosition();
 
 	if(Robot::oi->getDriver()->GetPOV() == 0 || Robot::oi->getDriver()->GetPOV() == 7 || Robot::oi->getDriver()->GetPOV() == 1)
 		Robot::arm->Set(0.8f);

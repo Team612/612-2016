@@ -79,6 +79,12 @@ float Arm::getArmPosition()
 	//returns between 0 for all the way in and 1 for all the way right
 	return ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS));
 
+	SmartDashboard::PutNumber("Raw M Encoder Value", rotationDetect->GetVoltage());
+	std::printf("Raw M Encoder Value: %f\n", rotationDetect->GetVoltage());
+
+	SmartDashboard::PutNumber("M Encoder percent rotation", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+	std::printf("M Encoder percent rotation: %f\n", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+
 }
 
 float Arm::getMax()
