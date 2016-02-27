@@ -15,7 +15,7 @@ FireShooter::FireShooter()
 void FireShooter::Initialize()
 {
 	std::printf("FIRESHOOTER\n");
-	Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
+	Robot::shooterwheels->SetWheelSpeed(-RobotMap::flywheelShootSpeed);
     Robot::shooterlever->SetClamp();
 }
 
