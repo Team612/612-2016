@@ -8,6 +8,7 @@ FireShooter::FireShooter()
 	// eg. Requires(chassis);
     Requires(Robot::shooterwheels.get());
     Requires(Robot::shooterlever.get());
+    fired = false;
 }
 
 // Called just before this Command runs the first time
