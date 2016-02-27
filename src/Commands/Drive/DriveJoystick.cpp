@@ -43,6 +43,8 @@ void DriveJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveJoystick::Execute()
 {
+	Robot::drivetrain.get()->GetEncoderDistance();
+
 	if (Robot::oi->getDriver()->GetRawAxis(3) <= 0.1)
 	{
 		Robot::drivetrain->SetTankDrive(Robot::oi->getDriver()->GetRawAxis(1),

@@ -53,10 +53,19 @@ void Arm::SetMode(CANTalon::ControlMode mode)
 	adjust->SetControlMode(mode);
 }
 
+/*
+ *TODO: Make full % rotation method. Fix how absolute encoder code works based on position
+ *
+ */
+
 float Arm::GetDegrees()
 {
 	SmartDashboard::PutNumber("Raw M Encoder Value", rotationDetect->GetVoltage());
-	SmartDashboard::PutNumber("M Encoder Angle", ((rotationDetect->GetVoltage())/5) * (360.0f));
-	return ((rotationDetect->GetVoltage())/5) * (360.0f);
+	std::printf("Raw M Encoder Value: %f\n", rotationDetect->GetVoltage());
+
+	SmartDashboard::PutNumber("M Encoder %rotation", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+	std::printf("M Encoder Degrees: %f\n", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+
+	return (rotationDetect->GetVoltage()/5.0f) * 360.0f; //TODO: Obsolete!
 }
 

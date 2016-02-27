@@ -35,16 +35,6 @@ void Robot::RobotInit()
 	RobotMap::init();
 	navx = new NavX(SPI::Port::kMXP);
 
-	chooser.reset(new SendableChooser());
-	chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
-	chooser->AddObject("Cheval de Frise", new Autonomous(Defense::CHEVAL_DE_FRISE));
-	chooser->AddObject("Draw Bridge", new Autonomous(Defense::DRAW_BRIDGE));
-	chooser->AddObject("Moat", new Autonomous(Defense::MOAT));
-	chooser->AddObject("Portcullis", new Autonomous(Defense::PORTCULLIS));
-	chooser->AddObject("Rock Wall", new Autonomous(Defense::ROCK_WALL));
-	chooser->AddObject("Rough Terrain", new Autonomous(Defense::ROUGH_TERRAIN));
-	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));
-
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
@@ -63,8 +53,18 @@ void Robot::RobotInit()
 	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
 
+	chooser.reset(new SendableChooser());
+	chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
+	chooser->AddObject("Cheval de Frise", new Autonomous(Defense::CHEVAL_DE_FRISE));
+	chooser->AddObject("Draw Bridge", new Autonomous(Defense::DRAW_BRIDGE));
+	chooser->AddObject("Moat", new Autonomous(Defense::MOAT));
+	chooser->AddObject("Portcullis", new Autonomous(Defense::PORTCULLIS));
+	chooser->AddObject("Rock Wall", new Autonomous(Defense::ROCK_WALL));
+	chooser->AddObject("Rough Terrain", new Autonomous(Defense::ROUGH_TERRAIN));
+	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));
+
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset((Command *) chooser->GetSelected());
+	//autonomousCommand.reset((Command *) chooser->GetSelected());
 	drivejoystick.reset(new DriveJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
@@ -86,8 +86,11 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
+	autonomousCommand.reset((Command *) chooser->GetSelected());
+
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
+
 	shooterrotation->SetAngle(3);
 }
 

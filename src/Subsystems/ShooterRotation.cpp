@@ -20,6 +20,9 @@ void ShooterRotation::SetAngle(double angle)
 	std::printf("sets angle\n");
 	this->angle = angle;
 	RotateMotor->Set(AngleToVolts(angle));
+
+	SmartDashboard::PutNumber("Shooter Rotation Encoder", RotateMotor->GetAnalogIn());
+	std::printf("Shooter Rotation Encoder: %d\n", RotateMotor->GetAnalogIn());
 }
 
 
