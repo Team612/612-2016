@@ -45,6 +45,7 @@ float Arm::Get()
 void Arm::Set(float x)
 {
 	adjust->Set(x);
+	SmartDashboard::PutNumber("Arm Talon Speed", adjust->Get());
 }
 
 void Arm::SetMode(CANTalon::ControlMode mode)
@@ -54,6 +55,8 @@ void Arm::SetMode(CANTalon::ControlMode mode)
 
 float Arm::GetDegrees()
 {
+	SmartDashboard::PutNumber("Raw M Encoder Value", rotationDetect->GetVoltage());
+	SmartDashboard::PutNumber("M Encoder Angle", ((rotationDetect->GetVoltage())/5) * (360.0f));
 	return ((rotationDetect->GetVoltage())/5) * (360.0f);
 }
 

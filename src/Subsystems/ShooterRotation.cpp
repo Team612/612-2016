@@ -20,7 +20,6 @@ void ShooterRotation::SetAngle(double angle)
 	std::printf("sets angle\n");
 	this->angle = angle;
 	RotateMotor->Set(AngleToVolts(angle));
-
 }
 
 
@@ -61,6 +60,7 @@ float ShooterRotation::GetSpeed()
 void ShooterRotation::SetSpeed(float speed)
 {
 	RotateMotor->Set(speed);
+	SmartDashboard::PutNumber("Rotation Speed", RotateMotor->Get());
 }
 
 void ShooterRotation::ShooterHome()

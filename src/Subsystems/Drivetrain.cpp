@@ -110,6 +110,7 @@ bool Drivetrain::GetInversion()
 double Drivetrain::GetEncoderDistance()
 {
 	return encoder->GetDistance(); //this is so we can change this later
+	SmartDashboard::PutNumber("Current Encoder Value", encoder->Get());
 }
 
 std::shared_ptr<Talon> Drivetrain::GetTalons(int id)
