@@ -40,14 +40,10 @@ public:
 	Arm();
 	float GetArm();
 	float GetDegrees();
-	//float SetArm(float x);
+	void SetArm(float x);
 	float Get();
 	void Set(float x);
 	void InitDefaultCommand();
-	float getMin();
-	float getMax();
-	void setArmPosition(float pos);
-	float getArmPosition();
 	void SetMode(CANTalon::ControlMode mode);
 };
 

@@ -64,32 +64,8 @@ float Arm::GetDegrees()
 	std::printf("Raw M Encoder Value: %f\n", rotationDetect->GetVoltage());
 
 	SmartDashboard::PutNumber("M Encoder %rotation", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
-	std::printf("M Encoder %rotation: %f\n", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+	std::printf("M Encoder Degrees: %f\n", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
 
 	return (rotationDetect->GetVoltage()/5.0f) * 360.0f; //TODO: Obsolete!
 }
-
-void Arm::setArmPosition(float pos)
-{
-	//return ???
-}
-
-float Arm::getArmPosition()
-{
-	//returns between 0 for all the way in and 1 for all the way right
-	return ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS));
-
-}
-
-float Arm::getMax()
-{
-	return MAX_VOLTS;
-}
-
-float Arm::getMin()
-{
-	return MIN_VOLTS;
-}
-
-
 
