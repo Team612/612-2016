@@ -45,6 +45,7 @@ float Arm::Get()
 void Arm::Set(float x)
 {
 	adjust->Set(x);
+	SmartDashboard::PutNumber("Arm Talon Speed", adjust->Get());
 }
 
 void Arm::SetMode(CANTalon::ControlMode mode)
@@ -52,8 +53,19 @@ void Arm::SetMode(CANTalon::ControlMode mode)
 	adjust->SetControlMode(mode);
 }
 
+/*
+ *TODO: Make full % rotation method. Fix how absolute encoder code works based on position
+ *
+ */
+
 float Arm::GetDegrees()
 {
-	return ((rotationDetect->GetVoltage())/5) * (360.0f);
+	SmartDashboard::PutNumber("Raw M Encoder Value", rotationDetect->GetVoltage());
+	std::printf("Raw M Encoder Value: %f\n", rotationDetect->GetVoltage());
+
+	SmartDashboard::PutNumber("M Encoder %rotation", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+	std::printf("M Encoder Degrees: %f\n", ((rotationDetect->GetVoltage() - MIN_VOLTS)/(MAX_VOLTS - MIN_VOLTS)));
+
+	return (rotationDetect->GetVoltage()/5.0f) * 360.0f; //TODO: Obsolete!
 }
 
