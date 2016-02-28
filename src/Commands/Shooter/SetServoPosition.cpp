@@ -2,9 +2,7 @@
 
 SetServoPosition::SetServoPosition(ShooterServoPosition pos)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-    Requires(Robot::shooterlever.get());
+    //Requires(Robot::shooterlever.get());
     // TODO: These values need to be tested: 0 for clamp, .5 for neutral, 1 for push.
     this->position = pos;
 }

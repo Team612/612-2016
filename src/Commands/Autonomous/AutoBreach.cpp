@@ -14,7 +14,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 		case Robot::Defense::PORTCULLIS:
 				//needs arm, do once PID loop is figured out
 				//lower arm to ground
-				AddSequential(new ArmToPosition(180));
+				AddSequential(new ArmToPosition(1.0f));
 				//drive forwards
 				time->Start();
 				if(time->Get() < 3000)
@@ -28,7 +28,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 					time->Reset();
 				}
 				//raise arm (and gate)
-				AddSequential(new ArmToPosition(90));
+				AddSequential(new ArmToPosition(0.5f));
 				//drive forward
 				time->Start();
 				if(time->Get() < 3000)
@@ -42,12 +42,12 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 					time->Reset();
 				}
 				//reset arm
-				AddSequential(new ArmToPosition(0));
+				AddSequential(new ArmToPosition(0.0f));
 			break;
 		case Robot::Defense::CHEVAL_DE_FRISE:
 				//needs arm, do once PID loop is figured out
 				//raise arm
-				AddSequential(new ArmToPosition(90));
+				AddSequential(new ArmToPosition(0.5f));
 				//drive forward
 				time->Start();
 				if(time->Get() < 3000)
@@ -61,7 +61,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 					time->Reset();
 				}
 				//lower arm
-				AddSequential(new ArmToPosition(0));
+				AddSequential(new ArmToPosition(0.0f));
 				//drive forward
 				time->Start();
 				if(time->Get() < 3000)
@@ -79,7 +79,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 		case Robot::Defense::DRAW_BRIDGE:
 				//needs arm, do once PID loop is figured out
 				//lower arm to ground
-				AddSequential(new ArmToPosition(180));
+				AddSequential(new ArmToPosition(1.0f));
 				//drive forwards
 				time->Start();
 				if(time->Get() < 3000)
@@ -93,7 +93,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 					time->Reset();
 				}
 				//raise arm (and gate)
-				AddSequential(new ArmToPosition(90));
+				AddSequential(new ArmToPosition(0.5f));
 				//drive forward
 				time->Start();
 				if(time->Get() < 3000)
@@ -107,7 +107,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 					time->Reset();
 				}
 				//reset arm
-				AddSequential(new ArmToPosition(0));
+				AddSequential(new ArmToPosition(0.0f));
 			break;
 		case Robot::Defense::LOW_BAR:
 			time->Start();
@@ -161,7 +161,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 		case Robot::Defense::SALLY_PORT:
 				//needs arm, do once PID loop is figured out
 				//raise arm
-			AddSequential(new ArmToPosition(90));
+			AddSequential(new ArmToPosition(0.5f));
 				//drive forward
 			time->Start();
 			if(time->Get() < 3000)
@@ -175,7 +175,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				time->Reset();
 			}
 				//lower arm (on sally port)
-			AddSequential(new ArmToPosition(180));
+			AddSequential(new ArmToPosition(1.0f));
 				//drive backward (open gate)
 			time->Start();
 			if(time->Get() < 3000)
