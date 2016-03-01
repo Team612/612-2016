@@ -18,7 +18,7 @@ void ShooterJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterJoystick::Execute()
 {
-	Robot::shooterrotation->SetSpeed(Robot::oi->getGunner()->GetRawAxis(4));
+	Robot::shooterrotation->SetSpeed(Robot::oi->getGunner()->GetRawAxis(5));
 }
 
 // Make this return true when this Command no longer needs to run execute()

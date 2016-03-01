@@ -1,41 +1,41 @@
-#include "ShooterPosition.h"
+#include "ArmToPosition.h"
+#include "../../Robot.h"
 
-ShooterPosition::ShooterPosition(float shootpos)
+ArmToPosition::ArmToPosition(float position)
 {
-	shooterthing = shootpos;
-	Requires(Robot::shooterrotation.get());
-
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::arm.get());
+	this->position = position;
 }
 
 // Called just before this Command runs the first time
-void ShooterPosition::Initialize()
+void ArmToPosition::Initialize()
 {
-	Robot::shooterrotation->SetSpeed(shooterthing);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterPosition::Execute()
+void ArmToPosition::Execute()
 {
-
+	Robot::arm.get()->SetArmPosition(position);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterPosition::IsFinished()
+bool ArmToPosition::IsFinished()
 {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
-void ShooterPosition::End()
+void ArmToPosition::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShooterPosition::Interrupted()
+void ArmToPosition::Interrupted()
 {
 
 }

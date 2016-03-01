@@ -86,6 +86,10 @@ std::shared_ptr<AnalogInput> ShooterLever::getBallDetector()
 
 float ShooterLever::getIRInInches()
 {
+	SmartDashboard::PutNumber("Raw IR sensor voltage", irsensor->GetVoltage());
+	std::printf("Raw IR sensor voltage: %f\n", irsensor->GetVoltage());
+	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f));
+	std::printf("IR distance inches: %f\n", ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f));
 	return ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
 }
 
