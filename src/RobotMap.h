@@ -38,6 +38,7 @@ public:
 	static std::shared_ptr<CANTalon> leftFlywheel;
 	static std::shared_ptr<CANTalon> rightFlywheel;
 	static std::shared_ptr<Encoder> drivetrainEncoder;
+	static std::shared_ptr<Encoder> drivetrainEncoder2;
 	static const int leftFlywheelHall = 6;
 	static const int rightFlywheelHall = 7;
 	static constexpr float flywheelShootSpeed = 40.0f;

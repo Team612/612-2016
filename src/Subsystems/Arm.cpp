@@ -45,3 +45,10 @@ void Arm::SetArmSpeed(double speed)
 {
 	adjust->Set(speed);
 }
+/*
+ * GetDegrees() is no longer maintained!
+ *
+ * TODO: Mark as deprecated.
+ *
+ */
+

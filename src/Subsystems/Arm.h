@@ -23,7 +23,6 @@
 class Arm: public PIDSubsystem
 {
 private:
-
 	std::shared_ptr<CANTalon> adjust;
 	std::shared_ptr<AnalogInput> rotationDetect;
 
@@ -33,18 +32,20 @@ private:
 
 	double MIN_VOLTS = 1.1f; //all the way in
 	double MAX_VOLTS = 4.0f; //all the way out
+
 public:
 	Arm();
 	void InitDefaultCommand();
+	float getMin();
+	float getMax();
+	void setArmPosition(float pos);
+	float getArmPosition();
 	void SetMode(CANTalon::ControlMode mode);
-
 	void UsePIDOutput(double output);
 	double ReturnPIDInput();
 
 	void SetArmPosition(double position);
 	void SetArmSpeed(double speed);
-
-
 };
 
 #endif
