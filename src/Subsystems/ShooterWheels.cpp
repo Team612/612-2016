@@ -56,7 +56,30 @@ bool ShooterWheels::UpToSpeed()
         this->leftLastErr = this->wheelControllerLeft->GetAvgError();
         this->rightLastErr = this->wheelControllerRight->GetAvgError();
     }
-    //std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError(), this->wheelControllerLeft->GetAvgError());
-    //std::printf("RightEror: %f %f\n", this->wheelControllerRight->GetError(), this->wheelControllerRight->GetAvgError());
+    std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError());//, this->wheelControllerLeft->GetAvgError());
+    std::printf("Right: %f %f\n", this->wheelControllerRight->GetError());//, this->wheelControllerRight->GetAvgError());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
+}
+
+void ShooterWheels::Disable()
+{
+	this->wheelControllerLeft->Disable();
+	this->wheelControllerRight->Disable();
+	this->CANTalonLeft->Disable();
+	this->CANTalonRight->Disable();
+	this->CANTalonLeft->SetControlMode(CANSpeedController::kVoltage);
+	this->CANTalonRight->SetControlMode(CANSpeedController::kVoltage);
+	this->CANTalonLeft->Set(0.0f);
+	this->CANTalonRight->Set(0.0f);
+
+}
+
+void ShooterWheels::Enable()
+{
+	this->CANTalonLeft->Enable();
+	this->CANTalonRight->Enable();
+	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
+	this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
+	this->wheelControllerLeft->Enable();
+	this->wheelControllerRight->Enable();
 }

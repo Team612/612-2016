@@ -24,14 +24,17 @@ void ShooterControl::Execute()
     auto gunner = Robot::oi->getGunner()->GetRawAxis(1);
     if(gunner > TOLERANCE)
     {
+    	printf("Fire\n");
         Fire();
     }
     else if (gunner < -TOLERANCE)
     {
+    	printf("Intake\n");
         Intake();
     }
     else
     {
+    	printf("Stop\n");
         Stop();
     }
 
@@ -69,6 +72,7 @@ bool ShooterControl::IsFinished()
 // Called once after isFinished returns true
 void ShooterControl::End()
 {
+	Robot::shooterwheels->Disable();
 	Stop();
 }
 
@@ -81,6 +85,7 @@ void ShooterControl::Interrupted()
 
 void ShooterControl::Fire()
 {
+	Robot::shooterwheels->Enable();
     Robot::shooterlever->SetNeutral();
     Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
     firing = true;
@@ -88,6 +93,7 @@ void ShooterControl::Fire()
 
 void ShooterControl::Intake()
 {
+	Robot::shooterwheels->Enable();
     Robot::shooterlever->SetNeutral();
     Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelIntakeSpeed);
 }
@@ -95,4 +101,5 @@ void ShooterControl::Intake()
 void ShooterControl::Stop()
 {
     Robot::shooterwheels->SetWheelSpeed(0.0f);
+    Robot::shooterwheels->Disable();
 }
