@@ -85,7 +85,7 @@ void RobotMap::init()
 	shooterLeverDetect.reset(new AnalogInput(1));
 	lw->AddActuator("ShooterLever", "Ball Detector IR", shooterLeverDetect);
 
-	armRotationDetect.reset(new AnalogInput(2));
+	armRotationDetect.reset(new AnalogInput(3));
 	lw->AddActuator("Arm", "Magnetic Encoder", armRotationDetect);
 
 	drivetrainRobotDrive->SetSafetyEnabled(true);

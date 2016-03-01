@@ -6,6 +6,8 @@
 
 class ArmToPosition: public Command
 {
+private:
+	float position;
 public:
 	ArmToPosition(float position);
 	void Initialize();
@@ -13,14 +15,6 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
-
-	const float THRESHOLD    = 30.0f; //degrees
-	const float CLOSE_ENOUGH = 3.0f; //degrees
-	const float SCALE        = 1.5f;
-
-private:
-	float position;
-	float power;
 };
 
 #endif
