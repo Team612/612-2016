@@ -21,8 +21,9 @@ private:
     const float CLAMP_POS = 0.0f;
     const float NEUTRAL_POS = 0.5f;
     const float PUSH_POS = 1.0f;
+    float storedposition;
 public:
-	std::shared_ptr<Servo> LeverServo1;
+	std::shared_ptr<Servo> LeverServo;
 	std::shared_ptr<AnalogInput> irsensor;
 
 	//std::shared_ptr<AnalogInput> balldetector;
@@ -36,7 +37,8 @@ public:
     void SetPush();
     float getIRInInches();
     float GetPosition();
-    float GetAngle();
+    bool AtSetPosition();
+    //float GetAngle();
     //Servo* getLeverServo1();
     //AnalogInput* getBallDetector();
 };

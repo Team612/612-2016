@@ -61,6 +61,7 @@ float ShooterRotation::GetSpeed()
 void ShooterRotation::SetSpeed(float speed)
 {
 	RotateMotor->Set(speed);
+	SmartDashboard::PutNumber("Rotation Speed", RotateMotor->Get());
 }
 
 void ShooterRotation::SetMode(CANTalon::ControlMode mode)

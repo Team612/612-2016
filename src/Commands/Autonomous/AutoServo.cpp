@@ -17,10 +17,12 @@ void AutoServo::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void AutoServo::Execute()
 {
+    // TODO: Fix this
+    /*
 	if( (Robot::shooterlever.get()->getIRInInches()) > (2.0f)) //nothing is seen for at least 5 inches
 		Robot::shooterlever.get()->SetAngle(0.5f);
 	else
-		Robot::shooterlever.get()->SetAngle(0.0f);
+		Robot::shooterlever.get()->SetAngle(0.0f);*/
 }
 
 // Make this return true when this Command no longer needs to run execute()

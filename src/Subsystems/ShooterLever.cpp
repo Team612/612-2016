@@ -1,19 +1,19 @@
 #include "ShooterLever.h"
-#include "Commands/Shooter/SetServoPosition.h"
 #include "RobotMap.h"
 
 ShooterLever::ShooterLever() :
 		Subsystem("ShooterLever")
 {
-	LeverServo1 = RobotMap::shooterLeverServo1;
+	LeverServo = RobotMap::shooterLeverServo1;
 	irsensor = RobotMap::shooterLeverDetect;
+	storedposition = 0.0f;
 }
 
 void ShooterLever::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new SetServoPosition(ShooterServoPosition::Neutral));
+	//SetDefaultCommand(new SetServoPosition(ShooterServoPosition::Neutral));
 }
 
 // Put methods for controlling this subsystem
@@ -40,13 +40,14 @@ void ShooterLever::SetPosition(ShooterServoPosition position)
 
 void ShooterLever::SetPosition(float position)
 {
-	LeverServo1->Set(position);
+	LeverServo->Set(position);
+	this->storedposition = position;
 }
 
-void ShooterLever::SetAngle(float angle)
+/*void ShooterLever::SetAngle(float angle)
 {
-	LeverServo1->SetAngle(angle);
-}
+	LeverServo->SetAngle(angle);
+}*/
 
 void ShooterLever::SetClamp()
 {
@@ -65,13 +66,13 @@ void ShooterLever::SetPush()
 
 float ShooterLever::GetPosition()
 {
-	return LeverServo1->Get();
+	return LeverServo->Get();
 }
 
-float ShooterLever::GetAngle()
+/*float ShooterLever::GetAngle()
 {
-	return LeverServo1->GetAngle();
-}
+	return LeverServo->GetAngle();
+}*/
 
 /*std::shared_ptr<Servo> ShooterLever::getLeverServo1()
 {
@@ -85,5 +86,14 @@ std::shared_ptr<AnalogInput> ShooterLever::getBallDetector()
 
 float ShooterLever::getIRInInches()
 {
+	SmartDashboard::PutNumber("Raw IR sensor voltage", irsensor->GetVoltage());
+	std::printf("Raw IR sensor voltage: %f\n", irsensor->GetVoltage());
+	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f));
+	std::printf("IR distance inches: %f\n", ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f));
 	return ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
+}
+
+bool ShooterLever::AtSetPosition()
+{
+    return (LeverServo->Get() - storedposition) < 10E-2;
 }

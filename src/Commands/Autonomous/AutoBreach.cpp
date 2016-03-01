@@ -33,6 +33,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				}
 				//raise arm (and gate)
 				AddSequential(new ArmToPosition(half));
+
 				//drive forward
 				time->Start();
 				if(time->Get() < 3000)
@@ -52,6 +53,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				//needs arm, do once PID loop is figured out
 				//raise arm
 				AddSequential(new ArmToPosition(half));
+
 				//drive forward
 				time->Start();
 				if(time->Get() < 3000)
@@ -214,17 +216,4 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			break;
 	}
 	//add parallel?
-
-
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
-
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
 }

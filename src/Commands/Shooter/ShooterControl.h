@@ -4,12 +4,17 @@
 #include "Commands/Command.h"
 #include "WPILib.h"
 
-class FireShooter: public Command
+class ShooterControl: public Command
 {
 private:
+    bool firing;
     bool fired;
+    const float TOLERANCE = 10E-2;
+    void Fire();
+    void Intake();
+    void Stop();
 public:
-	FireShooter();
+	ShooterControl();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
