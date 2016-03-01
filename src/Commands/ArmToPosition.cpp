@@ -11,13 +11,15 @@
  * Note that this is completely temporary!
  */
 
-ArmToPosition::ArmToPosition(float position)
+ArmToPosition::ArmToPosition(float position) //from 0 to 1
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::arm.get());
-	this->position = position;
+	this->position = position; //set
 	power = 0.7f;
+
+
 }
 
 // Called just before this Command runs the first time
@@ -29,7 +31,7 @@ void ArmToPosition::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmToPosition::Execute()
 {
-	if(abs(Robot::arm.get()->GetDegrees() - position) < THRESHOLD)
+	if(abs(Robot::arm.get()->getArmPosition() - position) < THRESHOLD)
 		power /= SCALE;
 
 	/*
@@ -44,9 +46,9 @@ void ArmToPosition::Execute()
 	 * All the while the power is being degrees by a factor of 3/2 every iteration.
 	 */
 
-	if(Robot::arm.get()->GetDegrees() < position && !(abs(Robot::arm.get()->GetDegrees() - position) < (position + CLOSE_ENOUGH) && abs(Robot::arm.get()->GetDegrees() - position) > (position - CLOSE_ENOUGH)))
+	if(Robot::arm.get()->getArmPosition() < position && !(abs(Robot::arm.get()->getArmPosition() - position) < (position + CLOSE_ENOUGH) && abs(Robot::arm.get()->getArmPosition() - position) > (position - CLOSE_ENOUGH)))
 		RobotMap::armAdjust->Set(power);
-	else if(Robot::arm.get()->GetDegrees() > position && !(abs(Robot::arm.get()->GetDegrees() - position) < (position + CLOSE_ENOUGH) && abs(Robot::arm.get()->GetDegrees() - position) > (position - CLOSE_ENOUGH)))
+	else if(Robot::arm.get()->GetDegrees() > position && !(abs(Robot::arm.get()->getArmPosition() - position) < (position + CLOSE_ENOUGH) && abs(Robot::arm.get()->getArmPosition() - position) > (position - CLOSE_ENOUGH)))
 		RobotMap::armAdjust->Set(power * -1);
 
 }
@@ -54,7 +56,7 @@ void ArmToPosition::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ArmToPosition::IsFinished()
 {
-	return abs(Robot::arm.get()->GetDegrees() - position) < (position + CLOSE_ENOUGH) && abs(Robot::arm.get()->GetDegrees() - position) > (position - CLOSE_ENOUGH);
+	return abs(Robot::arm.get()->getArmPosition() - position) < (position + CLOSE_ENOUGH) && abs(Robot::arm.get()->getArmPosition() - position) > (position - CLOSE_ENOUGH);
 }
 
 // Called once after isFinished returns true

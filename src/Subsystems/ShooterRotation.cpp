@@ -21,6 +21,8 @@ void ShooterRotation::SetAngle(double angle)
 	this->angle = angle;
 	RotateMotor->Set(AngleToVolts(angle));
 
+	SmartDashboard::PutNumber("Shooter Rotation Encoder", RotateMotor->GetAnalogIn());
+	std::printf("Shooter Rotation Encoder: %d\n", RotateMotor->GetAnalogIn());
 }
 
 
@@ -61,6 +63,7 @@ float ShooterRotation::GetSpeed()
 void ShooterRotation::SetSpeed(float speed)
 {
 	RotateMotor->Set(speed);
+	SmartDashboard::PutNumber("Rotation Speed", RotateMotor->Get());
 }
 
 void ShooterRotation::ShooterHome()

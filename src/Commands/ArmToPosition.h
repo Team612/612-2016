@@ -14,8 +14,8 @@ public:
 	void End();
 	void Interrupted();
 
-	const float THRESHOLD    = 30.0f; //degrees
-	const float CLOSE_ENOUGH = 3.0f; //degrees
+	const float THRESHOLD    = 0.3f; //units
+	const float CLOSE_ENOUGH = 0.025f; //units
 	const float SCALE        = 1.5f;
 
 private:
