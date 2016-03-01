@@ -1,4 +1,5 @@
 #include "ArmToPosition.h"
+#include "../../Robot.h"
 
 ArmToPosition::ArmToPosition(float position)
 {
