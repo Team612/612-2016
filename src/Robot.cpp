@@ -105,7 +105,11 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
 	Scheduler::GetInstance()->Run();
-	shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(3));
+
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterRotateMotor.get()->GetAnalogIn());
+	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
+
+	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(3));
 }
 
 void Robot::TestPeriodic()
