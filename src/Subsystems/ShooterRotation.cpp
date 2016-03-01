@@ -9,7 +9,7 @@ ShooterRotation::ShooterRotation() : Subsystem("ShooterRotation")
 	RotateMotor->SetControlMode(CANSpeedController::kVoltage);
 	RotateMotor->SetFeedbackDevice(CANTalon::AnalogEncoder);
 	RotateMotor->SetPID(0.01, 0.0001, 0.005);
-	RotateMotor->SetOutputRange(-1.0, 1.0);
+	//RotateMotor->SetOutputRange(-1.0, 1.0);
 	/*GetPIDController()->SetInputRange(MIN_VOLTS, MAX_VOLTS);
 	GetPIDController()->SetPercentTolerance(5);*/
 
@@ -66,9 +66,10 @@ void ShooterRotation::SetMode(CANTalon::ControlMode mode)
 	RotateMotor->SetControlMode(mode);
 }
 
+/*
 double ShooterRotation::AngleToVolts(double angle)
 {
 	//TODO: Fix!!
 	double volts = (5*angle) / 360;
 	return volts;
-}
+}*/

@@ -1,6 +1,6 @@
 #include "ShooterWheels.h"
 #include "RobotMap.h"
-#include "Commands/Autonomous/AutoWheels.h"
+#include "Commands/Shooter/ShooterControl.h"
 
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")
@@ -22,7 +22,7 @@ void ShooterWheels::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new AutoWheels());
+	SetDefaultCommand(new ShooterControl());
 
 }
 

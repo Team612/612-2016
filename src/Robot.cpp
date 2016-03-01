@@ -8,13 +8,12 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
+#include <Commands/Shooter/ShooterControl.h>
 #include "Robot.h"
 
 #include "Commands/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Arm/ArmMove.h"
-#include "Commands/Autonomous/AutoWheels.h"
-#include "Commands/Shooter/FireShooter.h"
 #include "Commands/Drive/DriveSet.h"
 #include <SmartDashboard/SmartDashboard.h>
 
@@ -47,7 +46,7 @@ void Robot::RobotInit()
 	// news. Don't move it.
 	oi.reset(new OI());
 
-	SmartDashboard::PutData("FireShooter", new FireShooter());
+	//SmartDashboard::PutData("FireShooter", new FireShooter());
 	SmartDashboard::PutData("Autonomous", new Autonomous());
 	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
@@ -79,7 +78,7 @@ void Robot::AutonomousInit()
 {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-	shooterrotation->SetAngle(3);
+	//shooterrotation->SetAngle(3);
 }
 
 void Robot::AutonomousPeriodic()
@@ -118,4 +117,3 @@ void Robot::TestPeriodic()
 }
 
 START_ROBOT_CLASS(Robot);
-
