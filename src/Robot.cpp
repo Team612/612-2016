@@ -98,6 +98,8 @@ void Robot::TeleopPeriodic()
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterRotateMotor.get()->GetAnalogIn());
 	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
 
+	shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(5));
+
 	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(3));
 }
 

@@ -9,7 +9,7 @@ ShooterRotation::ShooterRotation() : PIDSubsystem("ShooterRotation", 0.01, 0.000
 	GetPIDController()->SetInputRange(MIN_VOLTS, MAX_VOLTS);
 	GetPIDController()->SetSetpoint(HOME_POS);
 	GetPIDController()->SetAbsoluteTolerance(AngleToVolts(3));
-	GetPIDController()->Enable();
+	//GetPIDController()->Enable();
 }
 
 void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
@@ -36,7 +36,7 @@ double ShooterRotation::ReturnPIDInput()
 
 void ShooterRotation::UsePIDOutput(double output)
 {
-	RotateMotor->Set(output);
+	RotateMotor->Set(-output);
 #ifdef DEBUG
 	std::printf("Shooter PID Output: %f\n", output);
 #endif
