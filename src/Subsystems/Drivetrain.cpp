@@ -114,8 +114,8 @@ double Drivetrain::GetEncoderDistance()
 
 	SmartDashboard::PutNumber("Current Encoder Value", encoder->Get());
 	SmartDashboard::PutNumber("Current Encoder2 Value", encoder2->Get());
-	std::printf("Current Encoder Value: %i\n", encoder->Get());
-	std::printf("Current Encoder2 Value: %i\n", encoder2->Get());
+	std::printf("Current Encoder Value: %f\n", encoder->Get());
+	std::printf("Current Encoder2 Value: %f\n", encoder2->Get());
 }
 
 double Drivetrain::GetEncoder2Distance()
