@@ -48,7 +48,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
-	SmartDashboard::PutData("DriveDistance", new DriveDistance(12));
+	SmartDashboard::PutData("DriveDistance", new DriveDistance(240)); //12 inches
 
 
 	chooser.reset(new SendableChooser());
