@@ -30,7 +30,7 @@ double ShooterRotation::ReturnPIDInput()
 {
 	return (double) RobotMap::shooterEncoder->GetVoltage();
 #ifdef DEBUG
-	std::printf("Shooter Voltage: %f\n", RobotMap::shooterEncoder->GetVoltage());
+	//std::printf("Shooter Voltage: %f\n", RobotMap::shooterEncoder->GetVoltage());
 #endif
 }
 
@@ -38,7 +38,7 @@ void ShooterRotation::UsePIDOutput(double output)
 {
 	RotateMotor->Set(-output);
 #ifdef DEBUG
-	std::printf("Shooter PID Output: %f\n", output);
+	//std::printf("Shooter PID Output: %f\n", output);
 #endif
 }
 

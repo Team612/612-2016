@@ -1,7 +1,7 @@
 #include "DriveDistance.h"
 #include "Robot.h"
 
-DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 1.0, 0.0, 0.0) //default values
+DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 0.2, 0.0, 0.0) //default values
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -10,6 +10,7 @@ DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 1
 	this->end_distance = end_distance;
 
 	GetPIDController()->SetContinuous(true); //?
+	GetPIDController()->SetOutputRange(-1.0f, 1.0f);
 }
 
 // Called just before this Command runs the first time
@@ -40,6 +41,8 @@ void DriveDistance::End()
 {
 	RobotMap::drivetrainEncoder->Reset();
 	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
+
+	GetPIDController()->Disable();
 }
 
 // Called when another command which requires one or more of the same
@@ -48,6 +51,8 @@ void DriveDistance::Interrupted()
 {
 	std::printf("ERROR: DriveDistance interrupted!\n");
 	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
+
+	GetPIDController()->Disable();
 }
 
 double DriveDistance::ReturnPIDInput()

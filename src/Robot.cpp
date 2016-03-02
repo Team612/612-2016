@@ -48,7 +48,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
-	SmartDashboard::PutData("DriveDistance", new DriveDistance(3));
+	SmartDashboard::PutData("DriveDistance", new DriveDistance(12));
 
 
 	chooser.reset(new SendableChooser());
@@ -103,15 +103,20 @@ void Robot::TeleopInit()
 	//armmove->Start();
 	//autowheels->Start();
 	shifter->Set(Shifter::LOW);
-
 }
 
 void Robot::TeleopPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 
-	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterRotateMotor.get()->GetAnalogIn());
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
 	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
+
+	//Encoder
+	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::drivetrainEncoder->Get());
+	SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
+	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::drivetrainEncoder2->Get());
+	SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
 
 	shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(5));
 

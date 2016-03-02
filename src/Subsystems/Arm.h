@@ -46,6 +46,11 @@ public:
 
 	void SetArmPosition(double position);
 	void SetArmSpeed(double speed);
+
+	void Enable();
+	void Disable();
+
+	void autoDisable();
 };
 
 #endif

@@ -48,6 +48,9 @@ public:
 	void InitDefaultCommand();
 	std::shared_ptr<Talon> GetTalons(int id);
 
+	void PIDDisable();
+	void PIDEnable();
+
 	//void SetFlip(bool flipping);
 	//bool ToggleFlip(void);
 	//bool GetFlip(void);

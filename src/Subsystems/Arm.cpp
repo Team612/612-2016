@@ -37,12 +37,13 @@ double Arm::ReturnPIDInput()
 
 void Arm::SetArmPosition(double position)
 {
-	GetPIDController()->SetSetpoint(position);
 	Enable();
+	GetPIDController()->SetSetpoint(position);
 }
 
 void Arm::SetArmSpeed(double speed)
 {
+	Disable();
 	adjust->Set(speed);
 }
 /*
@@ -51,4 +52,21 @@ void Arm::SetArmSpeed(double speed)
  * TODO: Mark as deprecated.
  *
  */
+void Arm::Enable()
+{
+	adjust->Enable();
+	adjust->SetControlMode(CANSpeedController::kPercentVbus);
+}
 
+void Arm::Disable()
+{
+	adjust->Disable();
+	adjust->SetControlMode(CANSpeedController::kVoltage);
+	adjust->Set(0.0f);
+}
+
+void Arm::autoDisable()
+{
+	if(OnTarget())
+		Disable();
+}
