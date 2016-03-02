@@ -68,6 +68,9 @@ void Robot::RobotInit()
 	drivejoystick.reset(new DriveJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
+
+	RobotMap::drivetrainEncoder.get()->Reset();
+	RobotMap::drivetrainEncoder2.get()->Reset();
 }
 
 void Robot::DisabledInit()
