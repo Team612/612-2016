@@ -1,6 +1,6 @@
 #ifndef ShooterRotation_H
 #define ShooterRotation_H
-#define DEBUG
+//#define DEBUG
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
@@ -24,7 +24,7 @@ public:
 	const double MAX_ANGLE = 288; //full forwards
 	const double MIN_ANGLE = 79.2; //full inwards
 
-	const double MIN_VOLTS = 1.1f;
+	const double MIN_VOLTS = 1.17f;
 	const double MAX_VOLTS = 4.0f;
 
 	const double HOME_POS = 0; //full inwards
@@ -37,6 +37,7 @@ public:
 	void ShooterHome();
 	float GetSpeed();
 	void SetMode(CANTalon::ControlMode mode);
+	void SetPIDEnabled(bool enabled);
 
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);

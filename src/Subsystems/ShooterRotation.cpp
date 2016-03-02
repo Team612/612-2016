@@ -2,14 +2,14 @@
 #include "RobotMap.h"
 #include "Commands/Shooter/ShooterJoystick.h"
 
-ShooterRotation::ShooterRotation() : PIDSubsystem("ShooterRotation", 0.01, 0.0001, 0.005)
+ShooterRotation::ShooterRotation() : PIDSubsystem("ShooterRotation", 15, 10, 10)
 {
 	RotateMotor = RobotMap::shooterRotateMotor;
 	GetPIDController()->SetOutputRange(-1.0, 1.0);
 	GetPIDController()->SetInputRange(MIN_VOLTS, MAX_VOLTS);
 	GetPIDController()->SetSetpoint(HOME_POS);
 	GetPIDController()->SetAbsoluteTolerance(AngleToVolts(3));
-	//GetPIDController()->Enable();
+	GetPIDController()->Enable();
 }
 
 void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
@@ -28,17 +28,17 @@ void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
 
 double ShooterRotation::ReturnPIDInput()
 {
-	return (double) RobotMap::shooterEncoder->GetVoltage();
 #ifdef DEBUG
-	//std::printf("Shooter Voltage: %f\n", RobotMap::shooterEncoder->GetVoltage());
+	std::printf("Shooter Voltage: %f\n", RobotMap::shooterEncoder->GetVoltage());
 #endif
+	return (double) RobotMap::shooterEncoder->GetVoltage();
 }
 
 void ShooterRotation::UsePIDOutput(double output)
 {
 	RotateMotor->Set(-output);
 #ifdef DEBUG
-	//std::printf("Shooter PID Output: %f\n", output);
+	std::printf("Shooter PID Output: %f\n", output);
 #endif
 }
 
@@ -46,6 +46,14 @@ void ShooterRotation::IncrementAngle(double inc)
 {
 	double newAngle = pos + inc;
 	SetAngle(newAngle);
+}
+
+void ShooterRotation::SetPIDEnabled(bool enabled)
+{
+	if(enabled)
+		GetPIDController()->Enable();
+	else
+		GetPIDController()->Disable();
 }
 
 void ShooterRotation::InitDefaultCommand()
