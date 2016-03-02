@@ -6,7 +6,6 @@ ShooterControl::ShooterControl()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
     Requires(Robot::shooterwheels.get());
-    Requires(Robot::shooterlever.get());
     fired = false;
     firing = false;
 }
@@ -15,7 +14,6 @@ ShooterControl::ShooterControl()
 void ShooterControl::Initialize()
 {
 	Robot::shooterwheels->SetWheelSpeed(0.0f);
-    Robot::shooterlever->SetNeutral();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -44,14 +42,14 @@ void ShooterControl::Execute()
         {
             firing = false;
             fired = false;
-            Robot::shooterlever->SetNeutral();
+            Robot::shooterlever->CanShoot = true;
         }
     }
     else if(firing)
     {
         if(Robot::shooterwheels->UpToSpeed())
         {
-            Robot::shooterlever->SetPush();
+            Robot::shooterlever->CanShoot = false;
             fired = true;
         }
     }
@@ -86,7 +84,6 @@ void ShooterControl::Interrupted()
 void ShooterControl::Fire()
 {
 	Robot::shooterwheels->Enable();
-    Robot::shooterlever->SetNeutral();
     Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelShootSpeed);
     firing = true;
 }

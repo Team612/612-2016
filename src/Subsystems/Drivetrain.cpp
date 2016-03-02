@@ -114,8 +114,8 @@ double Drivetrain::GetEncoderDistance()
 
 	SmartDashboard::PutNumber("Current Encoder Value", encoder->Get());
 	SmartDashboard::PutNumber("Current Encoder2 Value", encoder2->Get());
-	std::printf("Current Encoder Value: %f\n", encoder->Get());
-	std::printf("Current Encoder2 Value: %f\n", encoder2->Get());
+	std::printf("Current Encoder Value: %i\n", encoder->Get());
+	std::printf("Current Encoder2 Value: %i\n", encoder2->Get());
 }
 
 double Drivetrain::GetEncoder2Distance()
@@ -140,6 +140,10 @@ std::shared_ptr<Talon> Drivetrain::GetTalons(int id)
 				break;
 		case 4: return RobotMap::drivetrainTalon4;
 				break;
+		default:
+			printf("Talon ID out of range in Drivetrain::GetTalons");
+			return 0;
+			break;
 	}
 }
 /*void Drivetrain::SetFlip(bool flipping) {

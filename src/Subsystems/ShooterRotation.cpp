@@ -2,7 +2,7 @@
 #include "RobotMap.h"
 #include "Commands/Shooter/ShooterJoystick.h"
 
-ShooterRotation::ShooterRotation() : PIDSubsystem("ShooterRotation", 0.01, 0.0001, 0.005)
+ShooterRotation::ShooterRotation() : PIDSubsystem("ShooterRotation", 15, 10, 10)
 {
 	RotateMotor = RobotMap::shooterRotateMotor;
 	GetPIDController()->SetOutputRange(-1.0, 1.0);
@@ -46,6 +46,14 @@ void ShooterRotation::IncrementAngle(double inc)
 {
 	double newAngle = pos + inc;
 	SetAngle(newAngle);
+}
+
+void ShooterRotation::SetPIDEnabled(bool enabled)
+{
+	if(enabled)
+		GetPIDController()->Enable();
+	else
+		GetPIDController()->Disable();
 }
 
 void ShooterRotation::InitDefaultCommand()

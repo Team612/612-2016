@@ -1,5 +1,6 @@
 #include "ShooterLever.h"
 #include "RobotMap.h"
+#include <Commands/Shooter/FireShooter.h>
 
 ShooterLever::ShooterLever() :
 		Subsystem("ShooterLever")
@@ -7,6 +8,7 @@ ShooterLever::ShooterLever() :
 	LeverServo = RobotMap::shooterLeverServo1;
 	irsensor = RobotMap::shooterLeverDetect;
 	storedposition = 0.0f;
+	CanShoot = false;
 }
 
 void ShooterLever::InitDefaultCommand()
@@ -14,6 +16,7 @@ void ShooterLever::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 	//SetDefaultCommand(new SetServoPosition(ShooterServoPosition::Neutral));
+	SetDefaultCommand(new FireShooter(ShooterServoPosition::Neutral));
 }
 
 // Put methods for controlling this subsystem
@@ -31,6 +34,7 @@ void ShooterLever::SetPosition(ShooterServoPosition position)
 			break;
 		case Push:
 			SetPush();
+			CanShoot = false;
 			break;
 		default:
 			printf("Trying to set shooter lever servo position to an invalid or not defined value!");
@@ -61,7 +65,12 @@ void ShooterLever::SetNeutral()
 
 void ShooterLever::SetPush()
 {
-    this->SetPosition(this->PUSH_POS);
+	if(CanShoot)
+	{
+		this->SetPosition(this->PUSH_POS);
+	}
+	else
+		printf("Tried to shoot but not up to speed");
 }
 
 float ShooterLever::GetPosition()

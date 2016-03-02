@@ -18,13 +18,15 @@ class ShooterLever: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-    const float CLAMP_POS = 0.0f;
+    const float CLAMP_POS = 1.0f;
     const float NEUTRAL_POS = 0.5f;
-    const float PUSH_POS = 1.0f;
+    const float PUSH_POS = 0.0f;
     float storedposition;
 public:
 	std::shared_ptr<Servo> LeverServo;
 	std::shared_ptr<AnalogInput> irsensor;
+
+	bool CanShoot;
 
 	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterLever();
