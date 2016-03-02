@@ -85,7 +85,7 @@ void Robot::AutonomousInit()
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
 
-	shooterrotation->SetAngle(3);
+	shooterrotation->SetAngle(30);
 }
 
 void Robot::AutonomousPeriodic()
