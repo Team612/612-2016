@@ -16,6 +16,7 @@
 #include "Commands/Arm/ArmMove.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
+#include "Commands/Drive/DriveDistance.h"
 #include <SmartDashboard/SmartDashboard.h>
 
 
@@ -47,6 +48,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
+	SmartDashboard::PutData("DriveDistance", new DriveDistance(3));
 
 
 	chooser.reset(new SendableChooser());
@@ -94,18 +96,14 @@ void Robot::AutonomousPeriodic()
 }
 
 void Robot::TeleopInit()
-{
-	// This makes sure that the autonomous stops running when
-	// teleop starts running. If you want the autonomous to
-	// continue until interrupted by another command, remove
-	// these lines or comment it out.
-	if (autonomousCommand.get() != nullptr)
+{if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
 	drivejoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
 	shifter->Set(Shifter::LOW);
+
 }
 
 void Robot::TeleopPeriodic()
