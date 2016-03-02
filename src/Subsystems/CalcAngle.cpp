@@ -4,7 +4,13 @@
 CalcAngle::CalcAngle() :
 		Subsystem("ExampleSubsystem")
 {
-
+	test = 0;
+	angle = 0;
+	//calc angular velocity per second (rpm/60)
+	//convert to meters per minute
+	//convert to meters per second
+	wheel_rps = wheel_rpm/60;
+	projectile_speed = wheel_rps * M_PI * 0.123825; //projectile speed = wheel_rps*pi*diameter of wheel
 }
 
 void CalcAngle::InitDefaultCommand()

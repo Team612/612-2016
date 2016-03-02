@@ -9,8 +9,10 @@
 class CalcAngle: public Subsystem
 {
 private:
-	const int projectile_speed = 0; //TODO find actual value (m/s)
-	const int height_of_goal = 2.3114; //TODO find this in the manual (m)
+	double projectile_speed; //TODO find actual value (m/s)
+	const double height_of_goal = 2.3114;
+	double wheel_rpm = 0; //TODO find
+	double wheel_rps = 0;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	double angle;
