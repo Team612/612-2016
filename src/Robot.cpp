@@ -98,9 +98,10 @@ void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 }
-
+//#420blazeitayylmaocantstumpthetrump
 void Robot::TeleopInit()
-{if (autonomousCommand.get() != nullptr)
+{
+    if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
 	shooterrotation->SetPIDEnabled(false);
