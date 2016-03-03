@@ -56,8 +56,8 @@ bool ShooterWheels::UpToSpeed()
         this->leftLastErr = this->wheelControllerLeft->GetAvgError();
         this->rightLastErr = this->wheelControllerRight->GetAvgError();
     }
-    std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError());//, this->wheelControllerLeft->GetAvgError());
-    std::printf("Right: %f %f\n", this->wheelControllerRight->GetError());//, this->wheelControllerRight->GetAvgError());
+    std::printf("Left: %f\n", this->wheelControllerLeft->GetError());
+    std::printf("Right: %f\n", this->wheelControllerRight->GetError());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
 
