@@ -1,20 +1,21 @@
-#ifndef FireShooter_H
-#define FireShooter_H
+#ifndef FIRESHOOTER_H
+#define FIRESHOOTER_H
 
-#include "Commands/Command.h"
-#include "WPILib.h"
+#include <Commands/Subsystem.h>
+#include <WPILib.h>
+#include "Robot.h"
 
 class FireShooter: public Command
 {
-private:
-    bool fired;
 public:
-	FireShooter();
+	FireShooter(ShooterServoPosition position);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	ShooterServoPosition position;
 };
 
 #endif

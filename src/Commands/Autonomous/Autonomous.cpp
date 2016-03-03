@@ -10,14 +10,14 @@
 
 #include "Autonomous.h"
 #include "AutoBreach.h"
-#include "../ArmToPosition.h"
-#include "Robot.h"
+#include "../Arm/ArmToPosition.h"
 
 Autonomous::Autonomous(Robot::Defense defense)
 {
 	AddSequential(new ArmToPosition(0));
 	AddSequential(new AutoBreach(defense)); //change this before every match
 	AddSequential(new DriveSet(0.5f, 0.5f));
+
 	//TODO AddSequential(new AutoAlign(FindTarget::RIGHT));
 	/*
 	 * When we have the Jetson machine learning running, we'll have a command that reads values from the Jetson to the roboRIO.

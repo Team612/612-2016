@@ -21,11 +21,11 @@ void ArmJoystick::Execute()
 
 	if (dpadValue == 0)
 	{
-		Robot::arm->Set(1);
+		Robot::arm->SetArmSpeed(1);
 	}
 	else if (dpadValue == 4)
 	{
-		Robot::arm->Set(-1);
+		Robot::arm->SetArmSpeed(-1);
 	}
 
 	//Robot::arm->SetArm(Robot::oi->getDriver()->GetPOV(6));

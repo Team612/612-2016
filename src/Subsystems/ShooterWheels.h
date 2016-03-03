@@ -13,7 +13,7 @@ private:
     // PID values
     const float kP = 0.1f;
     const float kI = 0.0f;
-    const float kD = 0.01f;
+    const float kD = 0.0f;
     const float kTol = 0.05f;  // tolerance (within kTol * output)
 	std::shared_ptr<CANTalon> CANTalonLeft;
 	std::shared_ptr<CANTalon> CANTalonRight;
@@ -32,7 +32,8 @@ public:
 	float GetRightWheelSpeed();
 	bool UpToSpeed();
 	void SetWheelSpeed(float speed);
-
+	void Disable();
+	void Enable();
 	void InitDefaultCommand();
 };
 

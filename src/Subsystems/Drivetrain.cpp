@@ -140,6 +140,10 @@ std::shared_ptr<Talon> Drivetrain::GetTalons(int id)
 				break;
 		case 4: return RobotMap::drivetrainTalon4;
 				break;
+		default:
+			printf("Talon ID out of range in Drivetrain::GetTalons");
+			return 0;
+			break;
 	}
 }
 /*void Drivetrain::SetFlip(bool flipping) {

@@ -1,44 +1,39 @@
 #include "FireShooter.h"
-#include "Robot.h"
 
-FireShooter::FireShooter()
+FireShooter::FireShooter(ShooterServoPosition pos)
 {
-
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-    Requires(Robot::shooterwheels.get());
-    Requires(Robot::shooterlever.get());
-    fired = false;
+    //Requires(Robot::shooterlever.get());
+    // TODO: These values need to be tested: 0 for clamp, .5 for neutral, 1 for push.
+    this->position = pos;
 }
 
 // Called just before this Command runs the first time
 void FireShooter::Initialize()
 {
-	std::printf("FIRESHOOTER\n");
-	Robot::shooterwheels->SetWheelSpeed(-RobotMap::flywheelShootSpeed);
-    Robot::shooterlever->SetClamp();
+  /* TODO: Fix the following code.
+   * LeverServo1 is the object, but it is not necessary to call it here.
+   * The ShooterLever subsystem provides the SetServoAngle(angle)
+   * method.
+   */
+	Robot::shooterlever.get()->SetPosition(position);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void FireShooter::Execute()
 {
-    if(Robot::shooterwheels->UpToSpeed())
-    {
-        Robot::shooterlever->SetPush();
-        this->fired = true;
-    }
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool FireShooter::IsFinished()
 {
-	return this->fired;
+	return true;
 }
 
 // Called once after isFinished returns true
 void FireShooter::End()
 {
-	Robot::shooterwheels->SetWheelSpeed(0.0f);
+
 }
 
 // Called when another command which requires one or more of the same
