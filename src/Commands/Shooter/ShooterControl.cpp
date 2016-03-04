@@ -13,6 +13,7 @@ ShooterControl::ShooterControl()
 // Called just before this Command runs the first time
 void ShooterControl::Initialize()
 {
+	Robot::shooterwheels->Enable();
 	Robot::shooterwheels->SetWheelSpeed(0.0f);
 }
 

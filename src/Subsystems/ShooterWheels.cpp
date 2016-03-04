@@ -8,6 +8,7 @@ ShooterWheels::ShooterWheels() :
 	CANTalonLeft = RobotMap::leftFlywheel;
 //	CANTalonRight = RobotMap::rightFlywheel;
 	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
+	this->hallCounterLeft->Reset();
 	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
 	this->wheelControllerLeft->SetTolerance(this->kTol);
 	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
@@ -28,12 +29,15 @@ void ShooterWheels::InitDefaultCommand()
 
 void ShooterWheels::SetWheelSpeed(float speed)
 {
-    this->wheelControllerLeft->Enable();
-    this->wheelControllerLeft->SetOutputRange(-1.00f, 1.00f);
-    this->wheelControllerLeft->SetSetpoint(speed);
-//    this->wheelControllerRight->Enable();
-//    this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
-//    this->wheelControllerRight->SetSetpoint(speed);
+	if(!this->enabled)
+	{
+		Enable();
+		printf("Enabling shooter wheel PID implicitly\n");
+	}
+		this->wheelControllerLeft->SetSetpoint(speed);
+	//    this->wheelControllerRight->Enable();
+	//    this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
+	//    this->wheelControllerRight->SetSetpoint(speed);
 }
 
 float ShooterWheels::GetLeftWheelSpeed()
@@ -65,6 +69,8 @@ bool ShooterWheels::UpToSpeed()
 
 void ShooterWheels::Disable()
 {
+	if(enabled)
+	{
 	this->wheelControllerLeft->Disable();
 //	this->wheelControllerRight->Disable();
 	this->CANTalonLeft->Disable();
@@ -73,15 +79,22 @@ void ShooterWheels::Disable()
 //	this->CANTalonRight->SetControlMode(CANSpeedController::kVoltage);
 	this->CANTalonLeft->Set(0.0f);
 //	this->CANTalonRight->Set(0.0f);
-
+	enabled = false;
+}
 }
 
 void ShooterWheels::Enable()
 {
-	this->CANTalonLeft->Enable();
-//	this->CANTalonRight->Enable();
-	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
-//	this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
-	this->wheelControllerLeft->Enable();
-//	this->wheelControllerRight->Enable();
+	if(!enabled)
+	{
+		this->CANTalonLeft->Enable();
+	//	this->CANTalonRight->Enable();
+		this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
+	//	this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
+		this->wheelControllerLeft->SetOutputRange(-1.00f, 1.00f);
+	//	this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
+		this->wheelControllerLeft->Enable();
+	//	this->wheelControllerRight->Enable();
+		enabled = true;
+	}
 }

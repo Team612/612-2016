@@ -24,6 +24,7 @@ private:
 
 	float leftLastErr = 999.9f;
 	float rightLastErr = 999.9f;
+	bool enabled = false;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:

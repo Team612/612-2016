@@ -2,7 +2,7 @@
 
 FireShooter::FireShooter(ShooterServoPosition pos)
 {
-    //Requires(Robot::shooterlever.get());
+    Requires(Robot::shooterlever.get());
     // TODO: These values need to be tested: 0 for clamp, .5 for neutral, 1 for push.
     this->position = pos;
 }
@@ -15,7 +15,7 @@ void FireShooter::Initialize()
    * The ShooterLever subsystem provides the SetServoAngle(angle)
    * method.
    */
-	Robot::shooterlever.get()->SetPosition(position);
+	Robot::shooterlever->SetPosition(position);
 }
 
 // Called repeatedly when this Command is scheduled to run
