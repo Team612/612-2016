@@ -16,11 +16,11 @@ private:
     const float kD = 0.0f;
     const float kTol = 0.05f;  // tolerance (within kTol * output)
 	std::shared_ptr<CANTalon> CANTalonLeft;
-	std::shared_ptr<CANTalon> CANTalonRight;
+//	std::shared_ptr<CANTalon> CANTalonRight;
 	std::shared_ptr<PIDEdgeCounter> hallCounterLeft;
-	std::shared_ptr<PIDEdgeCounter> hallCounterRight;
+//	std::shared_ptr<PIDEdgeCounter> hallCounterRight;
 	std::shared_ptr<PIDController> wheelControllerLeft;
-	std::shared_ptr<PIDController> wheelControllerRight;
+//	std::shared_ptr<PIDController> wheelControllerRight;
 
 	float leftLastErr = 999.9f;
 	float rightLastErr = 999.9f;
@@ -29,7 +29,7 @@ private:
 public:
 	ShooterWheels();
 	float GetLeftWheelSpeed();
-	float GetRightWheelSpeed();
+//	float GetRightWheelSpeed();
 	bool UpToSpeed();
 	void SetWheelSpeed(float speed);
 	void Disable();

@@ -42,11 +42,11 @@ float ShooterWheels::GetLeftWheelSpeed()
     return this->hallCounterLeft->Get();
 }
 
-float ShooterWheels::GetRightWheelSpeed()
-{
-//    return this->wheelControllerRight->Get();
-    return this->hallCounterRight->Get();
-}
+//float ShooterWheels::GetRightWheelSpeed()
+//{
+////    return this->wheelControllerRight->Get();
+//    return this->hallCounterRight->Get();
+//}
 
 bool ShooterWheels::UpToSpeed()
 {
