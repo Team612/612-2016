@@ -38,12 +38,14 @@ void ShooterWheels::SetWheelSpeed(float speed)
 
 float ShooterWheels::GetLeftWheelSpeed()
 {
-	return this->wheelControllerLeft->Get();
+//	return this->wheelControllerLeft->Get();
+    return this->hallCounterLeft->Get();
 }
 
 float ShooterWheels::GetRightWheelSpeed()
 {
-    return this->wheelControllerRight->Get();
+//    return this->wheelControllerRight->Get();
+    return this->hallCounterRight->Get();
 }
 
 bool ShooterWheels::UpToSpeed()
