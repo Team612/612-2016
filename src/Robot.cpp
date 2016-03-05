@@ -75,7 +75,7 @@ void Robot::RobotInit()
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
 	drivejoystick.reset(new DriveJoystick());
-	armjoystick.reset(new ArmJoystick());
+	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
 
@@ -95,10 +95,11 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-	autonomousCommand.reset((Command *) chooser->GetSelected());
+	shifter->Set(Shifter::LOW);
+	//autonomousCommand.reset((Command *) chooser->GetSelected());
 //
-	if (autonomousCommand.get() != nullptr)
-		autonomousCommand->Start();
+	//if (autonomousCommand.get() != nullptr)
+		//autonomousCommand->Start();
 
 	//shooterrotation->SetPIDEnabled(true);
 	//shooterrotation->SetAngle(30);
@@ -127,11 +128,10 @@ void Robot::TeleopInit()
 	shooterrotation->SetPIDEnabled(false);
 
 	drivejoystick->Start();
-	armjoystick->Start();
+	//armjoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
 	shifter->Set(Shifter::LOW);
-
 }
 
 void Robot::TeleopPeriodic()
