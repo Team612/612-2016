@@ -107,9 +107,6 @@ void RobotMap::init()
 	drivetrainEncoder2.reset(new Encoder(2, 3));
 	lw->AddActuator("drivetrain", "QuadEncoder 2", drivetrainEncoder2);
 
-	//USB
-	cam1.reset(new USBCamera("Drive Camera", false));
-
 	/*
 	 * Hall effects 4 and 5
 	 * Shooter encoder talon 1

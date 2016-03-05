@@ -78,6 +78,9 @@ void Robot::RobotInit()
 	armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
+
+	server->SetQuality(50);
+	server->StartAutomaticCapture("cam1");
 }
 
 void Robot::DisabledInit()
@@ -99,11 +102,21 @@ void Robot::AutonomousInit()
 
 	//shooterrotation->SetPIDEnabled(true);
 	//shooterrotation->SetAngle(30);
+	time->Start();
 }
 
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	if(time->Get() < 3000)
+	{
+		Robot::drivetrain->SetTankDrive(0.7f, 0.7f);
+	}
+	else
+	{
+		Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
+		//time->Reset();
+	}
 }
 
 void Robot::TeleopInit()
@@ -112,8 +125,6 @@ void Robot::TeleopInit()
 		autonomousCommand->Cancel();
 
 	shooterrotation->SetPIDEnabled(false);
-
-	CameraServer::GetInstance()->StartAutomaticCapture(RobotMap::cam1);
 
 	drivejoystick->Start();
 	armjoystick->Start();
