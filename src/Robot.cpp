@@ -11,6 +11,8 @@
 #include <Commands/Shooter/ShooterControl.h>
 #include "Robot.h"
 
+#include "CameraServer.h"
+
 #include "Commands/Arm/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Arm/ArmJoystick.h"
@@ -105,10 +107,13 @@ void Robot::AutonomousPeriodic()
 }
 
 void Robot::TeleopInit()
-{if (autonomousCommand.get() != nullptr)
+{
+	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
 	shooterrotation->SetPIDEnabled(false);
+
+	CameraServer::StartAutomaticCapture(RobotMap::cam1);
 
 
 	drivejoystick->Start();

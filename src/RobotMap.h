@@ -39,6 +39,7 @@ public:
 	static std::shared_ptr<CANTalon> rightFlywheel;
 	static std::shared_ptr<Encoder> drivetrainEncoder;
 	static std::shared_ptr<Encoder> drivetrainEncoder2;
+	static std::shared_ptr<USBCamera> cam1;
 	static const int leftFlywheelHall = 6;
 	static const int rightFlywheelHall = 7;
 	static constexpr float flywheelShootSpeed = 40.0f;
@@ -47,5 +48,7 @@ public:
 
 	static void init();
 	//static bool isRobotReversed;
+
+	static std::shared_ptr<USBCamera> GetCam();
 };
 #endif
