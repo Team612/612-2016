@@ -10,9 +10,7 @@ Arm::Arm() :
 	rotationDetect = RobotMap::armRotationDetect;
 	GetPIDController()->SetOutputRange(-1.0f, 1.0f);
 	GetPIDController()->SetInputRange(MIN_VOLTS, MAX_VOLTS);
-
 	GetPIDController()->SetSetpoint(MIN_VOLTS);
-	Enable();
 }
 
 void Arm::InitDefaultCommand()
@@ -54,19 +52,16 @@ void Arm::SetArmSpeed(double speed)
  */
 void Arm::Enable()
 {
-	adjust->Enable();
-	adjust->SetControlMode(CANSpeedController::kPercentVbus);
+	GetPIDController()->Enable();
 }
 
 void Arm::Disable()
 {
-	adjust->Disable();
-	adjust->SetControlMode(CANSpeedController::kVoltage);
-	adjust->Set(0.0f);
+	GetPIDController()->Disable();
 }
 
 void Arm::autoDisable()
 {
-	if(OnTarget())
+	if(GetPIDController()->OnTarget())
 		Disable();
 }

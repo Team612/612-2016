@@ -13,7 +13,7 @@
 
 #include "Commands/Arm/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
-#include "Commands/Arm/ArmMove.h"
+#include "Commands/Arm/ArmJoystick.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveDistance.h"
@@ -73,6 +73,7 @@ void Robot::RobotInit()
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
 	drivejoystick.reset(new DriveJoystick());
+	armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
 }
@@ -111,9 +112,11 @@ void Robot::TeleopInit()
 
 
 	drivejoystick->Start();
+	armjoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
 	shifter->Set(Shifter::LOW);
+
 }
 
 void Robot::TeleopPeriodic()
