@@ -6,7 +6,7 @@
 Arm::Arm() :
 		PIDSubsystem("Arm", 1.0, 0.0, 0,0) //TODO: Tuning!
 {
-	adjust = RobotMap::armAdjust;
+	adjust = RobotMap::armMotor;
 	rotationDetect = RobotMap::armRotationDetect;
 	GetPIDController()->SetOutputRange(-1.0f, 1.0f);
 	GetPIDController()->SetInputRange(MIN_VOLTS, MAX_VOLTS);

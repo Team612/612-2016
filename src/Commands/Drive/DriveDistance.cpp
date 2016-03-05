@@ -6,7 +6,7 @@ DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 0
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::drivetrain.get());
-	RobotMap::drivetrainEncoder->Reset();
+	RobotMap::driveEncoderLeft->Reset();
 	this->end_distance = end_distance;
 
 	GetPIDController()->SetContinuous(true); //?
@@ -39,7 +39,7 @@ bool DriveDistance::IsFinished()
 // Called once after isFinished returns true
 void DriveDistance::End()
 {
-	RobotMap::drivetrainEncoder->Reset();
+	RobotMap::driveEncoderLeft->Reset();
 	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
 
 	GetPIDController()->Disable();

@@ -6,8 +6,8 @@
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")
 {
-	CANTalonLeft = RobotMap::leftFlywheel;
-	CANTalonRight = RobotMap::rightFlywheel;
+	CANTalonLeft = RobotMap::leftFlywheelMotor;
+	CANTalonRight = RobotMap::rightFlywheelMotor;
 	shootertable = new NetworkTables();
 	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
 	this->hallCounterLeft->Reset();

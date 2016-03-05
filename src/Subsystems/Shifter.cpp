@@ -4,8 +4,8 @@
 Shifter::Shifter() :
 		Subsystem("Shifter")
 {
-	ShifterServo1 = RobotMap::shifterServo1;
-	ShifterServo2 = RobotMap::shifterServo2;
+	ShifterServo1 = RobotMap::shifterLeft;
+	ShifterServo2 = RobotMap::shifterRight;
 }
 
 void Shifter::InitDefaultCommand()

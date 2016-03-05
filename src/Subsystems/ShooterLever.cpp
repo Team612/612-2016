@@ -5,7 +5,7 @@
 ShooterLever::ShooterLever() :
 		Subsystem("ShooterLever")
 {
-	LeverServo = RobotMap::shooterLeverServo1;
+	LeverServo = RobotMap::shooterLever;
 	irsensor = RobotMap::shooterLeverDetect;
 	storedposition = 0.0f;
 	CanShoot = false;

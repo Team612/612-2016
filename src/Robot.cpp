@@ -109,7 +109,7 @@ void Robot::AutonomousInit()
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
-	if(time->Get() < 3000)
+	if(time->Get() < 8)
 	{
 		Robot::drivetrain->SetTankDrive(0.7f, 0.7f);
 	}
@@ -142,9 +142,9 @@ void Robot::TeleopPeriodic()
 	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
 
 	//Encoder
-	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::drivetrainEncoder->Get());
+	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderLeft->Get());
 	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
-	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::drivetrainEncoder2->Get());
+	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderRight->Get());
 	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
 
 	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
