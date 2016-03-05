@@ -55,17 +55,7 @@ float ShooterWheels::GetRightWheelSpeed()
 bool ShooterWheels::UpToSpeed()
 {
 	shootertable->AddValue(this->wheelControllerLeft->GetError());
-    if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetError()) > 1.0f) // || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
-    {
-//        std::printf("Left: %f %f\n", this->wheelControllerLeft->GetAvgError(), this->wheelControllerLeft->GetSetpoint());
-//        std::printf("Right: %f %f\n", this->wheelControllerRight->GetAvgError(), this->wheelControllerRight->GetSetpoint());
-//        std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
-        this->leftLastErr = this->wheelControllerLeft->GetAvgError();
-//        this->rightLastErr = this->wheelControllerRight->GetAvgError();
-    }
-//    std::printf("Left: %f\n", this->wheelControllerLeft->GetError());
-//    std::printf("Right: %f\n", this->wheelControllerRight->GetError());
-    return this->wheelControllerLeft->OnTarget(); // && this->wheelControllerRight->OnTarget();
+    return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
 
 void ShooterWheels::Disable()
