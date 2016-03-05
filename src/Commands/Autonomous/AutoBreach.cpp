@@ -44,7 +44,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				{
 					Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 					time->Stop();
-					time->Reset();
+					//time->Reset();
 				}
 				//reset arm
 				AddSequential(new ArmToPosition(all_in));
@@ -78,7 +78,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				{
 					Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 					time->Stop();
-					time->Reset();
+					//time->Reset();
 				}
 				//reset arm
 			break;
@@ -110,7 +110,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 				{
 					Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 					time->Stop();
-					time->Reset();
+					//time->Reset();
 				}
 				//reset arm
 				AddSequential(new ArmToPosition(all_in));
@@ -125,7 +125,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			{
 				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 				time->Stop();
-				time->Reset();
+				//time->Reset();
 			}
 			break;
 		case Robot::Defense::MOAT:
@@ -138,7 +138,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			{
 				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 				time->Stop();
-				time->Reset();
+				//time->Reset();
 			}
 			break;
 		case Robot::Defense::RAMPARTS:
@@ -151,7 +151,7 @@ AutoBreach::AutoBreach(Robot::Defense defense)
 			{
 				Robot::drivetrain->SetArcadeDrive(0.0f, 0.0f);
 				time->Stop();
-				time->Reset();
+				//time->Reset();
 			}
 			break;
 		case Robot::Defense::ROCK_WALL:

@@ -37,6 +37,8 @@ void ShooterControl::Execute()
         Stop();
     }
 
+    printf("Shooter\n");
+
     if(fired)
     {
         if(Robot::shooterlever->AtSetPosition())
@@ -65,12 +67,14 @@ void ShooterControl::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterControl::IsFinished()
 {
+	printf("Shooter IsFinished\n");
 	return false;
 }
 
 // Called once after isFinished returns true
 void ShooterControl::End()
 {
+	printf("Ending");
 	Robot::shooterwheels->Disable();
 	Stop();
 }
@@ -79,6 +83,7 @@ void ShooterControl::End()
 // subsystems is scheduled to run
 void ShooterControl::Interrupted()
 {
+	printf("Interrupted");
     End();
 }
 

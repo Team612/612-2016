@@ -32,6 +32,7 @@ bool FireShooter::IsFinished()
 		return true;
 	if(Robot::shooterlever->AtSetPosition())
 		count++;
+	printf("Count: %d", count);
 	return count >= 30;
 }
 
@@ -45,5 +46,4 @@ void FireShooter::End()
 // subsystems is scheduled to run
 void FireShooter::Interrupted()
 {
-
 }

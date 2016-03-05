@@ -130,8 +130,24 @@ void Robot::TeleopPeriodic()
 	SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
 
 	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(5));
-
-	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(3));
+#ifdef SHOOTERBACKUP
+    auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
+    if(gunner > TOLERANCE)
+    {
+    	printf("Fire\n");
+        ;
+    }
+    else if (gunner < -TOLERANCE)
+    {
+    	printf("Intake\n");
+        Intake();
+    }
+    else
+    {
+    	//printf("Stop\n");p
+        Stop();
+    }
+	#endif
 }
 
 void Robot::TestPeriodic()

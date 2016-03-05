@@ -22,7 +22,7 @@ void ShooterJoystick::Execute()
 	if(gunner < TOLERANCE && gunner > -TOLERANCE)
 		gunner = 0;
 	Robot::shooterrotation->SetSpeed(gunner);
-	printf("Gunner: %f \n", gunner);
+	//printf("Gunner: %f \n", gunner);
 }
 
 // Make this return true when this Command no longer needs to run execute()

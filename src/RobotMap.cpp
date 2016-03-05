@@ -54,7 +54,7 @@ void RobotMap::init()
 		lw->AddActuator("Shifter", "Left Shifter Servo", shifterServo1);
 
 	drivetrainTalon1.reset(new Talon(4)); //front left
-	lw->AddActuator("Drivetrain", "Front Left (1)", drivetrainTalon1);
+	lw->AddActuator("Drivetrain", "Front Left (1)", drivetrainTalon1);+
 
 	drivetrainTalon2.reset(new Talon(5)); //rear left
 	lw->AddActuator("Drivetrain", "Rear Left (2)", drivetrainTalon2);
