@@ -36,6 +36,17 @@ void ShooterWheels::SetWheelSpeed(float speed)
 		Enable();
 		printf("Enabling shooter wheel PID implicitly\n");
 	}
+	if(speed > 0)
+	{
+		this->CANTalonLeft->SetInverted(true);
+		this->CANTalonRight->SetInverted(false);
+	}
+	else
+	{
+		this->CANTalonLeft->SetInverted(false);
+		this->CANTalonRight->SetInverted(true);
+		speed = -speed;
+	}
 	this->wheelControllerLeft->SetSetpoint(speed);
 	this->wheelControllerRight->SetSetpoint(speed);
 }
@@ -54,18 +65,8 @@ float ShooterWheels::GetRightWheelSpeed()
 
 bool ShooterWheels::UpToSpeed()
 {
-	shootertable->AddValue(this->wheelControllerLeft->GetError());
-    if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetError()) > 1.0f) // || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
-    {
-//        std::printf("Left: %f %f\n", this->wheelControllerLeft->GetAvgError(), this->wheelControllerLeft->GetSetpoint());
-//        std::printf("Right: %f %f\n", this->wheelControllerRight->GetAvgError(), this->wheelControllerRight->GetSetpoint());
-//        std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
-        this->leftLastErr = this->wheelControllerLeft->GetAvgError();
-//        this->rightLastErr = this->wheelControllerRight->GetAvgError();
-    }
-//    std::printf("Left: %f\n", this->wheelControllerLeft->GetError());
-//    std::printf("Right: %f\n", this->wheelControllerRight->GetError());
-    return this->wheelControllerLeft->OnTarget(); // && this->wheelControllerRight->OnTarget();
+	shootertable->AddValue(this->hallCounterLeft->Get());
+    return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
 
 void ShooterWheels::Disable()
@@ -80,8 +81,8 @@ void ShooterWheels::Disable()
 		this->CANTalonRight->SetControlMode(CANSpeedController::kVoltage);
 		this->CANTalonLeft->Set(0.0f);
 		this->CANTalonRight->Set(0.0f);
-		enabled = false;
 	}
+	enabled = false;
 }
 
 void ShooterWheels::Enable()
@@ -96,6 +97,6 @@ void ShooterWheels::Enable()
 		this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
 		this->wheelControllerLeft->Enable();
 		this->wheelControllerRight->Enable();
-		enabled = true;
 	}
+	enabled = true;
 }

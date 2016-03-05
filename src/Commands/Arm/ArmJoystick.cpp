@@ -16,7 +16,6 @@ void ArmJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmJoystick::Execute()
 {
-
 	dpadValue = Robot::oi->getDriver()->GetPOV(6);
 
 	if (dpadValue == 0)
@@ -26,6 +25,10 @@ void ArmJoystick::Execute()
 	else if (dpadValue == 4)
 	{
 		Robot::arm->SetArmSpeed(-1);
+	}
+	else if (dpadValue == 6)
+	{
+		Robot::arm->SetArmSpeed(0);
 	}
 
 	//Robot::arm->SetArm(Robot::oi->getDriver()->GetPOV(6));
