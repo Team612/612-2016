@@ -6,6 +6,7 @@
 #include "RobotMap.h"
 #include "HallEffect/PIDEdgeCounter.h"
 #include <PIDController.h>
+#include "HallEffect/NetworkTables.h"
 
 class ShooterWheels: public Subsystem
 {
@@ -24,8 +25,7 @@ private:
 
 	float leftLastErr = 999.9f;
 	float rightLastErr = 999.9f;
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	bool enabled = false;
 public:
 	ShooterWheels();
 	float GetLeftWheelSpeed();
@@ -35,6 +35,7 @@ public:
 	void Disable();
 	void Enable();
 	void InitDefaultCommand();
+	NetworkTables* shootertable;
 };
 
 #endif

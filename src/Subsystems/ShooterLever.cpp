@@ -70,7 +70,8 @@ void ShooterLever::SetPush()
 		this->SetPosition(this->PUSH_POS);
 	}
 	else
-		printf("Tried to shoot but not up to speed");
+		printf("Tried to shoot but not up to speed\n");
+	printf("Tried to set servo to push\n");
 }
 
 float ShooterLever::GetPosition()

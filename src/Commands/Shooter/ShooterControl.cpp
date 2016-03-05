@@ -13,13 +13,14 @@ ShooterControl::ShooterControl()
 // Called just before this Command runs the first time
 void ShooterControl::Initialize()
 {
+	Robot::shooterwheels->Enable();
 	Robot::shooterwheels->SetWheelSpeed(0.0f);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
-    auto gunner = Robot::oi->getGunner()->GetRawAxis(1);
+    auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
     if(gunner > TOLERANCE)
     {
     	printf("Fire\n");

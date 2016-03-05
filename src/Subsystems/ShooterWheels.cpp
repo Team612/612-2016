@@ -7,7 +7,9 @@ ShooterWheels::ShooterWheels() :
 {
 	CANTalonLeft = RobotMap::leftFlywheel;
 	CANTalonRight = RobotMap::rightFlywheel;
+	shootertable = new NetworkTables();
 	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
+	this->hallCounterLeft->Reset();
 	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
 	this->wheelControllerLeft->SetTolerance(this->kTol);
 	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
@@ -16,6 +18,7 @@ ShooterWheels::ShooterWheels() :
 	this->wheelControllerRight.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonRight.get()));
 	this->wheelControllerRight->SetTolerance(this->kTol);
     this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
+
 }
 
 void ShooterWheels::InitDefaultCommand()
@@ -28,58 +31,71 @@ void ShooterWheels::InitDefaultCommand()
 
 void ShooterWheels::SetWheelSpeed(float speed)
 {
-    this->wheelControllerLeft->Enable();
-    this->wheelControllerLeft->SetOutputRange(-1.00f, 1.00f);
-    this->wheelControllerLeft->SetSetpoint(speed);
-    this->wheelControllerRight->Enable();
-    this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
-    this->wheelControllerRight->SetSetpoint(speed);
+	if(!this->enabled)
+	{
+		Enable();
+		printf("Enabling shooter wheel PID implicitly\n");
+	}
+	this->wheelControllerLeft->SetSetpoint(speed);
+	this->wheelControllerRight->SetSetpoint(speed);
 }
 
 float ShooterWheels::GetLeftWheelSpeed()
 {
-	return this->wheelControllerLeft->Get();
+//	return this->wheelControllerLeft->Get();
+    return this->hallCounterLeft->Get();
 }
 
 float ShooterWheels::GetRightWheelSpeed()
 {
-    return this->wheelControllerRight->Get();
+    //return this->wheelControllerRight->Get();
+    return this->hallCounterRight->Get();
 }
 
 bool ShooterWheels::UpToSpeed()
 {
-    if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetAvgError()) < 1.0f || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
+	shootertable->AddValue(this->wheelControllerLeft->GetError());
+    if(std::fabs(this->leftLastErr - this->wheelControllerLeft->GetError()) > 1.0f) // || std::fabs(this->rightLastErr - this->wheelControllerRight->GetAvgError()) < 1.0f)
     {
-        std::printf("Left: %f %f\n", this->wheelControllerLeft->GetAvgError(), this->wheelControllerLeft->GetSetpoint());
-        std::printf("Right: %f %f\n", this->wheelControllerRight->GetAvgError(), this->wheelControllerRight->GetSetpoint());
-        std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
+//        std::printf("Left: %f %f\n", this->wheelControllerLeft->GetAvgError(), this->wheelControllerLeft->GetSetpoint());
+//        std::printf("Right: %f %f\n", this->wheelControllerRight->GetAvgError(), this->wheelControllerRight->GetSetpoint());
+//        std::printf("upToSpeed %i\n", this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget());
         this->leftLastErr = this->wheelControllerLeft->GetAvgError();
-        this->rightLastErr = this->wheelControllerRight->GetAvgError();
+//        this->rightLastErr = this->wheelControllerRight->GetAvgError();
     }
-    std::printf("Left: %f %f\n", this->wheelControllerLeft->GetError());//, this->wheelControllerLeft->GetAvgError());
-    std::printf("Right: %f %f\n", this->wheelControllerRight->GetError());//, this->wheelControllerRight->GetAvgError());
-    return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
+//    std::printf("Left: %f\n", this->wheelControllerLeft->GetError());
+//    std::printf("Right: %f\n", this->wheelControllerRight->GetError());
+    return this->wheelControllerLeft->OnTarget(); // && this->wheelControllerRight->OnTarget();
 }
 
 void ShooterWheels::Disable()
 {
-	this->wheelControllerLeft->Disable();
-	this->wheelControllerRight->Disable();
-	this->CANTalonLeft->Disable();
-	this->CANTalonRight->Disable();
-	this->CANTalonLeft->SetControlMode(CANSpeedController::kVoltage);
-	this->CANTalonRight->SetControlMode(CANSpeedController::kVoltage);
-	this->CANTalonLeft->Set(0.0f);
-	this->CANTalonRight->Set(0.0f);
-
+	if(enabled)
+	{
+		this->wheelControllerLeft->Disable();
+		this->wheelControllerRight->Disable();
+		this->CANTalonLeft->Disable();
+		this->CANTalonRight->Disable();
+		this->CANTalonLeft->SetControlMode(CANSpeedController::kVoltage);
+		this->CANTalonRight->SetControlMode(CANSpeedController::kVoltage);
+		this->CANTalonLeft->Set(0.0f);
+		this->CANTalonRight->Set(0.0f);
+		enabled = false;
+	}
 }
 
 void ShooterWheels::Enable()
 {
-	this->CANTalonLeft->Enable();
-	this->CANTalonRight->Enable();
-	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
-	this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
-	this->wheelControllerLeft->Enable();
-	this->wheelControllerRight->Enable();
+	if(!enabled)
+	{
+		this->CANTalonLeft->Enable();
+		this->CANTalonRight->Enable();
+		this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
+		this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
+		this->wheelControllerLeft->SetOutputRange(-1.00f, 1.00f);
+		this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
+		this->wheelControllerLeft->Enable();
+		this->wheelControllerRight->Enable();
+		enabled = true;
+	}
 }
