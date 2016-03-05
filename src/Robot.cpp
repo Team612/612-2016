@@ -122,9 +122,15 @@ void Robot::TeleopPeriodic()
 
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::drivetrainEncoder->Get());
-	SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
+	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
 	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::drivetrainEncoder2->Get());
-	SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
+	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
+
+	//Ur bad kids    -Nick
+
+	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
+	SmartDashboard::PutNumber("Left Encoder Distance", drivetrain->GetEncoderDistance());
+	SmartDashboard::PutNumber("Right Encoder Distance", drivetrain->GetEncoder2Distance());
 
 	SmartDashboard::PutNumber("Left Hall effect Speed?", Robot::shooterwheels->GetLeftWheelSpeed());
 //	SmartDashboard::PutNumber("Right Hall effect Speed?", Robot::shooterwheels->GetRightWheelSpeed());
