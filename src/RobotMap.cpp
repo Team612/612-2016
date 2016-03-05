@@ -25,7 +25,7 @@ std::shared_ptr<AnalogInput> RobotMap::shooterLeverDetect;
 std::shared_ptr<Servo> RobotMap::shifterServo1;
 std::shared_ptr<Servo> RobotMap::shifterServo2;
 std::shared_ptr<CANTalon> RobotMap::leftFlywheel;
-//std::shared_ptr<CANTalon> RobotMap::rightFlywheel;
+std::shared_ptr<CANTalon> RobotMap::rightFlywheel;
 std::shared_ptr<Encoder> RobotMap::drivetrainEncoder;
 std::shared_ptr<Encoder> RobotMap::drivetrainEncoder2;
 std::shared_ptr<AnalogInput> RobotMap::shooterEncoder;
@@ -79,8 +79,8 @@ void RobotMap::init()
 	leftFlywheel.reset(new CANTalon(4));
 	lw->AddActuator("ShooterWheels", "Flywheel Motor (1)", leftFlywheel);
 
-//    rightFlywheel.reset(new CANTalon(3));
-//	lw->AddActuator("ShooterWheels", "Flywheel Motor (2)", rightFlywheel);
+    rightFlywheel.reset(new CANTalon(3));
+	lw->AddActuator("ShooterWheels", "Flywheel Motor (2)", rightFlywheel);
 
 	 //Analog I/O
 	shooterLeverDetect.reset(new AnalogInput(1));

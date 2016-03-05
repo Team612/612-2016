@@ -20,7 +20,7 @@ void ShooterControl::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
-    auto gunner = Robot::oi->getGunner()->GetRawAxis(1);
+    auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
     if(gunner > TOLERANCE)
     {
     	printf("Fire\n");
