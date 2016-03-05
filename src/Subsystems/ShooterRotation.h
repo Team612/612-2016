@@ -38,6 +38,7 @@ public:
 	float GetSpeed();
 	void SetMode(CANTalon::ControlMode mode);
 	void SetPIDEnabled(bool enabled);
+	void SetPID(double p, double i, double d);
 
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);

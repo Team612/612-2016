@@ -56,6 +56,11 @@ void ShooterRotation::SetPIDEnabled(bool enabled)
 		GetPIDController()->Disable();
 }
 
+void ShooterRotation::SetPID(double p, double i, double d)
+{
+	GetPIDController()->SetPID(p, i, d);
+}
+
 void ShooterRotation::InitDefaultCommand()
 {
 	SetDefaultCommand(new ShooterJoystick());
