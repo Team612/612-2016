@@ -3,18 +3,12 @@
 FireShooter::FireShooter(ShooterServoPosition pos)
 {
     Requires(Robot::shooterlever.get());
-    // TODO: These values need to be tested: 0 for clamp, .5 for neutral, 1 for push.
     this->position = pos;
 }
 
 // Called just before this Command runs the first time
 void FireShooter::Initialize()
 {
-  /* TODO: Fix the following code.
-   * LeverServo1 is the object, but it is not necessary to call it here.
-   * The ShooterLever subsystem provides the SetServoAngle(angle)
-   * method.
-   */
 	Robot::shooterlever->SetPosition(position);
 	count = 0;
 }
