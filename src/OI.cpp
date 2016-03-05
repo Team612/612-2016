@@ -34,7 +34,7 @@ OI::OI()
 	servoClamp->WhenPressed(new FireShooter(ShooterServoPosition::Clamp));
 
 	// TODO: FIX THIS! AT LEAST CLAMP IS REQUIRED
-	/*
+/*
 	servoPush.reset(new JoystickButton(gunner.get(), 5));
 	servoPush->WhileHeld(new SetServoPosition(ShooterServoPosition::Push));
 

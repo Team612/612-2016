@@ -13,7 +13,7 @@
 
 #include "Commands/Arm/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
-#include "Commands/Arm/ArmMove.h"
+#include "Commands/Arm/ArmJoystick.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveDistance.h"
@@ -73,6 +73,7 @@ void Robot::RobotInit()
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
 	drivejoystick.reset(new DriveJoystick());
+	armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
 }
@@ -111,9 +112,11 @@ void Robot::TeleopInit()
 
 
 	drivejoystick->Start();
+	armjoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
 	shifter->Set(Shifter::LOW);
+
 }
 
 void Robot::TeleopPeriodic()
@@ -125,9 +128,13 @@ void Robot::TeleopPeriodic()
 
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::drivetrainEncoder->Get());
-	SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
+	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
 	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::drivetrainEncoder2->Get());
-	SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
+	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
+
+	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
+	SmartDashboard::PutNumber("Left Encoder Distance", drivetrain->GetEncoderDistance());
+	SmartDashboard::PutNumber("Right Encoder Distance", drivetrain->GetEncoder2Distance());
 
 	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(5));
 #ifdef SHOOTERBACKUP
