@@ -18,7 +18,11 @@ void ShooterJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterJoystick::Execute()
 {
-	Robot::shooterrotation->SetSpeed(Robot::oi->getGunner()->GetRawAxis(5));
+	auto gunner = Robot::oi->getGunner()->GetRawAxis(5);
+	if(gunner < TOLERANCE && gunner > -TOLERANCE)
+		gunner = 0;
+	Robot::shooterrotation->SetSpeed(gunner);
+	printf("Gunner: %f \n", gunner);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +34,7 @@ bool ShooterJoystick::IsFinished()
 // Called once after isFinished returns true
 void ShooterJoystick::End()
 {
-
+	Robot::shooterrotation->SetSpeed(0.0f);
 }
 
 // Called when another command which requires one or more of the same

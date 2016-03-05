@@ -36,6 +36,17 @@ void ShooterWheels::SetWheelSpeed(float speed)
 		Enable();
 		printf("Enabling shooter wheel PID implicitly\n");
 	}
+	if(speed > 0)
+	{
+		this->CANTalonLeft->SetInverted(true);
+		this->CANTalonRight->SetInverted(false);
+	}
+	else
+	{
+		this->CANTalonLeft->SetInverted(false);
+		this->CANTalonRight->SetInverted(true);
+		speed = -speed;
+	}
 	this->wheelControllerLeft->SetSetpoint(speed);
 	this->wheelControllerRight->SetSetpoint(speed);
 }
@@ -54,7 +65,7 @@ float ShooterWheels::GetRightWheelSpeed()
 
 bool ShooterWheels::UpToSpeed()
 {
-	shootertable->AddValue(this->wheelControllerLeft->GetError());
+	shootertable->AddValue(this->hallCounterLeft->Get());
     return this->wheelControllerLeft->OnTarget() && this->wheelControllerRight->OnTarget();
 }
 
@@ -70,8 +81,8 @@ void ShooterWheels::Disable()
 		this->CANTalonRight->SetControlMode(CANSpeedController::kVoltage);
 		this->CANTalonLeft->Set(0.0f);
 		this->CANTalonRight->Set(0.0f);
-		enabled = false;
 	}
+	enabled = false;
 }
 
 void ShooterWheels::Enable()
@@ -86,6 +97,6 @@ void ShooterWheels::Enable()
 		this->wheelControllerRight->SetOutputRange(-1.00f, 1.00f);
 		this->wheelControllerLeft->Enable();
 		this->wheelControllerRight->Enable();
-		enabled = true;
 	}
+	enabled = true;
 }

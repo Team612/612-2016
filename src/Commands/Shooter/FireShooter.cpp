@@ -16,6 +16,7 @@ void FireShooter::Initialize()
    * method.
    */
 	Robot::shooterlever->SetPosition(position);
+	count = 0;
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -27,7 +28,11 @@ void FireShooter::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool FireShooter::IsFinished()
 {
-	return true;
+	if(position == ShooterServoPosition::Neutral)
+		return true;
+	if(Robot::shooterlever->AtSetPosition())
+		count++;
+	return count >= 30;
 }
 
 // Called once after isFinished returns true

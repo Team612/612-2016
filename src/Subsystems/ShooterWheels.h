@@ -12,9 +12,9 @@ class ShooterWheels: public Subsystem
 {
 private:
     // PID values
-    const float kP = 0.1f;
-    const float kI = 0.0f;
-    const float kD = 0.0f;
+    const float kP = 1.5f;
+    const float kI = .4f;
+    const float kD = .4f;
     const float kTol = 0.05f;  // tolerance (within kTol * output)
 	std::shared_ptr<CANTalon> CANTalonLeft;
 	std::shared_ptr<CANTalon> CANTalonRight;
@@ -25,7 +25,6 @@ private:
 
 	float leftLastErr = 999.9f;
 	float rightLastErr = 999.9f;
-	bool enabled = false;
 public:
 	ShooterWheels();
 	float GetLeftWheelSpeed();
@@ -36,6 +35,7 @@ public:
 	void Enable();
 	void InitDefaultCommand();
 	NetworkTables* shootertable;
+	bool enabled = false;
 };
 
 #endif
