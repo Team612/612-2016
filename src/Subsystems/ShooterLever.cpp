@@ -65,6 +65,7 @@ void ShooterLever::SetNeutral()
 
 void ShooterLever::SetPush()
 {
+	this->SetPosition(this->PUSH_POS);
 	if(CanShoot)
 	{
 		this->SetPosition(this->PUSH_POS);

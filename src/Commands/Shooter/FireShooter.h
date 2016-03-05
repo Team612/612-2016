@@ -16,6 +16,7 @@ public:
 	void Interrupted();
 private:
 	ShooterServoPosition position;
+	int count = 0;
 };
 
 #endif

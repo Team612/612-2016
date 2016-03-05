@@ -129,7 +129,7 @@ void Robot::TeleopPeriodic()
 	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::drivetrainEncoder2->Get());
 	SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
 
-	shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(5));
+	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(5));
 
 	//shooterrotation->SetSpeed(oi->getGunner()->GetRawAxis(3));
 }

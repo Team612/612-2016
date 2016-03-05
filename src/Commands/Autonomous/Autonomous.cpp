@@ -16,7 +16,7 @@ Autonomous::Autonomous(Robot::Defense defense)
 {
 	AddSequential(new ArmToPosition(0));
 	AddSequential(new AutoBreach(defense)); //change this before every match
-	AddSequential(new DriveSet(0.5f, 0.5f));
+	AddSequential(new DriveSet(0.0f, 0.0f));
 
 	//TODO AddSequential(new AutoAlign(FindTarget::RIGHT));
 	/*

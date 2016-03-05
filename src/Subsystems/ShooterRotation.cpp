@@ -37,6 +37,8 @@ double ShooterRotation::ReturnPIDInput()
 void ShooterRotation::UsePIDOutput(double output)
 {
 	RotateMotor->Set(-output);
+	SmartDashboard::PutNumber("PID Rotation", output);
+	SmartDashboard::PutNumber("Shooter Angle", RobotMap::shooterEncoder->GetVoltage() * 360 / 5);
 #ifdef DEBUG
 	std::printf("Shooter PID Output: %f\n", output);
 #endif
@@ -53,7 +55,10 @@ void ShooterRotation::SetPIDEnabled(bool enabled)
 	if(enabled)
 		GetPIDController()->Enable();
 	else
+	{
 		GetPIDController()->Disable();
+		SetSpeed(0.0);
+	}
 }
 
 void ShooterRotation::SetPID(double p, double i, double d)

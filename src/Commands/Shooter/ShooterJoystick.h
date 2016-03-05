@@ -14,6 +14,8 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	const float TOLERANCE = 0.1;
 };
 
 #endif

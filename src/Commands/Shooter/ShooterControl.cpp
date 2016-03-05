@@ -33,7 +33,7 @@ void ShooterControl::Execute()
     }
     else
     {
-    	printf("Stop\n");
+    	//printf("Stop\n");p
         Stop();
     }
 
@@ -98,6 +98,7 @@ void ShooterControl::Intake()
 
 void ShooterControl::Stop()
 {
-    Robot::shooterwheels->SetWheelSpeed(0.0f);
+	if(Robot::shooterwheels->enabled)
+		Robot::shooterwheels->SetWheelSpeed(0.0f);
     Robot::shooterwheels->Disable();
 }
