@@ -15,6 +15,7 @@ private:
     const float kP = 0.1f;
     const float kI = 0.0f;
     const float kD = 0.0f;
+
     const float kTol = 0.05f;  // tolerance (within kTol * output)
 	std::shared_ptr<CANTalon> CANTalonLeft;
 	std::shared_ptr<CANTalon> CANTalonRight;
