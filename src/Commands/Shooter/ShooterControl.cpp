@@ -33,7 +33,7 @@ void ShooterControl::Execute()
     }
     else
     {
-    	//printf("Stop\n");p
+    	printf("Stop\n");
         Stop();
     }
 

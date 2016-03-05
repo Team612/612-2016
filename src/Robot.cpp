@@ -89,13 +89,13 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-//	autonomousCommand.reset((Command *) chooser->GetSelected());
+	autonomousCommand.reset((Command *) chooser->GetSelected());
 //
-//	if (autonomousCommand.get() != nullptr)
-//		autonomousCommand->Start();
+	if (autonomousCommand.get() != nullptr)
+		autonomousCommand->Start();
 
-	shooterrotation->SetPIDEnabled(true);
-	shooterrotation->SetAngle(30);
+	//shooterrotation->SetPIDEnabled(true);
+	//shooterrotation->SetAngle(30);
 }
 
 void Robot::AutonomousPeriodic()

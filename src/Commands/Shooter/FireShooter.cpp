@@ -30,10 +30,12 @@ bool FireShooter::IsFinished()
 {
 	if(position == ShooterServoPosition::Neutral)
 		return true;
+	/*
 	if(Robot::shooterlever->AtSetPosition())
 		count++;
 	printf("Count: %d", count);
-	return count >= 30;
+	return count >= 30;*/
+	return false;
 }
 
 // Called once after isFinished returns true

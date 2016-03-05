@@ -27,8 +27,11 @@ OI::OI()
 	//GUNNER
 	gunner.reset(new Joystick(1));
 
-	fireButton.reset(new JoystickButton(gunner.get(), 1));
-	fireButton->WhenPressed(new FireShooter(ShooterServoPosition::Push));
+	servoPush.reset(new JoystickButton(gunner.get(), 1));
+	servoPush->WhenPressed(new FireShooter(ShooterServoPosition::Push));
+
+	servoClamp.reset(new JoystickButton(gunner.get(), 2));
+	servoClamp->WhenPressed(new FireShooter(ShooterServoPosition::Clamp));
 
 	// TODO: FIX THIS! AT LEAST CLAMP IS REQUIRED
 	/*

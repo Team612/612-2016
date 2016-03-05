@@ -19,8 +19,8 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
     const float CLAMP_POS = 1.0f;
-    const float NEUTRAL_POS = 0.5f;
-    const float PUSH_POS = 0.0f;
+    const float NEUTRAL_POS = 1.0f;
+    const float PUSH_POS = .9f;
     float storedposition;
 public:
 	std::shared_ptr<Servo> LeverServo;
