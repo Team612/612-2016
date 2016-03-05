@@ -113,8 +113,7 @@ void Robot::TeleopInit()
 
 	shooterrotation->SetPIDEnabled(false);
 
-	CameraServer::StartAutomaticCapture(RobotMap::cam1);
-
+	CameraServer::GetInstance()->StartAutomaticCapture(RobotMap::cam1);
 
 	drivejoystick->Start();
 	armjoystick->Start();
