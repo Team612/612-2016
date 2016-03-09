@@ -15,11 +15,6 @@
 #include "CANTalon.h"
 #include "AnalogInput.h"
 
-/**
- *
- *
- * @author ExampleAuthor
- */
 class Arm: public PIDSubsystem
 {
 private:

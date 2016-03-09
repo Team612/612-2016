@@ -1,7 +1,6 @@
 #include <Commands/Shooter/ShooterControl.h>
 #include <Commands/Shooter/FireShooter.h>
 #include "OI.h"
-#include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/SetGear.h"
 
