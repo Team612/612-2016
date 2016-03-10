@@ -6,7 +6,6 @@
 #include "RobotMap.h"
 #include <LiveWindow/LiveWindow.h>
 
-#include "Subsystems/Arm.h"
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/ShooterWheels.h"
 #include "Subsystems/ShooterRotation.h"
@@ -30,7 +29,6 @@ public:
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<ShooterRotation> shooterrotation;
 	static std::shared_ptr<ShooterWheels> shooterwheels;
-	static std::shared_ptr<Arm> arm;
 	static std::shared_ptr<ShooterLever> shooterlever; //someone fix this
 	static std::shared_ptr<Shifter> shifter;
 

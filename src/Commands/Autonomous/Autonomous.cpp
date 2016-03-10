@@ -10,7 +10,6 @@
 
 #include "Autonomous.h"
 #include "AutoBreach.h"
-#include "../Arm/ArmToPosition.h"
 
 Autonomous::Autonomous(Robot::Defense defense)
 {

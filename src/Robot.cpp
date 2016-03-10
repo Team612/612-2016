@@ -3,9 +3,7 @@
 
 #include "CameraServer.h"
 
-#include "Commands/Arm/ArmToPosition.h"
 #include "Commands/Drive/DriveJoystick.h"
-#include "Commands/Arm/ArmJoystick.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveDistance.h"
@@ -16,7 +14,6 @@ std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
 std::shared_ptr<ShooterLever> Robot::shooterlever;
-std::shared_ptr<Arm> Robot::arm;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 
@@ -28,7 +25,6 @@ void Robot::RobotInit()
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
-	arm.reset(new Arm());
 	shooterlever.reset(new ShooterLever());
 	shifter.reset(new Shifter());
 
