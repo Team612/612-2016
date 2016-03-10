@@ -36,7 +36,6 @@ std::unique_ptr<OI> Robot::oi;
 void Robot::RobotInit()
 {
 	RobotMap::init();
-	navx = new NavX(SPI::Port::kMXP);
 
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());

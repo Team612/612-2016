@@ -5,8 +5,8 @@
  *      Author: Scott
  */
 
-#include "../src/RegisterIOI2C.h"
-#include "HAL/cpp/priority_mutex.h"
+#include <NavX/RegisterIOI2C.h>
+#include <HAL/cpp/priority_mutex.h>
 
 static priority_mutex imu_mutex;
 RegisterIO_I2C::RegisterIO_I2C(I2C* port) {
