@@ -26,7 +26,7 @@ private:
 	int onTargetCounter = 0;
 
 	void FindTarget(); //Tries to fill the CurrentTarget variable
-	void AlignLauncher();
+	//double AlignLauncher();
 	const double TARGET_ASPECT = 1.66/1.00; //Aspect ratio of game-target (it's 1'8" x 1')
 	const int SCREEN_CENTER_X = 320; //Center of the screen. This is the point to which we will rotate
 								     //using PID.

@@ -65,24 +65,6 @@ void AlignToTarget::FindTarget()
 	}
 }
 
-void AlignToTarget::AlignLauncher()
-{
-	double h = currentTarget->GetHeight();
-	double x = (0.0001592*pow(h, 2)) - (0.06046*h) + 6.9204;
-	printf("\nDistance Calculation: %f", x);
-	double y = TARGET_HEIGHT_OFF_GROUND;
-	double v = BOULDER_LAUNCH_SPEED;
-	double g = 9.8; //gravity
-	double sq = pow(v, 4) - (g * (g * (x * x) + 2 * y * (v * v)));
-	if (sq >= 0)
-	{
-		sq = sqrt(sq);
-		double angleInRadians = atan(((v * v) - sq) / (g * x));
-		double angleInDegrees = angleInRadians * (180 / M_PI);
-		printf("\nDegree Calculation: %f", angleInDegrees);
-	}
-}
-
 //Inherited from PID Command, returns the input from the vision targets
 double AlignToTarget::ReturnPIDInput()
 {
@@ -132,7 +114,7 @@ void AlignToTarget::End()
 {
 	//TODO: Calculate launch angle and move the launcher here
 	Robot::drivetrain->SetTankDrive(0, 0);
-	AlignLauncher();
+	//AlignLauncher();
 }
 
 // Called when another command which requires one or more of the same

@@ -10,8 +10,6 @@
 class ShooterRotation : public PIDSubsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 	double PositionToVolts(double angle);
 
 	std::shared_ptr<CANTalon> RotateMotor;
@@ -21,9 +19,11 @@ private:
 	double AngleToVolts(double angle);
 
 public:
+	//TODO: These angles should be the same, but check to make sure.
 	const double MAX_ANGLE = 288; //full forwards
 	const double MIN_ANGLE = 79.2; //full inwards
 
+	//TODO: Find the actual potentiometer values.
 	const double MIN_VOLTS = 1.17f;
 	const double MAX_VOLTS = 4.0f;
 

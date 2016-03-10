@@ -125,7 +125,7 @@ void Robot::TeleopPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 
-	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
+	SmartDashboard::PutNumber("Shooter Absolute Pot", RobotMap::shooterPot.get()->Get());
 	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
 
 	//Encoder

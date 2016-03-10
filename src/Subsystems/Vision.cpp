@@ -12,8 +12,6 @@ Vision::Vision(const char* camera) :
 	//SetCamera(camera);
 }
 
-
-
 void Vision::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
@@ -27,7 +25,8 @@ void Vision::PullValues()
 	printf("test1");
 
 	llvm::ArrayRef<double> arr;
-	std::vector<double> coords = table->GetNumberArray("BOUNDING_COORDINATES", arr);
+	std::vector<double> coords = table->GetNumberArray("BOUNDING_COORDINATES",
+			arr);
 	/* Okay, so this is a thing that is long enough that I had to make a block comment. Basically,
 	 * RoboRealm doesn't automatically overwrite the BOUNDING_COORDINATES variable (which makes
 	 * literally no sense because it updates every single other variable just fine). In order to
@@ -44,13 +43,13 @@ void Vision::PullValues()
 	int targetCount = ids.size();
 
 	//Loop to create/update VisionTargets with new bound coords
-	for(int x = 0; x < targetCount; x++)
+	for (int x = 0; x < targetCount; x++)
 	{
 		printf("test2");
 		std::vector<int> vec;
 		for (int i = 0; i < 8; i++)
 		{
-			vec.push_back((int) coords[(x*8) + i + 8]);
+			vec.push_back((int) coords[(x * 8) + i + 8]);
 		}
 		/* Another bug with RoboRealm: it refuses to track the lower-most bounding box no-
 		 * matter what we do. To solve this, I put a small rectangle on the bottom of the screen
@@ -60,22 +59,26 @@ void Vision::PullValues()
 		 */
 
 		//Only updates if it finds that the ID already exists
-		if(TargetExists(ids[x]))
+		if (TargetExists(ids[x]))
 		{
 			GetTargetById(ids[x])->Print();
 			GetTargetById(ids[x])->Set(vec);
 		}
 		//If the ID is new then we make a new target
 		else
-			targets.push_back(std::shared_ptr<VisionTarget>(new VisionTarget(vec, ids[x])));
+			targets.push_back(
+					std::shared_ptr<VisionTarget>(
+							new VisionTarget(vec, ids[x])));
 	}
 
 	printf("\n");
 
 	//Goes through and deletes all of the VisionTargets that no longer exist in RoboRealm
-	for (int x = 0; x < targets.size(); x++) {
+	for (int x = 0; x < targets.size(); x++)
+	{
 		bool found = false;
-		for (int i = 0; i < ids.size(); i++) {
+		for (int i = 0; i < ids.size(); i++)
+		{
 			if (targets[x]->GetID() == ids[i])
 			{
 				found = true;
@@ -85,7 +88,7 @@ void Vision::PullValues()
 
 		if (!found)
 		{
-			targets.erase (targets.begin()+x);
+			targets.erase(targets.begin() + x);
 			x--;
 		}
 	}
@@ -134,6 +137,7 @@ std::shared_ptr<NetworkTable> Vision::GetRawTable()
 	return table;
 }
 
-int Vision::GetTargetAmount() {
+int Vision::GetTargetAmount()
+{
 	return targets.size();
 }

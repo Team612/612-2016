@@ -5,6 +5,7 @@
 #include "../../Shooter/SpinUp.h"
 #include "../../Shooter/StopShooter.h"
 #include "../../Shooter/FireShooter.h"
+#include "../../Shooter/SetShooterAngle.h"
 
 #include "../../../Subsystems/ShooterLever.h"
 
@@ -16,6 +17,7 @@ AlignAutonomous::AlignAutonomous()
 	AddSequential(new AutoDrive(d, s));
 	AddSequential(new AutoAlign(FindTarget::RIGHT));
 	AddSequential(new SpinUp());
+	AddSequential(new SetShooterAngle());
 	Wait(0.5);
 	AddSequential(new FireShooter(ShooterServoPosition::Push));
 	Wait(1.0);

@@ -28,7 +28,7 @@ public:
 	static std::shared_ptr<Talon> driveTalonRR;
 	static std::shared_ptr<RobotDrive> drivetrainRobotDrive;
 	static std::shared_ptr<Servo> shooterLever;
-	static std::shared_ptr<AnalogInput> shooterEncoder;
+	static std::shared_ptr<AnalogPotentiometer> shooterPot;
 	static std::shared_ptr<CANTalon> armMotor;
 	static std::shared_ptr<AnalogInput> armRotationDetect;
 	static std::shared_ptr<CANTalon> shooterRotateMotor;
