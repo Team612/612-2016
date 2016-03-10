@@ -90,8 +90,3 @@ void RobotMap::init()
 	driveEncoderRight.reset(new Encoder(2, 3));
 	lw->AddActuator("drivetrain", "Quad Encoder Right", driveEncoderRight);
 }
-
-std::shared_ptr<USBCamera> RobotMap::GetCam()
-{
-	return cam1;
-}
