@@ -1,9 +1,4 @@
-/*
- * ShooterManuelControl.h
- *
- *  Created on: Mar 5, 2016
- *      Author: wardp_000
- */
+//Chantilly612 can into spelling!
 
 #ifndef SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_
 #define SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_

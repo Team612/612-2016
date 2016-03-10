@@ -10,6 +10,9 @@
 #include "Subsystems/Arm.h"
 #include "SmartDashboard/SmartDashboard.h"
 
+#include "Commands/Autonomous/Sequences/SimpleAutonomous.h"
+#include "Commands/Autonomous/Sequences/AlignAutonomous.h"
+
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
@@ -17,11 +20,11 @@ std::shared_ptr<ShooterLever> Robot::shooterlever;
 std::shared_ptr<Arm> Robot::arm;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
-
 std::unique_ptr<Vision> Robot::vision;
-
 std::shared_ptr<NavX> Robot::navx;
 std::shared_ptr<CameraServer> Robot::server;
+
+std::shared_ptr<SendableChooser> Robot::autoChooser;
 
 void Robot::RobotInit()
 {
@@ -42,16 +45,17 @@ void Robot::RobotInit()
 	// news. Don't move it.
 	oi.reset(new OI());
 
-	//SmartDashboard::PutData("FireShooter", new FireShooter());
-	//SmartDashboard::PutData("Autonomous", new Autonomous());
-	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
-	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
+	autoChooser.reset(new SendableChooser());
+	autoChooser->AddDefault("Low Bar (align)", new AlignAutonomous());
+	autoChooser->AddObject("Other Defense (align)", new AlignAutonomous(5, 0.8f));
+	autoChooser->AddObject("Low Bar", new SimpleAutonomous());
+	autoChooser->AddObject("Other Defense", new SimpleAutonomous(5, 0.8f));
 
 	//SmartDashboard::PutData("FireShooter", new FireShooter());
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
-	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
-	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
-	SmartDashboard::PutData("DriveDistance", new DriveDistance(12));
+	SmartDashboard::PutData("Stop Drivetrain", new DriveSet(0.0f, 0.0f));
+	//SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
+	SmartDashboard::PutData("DriveDistance", new DriveDistance(720));
 
 	SmartDashboard::PutNumber("P", 0.0);
 	SmartDashboard::PutNumber("I", 0.0);
@@ -60,17 +64,7 @@ void Robot::RobotInit()
 	SmartDashboard::PutData("Start Aligning", new ShooterTest());
 
 
-	/*chooser.reset(new SendableChooser());
-	chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
-	chooser->AddObject("Cheval de Frise", new Autonomous(Defense::CHEVAL_DE_FRISE));
-	chooser->AddObject("Draw Bridge", new Autonomous(Defense::DRAW_BRIDGE));
-	chooser->AddObject("Moat", new Autonomous(Defense::MOAT));
-	chooser->AddObject("Portcullis", new Autonomous(Defense::PORTCULLIS));
-	chooser->AddObject("Rock Wall", new Autonomous(Defense::ROCK_WALL));
-	chooser->AddObject("Rough Terrain", new Autonomous(Defense::ROUGH_TERRAIN));
-	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));*/
-
-	//SmartDashboard::PutData("Autonomous Defense Chooser", chooser.get());
+	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
 
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
@@ -100,6 +94,8 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
+	autonomousCommand.reset((Command *) autoChooser->GetSelected());
+
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
 

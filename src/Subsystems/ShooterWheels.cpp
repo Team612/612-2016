@@ -115,7 +115,7 @@ void ShooterWheels::StartManuel()
 
 void ShooterWheels::ManuelSet(float speed)
 {
-	if(!manuelstarted) { StartManuel(); printf("Starting manuel mode in set"); }
+	if(!manuelstarted) { StartManuel(); printf("Starting manuel mode in set"); } //Bad! Low Energy!
 	this->CANTalonLeft->Set(speed);
 	this->CANTalonRight->Set(speed);
 }

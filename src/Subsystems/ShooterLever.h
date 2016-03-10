@@ -4,8 +4,9 @@
 #include <cmath>
 #include <WPILib.h>
 #include <AnalogInput.h>
-#include "Commands/Autonomous/AutoServo.h"
+//#include "Commands/Autonomous/AutoServo.h"
 
+//Global enum?? Bad!
 enum ShooterServoPosition
 {
     Clamp,
