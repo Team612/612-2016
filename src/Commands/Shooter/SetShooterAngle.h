@@ -19,6 +19,7 @@ public:
 
 private:
 	float end_angle;
+	bool target_exists;
 
 	std::shared_ptr<VisionTarget> currentTarget;
 
@@ -28,6 +29,7 @@ private:
 	const double TARGET_WIDTH  = 0.506; //in meters
 	const double TARGET_HEIGHT_OFF_GROUND = 2; //in meters
 	const double BOULDER_LAUNCH_SPEED = 12.9; //in meters per second
+	const double TARGET_ASPECT = 1.66/1.00;
 
 	double CalcAngle();
 };
