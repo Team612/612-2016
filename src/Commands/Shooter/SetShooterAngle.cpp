@@ -6,7 +6,7 @@ SetShooterAngle::SetShooterAngle()
 	//Set the angle to the calculated angle needed to make the goal
 	Requires(Robot::shooterrotation.get());
 	Requires(Robot::vision.get());
-	this->end_angle = CalcAngle();
+	this->end_angle = 0.0;
 
 	//get vision values
 	std::shared_ptr<NetworkTable> table = Robot::vision->GetRawTable();
@@ -43,11 +43,17 @@ void SetShooterAngle::Initialize()
 	/*
 	 * Should this be empty? Testing to make sure...
 	 */
+	Robot::vision->PullValues();
+
+	if(target_exists)
+	{
+		currentTarget = VisionTarget::FindClosestAspect(TARGET_ASPECT, Robot::vision->GetAllTargets()); //make sure the targets are updated
+		end_angle = CalcAngle();
+	}
 }
 
 void SetShooterAngle::Execute()
 {
-	Robot::vision->PullValues();
 	Robot::shooterrotation.get()->SetAngle(end_angle);
 }
 

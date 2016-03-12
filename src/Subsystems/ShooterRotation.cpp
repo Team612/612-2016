@@ -18,7 +18,11 @@ void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
 	this->pos = pos;
 	double angle = pos + MIN_ANGLE;
 	if (angle < MAX_ANGLE && angle > MIN_ANGLE)
+	{
 		GetPIDController()->SetSetpoint(AngleToVolts(angle));
+		std::printf("SetAngle()\n");
+	}
+
 
 #ifdef DEBUG
 	std::printf("Angle: %f\n", angle);
