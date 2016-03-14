@@ -17,6 +17,8 @@ std::shared_ptr<ShooterLever> Robot::shooterlever;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 
+bool Robot::inverted;
+
 
 void Robot::RobotInit()
 {
@@ -30,30 +32,12 @@ void Robot::RobotInit()
 
 	oi.reset(new OI());
 
+	chooser.reset(new SendableChooser());
+
+	InitSmartDashboard();
+
 	//SmartDashboard::PutData("FireShooter", new FireShooter());
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
-	SmartDashboard::PutData("DriveSet", new DriveSet(0.0f, 0.0f));
-	SmartDashboard::PutData("DriveJoystick", new DriveJoystick());
-	SmartDashboard::PutData("DriveDistance", new DriveDistance(12));
-
-	SmartDashboard::PutNumber("P", 0.0);
-	SmartDashboard::PutNumber("I", 0.0);
-	SmartDashboard::PutNumber("D", 0.0);
-	SmartDashboard::PutNumber("Angle", 0.0);
-	SmartDashboard::PutData("Start Aligning", new ShooterTest());
-
-
-	chooser.reset(new SendableChooser());
-	chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
-	chooser->AddObject("Cheval de Frise", new Autonomous(Defense::CHEVAL_DE_FRISE));
-	chooser->AddObject("Draw Bridge", new Autonomous(Defense::DRAW_BRIDGE));
-	chooser->AddObject("Moat", new Autonomous(Defense::MOAT));
-	chooser->AddObject("Portcullis", new Autonomous(Defense::PORTCULLIS));
-	chooser->AddObject("Rock Wall", new Autonomous(Defense::ROCK_WALL));
-	chooser->AddObject("Rough Terrain", new Autonomous(Defense::ROUGH_TERRAIN));
-	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));
-
-	SmartDashboard::PutData("Autonomous Defense Chooser", chooser.get());
 
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
@@ -133,11 +117,49 @@ void Robot::TeleopPeriodic()
 	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
 	SmartDashboard::PutNumber("Left Encoder Distance", drivetrain->GetEncoderDistance());
 	SmartDashboard::PutNumber("Right Encoder Distance", drivetrain->GetEncoder2Distance());
+
+	SmartDashboard::PutBoolean("Inverted Controls", inverted);
+
+	SmartDashboard::PutNumber("Servo 1", RobotMap::shifterLeft->Get());
+	SmartDashboard::PutNumber("Servo 2", RobotMap::shifterRight->Get());
+
+	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterLeverDetect->GetVoltage());
+	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterLeverDetect->GetVoltage(), -1.15f)) * 0.393701f));
+
+	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
+
 }
 
 void Robot::TestPeriodic()
 {
 	lw->Run();
+}
+
+void Robot::InitSmartDashboard()
+{
+	//ShooterPID
+	SmartDashboard::PutNumber("P", 0.0);
+	SmartDashboard::PutNumber("I", 0.0);
+	SmartDashboard::PutNumber("D", 0.0);
+	SmartDashboard::PutNumber("Angle", 0.0);
+
+	//Commands
+	SmartDashboard::PutData("Stop Drivetrain", new DriveSet(0.0f, 0.0f));
+	SmartDashboard::PutData("Drive Joystick", new DriveJoystick());
+	SmartDashboard::PutData("Drive Distance", new DriveDistance(240));
+	SmartDashboard::PutData("Shooter Test", new ShooterTest());
+
+	//autonomous
+	chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
+	chooser->AddObject("Cheval de Frise", new Autonomous(Defense::CHEVAL_DE_FRISE));
+	chooser->AddObject("Draw Bridge", new Autonomous(Defense::DRAW_BRIDGE));
+	chooser->AddObject("Moat", new Autonomous(Defense::MOAT));
+	chooser->AddObject("Portcullis", new Autonomous(Defense::PORTCULLIS));
+	chooser->AddObject("Rock Wall", new Autonomous(Defense::ROCK_WALL));
+	chooser->AddObject("Rough Terrain", new Autonomous(Defense::ROUGH_TERRAIN));
+	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));
+
+	SmartDashboard::PutData("Autonomous Defense Chooser", chooser.get());
 }
 
 START_ROBOT_CLASS(Robot);

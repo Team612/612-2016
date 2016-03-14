@@ -17,9 +17,6 @@ void Shifter::Set(float shiftPower)
 {
 	ShifterServo1->Set(shiftPower);
 	ShifterServo2->Set(shiftPower);
-
-	SmartDashboard::PutNumber("Servo 1", ShifterServo1->Get());
-	SmartDashboard::PutNumber("Servo 2", ShifterServo2->Get());
 }
 float Shifter::Get()
 {

@@ -16,6 +16,8 @@
 
 class Robot: public IterativeRobot
 {
+private:
+	void InitSmartDashboard();
 public:
 	enum Defense {PORTCULLIS, CHEVAL_DE_FRISE, MOAT, RAMPARTS, DRAW_BRIDGE, SALLY_PORT, ROCK_WALL, ROUGH_TERRAIN, LOW_BAR, NONE};
 	std::unique_ptr<Command> autonomousCommand;
@@ -31,6 +33,8 @@ public:
 	static std::shared_ptr<ShooterWheels> shooterwheels;
 	static std::shared_ptr<ShooterLever> shooterlever; //someone fix this
 	static std::shared_ptr<Shifter> shifter;
+
+	static bool inverted;
 
 	std::shared_ptr<SendableChooser> chooser;
 

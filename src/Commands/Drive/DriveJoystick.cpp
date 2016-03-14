@@ -49,14 +49,14 @@ void DriveJoystick::Execute()
 	{
 		Robot::drivetrain->SetTankDrive(Robot::oi->getDriver()->GetRawAxis(1),
 				Robot::oi->getDriver()->GetRawAxis(5));
-		SmartDashboard::PutBoolean("Inverted Controls", false);
+		Robot::inverted = false;
 	}
 	else
 	{
 		Robot::drivetrain->SetTankDrive(
 				Robot::oi->getDriver()->GetRawAxis(5) * -1,
 				Robot::oi->getDriver()->GetRawAxis(1) * -1);
-		SmartDashboard::PutBoolean("Inverted Controls", true);
+		Robot::inverted = true;
 	}
 }
 
