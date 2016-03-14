@@ -68,23 +68,12 @@ void Robot::AutonomousInit()
 	//if (autonomousCommand.get() != nullptr)
 		//autonomousCommand->Start();
 
-	//shooterrotation->SetPIDEnabled(true);
-	//shooterrotation->SetAngle(30);
-	time->Start();
 }
 
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
-	if(time->Get() < 8)
-	{
-		Robot::drivetrain->SetTankDrive(0.7f, 0.7f);
-	}
-	else
-	{
-		Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
-		//time->Reset();
-	}
+	PeriodicSmartDashboard();
 }
 
 void Robot::TeleopInit()
@@ -95,9 +84,6 @@ void Robot::TeleopInit()
 	shooterrotation->SetPIDEnabled(false);
 
 	drivejoystick->Start();
-	//armjoystick->Start();
-	//armmove->Start();
-	//autowheels->Start();
 	shifter->Set(Shifter::LOW);
 }
 
@@ -105,29 +91,7 @@ void Robot::TeleopPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 
-	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
-	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
-
-	//Encoder
-	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderLeft->Get());
-	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
-	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderRight->Get());
-	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
-
-	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
-	SmartDashboard::PutNumber("Left Encoder Distance", drivetrain->GetEncoderDistance());
-	SmartDashboard::PutNumber("Right Encoder Distance", drivetrain->GetEncoder2Distance());
-
-	SmartDashboard::PutBoolean("Inverted Controls", inverted);
-
-	SmartDashboard::PutNumber("Servo 1", RobotMap::shifterLeft->Get());
-	SmartDashboard::PutNumber("Servo 2", RobotMap::shifterRight->Get());
-
-	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterLeverDetect->GetVoltage());
-	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterLeverDetect->GetVoltage(), -1.15f)) * 0.393701f));
-
-	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
-
+	PeriodicSmartDashboard();
 }
 
 void Robot::TestPeriodic()
@@ -160,6 +124,32 @@ void Robot::InitSmartDashboard()
 	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));
 
 	SmartDashboard::PutData("Autonomous Defense Chooser", chooser.get());
+}
+
+void Robot::PeriodicSmartDashboard()
+{
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
+	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
+
+	//Encoder
+	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderLeft->Get());
+	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
+	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderRight->Get());
+	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
+
+	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
+	SmartDashboard::PutNumber("Left Encoder Distance", drivetrain->GetEncoderDistance());
+	SmartDashboard::PutNumber("Right Encoder Distance", drivetrain->GetEncoder2Distance());
+
+	SmartDashboard::PutBoolean("Inverted Controls", inverted);
+
+	SmartDashboard::PutNumber("Servo 1", RobotMap::shifterLeft->Get());
+	SmartDashboard::PutNumber("Servo 2", RobotMap::shifterRight->Get());
+
+	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterLeverDetect->GetVoltage());
+	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterLeverDetect->GetVoltage(), -1.15f)) * 0.393701f));
+
+	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
 }
 
 START_ROBOT_CLASS(Robot);

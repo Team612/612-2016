@@ -18,6 +18,7 @@ class Robot: public IterativeRobot
 {
 private:
 	void InitSmartDashboard();
+	void PeriodicSmartDashboard();
 public:
 	enum Defense {PORTCULLIS, CHEVAL_DE_FRISE, MOAT, RAMPARTS, DRAW_BRIDGE, SALLY_PORT, ROCK_WALL, ROUGH_TERRAIN, LOW_BAR, NONE};
 	std::unique_ptr<Command> autonomousCommand;
