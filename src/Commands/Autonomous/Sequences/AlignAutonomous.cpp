@@ -16,8 +16,8 @@ AlignAutonomous::AlignAutonomous()
 
 	AddSequential(new AutoDrive(d, s));
 	AddSequential(new AutoAlign(FindTarget::RIGHT));
-	AddSequential(new SpinUp());
 	AddSequential(new SetShooterAngle());
+	AddSequential(new SpinUp());
 	Wait(0.5);
 	AddSequential(new FireShooter(ShooterServoPosition::Push));
 	Wait(1.0);
@@ -37,3 +37,4 @@ AlignAutonomous::AlignAutonomous(int d, float s)
 	Wait(1.0);
 	AddSequential(new StopShooter());
 }
+

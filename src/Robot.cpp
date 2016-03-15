@@ -5,6 +5,10 @@
 #include "Commands/Shooter/ShooterTest.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Drive/DriveDistance.h"
+#include "Commands/FindTarget.h"
+#include "Commands/AutoAlign.h"
+#include "Commands/Shooter/SetShooterAngle.h"
+#include "Commands/Shooter/Fire.h"
 #include "SmartDashboard/SmartDashboard.h"
 
 #include "Commands/Autonomous/Sequences/SimpleAutonomous.h"
@@ -42,21 +46,13 @@ void Robot::RobotInit()
 	 */
 
 	/*
-	 * I'm not sure CommandBas exists any more...
+	 * I'm not sure CommandBase exists any more...
 	 */
 
 	oi.reset(new OI());
 
 	autoChooser.reset(new SendableChooser());
 	InitSmartDashboard();
-
-	SmartDashboard::PutNumber("P", 0.0);
-	SmartDashboard::PutNumber("I", 0.0);
-	SmartDashboard::PutNumber("D", 0.0);
-	SmartDashboard::PutNumber("Angle", 0.0);
-	SmartDashboard::PutData("Start Aligning", new ShooterTest());
-
-
 	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
 
 	// instantiate the command used for the autonomous period
@@ -87,6 +83,7 @@ void Robot::DisabledPeriodic()
 void Robot::AutonomousInit()
 {
 	autonomousCommand.reset((Command *) autoChooser->GetSelected());
+	std::printf("Info: Set Auto command!\n");
 
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
@@ -150,11 +147,17 @@ void Robot::InitSmartDashboard()
 	SmartDashboard::PutNumber("D", 0.0);
 	SmartDashboard::PutNumber("Angle", 0.0);
 
-	//Commands
+	//Commands for debugging
 	SmartDashboard::PutData("Stop Drivetrain", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("Drive Joystick", new DriveJoystick());
 	SmartDashboard::PutData("Drive Distance", new DriveDistance(240));
 	SmartDashboard::PutData("Shooter Test", new ShooterTest());
+	SmartDashboard::PutData("Set Shooter Angle", new SetShooterAngle(TEST_ANGLE));
+	SmartDashboard::PutData("Fire", new Fire());
+	//Auto Align
+		SmartDashboard::PutData("Auto Right", new AutoAlign(FindTarget::Direction::RIGHT));
+		SmartDashboard::PutData("Auto Left", new AutoAlign(FindTarget::Direction::LEFT));
+		SmartDashboard::PutData("Align Shooter", new SetShooterAngle());
 
 	//autonomous
 	autoChooser->AddDefault("Low Bar (align)", new AlignAutonomous());
@@ -168,7 +171,7 @@ void Robot::InitSmartDashboard()
 void Robot::PeriodicSmartDashboard()
 {
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
-	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
+	//SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
 
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderLeft->Get());

@@ -20,6 +20,8 @@ class Robot: public IterativeRobot
 private:
 	void InitSmartDashboard();
 	void PeriodicSmartDashboard();
+
+	const int TEST_ANGLE = 45;
 public:
 	std::unique_ptr<Command> autonomousCommand;
 	std::unique_ptr<Command> invertcontrols;
