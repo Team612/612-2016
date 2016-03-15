@@ -33,16 +33,16 @@ void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
 double ShooterRotation::ReturnPIDInput()
 {
 #ifdef DEBUG
-	std::printf("Shooter Voltage: %f\n", RobotMap::shooterPot->GetVoltage());
+	std::printf("Shooter Voltage: %f\n", RobotMap::shooterEncoder->GetVoltage());
 #endif
-	return (double) RobotMap::shooterPot->Get();
+	return (double) RobotMap::shooterEncoder->GetVoltage();
 }
 
 void ShooterRotation::UsePIDOutput(double output)
 {
 	RotateMotor->Set(-output);
 	SmartDashboard::PutNumber("PID Rotation", output);
-	SmartDashboard::PutNumber("Shooter Angle", RobotMap::shooterPot->Get() * 360 / 5);
+	SmartDashboard::PutNumber("Shooter Angle", RobotMap::shooterEncoder->GetVoltage() * 360 / 5);
 #ifdef DEBUG
 	std::printf("Shooter PID Output: %f\n", output);
 #endif

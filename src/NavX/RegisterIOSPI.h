@@ -8,8 +8,8 @@
 #ifndef SRC_REGISTERIOSPI_H_
 #define SRC_REGISTERIOSPI_H_
 
-#include "../src/RegisterIO.h"
-#include "WPILib.h"
+#include <NavX/RegisterIO.h>
+#include <WPILib.h>
 
 static const int MAX_SPI_MSG_LENGTH = 256;
 

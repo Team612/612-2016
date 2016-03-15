@@ -8,13 +8,13 @@
 #ifndef SRC_SERIALIO_H_
 #define SRC_SERIALIO_H_
 
-#include "WPILib.h"
-#include "../src/IIOProvider.h"
+#include <WPILib.h>
+#include "IIOProvider.h"
 #include <stdint.h>
-#include "../src/AHRSProtocol.h"
-#include "../src/IMUProtocol.h"
-#include "../src/IIOCompleteNotification.h"
-#include "../src/IBoardCapabilities.h"
+#include "AHRSProtocol.h"
+#include "IMUProtocol.h"
+#include "IIOCompleteNotification.h"
+#include "IBoardCapabilities.h"
 
 class SerialIO : public IIOProvider {
 
@@ -45,6 +45,7 @@ public:
               bool processed_data,
               IIOCompleteNotification *notify_sink,
               IBoardCapabilities *board_capabilities );
+    virtual ~SerialIO() {}
     bool IsConnected();
     double GetByteCount();
     double GetUpdateCount();

@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include "../src/OffsetTracker.h"
+#include <NavX/OffsetTracker.h>
 
 OffsetTracker::OffsetTracker(int history_length) {
     history_len = history_length;

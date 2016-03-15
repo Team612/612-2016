@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include "../src/RegisterIO.h"
+#include <NavX/RegisterIO.h>
 #include "IMURegisters.h"
 
 RegisterIO::RegisterIO( IRegisterIO *io_provider,
@@ -22,6 +22,12 @@ RegisterIO::RegisterIO( IRegisterIO *io_provider,
     ahrspos_update  = {0};
     board_state     = {0};
     board_id        = {0};
+
+    byte_count = 0;
+    last_update_time = 0;
+    stop = false;
+    update_count = 0;
+    task = nullptr;
 }
 
 static const double IO_TIMEOUT_SECONDS = 1.0;
@@ -154,7 +160,7 @@ void RegisterIO::GetCurrentData() {
             ahrspos_update.disp_x      = IMURegisters::decodeProtocol1616Float(curr_data + NAVX_REG_DISP_X_I_L-first_address);
             ahrspos_update.disp_y      = IMURegisters::decodeProtocol1616Float(curr_data + NAVX_REG_DISP_Y_I_L-first_address);
             ahrspos_update.disp_z      = IMURegisters::decodeProtocol1616Float(curr_data + NAVX_REG_DISP_Z_I_L-first_address);
-            notify_sink->SetAHRSPosData(ahrspos_update);
+            notify_sink->SetAHRSPosData(ahrspos_update, sensor_timestamp);
         } else {
             ahrs_update.op_status           = ahrspos_update.op_status;
             ahrs_update.selftest_status     = ahrspos_update.selftest_status;
@@ -171,7 +177,7 @@ void RegisterIO::GetCurrentData() {
             ahrs_update.altitude            = ahrspos_update.altitude;
             ahrs_update.barometric_pressure = ahrspos_update.barometric_pressure;
             ahrs_update.fused_heading       = ahrspos_update.fused_heading;
-            notify_sink->SetAHRSData( ahrs_update );
+            notify_sink->SetAHRSData( ahrs_update, sensor_timestamp );
         }
 
         board_state.cal_status      = curr_data[NAVX_REG_CAL_STATUS-first_address];
@@ -192,7 +198,7 @@ void RegisterIO::GetCurrentData() {
         raw_data_update.accel_z     = IMURegisters::decodeProtocolInt16(curr_data +  NAVX_REG_ACC_Z_L-first_address);
         raw_data_update.mag_x       = IMURegisters::decodeProtocolInt16(curr_data +  NAVX_REG_MAG_X_L-first_address);
         raw_data_update.temp_c      = ahrspos_update.mpu_temp;
-        notify_sink->SetRawData(raw_data_update);
+        notify_sink->SetRawData(raw_data_update, sensor_timestamp);
 
         this->last_update_time = Timer::GetFPGATimestamp();
         byte_count += buffer_len;
