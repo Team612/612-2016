@@ -1,6 +1,8 @@
 #include <WPILib.h>
 #include <AnalogInput.h>
 
+#pragma once
+
 class AbsoluteEncoder : public AnalogInput
 {
 public:

@@ -13,7 +13,7 @@
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-std::shared_ptr<ShooterLever> Robot::shooterlever;
+std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 
@@ -27,7 +27,7 @@ void Robot::RobotInit()
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
-	shooterlever.reset(new ShooterLever());
+	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
 
 	oi.reset(new OI());
@@ -80,9 +80,7 @@ void Robot::TeleopInit()
 {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-
-	shooterrotation->SetPIDEnabled(false);
-
+		
 	drivejoystick->Start();
 	shifter->Set(Shifter::LOW);
 }
@@ -102,6 +100,7 @@ void Robot::TestPeriodic()
 void Robot::InitSmartDashboard()
 {
 	//ShooterPID
+	// TODO: Actually replace with intelligent usage of PutData
 	SmartDashboard::PutNumber("P", 0.0);
 	SmartDashboard::PutNumber("I", 0.0);
 	SmartDashboard::PutNumber("D", 0.0);
@@ -128,13 +127,12 @@ void Robot::InitSmartDashboard()
 
 void Robot::PeriodicSmartDashboard()
 {
-	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
-	SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
 
 	//Encoder
-	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderLeft->Get());
+	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderL->Get());
 	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
-	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderRight->Get());
+	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderR->Get());
 	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
 
 	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
@@ -143,11 +141,11 @@ void Robot::PeriodicSmartDashboard()
 
 	SmartDashboard::PutBoolean("Inverted Controls", inverted);
 
-	SmartDashboard::PutNumber("Servo 1", RobotMap::shifterLeft->Get());
-	SmartDashboard::PutNumber("Servo 2", RobotMap::shifterRight->Get());
+	SmartDashboard::PutNumber("Left Shifter", RobotMap::shifterL->Get());
+	SmartDashboard::PutNumber("Right Shifter", RobotMap::shifterR->Get());
 
-	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterLeverDetect->GetVoltage());
-	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterLeverDetect->GetVoltage(), -1.15f)) * 0.393701f));
+	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterIR->GetVoltage());
+	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterIR->GetVoltage(), -1.15f)) * 0.393701f));
 
 	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
 }

@@ -4,8 +4,8 @@
 Shifter::Shifter() :
 		Subsystem("Shifter")
 {
-	ShifterServo1 = RobotMap::shifterLeft;
-	ShifterServo2 = RobotMap::shifterRight;
+	shifterL = RobotMap::shifterL;
+	shifterR = RobotMap::shifterR;
 }
 
 void Shifter::InitDefaultCommand()
@@ -15,12 +15,12 @@ void Shifter::InitDefaultCommand()
 }
 void Shifter::Set(float shiftPower)
 {
-	ShifterServo1->Set(shiftPower);
-	ShifterServo2->Set(shiftPower);
+	shifterL->Set(shiftPower);
+	shifterR->Set(shiftPower);
 }
 float Shifter::Get()
 {
-	 return (ShifterServo1->Get() + ShifterServo2 ->Get()) / 2;
+	 return (shifterL->Get() + shifterR->Get()) / 2;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

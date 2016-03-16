@@ -4,7 +4,6 @@
 #include <cmath>
 #include <WPILib.h>
 #include <AnalogInput.h>
-#include "Commands/Autonomous/AutoServo.h"
 
 enum ShooterServoPosition
 {
@@ -13,7 +12,7 @@ enum ShooterServoPosition
     Push
 };
 
-class ShooterLever: public Subsystem
+class ShooterActuator: public Subsystem
 {
 private:
 	// It's desirable that everything possible under private except
@@ -23,13 +22,13 @@ private:
     const float PUSH_POS = .9f;
     float storedposition;
 public:
-	std::shared_ptr<Servo> LeverServo;
-	std::shared_ptr<AnalogInput> irsensor;
+	std::shared_ptr<Servo> actuator;
+	std::shared_ptr<AnalogInput> IR;
 
 	bool CanShoot;
 
 	//std::shared_ptr<AnalogInput> balldetector;
-	ShooterLever();
+	ShooterActuator();
 	void InitDefaultCommand();
     void SetPosition(ShooterServoPosition position);
     void SetPosition(float position);

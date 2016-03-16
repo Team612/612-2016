@@ -2,18 +2,20 @@
 #include "RobotMap.h"
 #include "Commands/Shooter/ShooterJoystick.h"
 
-ShooterRotation::ShooterRotation() : PIDSubsystem("ShooterRotation", 15, 10, 10)
+ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 {
-	RotateMotor = RobotMap::shooterRotateMotor;
-	GetPIDController()->SetOutputRange(-1.0, 1.0);
-	GetPIDController()->SetInputRange(MIN_VOLTS, MAX_VOLTS);
-	GetPIDController()->SetSetpoint(HOME_POS);
-	GetPIDController()->SetAbsoluteTolerance(AngleToVolts(3));
-	GetPIDController()->Enable();
+	motor = RobotMap::shooterRotateMotor;
+	absEncoder = RobotMap::shooterAbsEncoder.get();
+	pid = new PIDController(kP, kI, kD, absEncoder, motor.get());
+	pid->SetOutputRange(-1, 1);
+	pid->SetInputRange(0, 5);
+	pid->SetSetpoint(HOME_SETPOINT);
+	pid->SetContinuous(true);
 }
 
-void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
-{
+//void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
+//{
+	/*
 	std::printf("sets angle\n");
 	this->pos = pos;
 	double angle = pos + MIN_ANGLE;
@@ -24,71 +26,39 @@ void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
 	std::printf("Angle: %f\n", angle);
 	std::printf("Voltage: %f\n", AngleToVolts(angle));
 #endif
-}
-
-double ShooterRotation::ReturnPIDInput()
-{
-#ifdef DEBUG
-	std::printf("Shooter Voltage: %f\n", RobotMap::shooterEncoder->GetVoltage());
-#endif
-	return (double) RobotMap::shooterEncoder->GetVoltage();
-}
-
-void ShooterRotation::UsePIDOutput(double output)
-{
-	RotateMotor->Set(-output);
-	SmartDashboard::PutNumber("PID Rotation", output);
-	SmartDashboard::PutNumber("Shooter Angle", RobotMap::shooterEncoder->GetVoltage() * 360 / 5);
-#ifdef DEBUG
-	std::printf("Shooter PID Output: %f\n", output);
-#endif
-}
-
-void ShooterRotation::IncrementAngle(double inc)
-{
-	double newAngle = pos + inc;
-	SetAngle(newAngle);
-}
-
-void ShooterRotation::SetPIDEnabled(bool enabled)
-{
-	if(enabled)
-		GetPIDController()->Enable();
-	else
-	{
-		GetPIDController()->Disable();
-		SetSpeed(0.0);
-	}
-}
-
-void ShooterRotation::SetPID(double p, double i, double d)
-{
-	GetPIDController()->SetPID(p, i, d);
-}
+*/
+//}
 
 void ShooterRotation::InitDefaultCommand()
 {
 	SetDefaultCommand(new ShooterJoystick());
 }
 
-float ShooterRotation::GetSpeed()
+// Teleop Axis Control
+void ShooterRotation::Gun(float gunner_axis)
 {
-	return RotateMotor->Get();
+	
 }
 
-void ShooterRotation::SetSpeed(float speed)
+void ShooterRotation::Stop()
 {
-	RotateMotor->Set(speed);
-	SmartDashboard::PutNumber("Rotation Speed", RotateMotor->Get());
+	Disable();
 }
 
-void ShooterRotation::SetMode(CANTalon::ControlMode mode)
+void ShooterRotation::Enable()
 {
-	RotateMotor->SetControlMode(mode);
+	pid->Enable();
 }
 
-double ShooterRotation::AngleToVolts(double angle)
+void ShooterRotation::Disable()
 {
-	double volts = (5*angle) / 360;
-	return volts;
+	pid->Disable();
+}
+
+void ShooterRotation::SmartDashboardOutput()
+{
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", absEncoder->GetVoltageRound());
+	SmartDashboard::PutNumber("Shooter Rotation Motor Out", pid->Get());
+	SmartDashboard::PutData("PID Controller", pid);
+	SmartDashboard::PutNumber("Shooter Rotation Error", pid->GetError());
 }

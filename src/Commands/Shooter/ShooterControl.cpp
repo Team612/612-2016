@@ -41,18 +41,18 @@ void ShooterControl::Execute()
 
     if(fired)
     {
-        if(Robot::shooterlever->AtSetPosition())
+        if(Robot::shooteractuator->AtSetPosition())
         {
             firing = false;
             fired = false;
-            Robot::shooterlever->CanShoot = true;
+            Robot::shooteractuator->CanShoot = true;
         }
     }
     else if(firing)
     {
         if(Robot::shooterwheels->UpToSpeed())
         {
-            Robot::shooterlever->CanShoot = false;
+            Robot::shooteractuator->CanShoot = false;
             fired = true;
         }
     }
@@ -97,7 +97,7 @@ void ShooterControl::Fire()
 void ShooterControl::Intake()
 {
 	Robot::shooterwheels->Enable();
-    Robot::shooterlever->SetNeutral();
+    Robot::shooteractuator->SetNeutral();
     Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelIntakeSpeed);
 }
 
