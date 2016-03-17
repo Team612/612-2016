@@ -8,7 +8,7 @@
 #ifndef SRC_REGISTERIOI2C_H_
 #define SRC_REGISTERIOI2C_H_
 
-#include <NavX/RegisterIO.h>
+#include "RegisterIO.h"
 #include <WPILib.h>
 
 class RegisterIO_I2C : public IRegisterIO {

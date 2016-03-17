@@ -5,7 +5,7 @@
 #include <Commands/Subsystem.h>
 #include <WPILib.h>
 #include <CANTalon.h>
-#include <AbsoluteEncoder.h>
+#include <AbsoluteEncoder/AbsoluteEncoder.h>
 
 class ShooterRotation : public Subsystem
 {

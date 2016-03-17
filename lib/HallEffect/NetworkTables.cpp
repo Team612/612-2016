@@ -5,7 +5,7 @@
  *      Author: champ
  */
 
-#include <HallEffect/NetworkTables.h>
+#include "NetworkTables.h"
 
 NetworkTables::NetworkTables()
 {

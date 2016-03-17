@@ -1,4 +1,4 @@
-#include <AbsoluteEncoder.h>
+#include "AbsoluteEncoder.h"
 
 AbsoluteEncoder::AbsoluteEncoder(int channel) : AnalogInput(channel) {}
 

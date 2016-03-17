@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include <NavX/RegisterIOSPI.h>
+#include "RegisterIOSPI.h"
 
 static priority_mutex imu_mutex;
 RegisterIO_SPI::RegisterIO_SPI(SPI *port, uint32_t bitrate) {

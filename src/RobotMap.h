@@ -1,7 +1,7 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 #include <WPILib.h>
-#include <AbsoluteEncoder.h>
+#include <AbsoluteEncoder/AbsoluteEncoder.h>
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into

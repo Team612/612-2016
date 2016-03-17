@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include <NavX/RegisterIOI2C.h>
+#include "RegisterIOI2C.h"
 #include <HAL/cpp/priority_mutex.h>
 
 static priority_mutex imu_mutex;
