@@ -5,12 +5,13 @@
 ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 {
 	motor = RobotMap::shooterRotateMotor;
+	motor->SetControlMode(CANSpeedController::kPercentVbus);
 	absEncoder = RobotMap::shooterAbsEncoder.get();
 	pid = new PIDController(kP, kI, kD, absEncoder, motor.get());
 	pid->SetOutputRange(-1, 1);
 	pid->SetInputRange(0, 5);
-	pid->SetSetpoint(HOME_SETPOINT);
 	pid->SetContinuous(true);
+	pid->SetSetpoint(HOME_SETPOINT);
 }
 
 //void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
@@ -37,23 +38,32 @@ void ShooterRotation::InitDefaultCommand()
 // Teleop Axis Control
 void ShooterRotation::Gun(float gunner_axis)
 {
-	
+	if(pid->IsEnabled())
+		PIDEnable(false);
+	motor->SetSpeed(gunner_axis);
 }
 
 // Button/Auto Control
 void ShooterRotation::HomePos()
 {
-	
+	if(!pid->IsEnabled())
+		PIDEnable(true);
+	pid->SetSetpoint(HOME_SETPOINT);
 }
 
 void ShooterRotation::ShootPos(float angle)
 {
+	if(!pid->IsEnabled())
+		PIDEnable(true);
+	// TODO: Cap or otherwise limit jumps in setpoint?
 	pid->SetSetpoint(ConvertAngleToAbsolute(angle));
 }
 
 void ShooterRotation::IntakePos()
 {
-	
+	if(!pid->IsEnabled())
+		PIDEnable(true);
+	pid->SetSetpoint(INTAKE_SETPOINT);
 }
 
 void ShooterRotation::Stop()
@@ -63,8 +73,10 @@ void ShooterRotation::Stop()
 
 void ShooterRotation::PIDEnable(bool enabled)
 {
-	if(enabled)
+	if(enabled) 
+	{
 		pid->Enable();
+	}
 	else
 		pid->Disable();
 }
