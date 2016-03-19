@@ -11,7 +11,7 @@ ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 	pid->SetOutputRange(-1, 1);
 	pid->SetInputRange(0, 5);
 	pid->SetContinuous(true);
-	pid->SetSetpoint(HOME_SETPOINT);
+	this->HomePos();
 }
 
 //void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
@@ -40,7 +40,7 @@ void ShooterRotation::Gun(float gunner_axis)
 {
 	if(pid->IsEnabled())
 		PIDEnable(false);
-	motor->SetSpeed(gunner_axis);
+	motor->Set(gunner_axis);
 }
 
 // Button/Auto Control

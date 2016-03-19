@@ -22,7 +22,7 @@ private:
 	
 	// Common setpoints, tied to buttons.
 	const float HOME_SETPOINT = 0;
-	const float INTAKE_SETPOINT = 0;
+	const float INTAKE_SETPOINT = 3;
 	const float LOGOAL_SETPOINT = 0;
 	const float HIGOAL_SETPOINT = 0;
 	

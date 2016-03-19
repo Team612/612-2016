@@ -83,6 +83,7 @@ void Robot::TeleopInit()
 		
 	drivejoystick->Start();
 	shifter->Set(Shifter::LOW);
+	//shooterrotation->PIDEnable(true);
 }
 
 void Robot::TeleopPeriodic()
@@ -100,12 +101,7 @@ void Robot::TestPeriodic()
 void Robot::InitSmartDashboard()
 {
 	//ShooterPID
-	// TODO: Actually replace with intelligent usage of PutData
-	SmartDashboard::PutNumber("P", 0.0);
-	SmartDashboard::PutNumber("I", 0.0);
-	SmartDashboard::PutNumber("D", 0.0);
-	SmartDashboard::PutNumber("Angle", 0.0);
-
+	shooterrotation->SmartDashboardOutput();
 	//Commands
 	SmartDashboard::PutData("Stop Drivetrain", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("Drive Joystick", new DriveJoystick());
