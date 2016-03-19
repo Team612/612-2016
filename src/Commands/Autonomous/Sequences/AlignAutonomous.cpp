@@ -7,7 +7,7 @@
 #include "../../Shooter/FireShooter.h"
 #include "../../Shooter/SetShooterAngle.h"
 
-#include "../../../Subsystems/ShooterLever.h"
+#include "../../../Subsystems/ShooterActuator.h"
 
 AlignAutonomous::AlignAutonomous()
 {

@@ -12,7 +12,6 @@ ShooterJoystick::ShooterJoystick()
 // Called just before this Command runs the first time
 void ShooterJoystick::Initialize()
 {
-	Robot::shooterrotation->SetMode(CANSpeedController::kPercentVbus);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -21,7 +20,7 @@ void ShooterJoystick::Execute()
 	auto gunner = Robot::oi->getGunner()->GetRawAxis(5);
 	if(gunner < TOLERANCE && gunner > -TOLERANCE)
 		gunner = 0;
-	Robot::shooterrotation->SetSpeed(gunner);
+	Robot::shooterrotation->Gun(gunner);
 	//printf("Gunner: %f \n", gunner);
 }
 
@@ -34,12 +33,12 @@ bool ShooterJoystick::IsFinished()
 // Called once after isFinished returns true
 void ShooterJoystick::End()
 {
-	Robot::shooterrotation->SetSpeed(0.0f);
+	Robot::shooterrotation->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ShooterJoystick::Interrupted()
 {
-	Robot::shooterrotation->SetSpeed(0.0f);
+	Robot::shooterrotation->Stop();
 }

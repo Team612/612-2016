@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include <NavX/RegisterIO.h>
+#include "RegisterIO.h"
 #include "IMURegisters.h"
 
 RegisterIO::RegisterIO( IRegisterIO *io_provider,

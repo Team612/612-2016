@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include <NavX/ContinuousAngleTracker.h>
+#include "ContinuousAngleTracker.h"
 
 ContinuousAngleTracker::ContinuousAngleTracker() {
     this->last_angle = 0.0f;

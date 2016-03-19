@@ -26,7 +26,7 @@ OI::OI()
 
 	highGear.reset(new JoystickButton(driver.get(), 6));
 	// TODO: Change this back to Shifter::HIGH when shifters are fixed
-	highGear->WhenPressed(new SetGear(Shifter::LOW));
+	highGear->WhenPressed(new SetGear(Shifter::HIGH));
 }
 
 std::shared_ptr<Joystick> OI::getDriver()

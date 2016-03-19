@@ -6,16 +6,17 @@
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")
 {
-	CANTalonLeft = RobotMap::leftFlywheelMotor;
-	CANTalonRight = RobotMap::rightFlywheelMotor;
+	CANTalonLeft = RobotMap::flywheelMotorL;
+	CANTalonRight = RobotMap::flywheelMotorR;
 	shootertable = new NetworkTables();
-	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::leftFlywheelHall));
+	// TODO: Move these to RobotMap?
+	this->hallCounterLeft.reset(new PIDEdgeCounter(RobotMap::flywheelHallL));
 	this->hallCounterLeft->Reset();
 	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
 	this->wheelControllerLeft->SetTolerance(this->kTol);
 	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
 	this->CANTalonLeft->SetInverted(true);
-	this->hallCounterRight.reset(new PIDEdgeCounter(RobotMap::rightFlywheelHall));
+	this->hallCounterRight.reset(new PIDEdgeCounter(RobotMap::flywheelHallR));
 	this->wheelControllerRight.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonRight.get()));
 	this->wheelControllerRight->SetTolerance(this->kTol);
     this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);

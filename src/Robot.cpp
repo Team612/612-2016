@@ -13,18 +13,20 @@
 
 #include "Commands/Autonomous/Sequences/SimpleAutonomous.h"
 #include "Commands/Autonomous/Sequences/AlignAutonomous.h"
+#include <Commands/Shooter/ShooterControl.h>
+#include "CameraServer.h"
 
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-std::shared_ptr<ShooterLever> Robot::shooterlever;
 std::shared_ptr<Shifter> Robot::shifter;
+std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::unique_ptr<OI> Robot::oi;
-std::unique_ptr<Vision> Robot::vision;
+std::shared_ptr<Vision> Robot::vision;
 std::shared_ptr<CameraServer> Robot::server;
+std::shared_ptr<SendableChooser> Robot::autoChooser;
 bool Robot::inverted;
 
-std::shared_ptr<SendableChooser> Robot::autoChooser;
 
 void Robot::RobotInit()
 {
@@ -34,7 +36,6 @@ void Robot::RobotInit()
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
 	vision.reset(new Vision());
-	shooterlever.reset(new ShooterLever());
 	shifter.reset(new Shifter());
 
 	/*
@@ -46,10 +47,12 @@ void Robot::RobotInit()
 	 */
 
 	/*
-	 * I'm not sure CommandBase exists any more...
+	 * ^ I'm not sure CommandBase exists any more...
 	 */
 
 	oi.reset(new OI());
+	shooteractuator.reset(new ShooterActuator());
+	shifter.reset(new Shifter());
 
 	autoChooser.reset(new SendableChooser());
 	InitSmartDashboard();
@@ -107,7 +110,6 @@ void Robot::TeleopInit()
 	//drivejoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
-	invertcontrols->Start();
 }
 
 void Robot::TeleopPeriodic()
@@ -132,11 +134,13 @@ void Robot::TeleopPeriodic()
         Stop();
     }
 	#endif
+    PeriodicSmartDashboard();
 }
 
 void Robot::TestPeriodic()
 {
 	lw->Run();
+	PeriodicSmartDashboard();
 }
 
 void Robot::InitSmartDashboard()
@@ -148,6 +152,7 @@ void Robot::InitSmartDashboard()
 	SmartDashboard::PutNumber("Angle", 0.0);
 
 	//Commands for debugging
+	shooterrotation->SmartDashboardOutput();
 	SmartDashboard::PutData("Stop Drivetrain", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("Drive Joystick", new DriveJoystick());
 	SmartDashboard::PutData("Drive Distance", new DriveDistance(240));
@@ -170,13 +175,13 @@ void Robot::InitSmartDashboard()
 
 void Robot::PeriodicSmartDashboard()
 {
-	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterEncoder.get()->GetVoltage());
-	//SmartDashboard::PutNumber("Arm Absolute Encoder", RobotMap::armRotationDetect.get()->GetVoltage());
+
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
 
 	//Encoder
-	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderLeft->Get());
+	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderL->Get());
 	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());
-	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderRight->Get());
+	SmartDashboard::PutNumber("Right encoder ticks", RobotMap::driveEncoderR->Get());
 	//SmartDashboard::PutNumber("Right encoder 'distance'", RobotMap::drivetrainEncoder2->GetDistance());
 
 	SmartDashboard::PutNumber("Average Distance", drivetrain->GetAverageEncoderDistance());
@@ -185,11 +190,11 @@ void Robot::PeriodicSmartDashboard()
 
 	SmartDashboard::PutBoolean("Inverted Controls", inverted);
 
-	SmartDashboard::PutNumber("Servo 1", RobotMap::shifterLeft->Get());
-	SmartDashboard::PutNumber("Servo 2", RobotMap::shifterRight->Get());
+	SmartDashboard::PutNumber("Left Shifter", RobotMap::shifterL->Get());
+	SmartDashboard::PutNumber("Right Shifter", RobotMap::shifterR->Get());
 
-	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterLeverDetect->GetVoltage());
-	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterLeverDetect->GetVoltage(), -1.15f)) * 0.393701f));
+	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterIR->GetVoltage());
+	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterIR->GetVoltage(), -1.15f)) * 0.393701f));
 
 	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
 }

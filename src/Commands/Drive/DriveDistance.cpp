@@ -4,7 +4,8 @@
 DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 0.2, 0.0, 0.0) //default values
 {
 	Requires(Robot::drivetrain.get());
-	RobotMap::driveEncoderLeft->Reset();
+	// TODO: Should this use both encoders?
+	RobotMap::driveEncoderL->Reset();
 	this->end_distance = end_distance;
 
 	GetPIDController()->SetContinuous(true); //?
@@ -32,7 +33,8 @@ bool DriveDistance::IsFinished()
 
 void DriveDistance::End()
 {
-	RobotMap::driveEncoderLeft->Reset();
+	// TODO: Should this use both encoders?
+	RobotMap::driveEncoderL->Reset();
 	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
 
 	GetPIDController()->Disable();

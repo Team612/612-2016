@@ -1,17 +1,17 @@
-#include "ShooterLever.h"
+#include "ShooterActuator.h"
 #include "RobotMap.h"
 #include <Commands/Shooter/FireShooter.h>
 
-ShooterLever::ShooterLever() :
-		Subsystem("ShooterLever")
+ShooterActuator::ShooterActuator() :
+		Subsystem("ShooterActuator")
 {
-	LeverServo = RobotMap::shooterLever;
-	irsensor = RobotMap::shooterLeverDetect;
+	actuator = RobotMap::shooterActuator;
+	IR = RobotMap::shooterIR;
 	storedposition = 0.0f;
 	CanShoot = false;
 }
 
-void ShooterLever::InitDefaultCommand()
+void ShooterActuator::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
@@ -22,7 +22,7 @@ void ShooterLever::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void ShooterLever::SetPosition(ShooterServoPosition position)
+void ShooterActuator::SetPosition(ShooterServoPosition position)
 {
 	switch(position)
 	{
@@ -42,28 +42,28 @@ void ShooterLever::SetPosition(ShooterServoPosition position)
 	}
 }
 
-void ShooterLever::SetPosition(float position)
+void ShooterActuator::SetPosition(float position)
 {
-	LeverServo->Set(position);
+	actuator->Set(position);
 	this->storedposition = position;
 }
 
-/*void ShooterLever::SetAngle(float angle)
+/*void ShooterActuator::SetAngle(float angle)
 {
 	LeverServo->SetAngle(angle);
 }*/
 
-void ShooterLever::SetClamp()
+void ShooterActuator::SetClamp()
 {
     this->SetPosition(this->CLAMP_POS);
 }
 
-void ShooterLever::SetNeutral()
+void ShooterActuator::SetNeutral()
 {
     this->SetPosition(this->NEUTRAL_POS);
 }
 
-void ShooterLever::SetPush()
+void ShooterActuator::SetPush()
 {
 	this->SetPosition(this->PUSH_POS);
 	if(CanShoot)
@@ -75,36 +75,36 @@ void ShooterLever::SetPush()
 	printf("Tried to set servo to push\n");
 }
 
-float ShooterLever::GetPosition()
+float ShooterActuator::GetPosition()
 {
-	return LeverServo->Get();
+	return actuator->Get();
 }
 
-/*float ShooterLever::GetAngle()
+/*float ShooterActuator::GetAngle()
 {
 	return LeverServo->GetAngle();
 }*/
 
-/*std::shared_ptr<Servo> ShooterLever::getLeverServo1()
+/*std::shared_ptr<Servo> ShooterActuator::getLeverServo1()
 {
 	return LeverServo1;
 }
 
-std::shared_ptr<AnalogInput> ShooterLever::getBallDetector()
+std::shared_ptr<AnalogInput> ShooterActuator::getBallDetector()
 {
-	return RobotMap::shooterLeverDetect;
+	return RobotMap::ShooterActuatorDetect;
 }*/
 
-float ShooterLever::getIRInInches()
+float ShooterActuator::getIRInInches()
 {
 	//SmartDashboard::PutNumber("Raw IR sensor voltage", irsensor->GetVoltage());
-	std::printf("Raw IR sensor voltage: %f\n", irsensor->GetVoltage());
+	std::printf("Raw IR sensor voltage: %f\n", IR->GetVoltage());
 	//SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f));
-	std::printf("IR distance inches: %f\n", ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f));
-	return ((27.86f * pow(irsensor->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
+	std::printf("IR distance inches: %f\n", ((27.86f * pow(IR->GetVoltage(), -1.15f)) * 0.393701f));
+	return ((27.86f * pow(IR->GetVoltage(), -1.15f)) * 0.393701f); //returns given IR value inches
 }
 
-bool ShooterLever::AtSetPosition()
+bool ShooterActuator::AtSetPosition()
 {
-    return (LeverServo->Get() - storedposition) < 10E-2;
+    return (actuator->Get() - storedposition) < 10E-2;
 }
