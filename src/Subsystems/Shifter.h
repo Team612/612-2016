@@ -10,8 +10,8 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	std::shared_ptr<Servo> ShifterServo1;
-	std::shared_ptr<Servo> ShifterServo2;
+	std::shared_ptr<Servo> shifterL;
+	std::shared_ptr<Servo> shifterR;
 	Shifter();
 	void InitDefaultCommand();
 	void Set(float shiftPower);

@@ -5,7 +5,7 @@
  *      Author: Scott
  */
 
-#include <NavX/InertialDataIntegrator.h>
+#include "InertialDataIntegrator.h"
 
 InertialDataIntegrator::InertialDataIntegrator() {
     ResetDisplacement();

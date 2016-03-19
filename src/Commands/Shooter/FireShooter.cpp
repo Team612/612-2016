@@ -2,14 +2,14 @@
 
 FireShooter::FireShooter(ShooterServoPosition pos)
 {
-    Requires(Robot::shooterlever.get());
+    Requires(Robot::shooteractuator.get());
     this->position = pos;
 }
 
 // Called just before this Command runs the first time
 void FireShooter::Initialize()
 {
-	Robot::shooterlever->SetPosition(position);
+	Robot::shooteractuator->SetPosition(position);
 	count = 0;
 }
 

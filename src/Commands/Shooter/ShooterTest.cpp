@@ -9,10 +9,11 @@ ShooterTest::ShooterTest()
 // Called just before this Command runs the first time
 void ShooterTest::Initialize()
 {
-	Robot::shooterrotation->SetPIDEnabled(false);
-	Robot::shooterrotation->SetPID(SmartDashboard::GetNumber("P", 0), SmartDashboard::GetNumber("I", 0), SmartDashboard::GetNumber("D", 0));
-	Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Angle", 0));
-	Robot::shooterrotation->SetPIDEnabled(true);
+	// TODO: Replace this
+	//Robot::shooterrotation->SetPIDEnabled(false);
+	//Robot::shooterrotation->SetPID(SmartDashboard::GetNumber("P", 0), SmartDashboard::GetNumber("I", 0), SmartDashboard::GetNumber("D", 0));
+	//Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Angle", 0));
+	//Robot::shooterrotation->SetPIDEnabled(true);
 }
 
 // Called repeatedly when this Command is scheduled to run
