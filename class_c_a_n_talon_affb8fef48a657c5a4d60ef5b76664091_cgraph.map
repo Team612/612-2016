@@ -1,0 +1,6 @@
+<map id="CANTalon::PIDGet" name="CANTalon::PIDGet">
+<area shape="rect" id="node2" href="$class_c_a_n_talon.html#a990feef6259267c7536cfd6cd094a21b" title="CANTalon::Get" alt="" coords="188,31,300,57"/>
+<area shape="rect" id="node3" href="$class_c_a_n_talon.html#a24dd3a261aa1e5792855f233ccbb2ddd" title="CANTalon::GetOutputVoltage" alt="" coords="348,5,543,32"/>
+<area shape="rect" id="node5" href="$class_c_a_n_talon.html#a47d61e3fe91aea4b8c6a6638e122150a" title="CANTalon::GetOutputCurrent" alt="" coords="348,56,543,83"/>
+<area shape="rect" id="node4" href="$class_c_a_n_talon.html#a438bc3ae134c8e4ee4e905c978df199c" title="CANTalon::GetBusVoltage" alt="" coords="591,5,769,32"/>
+</map>

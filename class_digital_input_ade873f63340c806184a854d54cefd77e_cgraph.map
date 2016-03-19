@@ -1,0 +1,6 @@
+<map id="DigitalInput::DigitalInput" name="DigitalInput::DigitalInput">
+<area shape="rect" id="node2" href="$class_sensor_base.html#ac3a25fbc61059d4cdab8ba63a8e0f2ac" title="SensorBase::CheckDigital\lChannel" alt="" coords="216,5,392,47"/>
+<area shape="rect" id="node3" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="218,71,390,98"/>
+<area shape="rect" id="node4" href="$class_live_window.html#a9eb9ac4b7d33ff0fc9ffc5899639febb" title="LiveWindow::AddSensor" alt="" coords="221,122,387,149"/>
+<area shape="rect" id="node5" href="$class_live_window.html#a9e627ca9e7af33b9d11a4a501de3664d" title="Use a raw pointer to the LiveWindow. " alt="" coords="440,122,605,149"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Command::Cancel" name="Command::Cancel">
+<area shape="rect" id="node2" href="$class_command.html#a2e36a819254da2bb9badb3227bdfe336" title="Command::_Cancel" alt="" coords="184,5,323,32"/>
+<area shape="rect" id="node3" href="$class_command.html#aa75c36ffcfd20a172306750bc1db2a95" title="Command::IsRunning" alt="" coords="371,5,520,32"/>
+</map>

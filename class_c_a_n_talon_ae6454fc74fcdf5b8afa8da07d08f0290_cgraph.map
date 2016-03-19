@@ -1,0 +1,5 @@
+<map id="CANTalon::SetPID" name="CANTalon::SetPID">
+<area shape="rect" id="node2" href="$class_c_a_n_talon.html#a6a8c44252d104634d6a0c580088cbf98" title="CANTalon::SetP" alt="" coords="189,5,309,32"/>
+<area shape="rect" id="node3" href="$class_c_a_n_talon.html#ac72349fb7837dff1a27c5288416eb1ac" title="CANTalon::SetI" alt="" coords="191,56,306,83"/>
+<area shape="rect" id="node4" href="$class_c_a_n_talon.html#ad1d9dc5cb06e4efbf57ed10d91f2ee80" title="CANTalon::SetD" alt="" coords="188,107,309,133"/>
+</map>

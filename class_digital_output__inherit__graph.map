@@ -1,0 +1,8 @@
+<map id="DigitalOutput" name="DigitalOutput">
+<area shape="rect" id="node2" href="$class_digital_source.html" title="DigitalSource" alt="" coords="38,229,138,256"/>
+<area shape="rect" id="node3" href="$class_interruptable_sensor_base.html" title="InterruptableSensorBase" alt="" coords="5,155,171,181"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="41,80,135,107"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="48,5,128,32"/>
+<area shape="rect" id="node7" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="291,229,437,256"/>
+<area shape="rect" id="node8" href="$class_sendable.html" title="Sendable" alt="" coords="326,155,402,181"/>
+</map>

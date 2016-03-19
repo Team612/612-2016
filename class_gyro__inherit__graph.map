@@ -1,0 +1,5 @@
+<map id="Gyro" name="Gyro">
+<area shape="rect" id="node2" href="$class_gyro_base.html" title="GyroBase" alt="" coords="93,80,173,107"/>
+<area shape="rect" id="node3" href="$class_a_d_x_r_s450___gyro.html" title="ADXRS450_Gyro" alt="" coords="5,155,131,181"/>
+<area shape="rect" id="node4" href="$class_analog_gyro.html" title="AnalogGyro" alt="" coords="155,155,245,181"/>
+</map>

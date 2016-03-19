@@ -1,0 +1,26 @@
+var class_camera_server =
+[
+    [ "Request", "struct_camera_server_1_1_request.html", "struct_camera_server_1_1_request" ],
+    [ "CameraServer", "class_camera_server.html#aaf2bbf4b69d2cda9b2c0e04322b2268a", null ],
+    [ "AutoCapture", "class_camera_server.html#a3d62afbc86392cb186d4601c72336309", null ],
+    [ "FreeImageData", "class_camera_server.html#a91b586cbfccc5d345dcfe9c4c8d2f82f", null ],
+    [ "GetQuality", "class_camera_server.html#a30b4b430804b9c37031a9fe8404b1358", null ],
+    [ "IsAutoCaptureStarted", "class_camera_server.html#a3ab90c9165a4844ff9e1bcd6320e941b", null ],
+    [ "Serve", "class_camera_server.html#afdbf1d630e96855c4b52f9bc67d366fe", null ],
+    [ "SetImage", "class_camera_server.html#ad5ba3f39eaaa69035a240ee40fa5fefd", null ],
+    [ "SetImageData", "class_camera_server.html#a1588b72202bc4c3992d0ab67fc644f19", null ],
+    [ "SetQuality", "class_camera_server.html#ad4f3c278a1a472042a91a8c71fabb0eb", null ],
+    [ "SetSize", "class_camera_server.html#a805965c4083ac8b747076857da1b5f28", null ],
+    [ "StartAutomaticCapture", "class_camera_server.html#ac7da16a3d0ab761a5fb2e12029ab1a73", null ],
+    [ "StartAutomaticCapture", "class_camera_server.html#a3354aae4723cccdb5790dd4f7de0513e", null ],
+    [ "m_autoCaptureStarted", "class_camera_server.html#a8fbbf059c94015c60ae4e1711cfcb255", null ],
+    [ "m_camera", "class_camera_server.html#a00f6e8d91c8a7e0660f988b31949fe5a", null ],
+    [ "m_captureThread", "class_camera_server.html#a465b1e0e51a3baed23dc5d56342e8693", null ],
+    [ "m_dataPool", "class_camera_server.html#a84e90f4bd9e20c479b2d9a19a4e672ea", null ],
+    [ "m_hwClient", "class_camera_server.html#a5eb4f63f97938c226a61d34a4b3adfa0", null ],
+    [ "m_imageData", "class_camera_server.html#a7612a18adcf645bc065b8837e6b426c5", null ],
+    [ "m_imageMutex", "class_camera_server.html#a214cace6aebff306920b1d4486b6e8fc", null ],
+    [ "m_newImageVariable", "class_camera_server.html#acfdd7aa36b9c1ba5be261e9463cd520f", null ],
+    [ "m_quality", "class_camera_server.html#ad791475c58132eb11e153b023349ad84", null ],
+    [ "m_serverThread", "class_camera_server.html#a19fa53e1d56b1d1d8ade14dd9f0b656e", null ]
+];

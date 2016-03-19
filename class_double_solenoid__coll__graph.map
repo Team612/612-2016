@@ -1,0 +1,8 @@
+<map id="DoubleSolenoid" name="DoubleSolenoid">
+<area shape="rect" id="node2" href="$class_solenoid_base.html" title="SolenoidBase" alt="" coords="5,261,108,288"/>
+<area shape="rect" id="node3" href="$class_sensor_base.html" title="SensorBase" alt="" coords="10,185,103,212"/>
+<area shape="rect" id="node4" href="$class_error_base.html" title="ErrorBase" alt="" coords="17,109,97,136"/>
+<area shape="rect" id="node5" href="$class_error.html" title="Error" alt="" coords="31,5,82,32"/>
+<area shape="rect" id="node6" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="133,261,279,288"/>
+<area shape="rect" id="node7" href="$class_sendable.html" title="Sendable" alt="" coords="168,185,244,212"/>
+</map>

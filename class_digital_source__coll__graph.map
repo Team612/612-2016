@@ -1,0 +1,6 @@
+<map id="DigitalSource" name="DigitalSource">
+<area shape="rect" id="node2" href="$class_interruptable_sensor_base.html" title="InterruptableSensorBase" alt="" coords="5,261,171,288"/>
+<area shape="rect" id="node3" href="$class_sensor_base.html" title="SensorBase" alt="" coords="41,185,135,212"/>
+<area shape="rect" id="node4" href="$class_error_base.html" title="ErrorBase" alt="" coords="48,109,128,136"/>
+<area shape="rect" id="node5" href="$class_error.html" title="Error" alt="" coords="63,5,113,32"/>
+</map>

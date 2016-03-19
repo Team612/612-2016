@@ -1,0 +1,7 @@
+<map id="MotorSafetyHelper::Check" name="MotorSafetyHelper::Check">
+<area shape="rect" id="node2" href="$class_driver_station.html#a6d1d1995986a4e8d3303cbdee46c4c35" title="DriverStation::GetInstance" alt="" coords="196,5,373,32"/>
+<area shape="rect" id="node4" href="$class_driver_station.html#a4c3223c76cca5a3f1ee07a1f873bb675" title="DriverStation::IsDisabled" alt="" coords="201,56,369,83"/>
+<area shape="rect" id="node5" href="$class_driver_station.html#a602222ddb574a72809193034564ef684" title="DriverStation::IsTest" alt="" coords="213,107,356,133"/>
+<area shape="rect" id="node6" href="$class_timer.html#a7fa6e6dffec055e5104ccd6bcadec9aa" title="Timer::GetFPGATimestamp" alt="" coords="192,157,377,184"/>
+<area shape="rect" id="node3" href="$class_driver_station.html#a343945cc9bbf870e0ada94b47f3fec92" title="DriverStation::DriverStation" alt="" coords="425,5,608,32"/>
+</map>

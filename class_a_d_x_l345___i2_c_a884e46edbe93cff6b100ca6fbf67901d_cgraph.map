@@ -1,0 +1,8 @@
+<map id="ADXL345_I2C::ADXL345_I2C" name="ADXL345_I2C::ADXL345_I2C">
+<area shape="rect" id="node2" href="$class_i2_c.html#ab0d1a62981b138ff39f7eb77a79e3bff" title="I2C::I2C" alt="" coords="302,5,374,32"/>
+<area shape="rect" id="node3" href="$class_i2_c.html#a2986f86f60397011ec733ed087418f79" title="I2C::Write" alt="" coords="513,81,596,108"/>
+<area shape="rect" id="node4" href="$class_a_d_x_l345___i2_c.html#a7a961ba8b12048b3ee6b5ce2a8940e55" title="ADXL345_I2C::SetRange" alt="" coords="252,107,424,133"/>
+<area shape="rect" id="node5" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="252,157,424,184"/>
+<area shape="rect" id="node6" href="$class_live_window.html#a9eb9ac4b7d33ff0fc9ffc5899639febb" title="LiveWindow::AddSensor" alt="" coords="255,208,421,235"/>
+<area shape="rect" id="node7" href="$class_live_window.html#a9e627ca9e7af33b9d11a4a501de3664d" title="Use a raw pointer to the LiveWindow. " alt="" coords="472,208,637,235"/>
+</map>

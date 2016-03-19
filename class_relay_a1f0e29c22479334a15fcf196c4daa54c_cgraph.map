@@ -1,0 +1,4 @@
+<map id="Relay::StopMotor" name="Relay::StopMotor">
+<area shape="rect" id="node2" href="$class_relay.html#a35d0aa67e99f6ed89ccaa489a4275a31" title="Relay::Set" alt="" coords="177,5,261,32"/>
+<area shape="rect" id="node3" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="309,5,476,32"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="ADXL345_SPI" name="ADXL345_SPI">
+<area shape="rect" id="node2" href="$class_accelerometer.html" title="Accelerometer" alt="" coords="5,155,112,181"/>
+<area shape="rect" id="node3" href="$class_s_p_i.html" title="SPI" alt="" coords="137,155,181,181"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="112,80,205,107"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="119,5,199,32"/>
+<area shape="rect" id="node6" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="205,155,352,181"/>
+<area shape="rect" id="node7" href="$class_sendable.html" title="Sendable" alt="" coords="241,80,317,107"/>
+</map>

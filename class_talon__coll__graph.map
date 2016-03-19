@@ -1,0 +1,12 @@
+<map id="Talon" name="Talon">
+<area shape="rect" id="node2" href="$class_safe_p_w_m.html" title="SafePWM" alt="" coords="227,337,309,364"/>
+<area shape="rect" id="node3" href="$class_p_w_m.html" title="PWM" alt="" coords="147,261,202,288"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="5,185,99,212"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="12,109,92,136"/>
+<area shape="rect" id="node6" href="$class_error.html" title="Error" alt="" coords="27,5,77,32"/>
+<area shape="rect" id="node8" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="251,185,397,212"/>
+<area shape="rect" id="node9" href="$class_sendable.html" title="Sendable" alt="" coords="286,109,362,136"/>
+<area shape="rect" id="node10" href="$class_motor_safety.html" title="MotorSafety" alt="" coords="227,261,320,288"/>
+<area shape="rect" id="node11" href="$class_speed_controller.html" title="SpeedController" alt="" coords="333,337,448,364"/>
+<area shape="rect" id="node12" href="$class_p_i_d_output.html" title="PIDOutput" alt="" coords="349,261,433,288"/>
+</map>

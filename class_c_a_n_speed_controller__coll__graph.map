@@ -1,0 +1,4 @@
+<map id="CANSpeedController" name="CANSpeedController">
+<area shape="rect" id="node2" href="$class_speed_controller.html" title="SpeedController" alt="" coords="20,80,135,107"/>
+<area shape="rect" id="node3" href="$class_p_i_d_output.html" title="PIDOutput" alt="" coords="35,5,119,32"/>
+</map>

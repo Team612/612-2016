@@ -1,0 +1,4 @@
+<map id="RobotDrive" name="RobotDrive">
+<area shape="rect" id="node2" href="$class_motor_safety.html" title="MotorSafety" alt="" coords="5,5,99,32"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="123,5,203,32"/>
+</map>

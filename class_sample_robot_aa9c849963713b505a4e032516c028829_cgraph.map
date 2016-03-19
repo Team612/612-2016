@@ -1,0 +1,26 @@
+<map id="SampleRobot::StartCompetition" name="SampleRobot::StartCompetition">
+<area shape="rect" id="node2" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="275,5,447,32"/>
+<area shape="rect" id="node3" href="$class_smart_dashboard.html#a25934ae5789cecc1cae7b10ffcf6d750" title="SmartDashboard::GetValue" alt="" coords="269,56,452,83"/>
+<area shape="rect" id="node4" href="$class_sample_robot.html#a892614bbdf3a98e76e7c0eb38d273db9" title="SampleRobot::RobotInit" alt="" coords="279,107,442,133"/>
+<area shape="rect" id="node5" href="$class_sample_robot.html#a7e1a70c41806f2f22e4a5dbd88d03538" title="SampleRobot::RobotMain" alt="" coords="275,157,447,184"/>
+<area shape="rect" id="node6" href="$class_live_window.html#a32b93a8ff3f60440654af8b5c351bc5f" title="LiveWindow::SetEnabled" alt="" coords="277,208,445,235"/>
+<area shape="rect" id="node7" href="$class_robot_base.html#ac9add77baf116ee078d47510494cec3e" title="RobotBase::IsDisabled" alt="" coords="282,259,439,285"/>
+<area shape="rect" id="node9" href="$class_driver_station.html#aa4dcf7380058351a899409956c2f4894" title="DriverStation::InDisabled" alt="" coords="277,309,445,336"/>
+<area shape="rect" id="node10" href="$class_sample_robot.html#a6ca2bdc173ea32981fa08d37576a7628" title="SampleRobot::Disabled" alt="" coords="281,360,441,387"/>
+<area shape="rect" id="node11" href="$class_driver_station.html#ad1649357c3e7888a0e47c7dc1e91d1e4" title="DriverStation::WaitForData" alt="" coords="271,411,451,437"/>
+<area shape="rect" id="node12" href="$class_robot_base.html#ad7b6aa093b050282e5bb68ffef90ec2e" title="RobotBase::IsAutonomous" alt="" coords="271,461,450,488"/>
+<area shape="rect" id="node14" href="$class_driver_station.html#a7900262f3e202b831340eee39ce00fee" title="DriverStation::InAutonomous" alt="" coords="265,512,456,539"/>
+<area shape="rect" id="node15" href="$class_sample_robot.html#aee64b40ffeea86c0557be3360c8f67ed" title="SampleRobot::Autonomous" alt="" coords="269,563,452,589"/>
+<area shape="rect" id="node16" href="$class_robot_base.html#a3e2c25e7397589dceeea9ab328d91c5c" title="RobotBase::IsEnabled" alt="" coords="284,613,437,640"/>
+<area shape="rect" id="node18" href="$class_robot_base.html#a6d21e49c2ccbfa67735d0e18757b5223" title="RobotBase::IsTest" alt="" coords="295,664,427,691"/>
+<area shape="rect" id="node20" href="$class_driver_station.html#aad0f43ea94cbbe2adb7b57c46457e25b" title="DriverStation::InTest" alt="" coords="289,715,432,741"/>
+<area shape="rect" id="node21" href="$class_sample_robot.html#a5cd39223d4f3040013110aec623a51d0" title="SampleRobot::Test" alt="" coords="293,765,428,792"/>
+<area shape="rect" id="node22" href="$class_driver_station.html#abe59eecc8f79e13cc9524d9a4af1a853" title="DriverStation::InOperator\lControl" alt="" coords="277,817,444,858"/>
+<area shape="rect" id="node23" href="$class_sample_robot.html#aeb2c7d1d5ea1d0f8452d580038c60b21" title="SampleRobot::OperatorControl" alt="" coords="260,883,461,909"/>
+<area shape="rect" id="node24" href="$class_robot_base.html#af75089b2bd88720a967291a3c250d7c0" title="RobotBase::IsOperatorControl" alt="" coords="261,933,460,960"/>
+<area shape="rect" id="node8" href="$class_driver_station.html#a4c3223c76cca5a3f1ee07a1f873bb675" title="DriverStation::IsDisabled" alt="" coords="521,259,689,285"/>
+<area shape="rect" id="node13" href="$class_driver_station.html#a5b8c28496437fe60f76f1dca5d844a69" title="DriverStation::IsAutonomous" alt="" coords="509,461,700,488"/>
+<area shape="rect" id="node17" href="$class_driver_station.html#a397d4c3b670fee64520f87bf99206a36" title="DriverStation::IsEnabled" alt="" coords="523,613,687,640"/>
+<area shape="rect" id="node19" href="$class_driver_station.html#a602222ddb574a72809193034564ef684" title="DriverStation::IsTest" alt="" coords="533,664,676,691"/>
+<area shape="rect" id="node25" href="$class_driver_station.html#a3bf34ee617e26b09963c158558e43e55" title="DriverStation::IsOperator\lControl" alt="" coords="521,926,688,967"/>
+</map>

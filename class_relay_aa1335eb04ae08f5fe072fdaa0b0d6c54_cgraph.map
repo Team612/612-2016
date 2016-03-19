@@ -1,0 +1,5 @@
+<map id="Relay::Relay" name="Relay::Relay">
+<area shape="rect" id="node2" href="$class_sensor_base.html#a5db6e208fccd484bb39f533efd643d44" title="SensorBase::CheckRelayChannel" alt="" coords="152,5,373,32"/>
+<area shape="rect" id="node3" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="177,56,349,83"/>
+<area shape="rect" id="node4" href="$class_live_window.html#a9f8d10c37a8050b5450a238c65ea8f56" title="LiveWindow::AddActuator" alt="" coords="176,107,349,133"/>
+</map>

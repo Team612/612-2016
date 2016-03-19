@@ -1,0 +1,5 @@
+<map id="MonoImage" name="MonoImage">
+<area shape="rect" id="node2" href="$class_image_base.html" title="ImageBase" alt="" coords="7,185,95,212"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="11,109,91,136"/>
+<area shape="rect" id="node4" href="$class_error.html" title="Error" alt="" coords="25,5,76,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_robot_base.html" title="RobotBase" alt="" coords="5,31,92,57"/>
+<area shape="rect" id="node2" href="$class_iterative_robot.html" title="IterativeRobot" alt="" coords="140,5,244,32"/>
+<area shape="rect" id="node3" href="$class_sample_robot.html" title="SampleRobot" alt="" coords="141,56,243,83"/>
+</map>

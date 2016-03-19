@@ -1,0 +1,7 @@
+<map id="TalonSRX::Set" name="TalonSRX::Set">
+<area shape="rect" id="node2" href="$class_safe_p_w_m.html#af1ed936d88f3ee6446b01c17feb24b78" title="SafePWM::SetSpeed" alt="" coords="164,31,311,57"/>
+<area shape="rect" id="node3" href="$class_p_w_m.html#aa03db12e9cb2d69c37a848b46309f183" title="PWM::GetTable" alt="" coords="361,5,477,32"/>
+<area shape="rect" id="node4" href="$class_p_w_m.html#a947e5f6073da9e4d1b60db0c7791ca9c" title="PWM::SetSpeed" alt="" coords="359,56,479,83"/>
+<area shape="rect" id="node5" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="685,56,852,83"/>
+<area shape="rect" id="node6" href="$class_p_w_m.html#a0c546e1aa7d5d091447a819e50fae9ca" title="PWM::SetRaw" alt="" coords="527,81,637,108"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="Relay" name="Relay">
+<area shape="rect" id="node2" href="$class_motor_safety.html" title="MotorSafety" alt="" coords="5,185,99,212"/>
+<area shape="rect" id="node3" href="$class_sensor_base.html" title="SensorBase" alt="" coords="123,185,216,212"/>
+<area shape="rect" id="node4" href="$class_error_base.html" title="ErrorBase" alt="" coords="129,109,209,136"/>
+<area shape="rect" id="node5" href="$class_error.html" title="Error" alt="" coords="144,5,195,32"/>
+<area shape="rect" id="node7" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="368,185,515,212"/>
+<area shape="rect" id="node8" href="$class_sendable.html" title="Sendable" alt="" coords="403,109,479,136"/>
+</map>

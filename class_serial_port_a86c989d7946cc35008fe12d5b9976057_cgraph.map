@@ -1,0 +1,5 @@
+<map id="SerialPort::SerialPort" name="SerialPort::SerialPort">
+<area shape="rect" id="node2" href="$class_serial_port.html#aa3ad209dd5ab32427fccf711b476d8bf" title="SerialPort::SetTimeout" alt="" coords="223,5,377,32"/>
+<area shape="rect" id="node3" href="$class_serial_port.html#a1fd9a6370da04fee0bdc978d04a95c78" title="SerialPort::SetWriteBufferMode" alt="" coords="197,56,403,83"/>
+<area shape="rect" id="node4" href="$class_serial_port.html#a90e27c4191d7ac4e46c614f562505b68" title="SerialPort::EnableTermination" alt="" coords="203,107,397,133"/>
+</map>

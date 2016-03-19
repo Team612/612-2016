@@ -1,0 +1,7 @@
+<map id="Solenoid::Solenoid" name="Solenoid::Solenoid">
+<area shape="rect" id="node2" href="$class_solenoid_base.html#a92c765e5f5028a94d2ad8224a4aa267f" title="SolenoidBase::SolenoidBase" alt="" coords="184,5,375,32"/>
+<area shape="rect" id="node3" href="$class_sensor_base.html#aacc7c789e0b8dd975aad71c78be4f308" title="SensorBase::CheckSolenoid\lModule" alt="" coords="185,57,374,98"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html#a993f47bc7770a3a25ab45b13a9bd6488" title="SensorBase::CheckSolenoid\lChannel" alt="" coords="185,122,374,163"/>
+<area shape="rect" id="node5" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="193,188,365,215"/>
+<area shape="rect" id="node6" href="$class_live_window.html#a9f8d10c37a8050b5450a238c65ea8f56" title="LiveWindow::AddActuator" alt="" coords="193,239,366,265"/>
+</map>

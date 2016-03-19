@@ -1,0 +1,5 @@
+<map id="ADXRS450_Gyro::Calibrate" name="ADXRS450_Gyro::Calibrate">
+<area shape="rect" id="node2" href="$class_s_p_i.html#accfe6877637a2dd438b5f371daac8c41" title="SPI::SetAccumulatorCenter" alt="" coords="244,5,428,32"/>
+<area shape="rect" id="node3" href="$class_s_p_i.html#a63681b2ace362877ecde01cefa637e8a" title="SPI::ResetAccumulator" alt="" coords="256,56,416,83"/>
+<area shape="rect" id="node4" href="$class_s_p_i.html#adfdfb0df84b300bb86ed1447991019d6" title="SPI::GetAccumulatorAverage" alt="" coords="239,107,433,133"/>
+</map>

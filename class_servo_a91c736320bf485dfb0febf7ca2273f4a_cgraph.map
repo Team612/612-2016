@@ -1,0 +1,5 @@
+<map id="Servo::GetAngle" name="Servo::GetAngle">
+<area shape="rect" id="node2" href="$class_p_w_m.html#a1db256edc93c9aff1134b68e5c9e58ab" title="PWM::GetPosition" alt="" coords="172,5,303,32"/>
+<area shape="rect" id="node3" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="509,5,676,32"/>
+<area shape="rect" id="node4" href="$class_p_w_m.html#ac9f152efbdc725470f011b956e24dff9" title="PWM::GetRaw" alt="" coords="351,31,461,57"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="DigitalGlitchFilter" name="DigitalGlitchFilter">
+<area shape="rect" id="node2" href="$class_sensor_base.html" title="SensorBase" alt="" coords="20,185,113,212"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="27,109,107,136"/>
+<area shape="rect" id="node4" href="$class_error.html" title="Error" alt="" coords="41,5,92,32"/>
+</map>

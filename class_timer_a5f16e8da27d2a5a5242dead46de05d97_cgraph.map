@@ -1,0 +1,4 @@
+<map id="Timer::Timer" name="Timer::Timer">
+<area shape="rect" id="node2" href="$class_timer.html#ae7c0c1e7d12de4b8a6e7c64e451cdd2a" title="Timer::Reset" alt="" coords="149,5,248,32"/>
+<area shape="rect" id="node3" href="$class_timer.html#a7fa6e6dffec055e5104ccd6bcadec9aa" title="Timer::GetFPGATimestamp" alt="" coords="296,5,481,32"/>
+</map>

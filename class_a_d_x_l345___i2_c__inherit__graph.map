@@ -1,0 +1,8 @@
+<map id="ADXL345_I2C" name="ADXL345_I2C">
+<area shape="rect" id="node2" href="$class_accelerometer.html" title="Accelerometer" alt="" coords="5,155,112,181"/>
+<area shape="rect" id="node3" href="$class_i2_c.html" title="I2C" alt="" coords="136,155,179,181"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="111,80,204,107"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="117,5,197,32"/>
+<area shape="rect" id="node6" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="203,155,349,181"/>
+<area shape="rect" id="node7" href="$class_sendable.html" title="Sendable" alt="" coords="238,80,314,107"/>
+</map>

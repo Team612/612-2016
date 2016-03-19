@@ -1,0 +1,5 @@
+<map id="AnalogInput::AnalogInput" name="AnalogInput::AnalogInput">
+<area shape="rect" id="node2" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="221,5,393,32"/>
+<area shape="rect" id="node3" href="$class_live_window.html#a9eb9ac4b7d33ff0fc9ffc5899639febb" title="LiveWindow::AddSensor" alt="" coords="225,56,390,83"/>
+<area shape="rect" id="node4" href="$class_live_window.html#a9e627ca9e7af33b9d11a4a501de3664d" title="Use a raw pointer to the LiveWindow. " alt="" coords="441,56,607,83"/>
+</map>

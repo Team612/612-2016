@@ -1,0 +1,4 @@
+<map id="Potentiometer" name="Potentiometer">
+<area shape="rect" id="node3" href="$class_analog_potentiometer.html" title="AnalogPotentiometer" alt="" coords="5,155,148,181"/>
+<area shape="rect" id="node2" href="$class_p_i_d_source.html" title="PIDSource" alt="" coords="33,5,120,32"/>
+</map>

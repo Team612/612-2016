@@ -1,0 +1,6 @@
+<map id="AnalogInput::ResetAccumulator" name="AnalogInput::ResetAccumulator">
+<area shape="rect" id="node2" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="521,27,688,54"/>
+<area shape="rect" id="node3" href="$class_analog_input.html#a3e81e6477668b15b1da6965972987596" title="AnalogInput::GetSampleRate" alt="" coords="271,27,463,54"/>
+<area shape="rect" id="node4" href="$class_analog_input.html#abdda0ad2965be34949a8108272bcd9f5" title="AnalogInput::GetOversampleBits" alt="" coords="260,78,473,104"/>
+<area shape="rect" id="node5" href="$class_analog_input.html#ae6ed39725d62b72277ac2c19ebe28948" title="AnalogInput::GetAverageBits" alt="" coords="271,128,462,155"/>
+</map>

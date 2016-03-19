@@ -1,0 +1,21 @@
+<map id="CANJaguar::PIDWrite" name="CANJaguar::PIDWrite">
+<area shape="rect" id="node2" href="$class_c_a_n_jaguar.html#a3a22b02ece406993619f993b1e09012a" title="CANJaguar::Set" alt="" coords="205,73,324,99"/>
+<area shape="rect" id="node3" href="$class_c_a_n_jaguar.html#af25bed87c7d97429b0472b52f92b186e" title="CANJaguar::EnableControl" alt="" coords="573,73,753,99"/>
+<area shape="rect" id="node4" href="$class_c_a_n_jaguar.html#a6b82b54cc4033c3c5218ab04fb6c8282" title="CANJaguar::sendMessage" alt="" coords="824,534,1003,561"/>
+<area shape="rect" id="node5" href="$class_c_a_n_jaguar.html#a97fe9cb246f90060495c808e31070650" title="CANJaguar::verify" alt="" coords="372,483,503,510"/>
+<area shape="rect" id="node6" href="$class_c_a_n_jaguar.html#af00c23115648a51f57d1807c6aca3e47" title="CANJaguar::getMessage" alt="" coords="579,306,748,333"/>
+<area shape="rect" id="node7" href="$class_c_a_n_jaguar.html#a1ead0b3695a9db3ce94c3b5047ed6f73" title="CANJaguar::requestMessage" alt="" coords="566,357,761,383"/>
+<area shape="rect" id="node8" href="$class_c_a_n_jaguar.html#ac6780a940570ec0386d234b309fb260d" title="CANJaguar::SetSpeedReference" alt="" coords="556,509,771,535"/>
+<area shape="rect" id="node9" href="$class_c_a_n_jaguar.html#a4ea009bbaaa337eeb10efba61203ee38" title="CANJaguar::SetPositionReference" alt="" coords="551,559,776,586"/>
+<area shape="rect" id="node10" href="$class_c_a_n_jaguar.html#a22a1787a38fd35abc2cdf15bb7d81da5" title="CANJaguar::SetP" alt="" coords="600,610,727,637"/>
+<area shape="rect" id="node11" href="$class_c_a_n_jaguar.html#a99abdf41fc6ce39d51f0c9d2fbbcfcb0" title="CANJaguar::SetI" alt="" coords="602,661,725,687"/>
+<area shape="rect" id="node12" href="$class_c_a_n_jaguar.html#a5c5228b40626981bcb5009044edc28d7" title="CANJaguar::SetD" alt="" coords="599,711,727,738"/>
+<area shape="rect" id="node13" href="$class_c_a_n_jaguar.html#a66762a840c7c030b74b60652bcb4004f" title="CANJaguar::ConfigNeutralMode" alt="" coords="558,762,769,789"/>
+<area shape="rect" id="node14" href="$class_c_a_n_jaguar.html#a24bce09f963f2f7f0c38000197551e2d" title="CANJaguar::ConfigEncoder\lCodesPerRev" alt="" coords="571,813,755,855"/>
+<area shape="rect" id="node15" href="$class_c_a_n_jaguar.html#aefcfcbee61541f69cae47ea1ef405f17" title="CANJaguar::ConfigPotentiometer\lTurns" alt="" coords="555,879,772,920"/>
+<area shape="rect" id="node16" href="$class_c_a_n_jaguar.html#aeb878aff41701ed6d2bb0732a0beb07a" title="CANJaguar::ConfigLimitMode" alt="" coords="565,945,761,971"/>
+<area shape="rect" id="node17" href="$class_c_a_n_jaguar.html#a99204e2c841e2088d5b42dff35a8212e" title="CANJaguar::ConfigForward\lLimit" alt="" coords="572,124,755,165"/>
+<area shape="rect" id="node18" href="$class_c_a_n_jaguar.html#a67c5f0698f1faa97629bd1b31aa7880b" title="CANJaguar::ConfigReverse\lLimit" alt="" coords="571,189,756,231"/>
+<area shape="rect" id="node19" href="$class_c_a_n_jaguar.html#aa9b1c6a444e51e830812fd4484964388" title="CANJaguar::SetVoltageRampRate" alt="" coords="551,255,776,282"/>
+<area shape="rect" id="node20" href="$class_c_a_n_jaguar.html#acf67e7f7a57b6d8d657897bed2d21b98" title="CANJaguar::ConfigFaultTime" alt="" coords="566,407,761,434"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="WaitCommand" name="WaitCommand">
+<area shape="rect" id="node2" href="$class_command.html" title="Command" alt="" coords="127,185,209,212"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="5,109,85,136"/>
+<area shape="rect" id="node4" href="$class_error.html" title="Error" alt="" coords="20,5,71,32"/>
+<area shape="rect" id="node5" href="$class_named_sendable.html" title="NamedSendable" alt="" coords="109,109,227,136"/>
+<area shape="rect" id="node6" href="$class_sendable.html" title="Sendable" alt="" coords="130,5,206,32"/>
+</map>

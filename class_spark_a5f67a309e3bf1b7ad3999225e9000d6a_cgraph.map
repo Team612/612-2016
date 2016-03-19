@@ -1,0 +1,5 @@
+<map id="Spark::StopMotor" name="Spark::StopMotor">
+<area shape="rect" id="node2" href="$class_safe_p_w_m.html#a66a27761982521795879b6067d81a6dc" title="SafePWM::StopMotor" alt="" coords="177,5,328,32"/>
+<area shape="rect" id="node3" href="$class_p_w_m.html#a0c546e1aa7d5d091447a819e50fae9ca" title="PWM::SetRaw" alt="" coords="376,5,487,32"/>
+<area shape="rect" id="node4" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="535,5,701,32"/>
+</map>

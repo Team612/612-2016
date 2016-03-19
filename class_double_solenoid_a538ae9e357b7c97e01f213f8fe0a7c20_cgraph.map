@@ -1,0 +1,4 @@
+<map id="DoubleSolenoid::Set" name="DoubleSolenoid::Set">
+<area shape="rect" id="node2" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="195,5,361,32"/>
+<area shape="rect" id="node3" href="$class_solenoid_base.html#aa6902262e14bda0bad6a38f3bae676b1" title="SolenoidBase::Set" alt="" coords="213,56,343,83"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="BuiltInAccelerometer" name="BuiltInAccelerometer">
+<area shape="rect" id="node2" href="$class_accelerometer.html" title="Accelerometer" alt="" coords="5,185,112,212"/>
+<area shape="rect" id="node3" href="$class_sensor_base.html" title="SensorBase" alt="" coords="136,185,229,212"/>
+<area shape="rect" id="node4" href="$class_error_base.html" title="ErrorBase" alt="" coords="143,109,223,136"/>
+<area shape="rect" id="node5" href="$class_error.html" title="Error" alt="" coords="157,5,208,32"/>
+<area shape="rect" id="node6" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="253,185,400,212"/>
+<area shape="rect" id="node7" href="$class_sendable.html" title="Sendable" alt="" coords="289,109,365,136"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Ultrasonic::GetRangeInches" name="Ultrasonic::GetRangeInches">
+<area shape="rect" id="node2" href="$class_ultrasonic.html#a04d1cafef1696b520447cc099de4b0ae" title="Ultrasonic::IsRangeValid" alt="" coords="240,5,407,32"/>
+<area shape="rect" id="node4" href="$class_counter.html#a0f96cc4f5011125bb13cd0a940e24ba6" title="Counter::GetPeriod" alt="" coords="256,56,391,83"/>
+<area shape="rect" id="node3" href="$class_counter.html#a83f9f44285d51b195aedc7e867d52166" title="Counter::Get" alt="" coords="455,5,552,32"/>
+</map>

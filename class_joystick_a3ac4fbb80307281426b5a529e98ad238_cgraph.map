@@ -1,0 +1,7 @@
+<map id="Joystick::GetDirectionDegrees" name="Joystick::GetDirectionDegrees">
+<area shape="rect" id="node2" href="$class_joystick.html#a5d721a035bdbbcc9a1e5fc5995004e5c" title="Joystick::GetDirectionRadians" alt="" coords="255,31,455,57"/>
+<area shape="rect" id="node3" href="$class_joystick.html#a5b56288365b441434ed1038a8f013fb7" title="Joystick::GetX" alt="" coords="503,5,612,32"/>
+<area shape="rect" id="node6" href="$class_joystick.html#a75e710ffe732f31294b013d35e4586c2" title="Joystick::GetY" alt="" coords="503,56,612,83"/>
+<area shape="rect" id="node4" href="$class_joystick.html#a1d26797f636b8a1beb680667d6a06ba0" title="Joystick::GetRawAxis" alt="" coords="660,31,813,57"/>
+<area shape="rect" id="node5" href="$class_driver_station.html#a3d0f8b9b6dd45cd071773a47d35059ac" title="DriverStation::GetStickAxis" alt="" coords="861,31,1044,57"/>
+</map>

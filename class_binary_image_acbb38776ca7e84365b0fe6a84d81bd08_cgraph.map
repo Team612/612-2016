@@ -1,0 +1,6 @@
+<map id="BinaryImage::GetOrderedParticleAnalysisReports" name="BinaryImage::GetOrderedParticleAnalysisReports">
+<area shape="rect" id="node2" href="$class_binary_image.html#a3fd87b1afd71c9b11df7c093160446bb" title="BinaryImage::GetNumberParticles" alt="" coords="268,5,489,32"/>
+<area shape="rect" id="node3" href="$class_binary_image.html#af4081d0bdd38f0a7bc61dfc847e37bab" title="BinaryImage::GetParticle\lAnalysisReport" alt="" coords="295,57,463,98"/>
+<area shape="rect" id="node4" href="$class_binary_image.html#ab6ac2e623b1c674ae29a49bb8581d687" title="BinaryImage::GetParticle\lAnalysisReport" alt="" coords="537,57,705,98"/>
+<area shape="rect" id="node5" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="753,64,920,91"/>
+</map>

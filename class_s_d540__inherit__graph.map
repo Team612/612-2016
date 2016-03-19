@@ -1,0 +1,11 @@
+<map id="SD540" name="SD540">
+<area shape="rect" id="node2" href="$class_safe_p_w_m.html" title="SafePWM" alt="" coords="227,229,309,256"/>
+<area shape="rect" id="node3" href="$class_p_w_m.html" title="PWM" alt="" coords="147,155,202,181"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="5,80,99,107"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="12,5,92,32"/>
+<area shape="rect" id="node7" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="251,80,397,107"/>
+<area shape="rect" id="node8" href="$class_sendable.html" title="Sendable" alt="" coords="286,5,362,32"/>
+<area shape="rect" id="node9" href="$class_motor_safety.html" title="MotorSafety" alt="" coords="227,155,320,181"/>
+<area shape="rect" id="node10" href="$class_speed_controller.html" title="SpeedController" alt="" coords="333,229,448,256"/>
+<area shape="rect" id="node11" href="$class_p_i_d_output.html" title="PIDOutput" alt="" coords="349,155,433,181"/>
+</map>

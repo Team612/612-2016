@@ -1,0 +1,4 @@
+<map id="RobotDrive::SetLeftRightMotorOutputs" name="RobotDrive::SetLeftRightMotorOutputs">
+<area shape="rect" id="node2" href="$class_c_a_n_jaguar.html#a4f37543bba698230917ff36afd620135" title="CANJaguar::GetTable" alt="" coords="250,5,401,32"/>
+<area shape="rect" id="node3" href="$class_c_a_n_jaguar.html#a225e0588b0955681a24da6ab0d2c8bc0" title="CANJaguar::UpdateSyncGroup" alt="" coords="223,56,428,83"/>
+</map>

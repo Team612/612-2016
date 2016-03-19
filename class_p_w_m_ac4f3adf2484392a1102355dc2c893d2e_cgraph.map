@@ -1,0 +1,5 @@
+<map id="PWM::GetSpeed" name="PWM::GetSpeed">
+<area shape="rect" id="node2" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="339,5,505,32"/>
+<area shape="rect" id="node3" href="$class_p_w_m.html#ac9f152efbdc725470f011b956e24dff9" title="PWM::GetRaw" alt="" coords="177,31,288,57"/>
+<area shape="rect" id="node4" href="$class_p_w_m.html#aa03db12e9cb2d69c37a848b46309f183" title="PWM::GetTable" alt="" coords="175,81,291,108"/>
+</map>

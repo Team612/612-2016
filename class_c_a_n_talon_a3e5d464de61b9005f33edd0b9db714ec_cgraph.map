@@ -1,0 +1,5 @@
+<map id="CANTalon::ConfigSoftPositionLimits" name="CANTalon::ConfigSoftPositionLimits">
+<area shape="rect" id="node2" href="$class_c_a_n_talon.html#a6720f4720939dd590b1db6a33d09aef2" title="CANTalon::ConfigLimitMode" alt="" coords="262,5,451,32"/>
+<area shape="rect" id="node3" href="$class_c_a_n_talon.html#a21f11e090b3cd0c04e1bd65a6f3db6ae" title="CANTalon::ConfigForwardLimit" alt="" coords="255,56,459,83"/>
+<area shape="rect" id="node4" href="$class_c_a_n_talon.html#ac582a9df1a7224feb27de1c8dbda5ddf" title="CANTalon::ConfigReverseLimit" alt="" coords="253,107,460,133"/>
+</map>

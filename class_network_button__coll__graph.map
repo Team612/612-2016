@@ -1,0 +1,5 @@
+<map id="NetworkButton" name="NetworkButton">
+<area shape="rect" id="node2" href="$class_button.html" title="Button" alt="" coords="30,155,90,181"/>
+<area shape="rect" id="node3" href="$class_trigger.html" title="Trigger" alt="" coords="29,80,91,107"/>
+<area shape="rect" id="node4" href="$class_sendable.html" title="Sendable" alt="" coords="22,5,98,32"/>
+</map>

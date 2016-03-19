@@ -1,0 +1,13 @@
+<map id="ADXL345_SPI::ADXL345_SPI" name="ADXL345_SPI::ADXL345_SPI">
+<area shape="rect" id="node2" href="$class_s_p_i.html#a2461e903242cb740073a2cc30af3d97e" title="SPI::SPI" alt="" coords="316,5,391,32"/>
+<area shape="rect" id="node3" href="$class_s_p_i.html#a27b450354fc78eb4441e7d59f8fe65f2" title="SPI::SetClockRate" alt="" coords="286,56,421,83"/>
+<area shape="rect" id="node4" href="$class_s_p_i.html#a66ed807d9a76400a74e815837b3ff32b" title="SPI::SetMSBFirst" alt="" coords="290,107,417,133"/>
+<area shape="rect" id="node5" href="$class_s_p_i.html#a463dc7cb26d0b865c44c73538bc23ae0" title="SPI::SetSampleDataOnFalling" alt="" coords="254,157,453,184"/>
+<area shape="rect" id="node6" href="$class_s_p_i.html#aa1b8cb48216e0a502bb34486636da047" title="SPI::SetClockActiveLow" alt="" coords="270,208,437,235"/>
+<area shape="rect" id="node7" href="$class_s_p_i.html#a21151e848fec7a76dac93175d87c15cc" title="SPI::SetChipSelectActiveHigh" alt="" coords="253,259,453,285"/>
+<area shape="rect" id="node8" href="$class_s_p_i.html#a57e9c8cac374878879b32f43667e1e09" title="SPI::Transaction" alt="" coords="524,335,644,361"/>
+<area shape="rect" id="node9" href="$class_a_d_x_l345___s_p_i.html#a35d9979362aa481cdd7f47d63f866822" title="ADXL345_SPI::SetRange" alt="" coords="267,360,440,387"/>
+<area shape="rect" id="node10" href="$class_live_window.html#a329c07efec22a0e0644d70279688aa35" title="LiveWindow::GetInstance" alt="" coords="267,411,439,437"/>
+<area shape="rect" id="node11" href="$class_live_window.html#a9eb9ac4b7d33ff0fc9ffc5899639febb" title="LiveWindow::AddSensor" alt="" coords="271,461,436,488"/>
+<area shape="rect" id="node12" href="$class_live_window.html#a9e627ca9e7af33b9d11a4a501de3664d" title="Use a raw pointer to the LiveWindow. " alt="" coords="501,461,667,488"/>
+</map>

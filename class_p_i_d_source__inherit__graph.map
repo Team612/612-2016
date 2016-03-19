@@ -1,0 +1,16 @@
+<map id="PIDSource" name="PIDSource">
+<area shape="rect" id="node2" href="$class_analog_accelerometer.html" title="AnalogAccelerometer" alt="" coords="140,5,287,32"/>
+<area shape="rect" id="node3" href="$class_analog_input.html" title="AnalogInput" alt="" coords="168,56,259,83"/>
+<area shape="rect" id="node4" href="$class_c_a_n_talon.html" title="CANTalon" alt="" coords="172,107,255,133"/>
+<area shape="rect" id="node5" href="$class_encoder.html" title="Encoder" alt="" coords="178,157,249,184"/>
+<area shape="rect" id="node6" href="$class_filter.html" title="Filter" alt="" coords="188,208,239,235"/>
+<area shape="rect" id="node8" href="$class_gyro_base.html" title="GyroBase" alt="" coords="173,259,253,285"/>
+<area shape="rect" id="node11" href="$class_p_i_d_command.html" title="PIDCommand" alt="" coords="161,309,266,336"/>
+<area shape="rect" id="node12" href="$class_p_i_d_subsystem.html" title="PIDSubsystem" alt="" coords="158,360,269,387"/>
+<area shape="rect" id="node13" href="$class_potentiometer.html" title="Potentiometer" alt="" coords="162,411,265,437"/>
+<area shape="rect" id="node15" href="$class_ultrasonic.html" title="Ultrasonic" alt="" coords="173,461,254,488"/>
+<area shape="rect" id="node7" href="$class_linear_digital_filter.html" title="LinearDigitalFilter" alt="" coords="345,208,467,235"/>
+<area shape="rect" id="node9" href="$class_a_d_x_r_s450___gyro.html" title="ADXRS450_Gyro" alt="" coords="343,259,469,285"/>
+<area shape="rect" id="node10" href="$class_analog_gyro.html" title="AnalogGyro" alt="" coords="361,309,451,336"/>
+<area shape="rect" id="node14" href="$class_analog_potentiometer.html" title="AnalogPotentiometer" alt="" coords="335,411,477,437"/>
+</map>

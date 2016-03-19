@@ -1,0 +1,7 @@
+<map id="Trigger" name="Trigger">
+<area shape="rect" id="node3" href="$class_button.html" title="Button" alt="" coords="157,155,217,181"/>
+<area shape="rect" id="node2" href="$class_sendable.html" title="Sendable" alt="" coords="149,5,225,32"/>
+<area shape="rect" id="node4" href="$class_internal_button.html" title="InternalButton" alt="" coords="5,229,108,256"/>
+<area shape="rect" id="node5" href="$class_joystick_button.html" title="JoystickButton" alt="" coords="133,229,242,256"/>
+<area shape="rect" id="node6" href="$class_network_button.html" title="NetworkButton" alt="" coords="266,229,375,256"/>
+</map>

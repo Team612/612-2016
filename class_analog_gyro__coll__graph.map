@@ -1,0 +1,10 @@
+<map id="AnalogGyro" name="AnalogGyro">
+<area shape="rect" id="node2" href="$class_gyro_base.html" title="GyroBase" alt="" coords="164,261,244,288"/>
+<area shape="rect" id="node3" href="$class_gyro.html" title="Gyro" alt="" coords="5,185,56,212"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="80,185,173,212"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="87,109,167,136"/>
+<area shape="rect" id="node6" href="$class_error.html" title="Error" alt="" coords="101,5,152,32"/>
+<area shape="rect" id="node7" href="$class_p_i_d_source.html" title="PIDSource" alt="" coords="198,185,285,212"/>
+<area shape="rect" id="node8" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="309,185,456,212"/>
+<area shape="rect" id="node9" href="$class_sendable.html" title="Sendable" alt="" coords="345,109,421,136"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="ButtonScheduler" name="ButtonScheduler">
+<area shape="rect" id="node2" href="$class_command.html" title="Command" alt="" coords="199,211,282,237"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="327,109,407,136"/>
+<area shape="rect" id="node4" href="$class_error.html" title="Error" alt="" coords="342,5,393,32"/>
+<area shape="rect" id="node5" href="$class_named_sendable.html" title="NamedSendable" alt="" coords="56,109,175,136"/>
+<area shape="rect" id="node6" href="$class_sendable.html" title="Sendable" alt="" coords="5,5,81,32"/>
+<area shape="rect" id="node8" href="$class_trigger.html" title="Trigger" alt="" coords="31,160,93,187"/>
+</map>

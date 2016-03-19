@@ -1,0 +1,8 @@
+<map id="ImageBase" name="ImageBase">
+<area shape="rect" id="node3" href="$class_color_image.html" title="ColorImage" alt="" coords="112,155,201,181"/>
+<area shape="rect" id="node6" href="$class_mono_image.html" title="MonoImage" alt="" coords="226,155,317,181"/>
+<area shape="rect" id="node2" href="$class_error_base.html" title="ErrorBase" alt="" coords="174,5,254,32"/>
+<area shape="rect" id="node4" href="$class_h_s_l_image.html" title="HSLImage" alt="" coords="5,229,89,256"/>
+<area shape="rect" id="node5" href="$class_r_g_b_image.html" title="RGBImage" alt="" coords="113,229,200,256"/>
+<area shape="rect" id="node7" href="$class_binary_image.html" title="BinaryImage" alt="" coords="224,229,319,256"/>
+</map>

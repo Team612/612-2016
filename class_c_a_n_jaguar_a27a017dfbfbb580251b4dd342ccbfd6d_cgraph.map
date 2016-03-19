@@ -1,0 +1,6 @@
+<map id="CANJaguar::SetPID" name="CANJaguar::SetPID">
+<area shape="rect" id="node2" href="$class_c_a_n_jaguar.html#a22a1787a38fd35abc2cdf15bb7d81da5" title="CANJaguar::SetP" alt="" coords="195,5,322,32"/>
+<area shape="rect" id="node4" href="$class_c_a_n_jaguar.html#a99abdf41fc6ce39d51f0c9d2fbbcfcb0" title="CANJaguar::SetI" alt="" coords="197,56,320,83"/>
+<area shape="rect" id="node5" href="$class_c_a_n_jaguar.html#a5c5228b40626981bcb5009044edc28d7" title="CANJaguar::SetD" alt="" coords="195,107,323,133"/>
+<area shape="rect" id="node3" href="$class_c_a_n_jaguar.html#a6b82b54cc4033c3c5218ab04fb6c8282" title="CANJaguar::sendMessage" alt="" coords="371,56,549,83"/>
+</map>

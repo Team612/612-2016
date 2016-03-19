@@ -1,0 +1,4 @@
+<map id="AnalogInput::PIDGet" name="AnalogInput::PIDGet">
+<area shape="rect" id="node2" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="456,5,623,32"/>
+<area shape="rect" id="node3" href="$class_analog_input.html#a624580df4fa547f7b0a54315147df89c" title="AnalogInput::GetAverageVoltage" alt="" coords="196,31,408,57"/>
+</map>

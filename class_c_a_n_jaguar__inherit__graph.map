@@ -1,0 +1,9 @@
+<map id="CANJaguar" name="CANJaguar">
+<area shape="rect" id="node2" href="$class_motor_safety.html" title="MotorSafety" alt="" coords="5,155,99,181"/>
+<area shape="rect" id="node3" href="$class_c_a_n_speed_controller.html" title="CANSpeedController" alt="" coords="123,155,267,181"/>
+<area shape="rect" id="node4" href="$class_speed_controller.html" title="SpeedController" alt="" coords="137,80,252,107"/>
+<area shape="rect" id="node5" href="$class_p_i_d_output.html" title="PIDOutput" alt="" coords="153,5,237,32"/>
+<area shape="rect" id="node6" href="$class_error_base.html" title="ErrorBase" alt="" coords="291,155,371,181"/>
+<area shape="rect" id="node7" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="395,155,541,181"/>
+<area shape="rect" id="node8" href="$class_sendable.html" title="Sendable" alt="" coords="430,80,506,107"/>
+</map>

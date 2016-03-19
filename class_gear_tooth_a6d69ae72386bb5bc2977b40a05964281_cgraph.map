@@ -1,0 +1,7 @@
+<map id="GearTooth::GearTooth" name="GearTooth::GearTooth">
+<area shape="rect" id="node2" href="$class_counter.html#a141038b0d3e8ca2ac3618de019052097" title="Counter::GetTable" alt="" coords="232,5,361,32"/>
+<area shape="rect" id="node3" href="$class_counter.html#a9c7d57696e482eff75e1e03eaf6f8120" title="Counter::Counter" alt="" coords="235,56,358,83"/>
+<area shape="rect" id="node5" href="$class_gear_tooth.html#a0bec962d2920dc28f8d4ef53b5fa2c65" title="GearTooth::EnableDirection\lSensing" alt="" coords="205,107,388,149"/>
+<area shape="rect" id="node4" href="$class_counter.html#a14f57c89d5e20d5ca590877dcc6be50f" title="Counter::ClearDownSource" alt="" coords="445,56,627,83"/>
+<area shape="rect" id="node6" href="$class_counter.html#adc8d4c41b26c8654fe3775afdb6439f5" title="Counter::SetPulseLengthMode" alt="" coords="436,115,636,141"/>
+</map>

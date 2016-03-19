@@ -1,0 +1,5 @@
+<map id="InternalButton" name="InternalButton">
+<area shape="rect" id="node2" href="$class_button.html" title="Button" alt="" coords="27,155,87,181"/>
+<area shape="rect" id="node3" href="$class_trigger.html" title="Trigger" alt="" coords="25,80,88,107"/>
+<area shape="rect" id="node4" href="$class_sendable.html" title="Sendable" alt="" coords="19,5,95,32"/>
+</map>

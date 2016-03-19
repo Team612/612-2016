@@ -1,0 +1,8 @@
+<map id="AnalogInput" name="AnalogInput">
+<area shape="rect" id="node2" href="$class_sensor_base.html" title="SensorBase" alt="" coords="5,185,99,212"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="12,109,92,136"/>
+<area shape="rect" id="node4" href="$class_error.html" title="Error" alt="" coords="27,5,77,32"/>
+<area shape="rect" id="node5" href="$class_p_i_d_source.html" title="PIDSource" alt="" coords="123,185,210,212"/>
+<area shape="rect" id="node6" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="235,185,381,212"/>
+<area shape="rect" id="node7" href="$class_sendable.html" title="Sendable" alt="" coords="270,109,346,136"/>
+</map>

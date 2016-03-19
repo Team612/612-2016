@@ -1,0 +1,9 @@
+<map id="ADXRS450_Gyro" name="ADXRS450_Gyro">
+<area shape="rect" id="node2" href="$class_gyro_base.html" title="GyroBase" alt="" coords="144,155,224,181"/>
+<area shape="rect" id="node3" href="$class_gyro.html" title="Gyro" alt="" coords="5,80,56,107"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="80,80,173,107"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="87,5,167,32"/>
+<area shape="rect" id="node6" href="$class_p_i_d_source.html" title="PIDSource" alt="" coords="198,80,285,107"/>
+<area shape="rect" id="node7" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="309,80,456,107"/>
+<area shape="rect" id="node8" href="$class_sendable.html" title="Sendable" alt="" coords="345,5,421,32"/>
+</map>

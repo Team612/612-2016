@@ -1,0 +1,5 @@
+<map id="PIDInterface" name="PIDInterface">
+<area shape="rect" id="node3" href="$class_c_a_n_talon.html" title="CANTalon" alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node4" href="$class_p_i_d_controller.html" title="PIDController" alt="" coords="112,155,213,181"/>
+<area shape="rect" id="node2" href="$class_controller.html" title="Controller" alt="" coords="65,5,143,32"/>
+</map>

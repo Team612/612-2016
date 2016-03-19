@@ -1,0 +1,4 @@
+<map id="AnalogGyro::InitGyro" name="AnalogGyro::InitGyro">
+<area shape="rect" id="node2" href="$class_error_base.html#a05790f219c9e436a09752f73f7344024" title="Check if the current error code represents a fatal error. " alt="" coords="423,5,589,32"/>
+<area shape="rect" id="node3" href="$class_analog_gyro.html#a8365210952acb5adf181d5ed953ecba6" title="AnalogGyro::SetDeadband" alt="" coords="197,31,375,57"/>
+</map>

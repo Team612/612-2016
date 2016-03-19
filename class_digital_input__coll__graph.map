@@ -1,0 +1,9 @@
+<map id="DigitalInput" name="DigitalInput">
+<area shape="rect" id="node2" href="$class_digital_source.html" title="DigitalSource" alt="" coords="38,337,138,364"/>
+<area shape="rect" id="node3" href="$class_interruptable_sensor_base.html" title="InterruptableSensorBase" alt="" coords="5,261,171,288"/>
+<area shape="rect" id="node4" href="$class_sensor_base.html" title="SensorBase" alt="" coords="41,185,135,212"/>
+<area shape="rect" id="node5" href="$class_error_base.html" title="ErrorBase" alt="" coords="48,109,128,136"/>
+<area shape="rect" id="node6" href="$class_error.html" title="Error" alt="" coords="63,5,113,32"/>
+<area shape="rect" id="node7" href="$class_live_window_sendable.html" title="LiveWindowSendable" alt="" coords="163,337,309,364"/>
+<area shape="rect" id="node8" href="$class_sendable.html" title="Sendable" alt="" coords="198,261,274,288"/>
+</map>

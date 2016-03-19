@@ -1,0 +1,11 @@
+<map id="CANJaguar::SetPositionMode" name="CANJaguar::SetPositionMode">
+<area shape="rect" id="node2" href="$class_c_a_n_jaguar.html#ad359943907bf802075474a3753f7fb02" title="CANJaguar::SetControlMode" alt="" coords="267,5,459,32"/>
+<area shape="rect" id="node5" href="$class_c_a_n_jaguar.html#a4ea009bbaaa337eeb10efba61203ee38" title="CANJaguar::SetPositionReference" alt="" coords="251,56,476,83"/>
+<area shape="rect" id="node6" href="$class_c_a_n_jaguar.html#aefcfcbee61541f69cae47ea1ef405f17" title="CANJaguar::ConfigPotentiometer\lTurns" alt="" coords="255,107,472,149"/>
+<area shape="rect" id="node7" href="$class_c_a_n_jaguar.html#a27a017dfbfbb580251b4dd342ccbfd6d" title="CANJaguar::SetPID" alt="" coords="293,191,434,217"/>
+<area shape="rect" id="node3" href="$class_c_a_n_jaguar.html#a6bbbf784a74cf95f7b4a5660a3d53cc2" title="CANJaguar::DisableControl" alt="" coords="524,5,708,32"/>
+<area shape="rect" id="node4" href="$class_c_a_n_jaguar.html#a6b82b54cc4033c3c5218ab04fb6c8282" title="CANJaguar::sendMessage" alt="" coords="756,132,935,159"/>
+<area shape="rect" id="node8" href="$class_c_a_n_jaguar.html#a22a1787a38fd35abc2cdf15bb7d81da5" title="CANJaguar::SetP" alt="" coords="553,157,679,184"/>
+<area shape="rect" id="node9" href="$class_c_a_n_jaguar.html#a99abdf41fc6ce39d51f0c9d2fbbcfcb0" title="CANJaguar::SetI" alt="" coords="555,208,677,235"/>
+<area shape="rect" id="node10" href="$class_c_a_n_jaguar.html#a5c5228b40626981bcb5009044edc28d7" title="CANJaguar::SetD" alt="" coords="552,259,680,285"/>
+</map>

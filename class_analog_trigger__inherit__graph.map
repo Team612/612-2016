@@ -1,0 +1,4 @@
+<map id="AnalogTrigger" name="AnalogTrigger">
+<area shape="rect" id="node2" href="$class_sensor_base.html" title="SensorBase" alt="" coords="10,80,103,107"/>
+<area shape="rect" id="node3" href="$class_error_base.html" title="ErrorBase" alt="" coords="17,5,97,32"/>
+</map>
