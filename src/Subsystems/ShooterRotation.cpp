@@ -40,19 +40,33 @@ void ShooterRotation::Gun(float gunner_axis)
 	
 }
 
+// Button/Auto Control
+void ShooterRotation::HomePos()
+{
+	
+}
+
+void ShooterRotation::ShootPos(float angle)
+{
+	pid->SetSetpoint(ConvertAngleToAbsolute(angle));
+}
+
+void ShooterRotation::IntakePos()
+{
+	
+}
+
 void ShooterRotation::Stop()
 {
-	Disable();
-}
-
-void ShooterRotation::Enable()
-{
-	pid->Enable();
-}
-
-void ShooterRotation::Disable()
-{
 	pid->Disable();
+}
+
+void ShooterRotation::PIDEnable(bool enabled)
+{
+	if(enabled)
+		pid->Enable();
+	else
+		pid->Disable();
 }
 
 void ShooterRotation::SmartDashboardOutput()

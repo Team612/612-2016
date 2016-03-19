@@ -10,13 +10,29 @@
 class ShooterRotation : public Subsystem
 {
 private:
+	// Hardware
 	std::shared_ptr<CANTalon> motor;
 	PIDController* pid;
 	AbsoluteEncoder* absEncoder;
+	
+	// PID Constants
 	float kP = .1;
 	float kI = 0;
 	float kD = 0;
+	
+	// Common setpoints, tied to buttons.
 	const float HOME_SETPOINT = 0;
+	const float INTAKE_SETPOINT = 0;
+	const float LOGOAL_SETPOINT = 0;
+	const float HIGOAL_SETPOINT = 0;
+	
+	const float V_OVER_A = (5.0 / 360.0); // Constant to convert between voltage and angle.
+	const float BIAS = 0; // Difference between home position and parallel with floor.
+	
+	float ConvertAngleToAbsolute(float angle)
+	{
+		return (angle * V_OVER_A) + HOME_SETPOINT + BIAS;
+	}
 	
 public:
 	//const double MAX_ANGLE = 288; //full forwards
@@ -47,10 +63,13 @@ public:
 	// Teleop Axis Control
 	void Gun(float gunner_axis);
 	
-	void Stop();
+	// Button/Auto Control
+	void HomePos();
+	void ShootPos(float position);
+	void IntakePos();
 	
-	void Enable();
-	void Disable();
+	void Stop();
+	void PIDEnable(bool enabled);
 	
 	void SmartDashboardOutput();
 };
