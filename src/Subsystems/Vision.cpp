@@ -37,7 +37,7 @@ void Vision::PullValues()
 	 */
 
 	llvm::ArrayRef<double> arr2;
-	std::vector<double> ids = table->GetNumberArray("BLOB_TRACKING_IDS", arr2);
+	std::vector<double> ids = table->GetNumberArray("IDS", arr2);
 	//An array of all things being tracked, conveniently in the same order as the bounding coords
 
 	int targetCount = ids.size();
@@ -47,9 +47,9 @@ void Vision::PullValues()
 	{
 		printf("test2");
 		std::vector<int> vec;
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 4; i++)
 		{
-			vec.push_back((int) coords[(x * 8) + i + 8]);
+			vec.push_back((int) coords[(x * 4) + i]);
 		}
 		/* Another bug with RoboRealm: it refuses to track the lower-most bounding box no-
 		 * matter what we do. To solve this, I put a small rectangle on the bottom of the screen

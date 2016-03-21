@@ -33,10 +33,10 @@ public:
 	static std::shared_ptr<VisionTarget> FindClosestAspect(double aspect, std::vector<std::shared_ptr<VisionTarget>> targets);
 
 private:
-	Point ul; //Upper-Left point
-	Point ll;
-	Point ur;
-	Point lr;
+	int x;
+	int y;
+	int width;
+	int height;
 
 	int id; //The tracking ID as given by RoboRealm
 };

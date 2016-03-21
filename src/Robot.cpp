@@ -62,8 +62,8 @@ void Robot::RobotInit()
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
 
-	server.get()->SetQuality(50);
-	server.get()->StartAutomaticCapture("cam1");
+	//server.get()->SetQuality(50);
+	//server.get()->StartAutomaticCapture("cam1");
 }
 
 /*
@@ -82,17 +82,18 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-	autonomousCommand.reset((Command *) autoChooser->GetSelected());
-	std::printf("Info: Set Auto command!\n");
+	//autonomousCommand.reset((Command *) autoChooser->GetSelected());
+	//std::printf("Info: Set Auto command!\n");
 
-	if (autonomousCommand.get() != nullptr)
-		autonomousCommand->Start();
+	//if (autonomousCommand.get() != nullptr)
+	//	autonomousCommand->Start();
 
 }
 
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	vision->PullValues();
 }
 
 void Robot::TeleopInit()
@@ -107,7 +108,8 @@ void Robot::TeleopInit()
 	//drivejoystick->Start();
 	//armmove->Start();
 	//autowheels->Start();
-	invertcontrols->Start();
+	//invertcontrols->Start();
+	vision->PullValues();
 }
 
 void Robot::TeleopPeriodic()
