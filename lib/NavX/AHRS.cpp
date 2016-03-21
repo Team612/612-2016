@@ -8,7 +8,7 @@
 #include <sstream>
 #include <string>
 #include <iomanip>
-#include <NavX/AHRS.h>
+#include "AHRS.h"
 #include "IIOProvider.h"
 #include "IIOCompleteNotification.h"
 #include "IBoardCapabilities.h"

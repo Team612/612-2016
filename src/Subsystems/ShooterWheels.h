@@ -6,7 +6,7 @@
 #include "RobotMap.h"
 #include "HallEffect/PIDEdgeCounter.h"
 #include <PIDController.h>
-#include "HallEffect/NetworkTables.h"
+#include <HallEffect/NetworkTables.h>
 
 class ShooterWheels: public Subsystem
 {

@@ -13,42 +13,54 @@ VisionTarget::~VisionTarget()
 
 Point VisionTarget::GetUL()
 {
-	return ul;
+	Point p;
+	p.x = x;
+	p.y = y;
+	return p;
 }
 
 Point VisionTarget::GetLL()
 {
-	return ll;
+	Point p;
+	p.x = x;
+	p.y = y + height;
+	return p;
 }
 
 Point VisionTarget::GetUR()
 {
-	return ur;
+	Point p;
+	p.x = x + width;
+	p.y = y;
+	return p;
 }
 
 Point VisionTarget::GetLR()
 {
-	return lr;
+	Point p;
+	p.x = x + width;
+	p.y = y + height;
+	return p;
 }
 
 Point VisionTarget::GetCenter()
 {
 	Point c;
 
-	c.x = ul.x + GetWidth()/2;
-	c.y = ul.y + GetHeight()/2;
+	c.x = x + GetWidth()/2;
+	c.y = y + GetHeight()/2;
 
 	return c;
 }
 
 int VisionTarget::GetWidth()
 {
-	return ur.x - ul.x;
+	return width;
 }
 
 int VisionTarget::GetHeight()
 {
-	return ll.y - ul.y;
+	return height;
 }
 
 int VisionTarget::GetID()
@@ -57,17 +69,10 @@ int VisionTarget::GetID()
 }
 
 void VisionTarget::Set(std::vector<int> setPoints) {
-	ul.x = (int)setPoints[0];
-	ul.y = (int)setPoints[1];
-
-	ur.x = (int)setPoints[2];
-	ur.y = (int)setPoints[3];
-
-	ll.x = (int)setPoints[4];
-	ll.y = (int)setPoints[5];
-
-	lr.x = (int)setPoints[6];
-	lr.y = (int)setPoints[7];
+	x = setPoints[0];
+	y = setPoints[1];
+	width = setPoints[2];
+	height = setPoints[3];
 }
 
 
@@ -78,10 +83,10 @@ double VisionTarget::GetAspectRatio() {
 //Basic print method for debugging
 void VisionTarget::Print() {
 	printf("ID: %u \n", id);
-	printf("UL (%u, %u) \n", ul.x, ul.y);
-	printf("UR (%u, %u) \n", ur.x, ur.y);
-	printf("LL (%u, %u) \n", ll.x, ll.y);
-	printf("LR (%u, %u) \n", lr.x, lr.y);
+	printf("X (%u) \n", x);
+	printf("Y (%u) \n", y);
+	printf("W (%u)\n", width);
+	printf("H (%u) \n", height);
 
 }
 
