@@ -22,7 +22,6 @@ public:
 private:
 	bool hasTarget = false; //If we are tracking a target
 	bool PIDUserDisabled = true; //If the PID is disabled because it succeeded or because the code forced it off
-	std::shared_ptr<VisionTarget> currentTarget; //Currently tracked target (=NULL if no target)
 	int onTargetCounter = 0;
 
 	void FindTarget(); //Tries to fill the CurrentTarget variable

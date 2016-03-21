@@ -12,6 +12,10 @@ private:
 	std::shared_ptr<NetworkTable> table;
 	std::vector<std::shared_ptr<VisionTarget>> targets;
 
+	std::shared_ptr<VisionTarget> goal;
+
+	const float TARGET_ASPECT = 1.66/1.00;
+
 public:
 	Vision(const char* initialCamera=CAMERA_FRONT);
 	void InitDefaultCommand();
@@ -27,14 +31,18 @@ public:
 	static constexpr char* CAMERA_FRONT = "cam0";
 	static constexpr char* CAMERA_REAR = "cam1";
 	static constexpr char* CAMERA_SHOOTER = "cam2";
-	//Also, using char* as a string is deprecated so this completely FLOODS the console
-	//.
-	//.
-	//.
-	//I am so sorry
+	/*
+	 * Also, using char* as a string is deprecated so this completely FLOODS the console
+	 *
+	 *
+	 *
+	 * I am so sorry
+	 */
 
-	std::shared_ptr<NetworkTable> GetRawTable(); //Get the raw vision table as populated by RoboRealm
+	std::shared_ptr<NetworkTable> GetRawTable();
 
+	bool UpdateCurrentTarget();
+	std::shared_ptr<VisionTarget> GetTrackedGoal();
 };
 
 #endif

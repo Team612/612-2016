@@ -21,7 +21,7 @@ private:
 	float end_angle;
 	bool target_exists;
 
-	std::shared_ptr<VisionTarget> currentTarget;
+	//std::shared_ptr<VisionTarget> currentTarget;
 
 	const float STARTING_ANGLE = 0.0f;
 	const float SPEED = 0.7f;

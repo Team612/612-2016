@@ -9,21 +9,12 @@ SetShooterAngle::SetShooterAngle()
 	this->end_angle = 0.0;
 
 	//get vision values
-	std::shared_ptr<NetworkTable> table = Robot::vision->GetRawTable();
+	std::shared_ptr<NetworkTable> table = Robot::vision.get()->GetRawTable();
 	llvm::ArrayRef<double> arr;
 
-	if(Robot::vision->GetTargetAmount() > 0) //if a target is queued
+	if(!(Robot::vision->GetTargetAmount() > 0 && table->GetNumberArray("BOUNDING_COORDINATES", arr).size() > 8)) //if a target is queued and if the target has all 4 coordinates (8 values, 2 x 2 y)
 	{
-		if(table->GetNumberArray("BOUNDING_COORDINATES", arr).size() > 8) //if the target has all 4 coordinates (8 values, 2 x 2 y)
-		{
-			currentTarget = VisionTarget::FindClosestAspect(TARGET_ASPECT, Robot::vision->GetAllTargets());
-			target_exists = true;
-		}
-	}
-	else
-	{
-		std::printf("Warning: No vision target.\n");
-		target_exists = false;
+		target_exists = Robot::vision.get()->UpdateCurrentTarget();
 	}
 }
 
@@ -43,11 +34,10 @@ void SetShooterAngle::Initialize()
 	/*
 	 * Should this be empty? Testing to make sure...
 	 */
-	Robot::vision->PullValues();
 
 	if(target_exists)
 	{
-		currentTarget = VisionTarget::FindClosestAspect(TARGET_ASPECT, Robot::vision->GetAllTargets()); //make sure the targets are updated
+		Robot::vision.get()->UpdateCurrentTarget(); //make sure the targets are updated
 		end_angle = CalcAngle();
 	}
 }
@@ -76,7 +66,7 @@ double SetShooterAngle::CalcAngle()
 {
 	if(target_exists)
 	{
-		double h = currentTarget->GetHeight();
+		double h = Robot::vision.get()->GetTrackedGoal()->GetHeight();
 		double x = (0.0001592 * pow(h, 2)) - (0.06046*h) + 6.9204;
 		printf("\nDistance Calculation: %f", x);
 		double y = TARGET_HEIGHT_OFF_GROUND;

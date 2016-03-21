@@ -1,5 +1,6 @@
 #include "Vision.h"
 #include "../RobotMap.h"
+#include "Robot.h"
 
 Vision::Vision(const char* camera) :
 		Subsystem("Vision")
@@ -10,6 +11,7 @@ Vision::Vision(const char* camera) :
 	// \/ Comment this bit out if we haven't bothered to plug a camera in \/
 	//CameraServer::GetInstance()->SetQuality(50);
 	//SetCamera(camera);
+	goal = NULL;
 }
 
 void Vision::InitDefaultCommand()
@@ -74,10 +76,10 @@ void Vision::PullValues()
 	printf("\n");
 
 	//Goes through and deletes all of the VisionTargets that no longer exist in RoboRealm
-	for (int x = 0; x < targets.size(); x++)
+	for (uint32_t x = 0; x < targets.size(); x++)
 	{
 		bool found = false;
-		for (int i = 0; i < ids.size(); i++)
+		for (uint32_t i = 0; i < ids.size(); i++)
 		{
 			if (targets[x]->GetID() == ids[i])
 			{
@@ -110,7 +112,7 @@ std::vector<std::shared_ptr<VisionTarget>> Vision::GetAllTargets()
 std::shared_ptr<VisionTarget> Vision::GetTargetById(int id)
 {
 	//Iterate through and return target with that ID
-	for (int x = 0; x < targets.size(); x++)
+	for (uint32_t x = 0; x < targets.size(); x++)
 	{
 		if (targets[x]->GetID() == id)
 			return targets[x];
@@ -123,7 +125,7 @@ bool Vision::TargetExists(int id)
 {
 	//Basically does the same thing as the above method but with a bool
 	//I could probably just use the above method to get results for this one
-	for (int x = 0; x < targets.size(); x++)
+	for (uint32_t x = 0; x < targets.size(); x++)
 	{
 		if (targets[x]->GetID() == id)
 			return true;
@@ -140,4 +142,37 @@ std::shared_ptr<NetworkTable> Vision::GetRawTable()
 int Vision::GetTargetAmount()
 {
 	return targets.size();
+}
+
+bool Vision::UpdateCurrentTarget()
+{
+	std::shared_ptr<NetworkTable> table = GetRawTable();
+
+	llvm::ArrayRef<double> arr;
+
+	if (table->GetNumberArray("BOUNDING_COORDINATES", arr).size() > 8)
+	{
+		if (GetTargetAmount() > 0)
+		{
+			goal = VisionTarget::FindClosestAspect(TARGET_ASPECT, GetAllTargets());
+			std::printf("Info: UpdateCurrentTarget()");
+			return true;
+		}
+		else
+		{
+			std::printf("Warning: No vision target\n");
+			return false;
+		}
+
+	}
+	else
+	{
+		std::printf("Warning: No vision target\n");
+		return false;
+	}
+}
+
+std::shared_ptr<VisionTarget> Vision::GetTrackedGoal()
+{
+	return goal;
 }

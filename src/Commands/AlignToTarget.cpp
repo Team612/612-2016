@@ -21,23 +21,12 @@ void AlignToTarget::Initialize()
 void AlignToTarget::Execute()
 {
 	printf("lol");
-	//Populate VisionTarget vector
-	Robot::vision->PullValues();
 
 	//Only if we need to FIND a target
 	//TODO: Add timeout so it doesn't keep trying forever
 	if (!hasTarget)
 	{
-		std::shared_ptr<NetworkTable> table = Robot::vision->GetRawTable();
-
-		llvm::ArrayRef<double> arr;
-
-		//See Vision subsystem for info on why we have to check for this and why we don't look
-		//at 1-8
-		if (table->GetNumberArray("BOUNDING_COORDINATES", arr).size() > 8)
-		{
-			FindTarget();
-		}
+		hasTarget = Robot::vision.get()->UpdateCurrentTarget();
 	}
 	else
 	{
@@ -48,39 +37,27 @@ void AlignToTarget::Execute()
 			GetPIDController()->Enable();
 		}
 		else
-			printf("PID Enabled");
+			printf("PID Enabled\n");
 	}
 
-}
-
-void AlignToTarget::FindTarget()
-{
-	//Only executes if RoboRealm has actually detected targets
-	if (Robot::vision->GetTargetAmount() > 0)
-	{
-		//Uses the FindClosestAspect static method to find the target with the closest aspect ratio to that of the real target
-		currentTarget = VisionTarget::FindClosestAspect(TARGET_ASPECT,
-			Robot::vision->GetAllTargets());
-		hasTarget = true;
-	}
 }
 
 //Inherited from PID Command, returns the input from the vision targets
 double AlignToTarget::ReturnPIDInput()
 {
 	//Makes sure that the target still exists, if not, it goes bye bye
-	if (!Robot::vision->TargetExists(currentTarget->GetID()))
+	if (!Robot::vision.get()->TargetExists(Robot::vision.get()->GetTrackedGoal()->GetID()))
 	{
 		hasTarget = false;
 		PIDUserDisabled = true;
-		currentTarget = NULL;
+		Robot::vision.get()->GetTrackedGoal() = NULL;
 		GetPIDController()->Disable();
 		Robot::drivetrain->SetTankDrive(0, 0);
 		return 0;
 	}
 
-	printf("Center X %u", currentTarget->GetCenter().x);
-	return (double) currentTarget->GetCenter().x;
+	printf("Center X %u", Robot::vision.get()->GetTrackedGoal()->GetCenter().x);
+	return (double) Robot::vision.get()->GetTrackedGoal()->GetCenter().x;
 }
 
 void AlignToTarget::UsePIDOutput(double output)
