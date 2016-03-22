@@ -8,6 +8,7 @@ class ActuateLimit: public Command
 {
 private:
 	bool finished = false;
+	Timer* failsafe;
 public:
 	ActuateLimit();
 	void Initialize();

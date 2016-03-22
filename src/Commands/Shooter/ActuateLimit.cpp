@@ -5,11 +5,12 @@
 ActuateLimit::ActuateLimit()
 {
 	Requires(Robot::shooteractuator.get());
+	failsafe = new Timer();
 }
 
 void ActuateLimit::Initialize()
 {
-
+	failsafe->Start();
 }
 
 void ActuateLimit::Execute()
@@ -18,7 +19,15 @@ void ActuateLimit::Execute()
 		Robot::shooteractuator.get()->SetSpeed(0.1f);
 	else if(!RobotMap::shooterActuatorLSwitch.get()->Get())
 	{
-		std::printf("Warning: Shooter Actuator Limit switch pressed\n");
+		std::printf("Info: Shooter Actuator Limit switch pressed\n");
+		Robot::shooteractuator.get()->SetSpeed(0.0f);
+		finished = true;
+	}
+
+	if(failsafe->Get() > 2)
+	{
+		std::printf("Warning: Shooter Actuator Limit switch not pressed.\n");
+		std::printf("Warning: Falling back to 2 second failsafe!");
 		Robot::shooteractuator.get()->SetSpeed(0.0f);
 		finished = true;
 	}
