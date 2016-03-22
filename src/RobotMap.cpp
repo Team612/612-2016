@@ -13,7 +13,7 @@ std::shared_ptr<Encoder> 	RobotMap::driveEncoderL;
 std::shared_ptr<Encoder> 	RobotMap::driveEncoderR;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
-std::shared_ptr<Servo>       		RobotMap::shooterActuator;
+std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
@@ -27,7 +27,7 @@ std::map<std::string, int> RobotMap::ports;
 
 void RobotMap::init()
 {
-	LiveWindow *lw = LiveWindow::GetInstance();
+	//LiveWindow *lw = LiveWindow::GetInstance();
 	
 	ports = {
 		// Drive train Talons
@@ -44,10 +44,10 @@ void RobotMap::init()
     	{ "driveEncoderR1", 	2 }, // Digital Input Pin
     	{ "driveEncoderR2", 	3 }, // Digital Input Pin
     	// Shooter Misc
-    	{ "shooterActuator", 	6 }, // PWM Port
-    	{ "shooterAbsEncoder", 	2 }, // Analog Input
-    	{ "shooterRotate", 		1 }, // CAN ID
-    	{ "shooterIR", 			1 }, // Analog Input
+    	{ "shooterActuatorMotor", 	6 }, // PWM Port
+    	{ "shooterAbsEncoder",  	2 }, // Analog Input
+    	{ "shooterRotate", 		    1 }, // CAN ID
+    	{ "shooterIR", 		    	1 }, // Analog Input
     	// Shooter Flywheels
     	{ "shooterFlyL", 		4 }, // CAN ID
     	{ "shooterFlyR", 		3 }, // CAN ID
@@ -77,7 +77,7 @@ void RobotMap::init()
 	drivetrainRobotDrive->SetMaxOutput(1.0);
 
 
-	shooterActuator.reset(new Servo(ports["shooterActuator"]));
+	shooterActuatorMotor.reset(new CANTalon(ports["shooterActuatorMotor"]));
 	shooterAbsEncoder.reset(new AbsoluteEncoder(ports["shooterAbsEncoder"]));
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));

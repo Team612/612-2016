@@ -5,7 +5,7 @@
 ShooterActuator::ShooterActuator() :
 		Subsystem("ShooterActuator")
 {
-	actuator = RobotMap::shooterActuator;
+	actuator = RobotMap::shooterActuatorMotor;
 	IR = RobotMap::shooterIR;
 	storedposition = 0.0f;
 	CanShoot = false;
@@ -44,6 +44,7 @@ void ShooterActuator::SetPosition(ShooterServoPosition position)
 
 void ShooterActuator::SetPosition(float position)
 {
+	//This needs PID and is also unnecessary
 	actuator->Set(position);
 	this->storedposition = position;
 }
@@ -55,27 +56,27 @@ void ShooterActuator::SetPosition(float position)
 
 void ShooterActuator::SetClamp()
 {
-    this->SetPosition(this->CLAMP_POS);
+    this->SetPosition(this->CLAMP_SPEED);
 }
 
 void ShooterActuator::SetNeutral()
 {
-    this->SetPosition(this->NEUTRAL_POS);
+    this->SetPosition(this->NEUTRAL_SPEED);
 }
 
 void ShooterActuator::SetPush()
 {
-	this->SetPosition(this->PUSH_POS);
+	this->SetPosition(this->PUSH_SPEED);
 	if(CanShoot)
 	{
-		this->SetPosition(this->PUSH_POS);
+		this->SetPosition(this->PUSH_SPEED);
 	}
 	else
 		printf("Tried to shoot but not up to speed\n");
 	printf("Tried to set servo to push\n");
 }
 
-float ShooterActuator::GetPosition()
+float ShooterActuator::GetSpeed()
 {
 	return actuator->Get();
 }
