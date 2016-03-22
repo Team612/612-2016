@@ -1,6 +1,6 @@
 #include "FireShooter.h"
 
-FireShooter::FireShooter(ShooterServoPosition pos)
+FireShooter::FireShooter(ShooterActuatorPosition pos)
 {
     Requires(Robot::shooteractuator.get());
     this->position = pos;
@@ -22,7 +22,7 @@ void FireShooter::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool FireShooter::IsFinished()
 {
-	if(position == ShooterServoPosition::Neutral)
+	if(position == ShooterActuatorPosition::Neutral)
 		return true;
 	/*
 	if(Robot::shooterlever->AtSetPosition())

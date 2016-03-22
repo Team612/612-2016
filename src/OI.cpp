@@ -1,5 +1,6 @@
 #include <Commands/Shooter/ShooterControl.h>
 #include <Commands/Shooter/FireShooter.h>
+#include "Commands/Shooter/ActuateLimit.h"
 #include "OI.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveJoystick.h"
@@ -11,10 +12,11 @@ OI::OI()
 	gunner.reset(new Joystick(1));
 
 	servoPush.reset(new JoystickButton(gunner.get(), 1));
-	servoPush->WhenPressed(new FireShooter(ShooterServoPosition::Push));
+	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push));
+	servoPush->WhenReleased(new ActuateLimit());
 
-	servoClamp.reset(new JoystickButton(gunner.get(), 2));
-	servoClamp->WhenPressed(new FireShooter(ShooterServoPosition::Clamp));
+	/*servoClamp.reset(new JoystickButton(gunner.get(), 2));
+	servoClamp->WhenPressed(new FireShooter(ShooterActuatorPosition::Clamp));*/
 
 	//DRIVER
 	driver.reset(new Joystick(0));

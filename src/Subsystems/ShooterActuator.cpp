@@ -1,6 +1,6 @@
 #include "ShooterActuator.h"
 #include "RobotMap.h"
-#include <Commands/Shooter/FireShooter.h>
+#include <Commands/Shooter/ActuateLimit.h>
 
 ShooterActuator::ShooterActuator() :
 		Subsystem("ShooterActuator")
@@ -13,22 +13,18 @@ ShooterActuator::ShooterActuator() :
 
 void ShooterActuator::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
-	//SetDefaultCommand(new SetServoPosition(ShooterServoPosition::Neutral));
-	SetDefaultCommand(new FireShooter(ShooterServoPosition::Neutral));
+
+	SetDefaultCommand(new FireShooter(ShooterActuatorPosition::Neutral));
+	//SetDefaultCommand(new ActuateLimit());
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-
-void ShooterActuator::SetPosition(ShooterServoPosition position)
+void ShooterActuator::SetPosition(ShooterActuatorPosition position)
 {
 	switch(position)
 	{
-		case Clamp:
+		/*case Clamp:
 			SetClamp();
-			break;
+			break;*/
 		case Neutral:
 			SetNeutral();
 			break;
@@ -42,7 +38,7 @@ void ShooterActuator::SetPosition(ShooterServoPosition position)
 	}
 }
 
-void ShooterActuator::SetPosition(float position)
+void ShooterActuator::SetSpeed(float position)
 {
 	//This needs PID and is also unnecessary
 	actuator->Set(position);
@@ -54,22 +50,22 @@ void ShooterActuator::SetPosition(float position)
 	LeverServo->SetAngle(angle);
 }*/
 
-void ShooterActuator::SetClamp()
+/*void ShooterActuator::SetClamp()
 {
     this->SetPosition(this->CLAMP_SPEED);
-}
+}*/
 
 void ShooterActuator::SetNeutral()
 {
-    this->SetPosition(this->NEUTRAL_SPEED);
+    this->SetSpeed(this->NEUTRAL_SPEED);
 }
 
 void ShooterActuator::SetPush()
 {
-	this->SetPosition(this->PUSH_SPEED);
+	this->SetSpeed(this->PUSH_SPEED);
 	if(CanShoot)
 	{
-		this->SetPosition(this->PUSH_SPEED);
+		this->SetSpeed(this->PUSH_SPEED);
 	}
 	else
 		printf("Tried to shoot but not up to speed\n");

@@ -23,6 +23,7 @@ public:
 	static std::shared_ptr<RobotDrive> 	drivetrainRobotDrive;
 	
 	static std::shared_ptr<CANTalon> 			shooterActuatorMotor;
+	static std::shared_ptr<DigitalInput>        shooterActuatorLSwitch;
 	static std::shared_ptr<AbsoluteEncoder> shooterAbsEncoder;
 	static std::shared_ptr<CANTalon> 		shooterRotateMotor;
 	static std::shared_ptr<AnalogInput> 	shooterIR;

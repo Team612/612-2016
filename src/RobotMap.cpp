@@ -48,6 +48,7 @@ void RobotMap::init()
     	{ "shooterAbsEncoder",  	2 }, // Analog Input
     	{ "shooterRotate", 		    1 }, // CAN ID
     	{ "shooterIR", 		    	1 }, // Analog Input
+		{ "shooterActuatorLSwitch", 4 },
     	// Shooter Flywheels
     	{ "shooterFlyL", 		4 }, // CAN ID
     	{ "shooterFlyR", 		3 }, // CAN ID
@@ -84,4 +85,6 @@ void RobotMap::init()
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
+
+    shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
 }
