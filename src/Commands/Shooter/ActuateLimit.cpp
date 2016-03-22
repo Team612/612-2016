@@ -1,4 +1,6 @@
 #include "ActuateLimit.h"
+#include "Robot.h"
+#include "RobotMap.h"
 
 ActuateLimit::ActuateLimit()
 {

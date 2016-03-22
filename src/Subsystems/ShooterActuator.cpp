@@ -1,6 +1,6 @@
 #include "ShooterActuator.h"
 #include "RobotMap.h"
-#include <Commands/Shooter/ActuateLimit.h>
+#include <Commands/Shooter/FireShooter.h>
 
 ShooterActuator::ShooterActuator() :
 		Subsystem("ShooterActuator")

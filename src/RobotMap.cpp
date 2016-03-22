@@ -14,6 +14,7 @@ std::shared_ptr<Encoder> 	RobotMap::driveEncoderR;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
 std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
+std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
