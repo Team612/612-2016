@@ -125,6 +125,8 @@ void Robot::PeriodicSmartDashboard()
 {
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
 
+	SmartDashboard::PutNumber("Shooter Actuator Limit Switch", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderL->Get());
 	//SmartDashboard::PutNumber("Left encoder 'distance'", RobotMap::drivetrainEncoder->GetDistance());

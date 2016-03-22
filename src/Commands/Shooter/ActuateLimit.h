@@ -8,7 +8,8 @@ class ActuateLimit: public Command
 {
 private:
 	bool finished = false;
-	Timer* failsafe;
+	//Timer* failsafe;
+	std::chrono::high_resolution_clock::time_point start_time;
 public:
 	ActuateLimit();
 	void Initialize();

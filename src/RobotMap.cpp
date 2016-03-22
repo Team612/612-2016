@@ -32,28 +32,28 @@ void RobotMap::init()
 	
 	ports = {
 		// PWM
-    	{ "driveFL", 			4 },
-    	{ "driveRL", 			5 },
-    	{ "driveFR", 			0 },
-    	{ "driveLR", 			1 },
-    	{ "shifterL", 			3 },
-    	{ "shifterR", 			2 },
-    	{ "shooterActuatorMotor", 	6 },
+    	{ "driveFL", 			    4 },
+    	{ "driveRL", 			    5 },
+    	{ "driveFR", 			    0 },
+    	{ "driveLR", 			    1 },
+    	{ "shifterL", 			    3 },
+    	{ "shifterR", 			    2 },
     	// Digital I/O
-    	{ "driveEncoderL1", 	0 },
-    	{ "driveEncoderL2", 	1 },
-    	{ "driveEncoderR1", 	2 },
-    	{ "driveEncoderR2", 	3 },
+    	{ "driveEncoderL1", 	    0 },
+    	{ "driveEncoderL2", 	    1 },
+    	{ "driveEncoderR1", 	    2 },
+    	{ "driveEncoderR2", 	    3 },
 		{ "shooterActuatorLSwitch", 4 },
-    	{ "shooterHallL", 		6 },
-    	{ "shooterHallR", 		7 },
+    	{ "shooterHallL", 		    6 },
+    	{ "shooterHallR", 		    7 },
     	// Analog I/O
     	{ "shooterAbsEncoder",  	2 },
     	{ "shooterIR", 		    	1 },
     	// CAN
     	{ "shooterRotate", 		    1 },
-    	{ "shooterFlyL", 		4 },
-    	{ "shooterFlyR", 		3 }
+    	{ "shooterFlyL", 		    4 },
+    	{ "shooterActuatorMotor", 	6 },
+    	{ "shooterFlyR", 		    3 }
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left

@@ -42,4 +42,5 @@ void FireShooter::End()
 // subsystems is scheduled to run
 void FireShooter::Interrupted()
 {
+	std::printf("Warning: FireShooter interrupted.\n");
 }
