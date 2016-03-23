@@ -13,7 +13,8 @@ std::shared_ptr<Encoder> 	RobotMap::driveEncoderL;
 std::shared_ptr<Encoder> 	RobotMap::driveEncoderR;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
-std::shared_ptr<Servo>       		RobotMap::shooterActuator;
+std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
+std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
@@ -29,7 +30,7 @@ std::map<std::string, int> RobotMap::ports;
 
 void RobotMap::init()
 {
-	LiveWindow *lw = LiveWindow::GetInstance();
+	//LiveWindow *lw = LiveWindow::GetInstance();
 	
 	ports = {
 		// Drive train Talons
@@ -81,7 +82,7 @@ void RobotMap::init()
 	drivetrainRobotDrive->SetMaxOutput(1.0);
 
 
-	shooterActuator.reset(new Servo(ports["shooterActuator"]));
+	shooterActuatorMotor.reset(new CANTalon(ports["shooterActuatorMotor"]));
 	shooterAbsEncoder.reset(new AbsoluteEncoder(ports["shooterAbsEncoder"]));
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
@@ -89,5 +90,9 @@ void RobotMap::init()
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
 
+<<<<<<< HEAD
     armRotateMotor.reset(new CANTalon(ports["armRotateMotor"]));
+=======
+    shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
+>>>>>>> ee56e7f1359a4b35b401e3593223caeb8f30fcff
 }

@@ -17,11 +17,33 @@ void ShooterJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterJoystick::Execute()
 {
-	auto gunner = Robot::oi->getGunner()->GetRawAxis(5);
-	if(gunner < TOLERANCE && gunner > -TOLERANCE)
-		gunner = 0;
-	Robot::shooterrotation->Gun(gunner);
-	//printf("Gunner: %f \n", gunner);
+	auto joy = Robot::oi->getGunner();
+	bool a = joy->GetRawButton(1), b = joy->GetRawButton(2),
+			x = joy->GetRawButton(3), y = joy->GetRawButton(4);
+	bool buttonPushed = a | b | x | y;
+
+	std::printf("Button? " + buttonPushed);
+	std::printf("A? " + a);
+	std::printf("B? " + b);
+	if(!buttonPushed)
+	{
+		if(Robot::shooterrotation->PIDEnabled())
+			Robot::shooterrotation->PIDEnable(false);
+
+		auto gunner = joy->GetRawAxis(5);
+		if(gunner < TOLERANCE && gunner > -TOLERANCE)
+			gunner = 0;
+
+		Robot::shooterrotation->Gun(gunner);
+	}
+	else
+	{
+		if(!Robot::shooterrotation->PIDEnabled())
+			Robot::shooterrotation->PIDEnable(true);
+		if(a) Robot::shooterrotation->HomePos();
+		if(b) Robot::shooterrotation->IntakePos();
+		if(x) Robot::shooterrotation->ShootPos(90.0f);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
