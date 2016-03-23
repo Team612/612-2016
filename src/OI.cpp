@@ -17,6 +17,13 @@ OI::OI()
 
 	/*servoClamp.reset(new JoystickButton(gunner.get(), 2));
 	servoClamp->WhenPressed(new FireShooter(ShooterActuatorPosition::Clamp));*/
+	// NOTE: Buttons 1-4 are reserved for shooter (aka A, B, X, Y)
+
+	//servoPush.reset(new JoystickButton(gunner.get(), 1));
+	//servoPush->WhenPressed(new FireShooter(ShooterServoPosition::Push));
+
+	//servoClamp.reset(new JoystickButton(gunner.get(), 2));
+	//servoClamp->WhenPressed(new FireShooter(ShooterServoPosition::Clamp));
 
 	//DRIVER
 	driver.reset(new Joystick(0));

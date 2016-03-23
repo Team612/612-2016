@@ -9,7 +9,7 @@ class ShooterControl: public Command
 private:
     bool firing;
     bool fired;
-    const float TOLERANCE = 0.01f;
+    const float TOLERANCE = 0.1f;
     void Fire();
     void Intake();
     void Stop();
