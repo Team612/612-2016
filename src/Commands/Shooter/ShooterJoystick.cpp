@@ -21,10 +21,10 @@ void ShooterJoystick::Execute()
 	bool a = joy->GetRawButton(1), b = joy->GetRawButton(2),
 			x = joy->GetRawButton(3), y = joy->GetRawButton(4);
 	bool buttonPushed = a | b | x | y;
-
+/*
 	std::printf("Button? " + buttonPushed);
 	std::printf("A? " + a);
-	std::printf("B? " + b);
+	std::printf("B? " + b);*/
 	if(!buttonPushed)
 	{
 		if(Robot::shooterrotation->PIDEnabled())

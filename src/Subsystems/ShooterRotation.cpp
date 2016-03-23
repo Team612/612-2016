@@ -5,10 +5,11 @@
 ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 {
 	motor = RobotMap::shooterRotateMotor;
+	motor->SetInverted(true);
 	motor->SetControlMode(CANSpeedController::kPercentVbus);
 	absEncoder = RobotMap::shooterAbsEncoder.get();
 	pid = new PIDControl(1, 0, 0, absEncoder, motor.get());
-	pid->SetOutputRange(-1, 1);
+	pid->SetOutputRange(-.5, .5);
 	pid->SetInputRange(0, 5);
 	this->HomePos();
 	SmartDashboard::PutNumber("Gain Switch", gain_switch);
