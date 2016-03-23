@@ -9,12 +9,14 @@
 #include "Commands/Drive/DriveDistance.h"
 #include <SmartDashboard/SmartDashboard.h>
 #include "Commands/Shooter/ShooterTest.h"
+#include "Commands/Arm/ArmJoystick.h"
 
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
 std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::shared_ptr<Shifter> Robot::shifter;
+std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
 
 bool Robot::inverted;
@@ -29,6 +31,7 @@ void Robot::RobotInit()
 	shooterrotation.reset(new ShooterRotation());
 	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
+	arm.reset(new Arm());
 
 	oi.reset(new OI());
 
@@ -42,6 +45,7 @@ void Robot::RobotInit()
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
 	drivejoystick.reset(new DriveJoystick());
+	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
@@ -82,6 +86,7 @@ void Robot::TeleopInit()
 		autonomousCommand->Cancel();
 		
 	drivejoystick->Start();
+	armJoystick->Start();
 	shifter->Set(Shifter::LOW);
 	//shooterrotation->PIDEnable(true);
 }
