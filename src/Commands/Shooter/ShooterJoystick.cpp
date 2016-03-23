@@ -40,9 +40,9 @@ void ShooterJoystick::Execute()
 	{
 		if(!Robot::shooterrotation->PIDEnabled())
 			Robot::shooterrotation->PIDEnable(true);
-		if(a) Robot::shooterrotation->HomePos();
+		if(x) Robot::shooterrotation->HomePos();
 		if(b) Robot::shooterrotation->IntakePos();
-		if(x) Robot::shooterrotation->ShootPos(90.0f);
+		if(y) Robot::shooterrotation->ShootPos(90.0f);
 	}
 }
 
