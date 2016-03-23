@@ -29,17 +29,17 @@ void ShooterManuelControl::Execute()
     }
     else
     {
-    	printf("Stop\n");
+    	//printf("Stop\n");
         Stop();
     }
 
-    printf("Shooter\n");
+    //printf("Shooter\n");
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterManuelControl::IsFinished()
 {
-	printf("Shooter IsFinished\n");
+	//printf("Shooter IsFinished\n");
 	return false;
 }
 

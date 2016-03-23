@@ -45,6 +45,9 @@ void Robot::RobotInit()
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
+
+	//server->SetQuality(50);
+	//server->StartAutomaticCapture("cam1");
 }
 
 void Robot::DisabledInit()
@@ -121,6 +124,8 @@ void Robot::InitSmartDashboard()
 void Robot::PeriodicSmartDashboard()
 {
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
+
+	SmartDashboard::PutNumber("Shooter Actuator Limit Switch", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
 
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderL->Get());
