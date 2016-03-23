@@ -7,7 +7,7 @@
 class ArmJoystick: public Command
 {
 private:
-	const static float THRESHOLD = 0.01f;
+	const float THRESHOLD = 0.01f;
 public:
 	ArmJoystick();
 	void Initialize();
