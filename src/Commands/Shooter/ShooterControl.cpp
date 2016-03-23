@@ -33,11 +33,11 @@ void ShooterControl::Execute()
     }
     else
     {
-    	printf("Stop\n");
+    	//printf("Stop\n");
         Stop();
     }
 
-    printf("Shooter\n");
+    //printf("Shooter\n");
 
     if(fired)
     {
@@ -67,7 +67,7 @@ void ShooterControl::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterControl::IsFinished()
 {
-	printf("Shooter IsFinished\n");
+	//zwaaa	printf("Shooter IsFinished\n");
 	return false;
 }
 

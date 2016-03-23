@@ -46,8 +46,8 @@ void Robot::RobotInit()
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
 
-	server->SetQuality(50);
-	server->StartAutomaticCapture("cam1");
+	//server->SetQuality(50);
+	//server->StartAutomaticCapture("cam1");
 }
 
 void Robot::DisabledInit()

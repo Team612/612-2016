@@ -37,7 +37,7 @@ public:
 
 	std::shared_ptr<SendableChooser> chooser;
 
-	CameraServer* server = CameraServer::GetInstance();
+	//CameraServer* server = CameraServer::GetInstance();
 	Timer * time = new Timer();
 
 	virtual void RobotInit();

@@ -11,21 +11,20 @@ ActuateLimit::ActuateLimit()
 
 void ActuateLimit::Initialize()
 {
+	Robot::shooteractuator.get()->SetSpeed(0.1f);
 	failsafe->Start();
 	start_time = failsafe->Get();
 	std::printf("Info: ActuateLimit start time is: %f\n", start_time);
+	finished = false;
 }
 
 void ActuateLimit::Execute()
 {
-	//std::printf("Info: Failsafe timer: %d\n", failsafe->Get());
-
 	float current_time = failsafe->Get();
 	std::printf("Info Current time: %f Elapsed time: %f\n", (double) current_time, (double) abs(start_time - current_time));
 
-	if(RobotMap::shooterActuatorLSwitch.get()->Get())
-		Robot::shooteractuator.get()->SetSpeed(0.1f);
-	else if(!RobotMap::shooterActuatorLSwitch.get()->Get() || abs(start_time - current_time)  > 2)
+
+	if(!(RobotMap::shooterActuatorLSwitch.get()->Get()) || (double) abs(start_time - current_time)  > 2)
 	{
 		if(abs(start_time - current_time)  > 2)
 		{
@@ -51,6 +50,7 @@ bool ActuateLimit::IsFinished()
 void ActuateLimit::End()
 {
 	//failsafe->Reset();
+	std::printf("Info: ActuateLimit end\n");
 	Robot::shooteractuator.get()->SetSpeed(0.0f);
 }
 

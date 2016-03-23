@@ -14,7 +14,7 @@ ShooterActuator::ShooterActuator() :
 void ShooterActuator::InitDefaultCommand()
 {
 
-	SetDefaultCommand(new FireShooter(ShooterActuatorPosition::Neutral));
+	//SetDefaultCommand(new FireShooter(ShooterActuatorPosition::Neutral));
 	//SetDefaultCommand(new ActuateLimit());
 }
 
