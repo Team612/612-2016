@@ -13,7 +13,8 @@ std::shared_ptr<Encoder> 	RobotMap::driveEncoderL;
 std::shared_ptr<Encoder> 	RobotMap::driveEncoderR;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
-std::shared_ptr<Servo>       		RobotMap::shooterActuator;
+std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
+std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
@@ -27,33 +28,32 @@ std::map<std::string, int> RobotMap::ports;
 
 void RobotMap::init()
 {
-	LiveWindow *lw = LiveWindow::GetInstance();
+	//LiveWindow *lw = LiveWindow::GetInstance();
 	
 	ports = {
-		// Drive train Talons
-    	{ "driveFL", 			4 }, // PWM Port
-    	{ "driveRL", 			5 }, // PWM Port
-    	{ "driveFR", 			0 }, // PWM Port
-    	{ "driveLR", 			1 }, // PWM Port
-    	// Drive shifter servos
-    	{ "shifterL", 			3 }, // PWM Port
-    	{ "shifterR", 			2 }, // PWM Port
-    	// Drive encoders
-    	{ "driveEncoderL1", 	0 }, // Digital Input Pin
-    	{ "driveEncoderL2", 	1 }, // Digital Input Pin
-    	{ "driveEncoderR1", 	2 }, // Digital Input Pin
-    	{ "driveEncoderR2", 	3 }, // Digital Input Pin
-    	// Shooter Misc
-    	{ "shooterActuator", 	6 }, // PWM Port
-    	{ "shooterAbsEncoder", 	2 }, // Analog Input
-    	{ "shooterRotate", 		1 }, // CAN ID
-    	{ "shooterIR", 			1 }, // Analog Input
-    	// Shooter Flywheels
-    	{ "shooterFlyL", 		4 }, // CAN ID
-    	{ "shooterFlyR", 		3 }, // CAN ID
-    	// Shooter Hall Effects
-    	{ "shooterHallL", 		6 },
-    	{ "shooterHallR", 		7 }
+		// PWM
+    	{ "driveFL", 			    4 },
+    	{ "driveRL", 			    5 },
+    	{ "driveFR", 			    0 },
+    	{ "driveLR", 			    1 },
+    	{ "shifterL", 			    3 },
+    	{ "shifterR", 			    2 },
+    	// Digital I/O
+    	{ "driveEncoderL1", 	    0 },
+    	{ "driveEncoderL2", 	    1 },
+    	{ "driveEncoderR1", 	    2 },
+    	{ "driveEncoderR2", 	    3 },
+		{ "shooterActuatorLSwitch", 4 },
+    	{ "shooterHallL", 		    6 },
+    	{ "shooterHallR", 		    7 },
+    	// Analog I/O
+    	{ "shooterAbsEncoder",  	2 },
+    	{ "shooterIR", 		    	1 },
+    	// CAN
+    	{ "shooterRotate", 		    1 },
+    	{ "shooterFlyL", 		    4 },
+    	{ "shooterActuatorMotor", 	6 },
+    	{ "shooterFlyR", 		    3 }
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left
@@ -77,11 +77,13 @@ void RobotMap::init()
 	drivetrainRobotDrive->SetMaxOutput(1.0);
 
 
-	shooterActuator.reset(new Servo(ports["shooterActuator"]));
+	shooterActuatorMotor.reset(new CANTalon(ports["shooterActuatorMotor"]));
 	shooterAbsEncoder.reset(new AbsoluteEncoder(ports["shooterAbsEncoder"]));
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
+
+    shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
 }

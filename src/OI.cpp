@@ -1,5 +1,6 @@
 #include <Commands/Shooter/ShooterControl.h>
 #include <Commands/Shooter/FireShooter.h>
+#include "Commands/Shooter/ActuateLimit.h"
 #include "OI.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveJoystick.h"
@@ -10,6 +11,12 @@ OI::OI()
 	//GUNNER
 	gunner.reset(new Joystick(1));
 
+	servoPush.reset(new JoystickButton(gunner.get(), 1));
+	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push));
+	servoPush->WhenReleased(new ActuateLimit());
+
+	/*servoClamp.reset(new JoystickButton(gunner.get(), 2));
+	servoClamp->WhenPressed(new FireShooter(ShooterActuatorPosition::Clamp));*/
 	// NOTE: Buttons 1-4 are reserved for shooter (aka A, B, X, Y)
 
 	//servoPush.reset(new JoystickButton(gunner.get(), 1));
