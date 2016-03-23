@@ -21,6 +21,8 @@ std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorL;
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
 
+std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
+
 std::shared_ptr<USBCamera> 	RobotMap::cam1;
 
 std::map<std::string, int> RobotMap::ports;
@@ -53,7 +55,9 @@ void RobotMap::init()
     	{ "shooterFlyR", 		3 }, // CAN ID
     	// Shooter Hall Effects
     	{ "shooterHallL", 		6 },
-    	{ "shooterHallR", 		7 }
+    	{ "shooterHallR", 		7 },
+    	// Arm
+		{"armRotatemotor",      5 }
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left
@@ -84,4 +88,6 @@ void RobotMap::init()
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
+
+    armRotateMotor.reset(new CANTalon(ports["armRotateMotor"]));
 }

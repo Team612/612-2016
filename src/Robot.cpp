@@ -15,6 +15,7 @@ std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
 std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::shared_ptr<Shifter> Robot::shifter;
+std::shared_ptr<CANTalon> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
 
 bool Robot::inverted;
@@ -29,6 +30,7 @@ void Robot::RobotInit()
 	shooterrotation.reset(new ShooterRotation());
 	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
+	arm.reset(new Arm());
 
 	oi.reset(new OI());
 

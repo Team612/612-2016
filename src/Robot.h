@@ -11,6 +11,7 @@
 #include <Subsystems/ShooterRotation.h>
 #include <Subsystems/ShooterActuator.h>
 #include <Subsystems/Shifter.h>
+#include <Subsystems/Arm.h>
 
 #include <OI.h>
 
@@ -32,6 +33,7 @@ public:
 	static std::shared_ptr<ShooterWheels> shooterwheels;
 	static std::shared_ptr<ShooterActuator> shooteractuator;
 	static std::shared_ptr<Shifter> shifter;
+	static std::shared_ptr<Arm> arm;
 
 	static bool inverted;
 
