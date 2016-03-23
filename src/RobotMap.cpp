@@ -58,7 +58,7 @@ void RobotMap::init()
     	{ "shooterHallL", 		6 },
     	{ "shooterHallR", 		7 },
     	// Arm
-		{"armRotatemotor",      5 }
+		{"armRotateMotor",      2 }
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left

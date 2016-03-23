@@ -6,8 +6,6 @@
 
 class Arm: public Subsystem
 {
-private:
-	std::shared_ptr<CANTalon> rotateMotor;
 public:
 	Arm();
 	void InitDefaultCommand();

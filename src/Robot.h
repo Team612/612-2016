@@ -25,6 +25,7 @@ public:
 	std::unique_ptr<Command> autonomousCommand;
 	std::unique_ptr<Command> drivejoystick;
 	std::unique_ptr<Command> autowheels;
+	std::unique_ptr<Command> armJoystick;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
 

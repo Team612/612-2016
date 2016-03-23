@@ -5,15 +5,15 @@
 Arm::Arm() :
 		Subsystem("Arm")
 {
-	rotateMotor = RobotMap::armRotateMotor;
+
 }
 
 void Arm::InitDefaultCommand()
 {
-	SetDefaultCommand(new ArmJoystick());
+	//SetDefaultCommand(new ArmJoystick());
 }
 
 void Arm::SetSpeed(float speed)
 {
-	rotateMotor.get()->Set(speed);
+	RobotMap::armRotateMotor.get()->Set(speed);
 }
