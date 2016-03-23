@@ -90,9 +90,6 @@ void RobotMap::init()
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
 
-<<<<<<< HEAD
     armRotateMotor.reset(new CANTalon(ports["armRotateMotor"]));
-=======
     shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
->>>>>>> ee56e7f1359a4b35b401e3593223caeb8f30fcff
 }
