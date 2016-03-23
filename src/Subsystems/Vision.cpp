@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 #include "Robot.h"
 
-Vision::Vision(const char* camera) :
+Vision::Vision() :
 		Subsystem("Vision")
 {
 	NetworkTable::SetPort(1735); //I think this is the default port but just to be safe

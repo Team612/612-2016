@@ -8,14 +8,14 @@
 class FireShooter: public Command
 {
 public:
-	FireShooter(ShooterServoPosition position);
+	FireShooter(ShooterActuatorPosition position);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
-	ShooterServoPosition position;
+	ShooterActuatorPosition position;
 	int count = 0;
 };
 

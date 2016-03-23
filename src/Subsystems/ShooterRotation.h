@@ -6,6 +6,7 @@
 #include <WPILib.h>
 #include <CANTalon.h>
 #include <AbsoluteEncoder/AbsoluteEncoder.h>
+#include <PIDControl/PIDControl.h>
 
 class ShooterRotation : public Subsystem
 {
@@ -28,13 +29,14 @@ public:
 	const double MAX_VOLTS = 4.0f;
 	// Hardware
 	std::shared_ptr<CANTalon> motor;
-	PIDController* pid;
+	PIDControl* pid;
 	AbsoluteEncoder* absEncoder;
 	
 	// PID Constants
-	float kP = .1;
-	float kI = 0;
-	float kD = 0;
+	float kP = 1.2f;
+	float kI = 0.025f;
+	float kD = 0.5f;
+	float gain_switch = 0.6f; // Error value (Volts) at which the controller switches between PID and P control.
 	
 	// Common setpoints, tied to buttons.
 	const float HOME_SETPOINT = 0;
@@ -50,6 +52,8 @@ public:
 		return (angle * V_OVER_A) + HOME_SETPOINT + BIAS;
 	}
 	
+	void SetSetpoint(float set);
+
 public:
 	//const double MAX_ANGLE = 288; //full forwards
 	//const double MIN_ANGLE = 79.2; //full inwards
@@ -85,11 +89,14 @@ public:
 	void IntakePos();
 	
 	void Stop();
+	bool PIDEnabled() { return pid->IsEnabled(); }
 	void PIDEnable(bool enabled);
 	
 	void SmartDashboardOutput();
 
-	PIDController* getShooterPID();
+	bool getPIDOnTarget();
+
+	//PIDControl* getShooterPID();
 };
 
 #endif

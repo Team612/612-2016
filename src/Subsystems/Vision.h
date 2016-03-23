@@ -17,7 +17,7 @@ private:
 	const float TARGET_ASPECT = 1.66/1.00;
 
 public:
-	Vision(const char* initialCamera=CAMERA_FRONT);
+	Vision();
 	void InitDefaultCommand();
 	void PullValues();
 	void SetCamera(const char* camera);
@@ -28,9 +28,9 @@ public:
 	bool TargetExists(int id); //Check if an ID exists
 
 	//Camera constants, assume front is side with launcher
-	static constexpr char* CAMERA_FRONT = "cam0";
-	static constexpr char* CAMERA_REAR = "cam1";
-	static constexpr char* CAMERA_SHOOTER = "cam2";
+	//static constexpr char* CAMERA_FRONT = "cam0";
+	//static constexpr char* CAMERA_REAR = "cam1";
+	//static constexpr char* CAMERA_SHOOTER = "cam2";
 	/*
 	 * Also, using char* as a string is deprecated so this completely FLOODS the console
 	 *

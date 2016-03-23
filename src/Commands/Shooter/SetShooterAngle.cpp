@@ -49,7 +49,7 @@ void SetShooterAngle::Execute()
 
 bool SetShooterAngle::IsFinished()
 {
-	return Robot::shooterrotation.get()->getShooterPID()->OnTarget();
+	return Robot::shooterrotation.get()->getPIDOnTarget();
 }
 
 void SetShooterAngle::End()

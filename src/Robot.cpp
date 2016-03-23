@@ -23,7 +23,6 @@ std::shared_ptr<Shifter> Robot::shifter;
 std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
-std::shared_ptr<CameraServer> Robot::server;
 std::shared_ptr<SendableChooser> Robot::autoChooser;
 bool Robot::inverted;
 
@@ -31,7 +30,6 @@ bool Robot::inverted;
 void Robot::RobotInit()
 {
 	RobotMap::init();
-	server.reset(CameraServer::GetInstance());
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
@@ -85,6 +83,7 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
+	shifter->Set(Shifter::LOW);
 	autonomousCommand.reset((Command *) autoChooser->GetSelected());
 	std::printf("Info: Set Auto command!\n");
 
@@ -96,6 +95,7 @@ void Robot::AutonomousInit()
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	PeriodicSmartDashboard();
 	vision->PullValues();
 }
 
@@ -180,6 +180,8 @@ void Robot::PeriodicSmartDashboard()
 {
 
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
+
+	SmartDashboard::PutNumber("Shooter Actuator Limit Switch", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
 
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderL->Get());

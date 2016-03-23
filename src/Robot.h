@@ -41,7 +41,7 @@ public:
 
 	static std::shared_ptr<SendableChooser> autoChooser;
 
-	static std::shared_ptr<CameraServer> server;
+	//CameraServer* server = CameraServer::GetInstance();
 	Timer * time = new Timer();
 
 	virtual void RobotInit();
