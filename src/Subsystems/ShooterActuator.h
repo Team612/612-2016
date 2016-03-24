@@ -23,7 +23,7 @@ private:
 	 * The motor should never move backwards
 	 */
     const float NEUTRAL_SPEED = 0.0f;
-    const float PUSH_SPEED = 0.3f;
+    const float PUSH_SPEED = 0.75f;
     float storedposition;
 public:
 	std::shared_ptr<CANTalon> actuator;

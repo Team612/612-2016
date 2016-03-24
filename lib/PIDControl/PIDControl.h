@@ -72,6 +72,8 @@ class PIDControl : public LiveWindowSendable,
   virtual void ResetIntegrator();
   virtual double GetIntegratedError() const;
 
+  virtual void SetInvertedOutput(bool inverted);
+
   virtual void InitTable(std::shared_ptr<ITable> table) override;
 
  protected:
@@ -92,6 +94,7 @@ class PIDControl : public LiveWindowSendable,
   float m_maximumInput = 0;   // maximum input - limit setpoint to this
   float m_minimumInput = 0;   // minimum input - limit setpoint to this
   bool m_continuous = false;      // do the endpoints wrap around? eg. Absolute encoder
+  bool m_inverted = false; // is the output signal inverted? eg. -1 -> 1 and 1 -> -1
   bool m_enabled = false;  // is the pid controller enabled
   float m_prevError = 0;  // the prior error (used to compute velocity)
   double m_totalError = 0;  // the sum of the errors for use in the integral calc

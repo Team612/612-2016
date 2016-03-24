@@ -31,29 +31,30 @@ void RobotMap::init()
 	//LiveWindow *lw = LiveWindow::GetInstance();
 	
 	ports = {
-		// PWM
-    	{ "driveFL", 			    4 },
-    	{ "driveRL", 			    5 },
-    	{ "driveFR", 			    0 },
-    	{ "driveLR", 			    1 },
-    	{ "shifterL", 			    3 },
-    	{ "shifterR", 			    2 },
-    	// Digital I/O
-    	{ "driveEncoderL1", 	    0 },
-    	{ "driveEncoderL2", 	    1 },
-    	{ "driveEncoderR1", 	    2 },
-    	{ "driveEncoderR2", 	    3 },
-		{ "shooterActuatorLSwitch", 4 },
-    	{ "shooterHallL", 		    6 },
-    	{ "shooterHallR", 		    7 },
-    	// Analog I/O
-    	{ "shooterAbsEncoder",  	2 },
-    	{ "shooterIR", 		    	1 },
-    	// CAN
-    	{ "shooterRotate", 		    1 },
-    	{ "shooterFlyL", 		    4 },
-    	{ "shooterActuatorMotor", 	6 },
-    	{ "shooterFlyR", 		    3 }
+		// Drive train
+    	{ "driveFL", 			    4 }, // PWM port
+    	{ "driveRL", 			    5 }, // PWM port
+    	{ "driveFR", 			    0 }, // PWM port
+    	{ "driveLR", 			    1 }, // PWM port
+		// Drive train shifters
+    	{ "shifterL", 			    3 }, // PWM port
+    	{ "shifterR", 			    2 }, // PWM port
+		// Drive train encoders
+    	{ "driveEncoderL1", 	    0 }, // Digital pin
+    	{ "driveEncoderL2", 	    1 }, // Digital pin
+    	{ "driveEncoderR1", 	    2 }, // Digital pin
+    	{ "driveEncoderR2", 	    3 }, // Digital pin
+		// Shooter
+    	{ "shooterActuatorMotor", 	5 }, // CAN ID
+    	{ "shooterAbsEncoder",  	2 }, // Analog In
+    	{ "shooterRotate", 		    1 }, // CAN ID
+    	{ "shooterIR", 		    	1 }, // Analog In
+		{ "shooterActuatorLSwitch", 4 }, // Digital pin
+		// Shooter flywheels
+    	{ "shooterFlyL", 		    4 }, // CAN ID
+    	{ "shooterFlyR", 		    3 }, // CAN ID
+    	{ "shooterHallL", 		    6 }, // Digital pin
+    	{ "shooterHallR", 		    7 }  // Digital pin
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left
@@ -81,9 +82,8 @@ void RobotMap::init()
 	shooterAbsEncoder.reset(new AbsoluteEncoder(ports["shooterAbsEncoder"]));
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
+    shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
-
-    shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
 }

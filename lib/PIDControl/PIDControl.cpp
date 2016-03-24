@@ -156,7 +156,7 @@ void PIDControl::Calculate() {
 		pidOutput = m_pidOutput;
 		result = m_result;
 
-		pidOutput->PIDWrite(result);
+		pidOutput->PIDWrite(m_inverted ? -result : result);
 
 		// Update the buffer.
 		m_buf.push(m_error);
@@ -569,6 +569,13 @@ double PIDControl::GetIntegratedError() const
 {
 	std::lock_guard<priority_recursive_mutex> sync(m_mutex);
 	return m_totalError;
+}
+
+void PIDControl::SetInvertedOutput(bool inverted)
+{
+	std::lock_guard<priority_recursive_mutex> sync(m_mutex);
+	m_inverted = inverted;
+
 }
 
 std::string PIDControl::GetSmartDashboardType() const {

@@ -20,7 +20,7 @@ void ShooterJoystick::Execute()
 	auto joy = Robot::oi->getGunner();
 	bool a = joy->GetRawButton(1), b = joy->GetRawButton(2),
 			x = joy->GetRawButton(3), y = joy->GetRawButton(4);
-	bool buttonPushed = a | b | x | y;
+	bool buttonPushed = b | x | y;
 /*
 	std::printf("Button? " + buttonPushed);
 	std::printf("A? " + a);
@@ -34,7 +34,8 @@ void ShooterJoystick::Execute()
 		if(gunner < TOLERANCE && gunner > -TOLERANCE)
 			gunner = 0;
 
-		Robot::shooterrotation->Gun(gunner);
+		// Division by 2 is used for rate limiting while enabling a wider range of finer control.
+		Robot::shooterrotation->Gun(gunner / 2);
 	}
 	else
 	{

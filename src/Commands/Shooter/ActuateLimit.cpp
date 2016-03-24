@@ -11,7 +11,7 @@ ActuateLimit::ActuateLimit()
 
 void ActuateLimit::Initialize()
 {
-	Robot::shooteractuator.get()->SetSpeed(0.1f);
+	Robot::shooteractuator.get()->SetSpeed(0.5f);
 	failsafe->Start();
 	start_time = failsafe->Get();
 	//std::printf("Info: ActuateLimit start time is: %f\n", start_time);
