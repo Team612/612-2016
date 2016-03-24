@@ -8,7 +8,7 @@ Fire::Fire()
 {
 	AddSequential(new SpinUp());
 	Wait(0.5);
-	AddSequential(new FireShooter(ShooterActuatorPosition::Push));
+	AddSequential(new FireShooter(ShooterActuatorPosition::Push, true));
 	Wait(1.0);
 	AddSequential(new StopShooter());
 }

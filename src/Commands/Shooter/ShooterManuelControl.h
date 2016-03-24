@@ -21,5 +21,4 @@ public:
 	void End();
 	void Interrupted();
 };
-
-#endif /* SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_ */
+#endif

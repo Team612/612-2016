@@ -1229,4 +1229,3 @@ int AHRS::ThreadFunc(IIOProvider *io_provider) {
     io_provider->Run();
     return 0;
 }
-

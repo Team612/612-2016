@@ -7,8 +7,10 @@
 
 class FireShooter: public Command
 {
+private:
+	bool solenoid;
 public:
-	FireShooter(ShooterActuatorPosition position);
+	FireShooter(ShooterActuatorPosition position, bool solenoid);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

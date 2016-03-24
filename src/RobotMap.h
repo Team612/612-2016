@@ -22,18 +22,18 @@ public:
 	static std::shared_ptr<Encoder> 	driveEncoderR;
 	static std::shared_ptr<RobotDrive> 	drivetrainRobotDrive;
 	
-	static std::shared_ptr<CANTalon> 			shooterActuatorMotor;
-	static std::shared_ptr<DigitalInput>        shooterActuatorLSwitch;
+	static std::shared_ptr<CANTalon> 		shooterActuatorMotor;
 	static std::shared_ptr<AbsoluteEncoder> shooterAbsEncoder;
 	static std::shared_ptr<CANTalon> 		shooterRotateMotor;
 	static std::shared_ptr<AnalogInput> 	shooterIR;
+	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch;
+	static std::shared_ptr<Relay>           shooterSpike;
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
 	static std::shared_ptr<CANTalon> flywheelMotorR;
+	static std::shared_ptr<CANTalon> armRotateMotor;
 	static constexpr float flywheelHallL = 6;
 	static constexpr float flywheelHallR = 7;
-	
-	static std::shared_ptr<USBCamera> cam1;
 	
 	static std::map<std::string, int> ports;
 	

@@ -5,11 +5,13 @@
 ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 {
 	motor = RobotMap::shooterRotateMotor;
+	motor->SetInverted(true);
 	motor->SetControlMode(CANSpeedController::kPercentVbus);
 	absEncoder = RobotMap::shooterAbsEncoder.get();
-	pid = new PIDControl(1, 0, 0, absEncoder, motor.get());
-	pid->SetOutputRange(-1, 1);
+	pid = new PIDControl(kP, kI, kD, absEncoder, motor.get());
+	pid->SetOutputRange(-.5, .5);
 	pid->SetInputRange(0, 5);
+	pid->SetContinuous(false);
 	this->HomePos();
 	SmartDashboard::PutNumber("Gain Switch", gain_switch);
 }
@@ -47,6 +49,7 @@ void ShooterRotation::Gun(float gunner_axis)
 
 void ShooterRotation::SetSetpoint(float set)
 {
+	/*
 	// Gain scheduling
 	if(pid->GetI() != 0)
 		kI = pid->GetI();
@@ -54,6 +57,7 @@ void ShooterRotation::SetSetpoint(float set)
 		kD = pid->GetD();
 
 	bool limit_closed = (bool)(motor->IsFwdLimitSwitchClosed()) | (bool)(motor->IsRevLimitSwitchClosed());
+
 	if(abs(pid->GetError()) > gain_switch || limit_closed)
 	{
 		pid->SetPID(pid->GetP(), 0, 0);
@@ -62,6 +66,7 @@ void ShooterRotation::SetSetpoint(float set)
 	{
 		pid->SetPID(pid->GetP(), kI, kD);
 	}
+	*/
 
 	pid->SetSetpoint(set);
 }

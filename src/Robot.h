@@ -12,6 +12,7 @@
 #include <Subsystems/ShooterActuator.h>
 #include <Subsystems/Shifter.h>
 #include <Subsystems/Vision.h>
+#include <Subsystems/Arm.h>
 
 #include <OI.h>
 
@@ -27,6 +28,7 @@ public:
 	std::unique_ptr<Command> autonomousCommand;
 	std::unique_ptr<Command> drivejoystick;
 	std::unique_ptr<Command> autowheels;
+	std::unique_ptr<Command> armJoystick;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
 
@@ -36,6 +38,7 @@ public:
 	static std::shared_ptr<ShooterActuator> shooteractuator;
 	static std::shared_ptr<Shifter> shifter;
 	static std::shared_ptr<Vision> vision;
+	static std::shared_ptr<Arm> arm;
 
 	static bool inverted;
 
@@ -51,6 +54,7 @@ public:
 	virtual void AutonomousPeriodic();
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
+	virtual void TestInit();
 	virtual void TestPeriodic();
 };
 #endif

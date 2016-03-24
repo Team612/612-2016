@@ -24,16 +24,18 @@ std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
 std::shared_ptr<SendableChooser> Robot::autoChooser;
+std::shared_ptr<Arm> Robot::arm;
 bool Robot::inverted;
 
 
 void Robot::RobotInit()
 {
 	RobotMap::init();
+	arm.reset(new Arm());
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
-	vision.reset(new Vision());
+	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
 
 	/*
@@ -140,10 +142,14 @@ void Robot::TeleopPeriodic()
     PeriodicSmartDashboard();
 }
 
+void Robot::TestInit()
+{
+
+}
+
 void Robot::TestPeriodic()
 {
-	lw->Run();
-	PeriodicSmartDashboard();
+	Scheduler::GetInstance()->Run();
 }
 
 void Robot::InitSmartDashboard()
