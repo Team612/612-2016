@@ -13,6 +13,7 @@ OI::OI()
 
 	servoPush.reset(new JoystickButton(gunner.get(), 1));
 	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push, true));
+	servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
 	//servoPush->WhenReleased(new ActuateLimit());
 
 	/*
