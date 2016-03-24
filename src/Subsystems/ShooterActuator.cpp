@@ -49,9 +49,11 @@ void ShooterActuator::SetPosition(ShooterActuatorPosition position, bool sol)
 				break;*/
 			case Neutral:
 				spike.get()->Set(Relay::Value::kOff);
+				printf("Info: kOff\n");
 				break;
 			case Push:
 				spike.get()->Set(Relay::Value::kReverse);
+				printf("Info: kReverse\n");
 				CanShoot = false;
 				break;
 			default:

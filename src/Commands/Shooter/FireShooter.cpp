@@ -21,7 +21,7 @@ void FireShooter::Execute()
 
 bool FireShooter::IsFinished()
 {
-	return false;
+	return true;
 }
 
 void FireShooter::End()
