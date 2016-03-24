@@ -22,6 +22,8 @@ std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorL;
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
 
+std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
+
 std::shared_ptr<USBCamera> 	RobotMap::cam1;
 
 std::map<std::string, int> RobotMap::ports;
@@ -30,31 +32,34 @@ void RobotMap::init()
 {
 	//LiveWindow *lw = LiveWindow::GetInstance();
 	
+
 	ports = {
-		// Drive train
-    	{ "driveFL", 			    4 }, // PWM port
-    	{ "driveRL", 			    5 }, // PWM port
-    	{ "driveFR", 			    0 }, // PWM port
-    	{ "driveLR", 			    1 }, // PWM port
-		// Drive train shifters
-    	{ "shifterL", 			    3 }, // PWM port
-    	{ "shifterR", 			    2 }, // PWM port
-		// Drive train encoders
-    	{ "driveEncoderL1", 	    0 }, // Digital pin
-    	{ "driveEncoderL2", 	    1 }, // Digital pin
-    	{ "driveEncoderR1", 	    2 }, // Digital pin
-    	{ "driveEncoderR2", 	    3 }, // Digital pin
-		// Shooter
-    	{ "shooterActuatorMotor", 	5 }, // CAN ID
-    	{ "shooterAbsEncoder",  	2 }, // Analog In
-    	{ "shooterRotate", 		    1 }, // CAN ID
-    	{ "shooterIR", 		    	1 }, // Analog In
-		{ "shooterActuatorLSwitch", 4 }, // Digital pin
-		// Shooter flywheels
-    	{ "shooterFlyL", 		    4 }, // CAN ID
-    	{ "shooterFlyR", 		    3 }, // CAN ID
-    	{ "shooterHallL", 		    6 }, // Digital pin
-    	{ "shooterHallR", 		    7 }  // Digital pin
+		// Drive train Talons
+    	{ "driveFL", 			4 }, // PWM Port
+    	{ "driveRL", 			5 }, // PWM Port
+    	{ "driveFR", 			0 }, // PWM Port
+    	{ "driveLR", 			1 }, // PWM Port
+    	// Drive shifter servos
+    	{ "shifterL", 			3 }, // PWM Port
+    	{ "shifterR", 			2 }, // PWM Port
+    	// Drive encoders
+    	{ "driveEncoderL1", 	0 }, // Digital Input Pin
+    	{ "driveEncoderL2", 	1 }, // Digital Input Pin
+    	{ "driveEncoderR1", 	2 }, // Digital Input Pin
+    	{ "driveEncoderR2", 	3 }, // Digital Input Pin
+    	// Shooter Misc
+    	{ "shooterActuator", 	6 }, // PWM Port
+    	{ "shooterAbsEncoder", 	2 }, // Analog Input
+    	{ "shooterRotate", 		1 }, // CAN ID
+    	{ "shooterIR", 			1 }, // Analog Input
+    	// Shooter Flywheels
+    	{ "shooterFlyL", 		4 }, // CAN ID
+    	{ "shooterFlyR", 		3 }, // CAN ID
+    	// Shooter Hall Effects
+    	{ "shooterHallL", 		6 },
+    	{ "shooterHallR", 		7 },
+    	// Arm
+		{"armRotateMotor",      2 }
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left

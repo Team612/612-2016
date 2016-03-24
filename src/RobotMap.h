@@ -30,6 +30,7 @@ public:
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
 	static std::shared_ptr<CANTalon> flywheelMotorR;
+	static std::shared_ptr<CANTalon> armRotateMotor;
 	static constexpr float flywheelHallL = 6;
 	static constexpr float flywheelHallR = 7;
 	
