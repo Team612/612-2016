@@ -28,13 +28,14 @@ private:
 public:
 	std::shared_ptr<CANTalon> actuator;
 	std::shared_ptr<AnalogInput> IR;
+	std::shared_ptr<Relay> spike;
 
 	bool CanShoot;
 
 	//std::shared_ptr<AnalogInput> balldetector;
 	ShooterActuator();
 	void InitDefaultCommand();
-    void SetPosition(ShooterActuatorPosition position);
+    void SetPosition(ShooterActuatorPosition position, bool sol);
     void SetSpeed(float position);
     void SetAngle(float angle);
     void SetNeutral();

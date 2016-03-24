@@ -18,13 +18,12 @@ std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
+std::shared_ptr<Relay>              RobotMap::shooterSpike;
 
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorL;
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
 
 std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
-
-std::shared_ptr<USBCamera> 	RobotMap::cam1;
 
 std::map<std::string, int> RobotMap::ports;
 
@@ -59,7 +58,9 @@ void RobotMap::init()
     	{ "shooterHallL", 		6 },
     	{ "shooterHallR", 		7 },
     	// Arm
-		{"armRotateMotor",      2 }
+		{"armRotateMotor",      2 },
+    	//Spike
+		{"shooterSpike",        0 }
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left
@@ -82,12 +83,12 @@ void RobotMap::init()
 	drivetrainRobotDrive->SetSensitivity(0.5);
 	drivetrainRobotDrive->SetMaxOutput(1.0);
 
-
 	shooterActuatorMotor.reset(new CANTalon(ports["shooterActuatorMotor"]));
 	shooterAbsEncoder.reset(new AbsoluteEncoder(ports["shooterAbsEncoder"]));
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
     shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
+    shooterSpike.reset(new Relay(ports["shooterSpike"]));
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));

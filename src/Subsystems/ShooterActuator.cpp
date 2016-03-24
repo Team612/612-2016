@@ -6,6 +6,7 @@ ShooterActuator::ShooterActuator() :
 		Subsystem("ShooterActuator")
 {
 	actuator = RobotMap::shooterActuatorMotor;
+	spike = RobotMap::shooterSpike;
 	IR = RobotMap::shooterIR;
 	storedposition = 0.0f;
 	CanShoot = false;
@@ -18,24 +19,47 @@ void ShooterActuator::InitDefaultCommand()
 	//SetDefaultCommand(new ActuateLimit());
 }
 
-void ShooterActuator::SetPosition(ShooterActuatorPosition position)
+void ShooterActuator::SetPosition(ShooterActuatorPosition position, bool sol)
 {
-	switch(position)
+	if(!sol)
 	{
-		/*case Clamp:
-			SetClamp();
-			break;*/
-		case Neutral:
-			SetNeutral();
-			break;
-		case Push:
-			SetPush();
-			CanShoot = false;
-			break;
-		default:
-			printf("Trying to set shooter lever servo position to an invalid or not defined value!");
-			break;
+		switch(position)
+		{
+			/*case Clamp:
+				SetClamp();
+				break;*/
+			case Neutral:
+				SetNeutral();
+				break;
+			case Push:
+				SetPush();
+				CanShoot = false;
+				break;
+			default:
+				printf("ERROR: Invalid Actuator value!\n");
+				break;
+		}
 	}
+	else if(sol)
+	{
+		switch(position)
+		{
+			/*case Clamp:
+				SetClamp();
+				break;*/
+			case Neutral:
+				spike.get()->Set(Relay::Value::kOff);
+				break;
+			case Push:
+				spike.get()->Set(Relay::Value::kReverse);
+				CanShoot = false;
+				break;
+			default:
+				printf("ERROR: Invalid Actuator value!\n");
+				break;
+		}
+	}
+
 }
 
 void ShooterActuator::SetSpeed(float position)
