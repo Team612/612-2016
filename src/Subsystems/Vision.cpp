@@ -8,6 +8,10 @@ Vision::Vision() :
 	NetworkTable::SetPort(1735); //I think this is the default port but just to be safe
 	table = NetworkTable::GetTable("Vision");
 
+	DigitalOutput * jetson = new DigitalOutput(0);
+	jetson->Pulse(0.0016);
+
+
 	// \/ Comment this bit out if we haven't bothered to plug a camera in \/
 	//CameraServer::GetInstance()->SetQuality(50);
 	//SetCamera(camera);
@@ -176,3 +180,4 @@ std::shared_ptr<VisionTarget> Vision::GetTrackedGoal()
 {
 	return goal;
 }
+

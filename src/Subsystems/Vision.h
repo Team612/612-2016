@@ -5,6 +5,7 @@
 #include "WPILib.h"
 #include "../VisionTarget.h"
 #include <vector>
+#include "DigitalOutput.h"
 
 class Vision: public Subsystem
 {
@@ -45,4 +46,11 @@ public:
 	std::shared_ptr<VisionTarget> GetTrackedGoal();
 };
 
+class StartJetson
+{
+private:
+
+public:
+	StartJetson();
+};
 #endif
