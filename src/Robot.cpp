@@ -26,12 +26,12 @@ void Robot::RobotInit()
 {
 	RobotMap::init();
 
+	arm.reset(new Arm());
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
 	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
-	arm.reset(new Arm());
 
 	oi.reset(new OI());
 

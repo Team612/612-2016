@@ -58,9 +58,9 @@ void RobotMap::init()
     	{ "shooterHallL", 		6 },
     	{ "shooterHallR", 		7 },
     	// Arm
-		{"armRotateMotor",      2 },
+		{"armRotateMotor",      2 }, //CAN ID
     	//Spike
-		{"shooterSpike",        0 }
+		{"shooterSpike",        0 } //Relay
 	};
 
 	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left
@@ -88,8 +88,10 @@ void RobotMap::init()
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
     shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
-    shooterSpike.reset(new Relay(ports["shooterSpike"]));
+    shooterSpike.reset(new Relay(ports["shooterSpike"], Relay::Direction::kForwardOnly));
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
     flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
+
+    armRotateMotor.reset(new CANTalon(ports["armRotateMotor"]));
 }
