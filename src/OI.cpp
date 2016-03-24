@@ -12,18 +12,15 @@ OI::OI()
 	gunner.reset(new Joystick(1));
 
 	servoPush.reset(new JoystickButton(gunner.get(), 1));
-	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push));
-	servoPush->WhenReleased(new ActuateLimit());
+	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push, true));
+	//servoPush->WhenReleased(new ActuateLimit());
 
-	/*servoClamp.reset(new JoystickButton(gunner.get(), 2));
-	servoClamp->WhenPressed(new FireShooter(ShooterActuatorPosition::Clamp));*/
-	// NOTE: Buttons 1-4 are reserved for shooter (aka A, B, X, Y)
+	/*
+	 * If we switch back to Nick's solution, set that to false and
+	 * un-comment:
+	 * servoPush->WhenReleased(new ActuateLimit());
+	 */
 
-	//servoPush.reset(new JoystickButton(gunner.get(), 1));
-	//servoPush->WhenPressed(new FireShooter(ShooterServoPosition::Push));
-
-	//servoClamp.reset(new JoystickButton(gunner.get(), 2));
-	//servoClamp->WhenPressed(new FireShooter(ShooterServoPosition::Clamp));
 
 	//DRIVER
 	driver.reset(new Joystick(0));
