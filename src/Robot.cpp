@@ -71,7 +71,6 @@ void Robot::AutonomousInit()
 
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-
 }
 
 void Robot::AutonomousPeriodic()
