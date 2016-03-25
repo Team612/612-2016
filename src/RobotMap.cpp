@@ -55,8 +55,8 @@ void RobotMap::init()
     	{ "shooterFlyL", 		4 }, // CAN ID
     	{ "shooterFlyR", 		3 }, // CAN ID
     	// Shooter Hall Effects
-    	{ "shooterHallL", 		6 },
-    	{ "shooterHallR", 		7 },
+    	{ "shooterHallL", 		6 }, // Digital Input
+    	{ "shooterHallR", 		7 }, // Digital Input
     	// Arm
 		{"armRotateMotor",      2 }, //CAN ID
     	//Spike
