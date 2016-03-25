@@ -71,12 +71,16 @@ void Robot::AutonomousInit()
 //
 	//if (autonomousCommand.get() != nullptr)
 		//autonomousCommand->Start();
+	time->Start();
+	drivetrain->SetTankDrive(0.7f, 0.7f);
 
 }
 
 void Robot::AutonomousPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+	if(time->Get() >= 8)
+		drivetrain->SetTankDrive(0.0f, 0.0f);
 	PeriodicSmartDashboard();
 }
 
