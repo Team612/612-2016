@@ -43,7 +43,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	//autonomousCommand.reset((Command *) chooser->GetSelected());
+	autonomousCommand.reset(new Autonomous(8.0f, 0.8f));
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
@@ -68,9 +68,9 @@ void Robot::AutonomousInit()
 {
 	shifter->Set(Shifter::LOW);
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
-//
-	//if (autonomousCommand.get() != nullptr)
-		//autonomousCommand->Start();
+
+	if (autonomousCommand.get() != nullptr)
+		autonomousCommand->Start();
 
 }
 
@@ -114,16 +114,16 @@ void Robot::InitSmartDashboard()
 	SmartDashboard::PutData("Shooter Test", new ShooterTest());
 
 	//autonomous
-	chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
+	/*chooser->AddDefault("Low Bar", new Autonomous(Defense::LOW_BAR));
 	chooser->AddObject("Cheval de Frise", new Autonomous(Defense::CHEVAL_DE_FRISE));
 	chooser->AddObject("Draw Bridge", new Autonomous(Defense::DRAW_BRIDGE));
 	chooser->AddObject("Moat", new Autonomous(Defense::MOAT));
 	chooser->AddObject("Portcullis", new Autonomous(Defense::PORTCULLIS));
 	chooser->AddObject("Rock Wall", new Autonomous(Defense::ROCK_WALL));
 	chooser->AddObject("Rough Terrain", new Autonomous(Defense::ROUGH_TERRAIN));
-	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));
+	chooser->AddObject("Sally Port", new Autonomous(Defense::SALLY_PORT));*/
 
-	SmartDashboard::PutData("Autonomous Defense Chooser", chooser.get());
+	//SmartDashboard::PutData("Autonomous Defense Chooser", chooser.get());
 }
 
 void Robot::PeriodicSmartDashboard()
