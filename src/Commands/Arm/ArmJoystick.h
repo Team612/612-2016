@@ -8,6 +8,8 @@ class ArmJoystick: public Command
 {
 private:
 	const float THRESHOLD = 0.01f;
+	const float SCALE = 0.2f;
+
 public:
 	ArmJoystick();
 	void Initialize();
