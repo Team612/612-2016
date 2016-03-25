@@ -37,7 +37,7 @@ void RobotMap::init()
     	{ "driveFL", 			4 }, // PWM Port
     	{ "driveRL", 			5 }, // PWM Port
     	{ "driveFR", 			0 }, // PWM Port
-    	{ "driveLR", 			1 }, // PWM Port
+    	{ "driveRR", 			1 }, // PWM Port
     	// Drive shifter servos
     	{ "shifterL", 			3 }, // PWM Port
     	{ "shifterR", 			2 }, // PWM Port

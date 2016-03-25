@@ -17,12 +17,12 @@ void ArmJoystick::Execute()
 	if(Robot::oi.get()->getDriver()->GetRawAxis(2) > THRESHOLD) //left trigger
 	{
 		//goin' up?
-		Robot::arm.get()->SetSpeed(Robot::oi.get()->getDriver()->GetRawAxis(2));
+		Robot::arm.get()->SetSpeed(Robot::oi.get()->getDriver()->GetRawAxis(2) * SCALE);
 	}
 	else if(Robot::oi.get()->getDriver()->GetRawAxis(3) > THRESHOLD) //right trigger
 	{
 		//GERONIMO!!!!!!
-		Robot::arm.get()->SetSpeed(-Robot::oi.get()->getDriver()->GetRawAxis(3));
+		Robot::arm.get()->SetSpeed(-Robot::oi.get()->getDriver()->GetRawAxis(3) * SCALE);
 	}
 	else
 	{

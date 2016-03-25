@@ -64,9 +64,6 @@ void Robot::RobotInit()
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
-
-	//server.get()->SetQuality(50);
-	//server.get()->StartAutomaticCapture("cam1");
 }
 
 /*
@@ -96,29 +93,25 @@ void Robot::AutonomousInit()
 
 void Robot::AutonomousPeriodic()
 {
+	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
-	vision->PullValues();
 }
 
 void Robot::TeleopInit()
 {
-	// This makes sure that the autonomous stops running when
-	// teleop starts running. If you want the autonomous to
-	// continue until interrupted by another command, remove
-	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
-	//drivejoystick->Start();
-	//armmove->Start();
-	//autowheels->Start();
-	//invertcontrols->Start();
-	vision->PullValues();
+	drivejoystick->Start();
+	armJoystick->Start();
+	shifter->Set(Shifter::LOW);
+	//shooterrotation->PIDEnable(true);
 }
 
 void Robot::TeleopPeriodic()
 {
+	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
 
 #ifdef SHOOTERBACKUP
