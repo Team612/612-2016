@@ -12,9 +12,9 @@ OI::OI()
 	gunner.reset(new Joystick(1));
 
 	servoPush.reset(new JoystickButton(gunner.get(), 1));
-	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push, true));
-	servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
-	//servoPush->WhenReleased(new ActuateLimit());
+	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push, false));
+	//servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
+	servoPush->WhenReleased(new ActuateLimit());
 
 	/*
 	 * If we switch back to Nick's solution, set that to false and
