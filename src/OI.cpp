@@ -7,14 +7,13 @@
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/SetGear.h"
 
-
 OI::OI()
 {
 	//GUNNER
 	gunner.reset(new Joystick(1));
 
 	servoPush.reset(new JoystickButton(gunner.get(), 1));
-	servoPush->WhenPressed(new ActuatorActivate());
+	servoPush->WhileHeld(new ActuatorActivate());
 	//servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
 	servoPush->WhenReleased(new ActuateRelease());
 
