@@ -1,10 +1,12 @@
 #include <Commands/Shooter/ShooterControl.h>
 #include <Commands/Shooter/FireShooter.h>
-#include "Commands/Shooter/ActuateLimit.h"
+#include "Commands/Shooter/ActuatorActivate.h"
+#include "Commands/Shooter/ActuateRelease.h"
 #include "OI.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/SetGear.h"
+
 
 OI::OI()
 {
@@ -12,9 +14,9 @@ OI::OI()
 	gunner.reset(new Joystick(1));
 
 	servoPush.reset(new JoystickButton(gunner.get(), 1));
-	servoPush->WhenPressed(new FireShooter(ShooterActuatorPosition::Push, false));
+	servoPush->WhenPressed(new ActuatorActivate());
 	//servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
-	servoPush->WhenReleased(new ActuateLimit());
+	servoPush->WhenReleased(new ActuateRelease());
 
 	/*
 	 * If we switch back to Nick's solution, set that to false and
