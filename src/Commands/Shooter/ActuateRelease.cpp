@@ -13,7 +13,7 @@ void ActuateRelease::Initialize()
 
 void ActuateRelease::Execute()
 {
-	RobotMap::shooterActuatorMotor.get()->Set(-0.3f);
+	RobotMap::shooterActuatorMotor.get()->Set(-0.1f);
 }
 
 bool ActuateRelease::IsFinished()

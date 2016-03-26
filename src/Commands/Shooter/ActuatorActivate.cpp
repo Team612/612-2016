@@ -13,7 +13,7 @@ void ActuatorActivate::Initialize()
 
 void ActuatorActivate::Execute()
 {
-	RobotMap::shooterActuatorMotor.get()->Set(0.3f);
+	RobotMap::shooterActuatorMotor.get()->Set(0.1f);
 	if(!RobotMap::shooterActuatorLSwitch2.get()->Get())
 	{
 		RobotMap::shooterActuatorMotor.get()->Set(0.0f);
