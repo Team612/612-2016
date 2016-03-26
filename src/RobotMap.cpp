@@ -54,7 +54,7 @@ void RobotMap::init()
     	{ "shooterIR", 			     1 }, // Analog Input
 		{ "shooterActuatorLSwitch",  4 }, // Digital Input
 		{ "shooterActuatorLSwitch2", 5 }, // Digital Input
-		{ "shooterActuatorMotor",    2 }, //CANTalon
+		{ "shooterActuatorMotor",    5 }, //CANTalon
     	// Shooter Flywheels
     	{ "shooterFlyL", 		4 }, // CAN ID
     	{ "shooterFlyR", 		3 }, // CAN ID
