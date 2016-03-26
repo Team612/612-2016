@@ -10,7 +10,7 @@
 class Vision: public Subsystem
 {
 private:
-	std::shared_ptr<NetworkTable> table;
+	std::shared_ptr<NetworkTable> table = NULL;
 	std::vector<std::shared_ptr<VisionTarget>> targets;
 
 	std::shared_ptr<VisionTarget> goal;
