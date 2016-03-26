@@ -1,9 +1,10 @@
 #include "ActuateRelease.h"
 #include "RobotMap.h"
+#include "Robot.h"
 
 ActuateRelease::ActuateRelease()
 {
-
+	Requires(Robot::shooteractuator.get());
 }
 
 void ActuateRelease::Initialize()
@@ -13,7 +14,7 @@ void ActuateRelease::Initialize()
 
 void ActuateRelease::Execute()
 {
-	RobotMap::shooterActuatorMotor.get()->Set(-0.1f);
+	RobotMap::shooterActuatorMotor.get()->Set(1.0f);
 }
 
 bool ActuateRelease::IsFinished()

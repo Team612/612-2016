@@ -35,7 +35,11 @@ void Robot::RobotInit()
 
 	oi.reset(new OI());
 
+	//server.reset(CameraServer::GetInstance());
+
 	chooser.reset(new SendableChooser());
+
+
 
 	InitSmartDashboard();
 
@@ -43,15 +47,15 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new Autonomous(7.0f, 0.8f));
+	autonomousCommand.reset(new Autonomous(7.0f, 1.0f));
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
 
-	//server->SetQuality(50);
-	//server->StartAutomaticCapture("cam1");
+	//server.get()->SetQuality(50);
+	//server.get()->StartAutomaticCapture("cam1");
 }
 
 void Robot::DisabledInit()
@@ -129,8 +133,11 @@ void Robot::PeriodicSmartDashboard()
 {
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
 
-	SmartDashboard::PutBoolean("Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch.get()->Get());
-	SmartDashboard::PutBoolean("Second Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch2.get()->Get());
+	//SmartDashboard::PutBoolean("Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch.get()->Get());
+	//SmartDashboard::PutBoolean("Second Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch2.get()->Get());
+	std::printf("Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	std::printf("Second Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+
 
 	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor.get()->Get());
 

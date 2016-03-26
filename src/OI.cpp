@@ -17,13 +17,6 @@ OI::OI()
 	//servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
 	servoPush->WhenReleased(new ActuateRelease());
 
-	/*
-	 * If we switch back to Nick's solution, set that to false and
-	 * un-comment:
-	 * servoPush->WhenReleased(new ActuateLimit());
-	 */
-
-
 	//DRIVER
 	driver.reset(new Joystick(0));
 

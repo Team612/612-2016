@@ -1,9 +1,10 @@
 #include "ActuatorActivate.h"
 #include "RobotMap.h"
+#include "Robot.h"
 
 ActuatorActivate::ActuatorActivate()
 {
-
+	Requires(Robot::shooteractuator.get());
 }
 
 void ActuatorActivate::Initialize()
@@ -13,7 +14,7 @@ void ActuatorActivate::Initialize()
 
 void ActuatorActivate::Execute()
 {
-	RobotMap::shooterActuatorMotor.get()->Set(0.1f);
+	RobotMap::shooterActuatorMotor.get()->Set(-1.0f);
 	if(!RobotMap::shooterActuatorLSwitch2.get()->Get())
 	{
 		RobotMap::shooterActuatorMotor.get()->Set(0.0f);

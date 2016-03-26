@@ -40,6 +40,8 @@ public:
 
 	std::shared_ptr<SendableChooser> chooser;
 
+	//std::shared_ptr<CameraServer> server;
+
 	//CameraServer* server = CameraServer::GetInstance();
 	Timer * time = new Timer();
 
