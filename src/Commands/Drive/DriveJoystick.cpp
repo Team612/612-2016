@@ -78,7 +78,7 @@ void DriveJoystick::End()
 void DriveJoystick::Interrupted()
 {
 	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
-	std::printf("ERROR: DriveJoystick interrupted!\n");
+	std::printf("Warning: DriveJoystick interrupted!\n");
 	//isFlipped = false;
 }
 

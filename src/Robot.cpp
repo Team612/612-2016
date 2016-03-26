@@ -5,14 +5,13 @@
 #include "Commands/Shooter/ShooterTest.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Drive/DriveDistance.h"
-#include "Commands/FindTarget.h"
-#include "Commands/AutoAlign.h"
+#include "Commands/Autonomous/Sequences/FindTarget.h"
+#include "Commands/Autonomous/Sequences/AutoAlign.h"
 #include "Commands/Shooter/SetShooterAngle.h"
 #include "Commands/Shooter/Fire.h"
 #include "SmartDashboard/SmartDashboard.h"
 
-#include "Commands/Autonomous/Sequences/SimpleAutonomous.h"
-#include "Commands/Autonomous/Sequences/AlignAutonomous.h"
+#include "Commands/Autonomous/Autonomous.h"
 #include <Commands/Shooter/ShooterControl.h>
 #include "CameraServer.h"
 
@@ -59,7 +58,7 @@ void Robot::RobotInit()
 	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
 
 	// instantiate the command used for the autonomous period
-	//autonomousCommand.reset((Command *) chooser->GetSelected());
+	autonomousCommand.reset(new Autonomous());
 	//drivejoystick.reset(new DriveJoystick());
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
@@ -167,12 +166,11 @@ void Robot::InitSmartDashboard()
 		SmartDashboard::PutData("Align Shooter", new SetShooterAngle());
 
 	//autonomous
-	autoChooser->AddDefault("Low Bar (align)", new AlignAutonomous());
-	autoChooser->AddObject("Other Defense (align)", new AlignAutonomous(5, 0.8f));
-	autoChooser->AddObject("Low Bar", new SimpleAutonomous());
-	autoChooser->AddObject("Other Defense", new SimpleAutonomous(5, 0.8f));
+	autoChooser->AddObject("Low Bar", new SimpleAutonomous(6, 0.8f));
+	autoChooser->AddObject("Other Defense", new SimpleAutonomous(7, 0.9f));
 
 	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
+
 }
 
 void Robot::PeriodicSmartDashboard()

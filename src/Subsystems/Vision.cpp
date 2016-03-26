@@ -138,6 +138,11 @@ bool Vision::TargetExists(int id)
 	return false;
 }
 
+bool Vision::TargetExists(std::shared_ptr<VisionTarget> target)
+{
+	return TargetExists(target->GetID());
+}
+
 std::shared_ptr<NetworkTable> Vision::GetRawTable()
 {
 	return table;
@@ -178,6 +183,37 @@ bool Vision::UpdateCurrentTarget()
 
 std::shared_ptr<VisionTarget> Vision::GetTrackedGoal()
 {
+	if (!TargetExists(goal->GetID()))
+	{
+		UpdateCurrentTarget();
+	}
 	return goal;
 }
 
+void Vision::SetTrackedGoal(std::shared_ptr<VisionTarget> goal)
+{
+	this->goal = goal;
+}
+
+void Vision::SetTrackingID(int id)
+{
+	std::shared_ptr<VisionTarget> target = GetTargetById(id);
+	if (target == NULL)
+	{
+		printf("Warning: No goal found with ID %u\n", id);
+		printf("Info: Attempting to set automatically...\n");
+		UpdateCurrentTarget();
+	}
+	else
+	{
+		goal = target;
+	}
+}
+
+int Vision::GetTrackingID()
+{
+	if (goal != NULL)
+		return goal->GetID();
+	else
+		return -1;
+}

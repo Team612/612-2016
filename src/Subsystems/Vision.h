@@ -25,8 +25,9 @@ public:
 
 	std::vector<std::shared_ptr<VisionTarget>> GetAllTargets(); //List all detected vision targets
 	int GetTargetAmount(); //Amount of detected vision targets (targets.size())
-	std::shared_ptr<VisionTarget> GetTargetById(int id); //Get target by it's RoboRealm tracking ID
+	std::shared_ptr<VisionTarget> GetTargetById(int id); //Get target by it's ID in our jank Python program
 	bool TargetExists(int id); //Check if an ID exists
+	bool TargetExists(std::shared_ptr<VisionTarget> target);
 
 	//Camera constants, assume front is side with launcher
 	//static constexpr char* CAMERA_FRONT = "cam0";
@@ -44,13 +45,8 @@ public:
 
 	bool UpdateCurrentTarget();
 	std::shared_ptr<VisionTarget> GetTrackedGoal();
-};
-
-class StartJetson
-{
-private:
-
-public:
-	StartJetson();
+	void SetTrackedGoal(std::shared_ptr<VisionTarget>);
+	void SetTrackingID(int id);
+	int GetTrackingID();
 };
 #endif

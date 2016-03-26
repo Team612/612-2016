@@ -1,18 +1,50 @@
 #include "SimpleAutonomous.h"
-#include "../AutoDrive.h"
 
-SimpleAutonomous::SimpleAutonomous()
+SimpleAutonomous::SimpleAutonomous(float time, float speed)
 {
-	d = DEFAULT_DURATION;
-	s = DEFAULT_SPEED;
+	Requires(Robot::drivetrain.get());
 
-	AddSequential(new AutoDrive(d, s));
+	this->time = time;
+	this->speed = speed;
+	autoTime = new Timer();
+	start_time = 0.0;
+	current_time = 0.0;
 }
 
-SimpleAutonomous::SimpleAutonomous(int d, float s)
+void SimpleAutonomous::Initialize()
 {
-	this->d = d;
-	this->s = s;
+	autoTime->Start();
+	start_time = autoTime->Get();
+}
 
-	AddSequential(new AutoDrive(d, s));
+void SimpleAutonomous::Execute()
+{
+	current_time = autoTime->Get();
+	Robot::drivetrain.get()->SetTankDrive(speed, speed);
+}
+
+bool SimpleAutonomous::IsFinished()
+{
+	std::printf("Autonomous timer: %f\n", (float) abs(current_time - start_time));
+
+	if(abs(current_time - start_time) >= time)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void SimpleAutonomous::End()
+{
+	printf("Info: End auto\n");
+	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
+}
+
+void SimpleAutonomous::Interrupted()
+{
+	printf("Warning: Autonomous interrupted\n");
+	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
 }

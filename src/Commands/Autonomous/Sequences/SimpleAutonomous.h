@@ -1,20 +1,27 @@
-#ifndef SimpleAutonomous_H
-#define SimpleAutonomous_H
+#ifndef SIMPLEAUTONOMOUS_H_
+#define SIMPLEAUTONOMOUS_H_
 
-#include "Commands/CommandGroup.h"
 #include "WPILib.h"
+#include "Robot.h"
 
-class SimpleAutonomous: public CommandGroup
-{
-private:
-	const int DEFAULT_DURATION = 4;
-	const float DEFAULT_SPEED  = 0.75f;
-
-	int d; //duration
-	float s; //speed
+class SimpleAutonomous : public Command {
 public:
-	SimpleAutonomous();
-	SimpleAutonomous(int d, float s);
+	SimpleAutonomous(float time, float speed);
+	void Initialize();
+	void Execute();
+	bool IsFinished();
+	void End();
+	void Interrupted();
+
+private:
+	float time;
+	float speed;
+	Timer* autoTime;
+	float start_time;
+	float current_time;
+
 };
 
-#endif
+
+
+#endif /* SRC_COMMANDS_AUTONOMOUS_AUTONOMOUS_H_ */
