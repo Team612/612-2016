@@ -56,7 +56,6 @@ void Robot::RobotInit()
 
 	autoChooser.reset(new SendableChooser());
 	InitSmartDashboard();
-	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
 
 	// instantiate the command used for the autonomous period
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
