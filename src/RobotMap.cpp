@@ -15,6 +15,7 @@ std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
 std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
 std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch;
+std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch2;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
@@ -47,10 +48,13 @@ void RobotMap::init()
     	{ "driveEncoderR1", 	2 }, // Digital Input Pin
     	{ "driveEncoderR2", 	3 }, // Digital Input Pin
     	// Shooter Misc
-    	{ "shooterActuator", 	6 }, // PWM Port
-    	{ "shooterAbsEncoder", 	2 }, // Analog Input
-    	{ "shooterRotate", 		1 }, // CAN ID
-    	{ "shooterIR", 			1 }, // Analog Input
+    	{ "shooterActuator", 	     6 }, // PWM Port
+    	{ "shooterAbsEncoder", 	     2 }, // Analog Input
+    	{ "shooterRotate", 		     1 }, // CAN ID
+    	{ "shooterIR", 			     1 }, // Analog Input
+		{ "shooterActuatorLSwitch",  4 }, // Digital Input
+		{ "shooterActuatorLSwitch2", 5 }, // Digital Input
+		{ "shooterActuatorMotor",    2 }, //CANTalon
     	// Shooter Flywheels
     	{ "shooterFlyL", 		4 }, // CAN ID
     	{ "shooterFlyR", 		3 }, // CAN ID
@@ -88,6 +92,7 @@ void RobotMap::init()
 	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
 	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
     shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
+    shooterActuatorLSwitch2.reset(new DigitalInput(ports["shooterActuatorLSwitch2"]));
     shooterSpike.reset(new Relay(ports["shooterSpike"], Relay::Direction::kForwardOnly));
 	
 	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));

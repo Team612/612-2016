@@ -5,40 +5,30 @@
 ActuateLimit::ActuateLimit()
 {
 	Requires(Robot::shooteractuator.get());
-	failsafe = new Timer();
-	start_time = 0;
+	/*failsafe = new Timer();
+	start_time = 0;*/
 }
 
 void ActuateLimit::Initialize()
 {
-	Robot::shooteractuator.get()->SetSpeed(0.5f);
-	failsafe->Start();
+	//Robot::shooteractuator.get()->SetSpeed(-0.4f);
+	/*failsafe->Start();
 	start_time = failsafe->Get();
-	//std::printf("Info: ActuateLimit start time is: %f\n", start_time);
+	std::printf("Info: ActuateLimit start time is: %f\n", start_time);*/
 	finished = false;
 }
 
 void ActuateLimit::Execute()
 {
-	float current_time = failsafe->Get();
-	//std::printf("Info Current time: %f Elapsed time: %f\n", (double) current_time, (double) abs(start_time - current_time));
-
-
-	if(!(RobotMap::shooterActuatorLSwitch.get()->Get()) || (double) abs(start_time - current_time)  > 2)
+	if((int)RobotMap::shooterActuatorLSwitch2.get()->Get() == 0)
 	{
-		if(abs(start_time - current_time)  > 2)
-		{
-			//std::printf("Warning: Shooter Actuator Limit switch not pressed.\n");
-			//std::printf("Warning: Falling back to 2 second failsafe!\n");
-			Robot::shooteractuator.get()->SetSpeed(0.0f);
-			finished = true;
-		}
-		else
-		{
-			//std::printf("Info: Shooter Actuator Limit switch pressed\n");
-			Robot::shooteractuator.get()->SetSpeed(0.0f);
-			finished = true;
-		}
+		RobotMap::shooterActuatorMotor.get()->Set(0.0f);
+		finished = true;
+	}
+	else
+	{
+		printf("Info: moving backwards\n");
+		RobotMap::shooterActuatorMotor.get()->Set(-0.4);
 	}
 }
 

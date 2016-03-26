@@ -27,6 +27,7 @@ public:
 	static std::shared_ptr<CANTalon> 		shooterRotateMotor;
 	static std::shared_ptr<AnalogInput> 	shooterIR;
 	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch;
+	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch2;
 	static std::shared_ptr<Relay>           shooterSpike;
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
