@@ -38,7 +38,7 @@ void ShooterControl::Execute()
     }
 
     //printf("Shooter\n");
-
+/*
     if(fired)
     {
         if(Robot::shooteractuator->AtSetPosition())
@@ -97,7 +97,7 @@ void ShooterControl::Fire()
 void ShooterControl::Intake()
 {
 	Robot::shooterwheels->Enable();
-    Robot::shooteractuator->SetNeutral();
+    //Robot::shooteractuator->SetNeutral();
     Robot::shooterwheels->SetWheelSpeed(RobotMap::flywheelIntakeSpeed);
 }
 

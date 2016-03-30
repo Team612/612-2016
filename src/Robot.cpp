@@ -14,7 +14,8 @@
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-std::shared_ptr<ShooterActuator> Robot::shooteractuator;
+//std::shared_ptr<ShooterActuator> Robot::shooteractuator;
+std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
@@ -30,7 +31,8 @@ void Robot::RobotInit()
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
-	shooteractuator.reset(new ShooterActuator());
+	//shooteractuator.reset(new ShooterActuator());
+	pneumatics.reset(new Pneumatics());
 	shifter.reset(new Shifter());
 
 	oi.reset(new OI());

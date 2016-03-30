@@ -25,7 +25,8 @@ namespace IDS
 	const int shooterIR 				= 1;  // Analog Input
 	const int shooterActuatorLSwitch 	= 4;  // Digital Input
 	const int shooterActuatorLSwitch2	= 5;  // Digital Input
-	const int shooterActuatorMotor	 	= 5;  //CANTalon
+	const int shooterActuatorMotor	 	= 5;  // CANTalon
+	const int shooterSolenoid			= 0;  // PCM Port
 
 	// Shooter Flywheels
 	const int shooterFlyL 				= 4;  // CAN ID
