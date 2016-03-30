@@ -26,57 +26,20 @@ std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
 
 std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
 
-std::map<std::string, int> RobotMap::ports;
-
 void RobotMap::init()
 {
 	//LiveWindow *lw = LiveWindow::GetInstance();
+
+	driveTalonFL.reset(new Talon(IDS::driveFL)); // Front-left
+	driveTalonRL.reset(new Talon(IDS::driveRL)); // Rear-left
+	driveTalonFR.reset(new Talon(IDS::driveFR)); // Front-right
+	driveTalonRR.reset(new Talon(IDS::driveRR)); // Rear-right
 	
+	shifterL.reset(new Servo(IDS::shifterL));
+	shifterR.reset(new Servo(IDS::shifterR));
 
-	ports = {
-		// Drive train Talons
-    	{ "driveFL", 			4 }, // PWM Port
-    	{ "driveRL", 			5 }, // PWM Port
-    	{ "driveFR", 			0 }, // PWM Port
-    	{ "driveRR", 			1 }, // PWM Port
-    	// Drive shifter servos
-    	{ "shifterL", 			3 }, // PWM Port
-    	{ "shifterR", 			2 }, // PWM Port
-    	// Drive encoders
-    	{ "driveEncoderL1", 	0 }, // Digital Input Pin
-    	{ "driveEncoderL2", 	1 }, // Digital Input Pin
-    	{ "driveEncoderR1", 	2 }, // Digital Input Pin
-    	{ "driveEncoderR2", 	3 }, // Digital Input Pin
-    	// Shooter Misc
-    	{ "shooterActuator", 	     6 }, // PWM Port
-    	{ "shooterAbsEncoder", 	     2 }, // Analog Input
-    	{ "shooterRotate", 		     1 }, // CAN ID
-    	{ "shooterIR", 			     1 }, // Analog Input
-		{ "shooterActuatorLSwitch",  4 }, // Digital Input
-		{ "shooterActuatorLSwitch2", 5 }, // Digital Input
-		{ "shooterActuatorMotor",    5 }, //CANTalon
-    	// Shooter Flywheels
-    	{ "shooterFlyL", 		4 }, // CAN ID
-    	{ "shooterFlyR", 		3 }, // CAN ID
-    	// Shooter Hall Effects
-    	{ "shooterHallL", 		6 }, // Digital Input
-    	{ "shooterHallR", 		7 }, // Digital Input
-    	// Arm
-		{"armRotateMotor",      2 }, //CAN ID
-    	//Spike
-		{"shooterSpike",        0 } //Relay
-	};
-
-	driveTalonFL.reset(new Talon(ports["driveFL"])); // Front-left
-	driveTalonRL.reset(new Talon(ports["driveRL"])); // Rear-left
-	driveTalonFR.reset(new Talon(ports["driveFR"])); // Front-right
-	driveTalonRR.reset(new Talon(ports["driveRR"])); // Rear-right
-	
-	shifterL.reset(new Servo(ports["shifterL"]));
-	shifterR.reset(new Servo(ports["shifterR"]));
-
-	driveEncoderL.reset(new Encoder((int)(ports["driveEncoderL1"]), (int)(ports["driveEncoderL2"])));
-	driveEncoderR.reset(new Encoder((int)(ports["driveEncoderR1"]), (int)(ports["driveEncoderR2"])));
+	driveEncoderL.reset(new Encoder(IDS::driveEncoderL1, IDS::driveEncoderL2));
+	driveEncoderR.reset(new Encoder(IDS::driveEncoderR1, IDS::driveEncoderR2));
 	
 	// Front-left, rear-left, front-right, rear-right
 	drivetrainRobotDrive.reset(new RobotDrive(driveTalonFL, driveTalonRL,
@@ -87,16 +50,16 @@ void RobotMap::init()
 	drivetrainRobotDrive->SetSensitivity(0.5);
 	drivetrainRobotDrive->SetMaxOutput(1.0);
 
-	shooterActuatorMotor.reset(new CANTalon(ports["shooterActuatorMotor"]));
-	shooterAbsEncoder.reset(new AbsoluteEncoder(ports["shooterAbsEncoder"]));
-	shooterRotateMotor.reset(new CANTalon(ports["shooterRotate"]));
-	shooterIR.reset(new AnalogInput(ports["shooterIR"]));
-    shooterActuatorLSwitch.reset(new DigitalInput(ports["shooterActuatorLSwitch"]));
-    shooterActuatorLSwitch2.reset(new DigitalInput(ports["shooterActuatorLSwitch2"]));
-    shooterSpike.reset(new Relay(ports["shooterSpike"], Relay::Direction::kForwardOnly));
+	shooterActuatorMotor.reset(new CANTalon(IDS::shooterActuatorMotor));
+	shooterAbsEncoder.reset(new AbsoluteEncoder(IDS::shooterAbsEncoder));
+	shooterRotateMotor.reset(new CANTalon(IDS::shooterRotate));
+	shooterIR.reset(new AnalogInput(IDS::shooterIR));
+    shooterActuatorLSwitch.reset(new DigitalInput(IDS::shooterActuatorLSwitch));
+    shooterActuatorLSwitch2.reset(new DigitalInput(IDS::shooterActuatorLSwitch2));
+    shooterSpike.reset(new Relay(IDS::shooterSpike, Relay::Direction::kForwardOnly));
 	
-	flywheelMotorL.reset(new CANTalon(ports["shooterFlyL"]));
-    flywheelMotorR.reset(new CANTalon(ports["shooterFlyR"]));
+	flywheelMotorL.reset(new CANTalon(IDS::shooterFlyL));
+    flywheelMotorR.reset(new CANTalon(IDS::shooterFlyR));
 
-    armRotateMotor.reset(new CANTalon(ports["armRotateMotor"]));
+    armRotateMotor.reset(new CANTalon(IDS::armRotateMotor));
 }
