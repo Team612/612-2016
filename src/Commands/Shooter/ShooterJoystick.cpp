@@ -18,7 +18,7 @@ void ShooterJoystick::Initialize()
 void ShooterJoystick::Execute()
 {
 	auto joy = Robot::oi->getGunner();
-	bool a = joy->GetRawButton(1), b = joy->GetRawButton(2),
+	bool /*a = joy->GetRawButton(1),*/ b = joy->GetRawButton(2),
 			x = joy->GetRawButton(3), y = joy->GetRawButton(4);
 	bool buttonPushed = b | x | y;
 /*

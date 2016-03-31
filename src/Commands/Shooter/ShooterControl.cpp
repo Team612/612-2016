@@ -56,7 +56,6 @@ void ShooterControl::Execute()
             fired = true;
         }
     }
-    /*
     if(Robot::shooterwheels->UpToSpeed())
     {
         Robot::shooterlever->SetPush();
