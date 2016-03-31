@@ -1,5 +1,4 @@
-#ifndef ShooterWheels_H
-#define ShooterWheels_H
+#pragma once
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
@@ -41,4 +40,3 @@ public:
 	bool enabled = false;
 };
 
-#endif
