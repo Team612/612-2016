@@ -41,10 +41,7 @@ bool FireShooter::IsFinished()
 		//if(RobotMap::shooterActuatorMotor.get()->Get() > 0.1)
 			return true;
 	}
-	else
-	{
-		return false;
-	}
+	return false; // The compiler needs this
 }
 
 void FireShooter::End()
