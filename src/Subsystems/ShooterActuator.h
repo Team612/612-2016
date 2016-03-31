@@ -1,5 +1,4 @@
-#ifndef ShooterLever_H
-#define ShooterLever_H
+#pragma once
 
 #include <cmath>
 #include <WPILib.h>
@@ -49,4 +48,4 @@ public:
     //AnalogInput* getBallDetector();
 };
 
-#endif
+
