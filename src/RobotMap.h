@@ -1,5 +1,4 @@
-#ifndef ROBOTMAP_H
-#define ROBOTMAP_H
+#pragma once
 #include <WPILib.h>
 #include <Ports.h>
 #include <AbsoluteEncoder/AbsoluteEncoder.h>
@@ -44,4 +43,4 @@ public:
 
 	static void init();
 };
-#endif
+
