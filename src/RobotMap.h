@@ -30,7 +30,7 @@ public:
 	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch;
 	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch2;
 	static std::shared_ptr<Relay>           shooterSpike;
-	static std::shared_ptr<Solenoid>		shooterSolenoid;
+	static std::shared_ptr<DoubleSolenoid>		shooterSolenoid;
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
 	static std::shared_ptr<CANTalon> flywheelMotorR;

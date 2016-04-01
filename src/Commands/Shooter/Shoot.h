@@ -15,7 +15,7 @@
 class Shoot: public Command {
 private:
 	bool push;
-	Solenoid* solenoid;
+	DoubleSolenoid* solenoid;
 
 public:
 	Shoot(bool push);

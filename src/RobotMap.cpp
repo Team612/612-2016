@@ -20,7 +20,7 @@ std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
 std::shared_ptr<Relay>              RobotMap::shooterSpike;
-std::shared_ptr<Solenoid>			RobotMap::shooterSolenoid;
+std::shared_ptr<DoubleSolenoid>		RobotMap::shooterSolenoid;
 
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorL;
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
@@ -58,7 +58,7 @@ void RobotMap::init()
     shooterActuatorLSwitch.reset(new DigitalInput(IDS::shooterActuatorLSwitch));
     shooterActuatorLSwitch2.reset(new DigitalInput(IDS::shooterActuatorLSwitch2));
     shooterSpike.reset(new Relay(IDS::shooterSpike, Relay::Direction::kForwardOnly));
-    shooterSolenoid.reset(new Solenoid(IDS::shooterSolenoid));
+    shooterSolenoid.reset(new DoubleSolenoid(IDS::shooterSolenoid1, IDS::shooterSolenoid2));
 	
 	flywheelMotorL.reset(new CANTalon(IDS::shooterFlyL));
     flywheelMotorR.reset(new CANTalon(IDS::shooterFlyR));

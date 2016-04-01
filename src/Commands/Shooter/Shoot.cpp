@@ -16,7 +16,7 @@ Shoot::Shoot(bool push)
 
 void Shoot::Initialize()
 {
-	solenoid->Set(push);
+	solenoid->Set(push ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }
 
 void Shoot::Execute()
@@ -25,7 +25,7 @@ void Shoot::Execute()
 
 bool Shoot::IsFinished()
 {
-	return solenoid->Get() == push;
+	return solenoid->Get() == (push ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }
 
 void Shoot::End()
