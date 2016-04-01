@@ -8,6 +8,7 @@ Autonomous::Autonomous(float time, float speed)
 	this->time = time;
 	this->speed = speed;
 	original_speed = speed;
+	//speed and original_speed start out the same
 	autoTime = new Timer();
 	start_time = 0.0;
 	current_time = 0.0;
@@ -25,16 +26,26 @@ void Autonomous::Execute()
 	current_time = autoTime->Get();
 
 	if(!(RobotMap::NavX.get()->GetPitch() > -THRESHOLD && RobotMap::NavX.get()->GetPitch() < THRESHOLD) ||
-			!(RobotMap::NavX.get()->GetRoll() > -THRESHOLD && RobotMap::NavX.get()->GetRoll() < THRESHOLD)) //if the robot is significantly tilted
+			!(RobotMap::NavX.get()->GetRoll() > -THRESHOLD && RobotMap::NavX.get()->GetRoll() < THRESHOLD))
+		/*
+		 * if the pitch of the robot is not in the threshold OR
+		 * if the roll of the robot is not in the threshold
+		 */
+
 	{
+		std::printf("Info: Incrementing speed\n");
 		speed = speed + 0.05; //increase speed slightly
 	}
-	else //if the robot is in threshold
+	else
+		/*
+		 * If the pitch and roll are both in threshold
+		 */
 	{
+		std::printf("Info: Speed reset\n");
 		speed = original_speed; //set to original speed
 	}
 
-	Robot::drivetrain.get()->SetTankDrive(speed, speed); //update speed
+	Robot::drivetrain.get()->SetTankDrive(speed, speed); //update robot speed
 }
 
 bool Autonomous::IsFinished()
