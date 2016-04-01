@@ -10,11 +10,14 @@ class Autonomous: public CommandGroup
 private:
 	float time;
 	float speed;
+	float original_speed;
 
 	double start_time;
 	double current_time;
 
 	Timer* autoTime;
+
+	const int THRESHOLD = 5;
 public:
 	Autonomous(float time, float speed);
 	void Initialize();

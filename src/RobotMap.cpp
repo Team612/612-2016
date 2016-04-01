@@ -26,6 +26,8 @@ std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
 
 std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
 
+std::shared_ptr<AHRS> RobotMap::NavX;
+
 void RobotMap::init()
 {
 	//LiveWindow *lw = LiveWindow::GetInstance();
@@ -62,4 +64,6 @@ void RobotMap::init()
     flywheelMotorR.reset(new CANTalon(IDS::shooterFlyR));
 
     armRotateMotor.reset(new CANTalon(IDS::armRotateMotor));
+
+    NavX.reset(new AHRS(SPI::Port::kMXP));
 }

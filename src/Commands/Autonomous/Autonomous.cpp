@@ -7,6 +7,7 @@ Autonomous::Autonomous(float time, float speed)
 
 	this->time = time;
 	this->speed = speed;
+	original_speed = speed;
 	autoTime = new Timer();
 	start_time = 0.0;
 	current_time = 0.0;
@@ -16,12 +17,24 @@ void Autonomous::Initialize()
 {
 	autoTime->Start();
 	start_time = autoTime->Get();
+	Robot::drivetrain.get()->SetTankDrive(speed, speed);
 }
 
 void Autonomous::Execute()
 {
 	current_time = autoTime->Get();
-	Robot::drivetrain.get()->SetTankDrive(speed, speed);
+
+	if(!(RobotMap::NavX.get()->GetPitch() > -THRESHOLD && RobotMap::NavX.get()->GetPitch() < THRESHOLD) ||
+			!(RobotMap::NavX.get()->GetRoll() > -THRESHOLD && RobotMap::NavX.get()->GetRoll() < THRESHOLD)) //if the robot is significantly tilted
+	{
+		speed = speed + 0.05; //increase speed slightly
+	}
+	else //if the robot is in threshold
+	{
+		speed = original_speed; //set to original speed
+	}
+
+	Robot::drivetrain.get()->SetTankDrive(speed, speed); //update speed
 }
 
 bool Autonomous::IsFinished()
