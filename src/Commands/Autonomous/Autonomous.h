@@ -18,8 +18,9 @@ private:
 
 	Timer* autoTime;
 
-	const int THRESHOLD = 5; //degrees
-	const int MAX_YAW_ERROR = 10; //degrees
+	const int THRESHOLD         = 5; //degrees
+	const int MAX_YAW_ERROR     = 10; //degrees
+	const float INCREMENT       = 1.05;
 public:
 	Autonomous(float time, float speed);
 	void Initialize();

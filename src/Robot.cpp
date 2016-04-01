@@ -20,7 +20,7 @@ std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
 
 bool Robot::inverted;
-int Robot::robot_yaw;
+float Robot::robot_yaw;
 
 /*
  * robot_yaw exists so we don't have to worry about calibrating the NavX
@@ -55,7 +55,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new Autonomous(7.0f, 1.0f));
+	autonomousCommand.reset(new Autonomous(7.0f, 0.6f));
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
