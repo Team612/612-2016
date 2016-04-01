@@ -38,6 +38,8 @@ public:
 
 	static bool inverted;
 
+	static float robot_yaw;
+
 	std::shared_ptr<SendableChooser> chooser;
 
 	//std::shared_ptr<CameraServer> server;
