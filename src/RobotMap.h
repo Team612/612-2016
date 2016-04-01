@@ -3,6 +3,7 @@
 #include <WPILib.h>
 #include <Ports.h>
 #include <AbsoluteEncoder/AbsoluteEncoder.h>
+#include <NavX/AHRS.h>
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -34,6 +35,8 @@ public:
 	static std::shared_ptr<CANTalon> flywheelMotorL;
 	static std::shared_ptr<CANTalon> flywheelMotorR;
 	static std::shared_ptr<CANTalon> armRotateMotor;
+
+	static std::shared_ptr<AHRS> NavX;
 
 	static constexpr float flywheelHallL = IDS::shooterHallL;
 	static constexpr float flywheelHallR = IDS::shooterHallR;

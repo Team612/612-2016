@@ -20,6 +20,14 @@ std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
 
 bool Robot::inverted;
+float Robot::robot_yaw;
+
+/*
+ * robot_yaw exists so we don't have to worry about calibrating the NavX
+ * before every match. We just get the initial yaw and compare the current
+ * yaw with the initial. We only need to know if we're off by whatever
+ * amount.
+ */
 
 
 void Robot::RobotInit()
@@ -47,7 +55,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new Autonomous(7.0f, 1.0f));
+	autonomousCommand.reset(new Autonomous(7.0f, 0.6f));
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
@@ -56,6 +64,7 @@ void Robot::RobotInit()
 
 	//server.get()->SetQuality(50);
 	//server.get()->StartAutomaticCapture("cam1");
+	robot_yaw = RobotMap::NavX.get()->GetYaw();
 }
 
 void Robot::DisabledInit()
@@ -71,6 +80,8 @@ void Robot::DisabledPeriodic()
 void Robot::AutonomousInit()
 {
 	shifter->Set(Shifter::LOW);
+	robot_yaw = RobotMap::NavX.get()->GetYaw();
+	printf("Initial Autonomous Robot Yaw: %f\n", robot_yaw);
 	//autonomousCommand.reset((Command *) chooser->GetSelected());
 
 	if (autonomousCommand.get() != nullptr)
@@ -135,8 +146,8 @@ void Robot::PeriodicSmartDashboard()
 
 	//SmartDashboard::PutBoolean("Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch.get()->Get());
 	//SmartDashboard::PutBoolean("Second Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch2.get()->Get());
-	std::printf("Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
-	std::printf("Second Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	//std::printf("Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	//std::printf("Second Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
 
 
 	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor.get()->Get());
@@ -160,6 +171,11 @@ void Robot::PeriodicSmartDashboard()
 	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterIR->GetVoltage(), -1.15f)) * 0.393701f));
 
 	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
+
+	SmartDashboard::PutNumber("NavX Pitch (in degrees)", RobotMap::NavX.get()->GetPitch());
+	//printf("NavX Pitch (in degrees): %f\n", RobotMap::NavX.get()->GetPitch());
+	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX.get()->GetRoll());
+	//printf("NavX Roll (in degrees): %f\n", RobotMap::NavX.get()->GetRoll());
 }
 
 START_ROBOT_CLASS(Robot);

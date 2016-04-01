@@ -9,12 +9,18 @@ class Autonomous: public CommandGroup
 {
 private:
 	float time;
-	float speed;
+	float speedL;
+	float speedR;
+	float original_speed;
 
 	double start_time;
 	double current_time;
 
 	Timer* autoTime;
+
+	const int THRESHOLD         = 5; //degrees
+	const int MAX_YAW_ERROR     = 10; //degrees
+	const float INCREMENT       = 1.05;
 public:
 	Autonomous(float time, float speed);
 	void Initialize();
