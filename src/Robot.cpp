@@ -55,7 +55,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new Autonomous(7.0f, 0.6f));
+	autonomousCommand.reset(new Autonomous(5.0f, 0.5f));
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
