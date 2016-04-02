@@ -1,5 +1,4 @@
-#ifndef AUTONOMOUS_H
-#define AUTONOMOUS_H
+#pragma once
 
 #include "Commands/CommandGroup.h"
 #include "Robot.h"
@@ -30,4 +29,4 @@ public:
 	void Interrupted();
 };
 
-#endif
+

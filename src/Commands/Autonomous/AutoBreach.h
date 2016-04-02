@@ -1,6 +1,4 @@
-#ifndef AutoBreach_H
-#define AutoBreach_H
-
+#pragma once
 #include "Commands/CommandGroup.h"
 #include "Robot.h"
 #include "WPILib.h"
@@ -14,4 +12,4 @@ public:
 	AutoBreach(Robot::Defense defense);
 };
 
-#endif
+

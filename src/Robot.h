@@ -1,5 +1,4 @@
-#ifndef _ROBOT_H
-#define _ROBOT_H
+#pragma once
 
 #include <WPILib.h>
 #include <Commands/Command.h>
@@ -56,4 +55,4 @@ public:
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
 };
-#endif
+

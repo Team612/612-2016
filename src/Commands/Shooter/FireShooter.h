@@ -1,6 +1,4 @@
-#ifndef FIRESHOOTER_H
-#define FIRESHOOTER_H
-
+#pragma once
 #include <Commands/Subsystem.h>
 #include <WPILib.h>
 #include "Robot.h"
@@ -21,4 +19,3 @@ private:
 	int count = 0;
 };
 
-#endif
