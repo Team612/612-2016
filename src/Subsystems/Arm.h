@@ -1,5 +1,4 @@
-#ifndef Arm_H
-#define Arm_H
+#pragma once
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
@@ -12,4 +11,4 @@ public:
 	void SetSpeed(float speed);
 };
 
-#endif
+

@@ -1,5 +1,4 @@
-#ifndef OI_H
-#define OI_H
+#pragma once
 
 #include "WPILib.h"
 
@@ -23,4 +22,3 @@ public:
 	std::shared_ptr<Joystick> getGunner();
 };
 
-#endif

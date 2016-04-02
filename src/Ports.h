@@ -20,7 +20,7 @@ namespace IDS
 
 	// Shooter Misc
 	const int shooterActuator			= 6;  // PWM Port
-	const int shooterAbsEncoder 		= 2;  // Analog Input
+	const int shooterAbsEncoder 		= 0;  // Analog Input
 	const int shooterRotate 			= 1;  // CAN ID
 	const int shooterIR 				= 1;  // Analog Input
 	const int shooterActuatorLSwitch 	= 4;  // Digital Input

@@ -14,7 +14,6 @@
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-//std::shared_ptr<ShooterActuator> Robot::shooteractuator;
 std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::shared_ptr<Arm> Robot::arm;

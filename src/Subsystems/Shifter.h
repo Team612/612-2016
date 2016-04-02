@@ -1,6 +1,4 @@
-#ifndef Shifter_H
-#define Shifter_H
-
+#pragma once
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
@@ -21,4 +19,4 @@ public:
 	static constexpr float HIGH = 0.0f;
 };
 
-#endif
+

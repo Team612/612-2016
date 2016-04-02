@@ -1,12 +1,4 @@
-/*
- * Shoot.h
- *
- *  Created on: Mar 30, 2016
- *      Author: user
- */
-
-#ifndef SRC_COMMANDS_SHOOTER_SHOOT_H_
-#define SRC_COMMANDS_SHOOTER_SHOOT_H_
+#pragma once
 
 #include <Commands/Command.h>
 #include <Robot.h>
@@ -16,6 +8,8 @@ class Shoot: public Command {
 private:
 	bool push;
 	DoubleSolenoid* solenoid;
+	int iterations;
+	const float SECONDS_TO_WAIT = .5;
 
 public:
 	Shoot(bool push);
@@ -26,4 +20,3 @@ public:
 	void Interrupted();
 };
 
-#endif /* SRC_COMMANDS_SHOOTER_SHOOT_H_ */
