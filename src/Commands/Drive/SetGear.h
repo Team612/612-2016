@@ -1,6 +1,4 @@
-#ifndef SET_GEAR_H
-#define SET_GEAR_H
-
+#pragma once
 #include "WPILib.h"
 #include "Robot.h"
 
@@ -17,4 +15,3 @@ private:
 	float gear;
 };
 
-#endif

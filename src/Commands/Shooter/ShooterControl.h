@@ -1,6 +1,4 @@
-#ifndef FireShooter_H
-#define FireShooter_H
-
+#pragma once
 #include "Commands/Command.h"
 #include "WPILib.h"
 
@@ -22,4 +20,4 @@ public:
 	void Interrupted();
 };
 
-#endif
+

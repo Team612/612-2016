@@ -8,8 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-#ifndef DRIVEJOYSTICK_H
-#define DRIVEJOYSTICK_H
+#pragma once
 
 #include <Commands/Subsystem.h>
 #include "Robot.h"
@@ -51,4 +50,4 @@ private:
 	//bool wasPressed; //prevents flip from toggling multiple times in a button press
 };
 
-#endif
+

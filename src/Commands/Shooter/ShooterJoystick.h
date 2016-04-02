@@ -1,6 +1,4 @@
-#ifndef ShooterJoystick_H
-#define ShooterJoystick_H
-
+#pragma once
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "Robot.h"
@@ -17,5 +15,3 @@ public:
 private:
 	const float TOLERANCE = 0.1;
 };
-
-#endif

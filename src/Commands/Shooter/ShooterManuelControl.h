@@ -5,8 +5,7 @@
  *      Author: wardp_000
  */
 
-#ifndef SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_
-#define SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_
+#pragma once
 
 #include "Commands/Command.h"
 #include "WPILib.h"
@@ -27,4 +26,4 @@ public:
 	void Interrupted();
 };
 
-#endif /* SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_ */
+ /* SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_ */
