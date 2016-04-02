@@ -10,6 +10,8 @@ This repository holds the robot code for the [Chantilly Robotics](http://chantil
 
 Chantilly Robotics' programming team uses the C++ programming language and [WPILib](http://first.wpi.edu/FRC/) to program our robot. Documentation for this library can be found [here](http://chantilly612code.github.io/612-2016/). [WPILib](http://first.wpi.edu/FRC/) is a programming library with C++, Java, Python, and other bindings written and maintained by the [Worcester Polytechnic Institute](http://www.wpi.edu/), containing software used to interface with sensors, motors, and other useful objects.
 
+Chantilly Robotics' robot also utilizes the navX-MXP board. Its library has been integrated into this project. Documentation can be found [here](http://www.kauailabs.com/public_files/navx-mxp/apidocs/c++/class_a_h_r_s.html).
+
 ##Sponsors:
 
 | Company Name     | Website                                         |
