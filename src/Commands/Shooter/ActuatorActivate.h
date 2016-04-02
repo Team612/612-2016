@@ -1,6 +1,4 @@
-#ifndef ActuatorActivate_H
-#define ActuatorActivate_H
-
+#pragma once
 #include "Commands/Command.h"
 #include "WPILib.h"
 
@@ -14,5 +12,3 @@ public:
 	void End();
 	void Interrupted();
 };
-
-#endif
