@@ -1,35 +1,35 @@
+#include <Commands/Shooter/ShooterControl.h>
 #include "Robot.h"
 
+#include "CameraServer.h"
+
 #include "Commands/Drive/DriveJoystick.h"
-#include "Commands/Shooter/FireShooter.h"
-#include "Commands/Shooter/ShooterTest.h"
 #include "Commands/Drive/DriveSet.h"
-#include "Commands/Drive/DriveDistance.h"
+#include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Autonomous/Sequences/FindTarget.h"
 #include "Commands/Autonomous/Sequences/AutoAlign.h"
-#include "Commands/Shooter/SetShooterAngle.h"
-#include "Commands/Shooter/Fire.h"
-#include "SmartDashboard/SmartDashboard.h"
-
-#include "Commands/Autonomous/Autonomous.h"
-#include <Commands/Shooter/ShooterControl.h>
-#include "CameraServer.h"
+#include "Commands/Drive/DriveDistance.h"
+#include <SmartDashboard/SmartDashboard.h>
+#include "Commands/Shooter/ShooterTest.h"
+#include "Commands/Arm/ArmJoystick.h"
 
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-std::shared_ptr<Shifter> Robot::shifter;
 std::shared_ptr<ShooterActuator> Robot::shooteractuator;
+std::shared_ptr<Shifter> Robot::shifter;
+std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
 std::shared_ptr<SendableChooser> Robot::autoChooser;
-std::shared_ptr<Arm> Robot::arm;
+
 bool Robot::inverted;
 
 
 void Robot::RobotInit()
 {
 	RobotMap::init();
+
 	arm.reset(new Arm());
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
@@ -38,29 +38,24 @@ void Robot::RobotInit()
 	shifter.reset(new Shifter());
 	vision.reset(new Vision());
 
-	/*
-	 * This MUST be here. If the OI creates Commands (which it very likely
-	 * will), constructing it during the construction of CommandBase (from
-	 * which commands extend), subsystems are not guaranteed to be
-	 * yet. Thus, their requires() statements may grab null pointers. Bad
-	 * news. Don't move it.
-	 */
-
-	/*
-	 * ^ I'm not sure CommandBase exists any more...
-	 */
-
 	oi.reset(new OI());
-	shooteractuator.reset(new ShooterActuator());
-	shifter.reset(new Shifter());
-	align.reset(new AutoAlign(FindTarget::LEFT));
 
-	autoChooser.reset(new SendableChooser());
+	//server.reset(CameraServer::GetInstance());
+
+	chooser.reset(new SendableChooser());
+
+
+
 	InitSmartDashboard();
 
+	//SmartDashboard::PutData("FireShooter", new FireShooter());
+	//SmartDashboard::PutData("Autonomous", new Autonomous());
+
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new Autonomous());
-	//drivejoystick.reset(new DriveJoystick());
+	//autonomousCommand.reset(new Autonomous(7.0f, 1.0f));
+	drivejoystick.reset(new DriveJoystick());
+	armJoystick.reset(new ArmJoystick());
+	align.reset(new AutoAlign(FindTarget::LEFT));
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
@@ -104,9 +99,9 @@ void Robot::TeleopInit()
 {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-
+		
 	drivejoystick->Start();
-	//armJoystick->Start();
+	armJoystick->Start();
 	shifter->Set(Shifter::LOW);
 	//shooterrotation->PIDEnable(true);
 }
@@ -144,7 +139,7 @@ void Robot::TestInit()
 
 void Robot::TestPeriodic()
 {
-	Scheduler::GetInstance()->Run();
+	lw->Run();
 }
 
 void Robot::InitSmartDashboard()
@@ -161,12 +156,9 @@ void Robot::InitSmartDashboard()
 	SmartDashboard::PutData("Drive Joystick", new DriveJoystick());
 	SmartDashboard::PutData("Drive Distance", new DriveDistance(240));
 	SmartDashboard::PutData("Shooter Test", new ShooterTest());
-	SmartDashboard::PutData("Set Shooter Angle", new SetShooterAngle(TEST_ANGLE));
-	SmartDashboard::PutData("Fire", new Fire());
 	//Auto Align
 		SmartDashboard::PutData("Auto Right", new AutoAlign(FindTarget::Direction::RIGHT));
 		SmartDashboard::PutData("Auto Left", new AutoAlign(FindTarget::Direction::LEFT));
-		SmartDashboard::PutData("Align Shooter", new SetShooterAngle());
 
 	//autonomous
 	autoChooser->AddObject("Low Bar", new SimpleAutonomous(6, 0.8f));
@@ -181,7 +173,13 @@ void Robot::PeriodicSmartDashboard()
 
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
 
-	SmartDashboard::PutNumber("Shooter Actuator Limit Switch", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	//SmartDashboard::PutBoolean("Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch.get()->Get());
+	//SmartDashboard::PutBoolean("Second Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch2.get()->Get());
+	std::printf("Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	std::printf("Second Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+
+
+	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor.get()->Get());
 
 	//Encoder
 	SmartDashboard::PutNumber("Left encoder ticks", RobotMap::driveEncoderL->Get());

@@ -43,6 +43,10 @@ public:
 
 	static bool inverted;
 
+	std::shared_ptr<SendableChooser> chooser;
+
+	//std::shared_ptr<CameraServer> server;
+
 	static std::shared_ptr<SendableChooser> autoChooser;
 
 	//CameraServer* server = CameraServer::GetInstance();

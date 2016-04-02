@@ -1,6 +1,7 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 #include <WPILib.h>
+#include <Ports.h>
 #include <AbsoluteEncoder/AbsoluteEncoder.h>
 
 /**
@@ -27,15 +28,15 @@ public:
 	static std::shared_ptr<CANTalon> 		shooterRotateMotor;
 	static std::shared_ptr<AnalogInput> 	shooterIR;
 	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch;
+	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch2;
 	static std::shared_ptr<Relay>           shooterSpike;
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
 	static std::shared_ptr<CANTalon> flywheelMotorR;
 	static std::shared_ptr<CANTalon> armRotateMotor;
-	static constexpr float flywheelHallL = 6;
-	static constexpr float flywheelHallR = 7;
-	
-	static std::map<std::string, int> ports;
+
+	static constexpr float flywheelHallL = IDS::shooterHallL;
+	static constexpr float flywheelHallR = IDS::shooterHallR;
 	
 	// TODO: These are only used in the Hall Effect control method
 	static constexpr float flywheelShootSpeed = 40.0f;

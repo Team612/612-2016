@@ -8,11 +8,20 @@ FireShooter::FireShooter(ShooterActuatorPosition pos, bool solenoid)
     this->solenoid = solenoid;
 }
 
-// Called just before this Command runs the first time
 void FireShooter::Initialize()
 {
 	//std::printf("Info: FireShooter initialized\n");
-	Robot::shooteractuator->SetPosition(position, solenoid);
+	if((int) RobotMap::shooterActuatorLSwitch.get()->Get() == 0)
+	{
+		printf("Info: Tried to shoot but at limit switch\n");
+		Robot::shooteractuator->SetPosition(ShooterActuatorPosition::Neutral, solenoid);
+	}
+	else
+	{
+		printf("Info: Normal shooting\n");
+		Robot::shooteractuator->SetPosition(position, solenoid);
+	}
+
 }
 
 void FireShooter::Execute()
@@ -29,13 +38,10 @@ bool FireShooter::IsFinished()
 	}
 	else if(!solenoid)
 	{
-		if(RobotMap::shooterActuatorMotor.get()->Get() > 0.1)
+		//if(RobotMap::shooterActuatorMotor.get()->Get() > 0.1)
 			return true;
 	}
-	else
-	{
-		return false;
-	}
+	return false; // The compiler needs this
 }
 
 void FireShooter::End()
