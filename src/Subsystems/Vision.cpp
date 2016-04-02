@@ -155,24 +155,13 @@ int Vision::GetTargetAmount()
 
 bool Vision::UpdateCurrentTarget()
 {
-	std::shared_ptr<NetworkTable> table = GetRawTable();
-
 	llvm::ArrayRef<double> arr;
 
-	if (table->GetNumberArray("BOUNDING_COORDINATES", arr).size() > 8)
+	if (GetTargetAmount() > 0)
 	{
-		if (GetTargetAmount() > 0)
-		{
-			goal = VisionTarget::FindClosestAspect(TARGET_ASPECT, GetAllTargets());
-			std::printf("Info: UpdateCurrentTarget()");
-			return true;
-		}
-		else
-		{
-			std::printf("Warning: No vision target\n");
-			return false;
-		}
-
+		goal = VisionTarget::FindClosestAspect(TARGET_ASPECT, GetAllTargets());
+		std::printf("Info: UpdateCurrentTarget()");
+		return true;
 	}
 	else
 	{

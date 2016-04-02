@@ -15,7 +15,7 @@ void AlignToTarget::Initialize()
 	GetPIDController()->SetAbsoluteTolerance(20);
 	GetPIDController()->SetSetpoint(SCREEN_CENTER_X); //Point we're trying to get to
 	GetPIDController()->Disable();
-	GetPIDController()->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
+	//GetPIDController()->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -34,6 +34,7 @@ void AlignToTarget::Execute()
 		if (!GetPIDController()->IsEnabled())
 		{
 			PIDUserDisabled = false;
+			//GetPIDController()->SetPID(1, 0, 0);
 			GetPIDController()->SetPID(0.008, 0.0001, 0.003);
 			GetPIDController()->Enable();
 		}
@@ -57,7 +58,7 @@ double AlignToTarget::ReturnPIDInput()
 	}
 	else
 	{
-		printf("Center X %u", Robot::vision.get()->GetTrackedGoal()->GetCenter().x);
+		printf("Center X %u\n", target->GetCenter().x);
 		return (double) target->GetCenter().x;
 	}
 }
@@ -76,9 +77,9 @@ void AlignToTarget::UsePIDOutput(double output)
 		output -= ROT_SPEED_MIN;
 	if (!PIDUserDisabled && !IsFinished())
 		Robot::drivetrain->SetTankDrive(-output, output);
-	printf("\noutput");
+	//printf("\noutput");
 
-	//printf("wowowow %f\n" , output);
+	printf("wowowow %f, %u\n" , output, PIDUserDisabled);
 }
 
 // Make this return true when this Command no longer needs to run execute()

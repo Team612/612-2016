@@ -36,6 +36,7 @@ void Robot::RobotInit()
 	shooterrotation.reset(new ShooterRotation());
 	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
+	vision.reset(new Vision());
 
 	/*
 	 * This MUST be here. If the OI creates Commands (which it very likely
@@ -52,6 +53,7 @@ void Robot::RobotInit()
 	oi.reset(new OI());
 	shooteractuator.reset(new ShooterActuator());
 	shifter.reset(new Shifter());
+	align.reset(new AutoAlign(FindTarget::LEFT));
 
 	autoChooser.reset(new SendableChooser());
 	InitSmartDashboard();
@@ -81,11 +83,13 @@ void Robot::DisabledPeriodic()
 void Robot::AutonomousInit()
 {
 	shifter->Set(Shifter::LOW);
-	autonomousCommand.reset((Command *) autoChooser->GetSelected());
-	std::printf("Info: Set Auto command!\n");
+	align->Start();
+//	autonomousCommand.reset((Command *) autoChooser->GetSelected());
+//	std::printf("Info: Set Auto command!\n");
+//
+//	if (autonomousCommand.get() != nullptr)
+//		autonomousCommand->Start();
 
-	if (autonomousCommand.get() != nullptr)
-		autonomousCommand->Start();
 
 }
 
@@ -102,7 +106,7 @@ void Robot::TeleopInit()
 		autonomousCommand->Cancel();
 
 	drivejoystick->Start();
-	armJoystick->Start();
+	//armJoystick->Start();
 	shifter->Set(Shifter::LOW);
 	//shooterrotation->PIDEnable(true);
 }
