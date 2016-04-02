@@ -12,6 +12,7 @@ Shoot::Shoot(bool push)
 	Requires(Robot::pneumatics.get());
 	this->solenoid = RobotMap::shooterSolenoid.get();
 	this->push = push;
+	this->iterations = 0;
 }
 
 void Shoot::Initialize()
@@ -21,11 +22,12 @@ void Shoot::Initialize()
 
 void Shoot::Execute()
 {
+	iterations++; // This is called 60 times per second
 }
 
 bool Shoot::IsFinished()
 {
-	return solenoid->Get() == push;
+	return iterations > (int)(SECONDS_TO_WAIT * 60);
 }
 
 void Shoot::End()

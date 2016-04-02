@@ -1,6 +1,4 @@
-#ifndef ShooterTest_H
-#define ShooterTest_H
-
+#pragma once
 #include "WPILib.h"
 
 class ShooterTest: public Command
@@ -14,4 +12,4 @@ public:
 	void Interrupted();
 };
 
-#endif
+

@@ -1,6 +1,4 @@
-#ifndef DriveDistance_H
-#define DriveDistance_H
-
+#pragma once
 #include "Commands/PIDCommand.h"
 #include "WPILib.h"
 
@@ -25,4 +23,4 @@ private:
 	const float SPEED             = 0.7f;
 };
 
-#endif
+

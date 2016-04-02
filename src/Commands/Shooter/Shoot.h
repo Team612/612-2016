@@ -16,6 +16,8 @@ class Shoot: public Command {
 private:
 	bool push;
 	Solenoid* solenoid;
+	int iterations;
+	const float SECONDS_TO_WAIT = .5;
 
 public:
 	Shoot(bool push);
