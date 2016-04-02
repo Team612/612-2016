@@ -38,7 +38,7 @@ private:
 
 	const double BOULDER_LAUNCH_SPEED = 12.9; //in meters per second
 
-	const double ROT_SPEED_CAP = 0.7;
+	const double ROT_SPEED_CAP = 0.8;
 	const double ROT_SPEED_MIN = 0.5;
 };
 

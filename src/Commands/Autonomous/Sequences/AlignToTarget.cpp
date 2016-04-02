@@ -15,7 +15,7 @@ void AlignToTarget::Initialize()
 	GetPIDController()->SetAbsoluteTolerance(20);
 	GetPIDController()->SetSetpoint(SCREEN_CENTER_X); //Point we're trying to get to
 	GetPIDController()->Disable();
-	//GetPIDController()->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
+	GetPIDController()->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -35,7 +35,7 @@ void AlignToTarget::Execute()
 		{
 			PIDUserDisabled = false;
 			//GetPIDController()->SetPID(1, 0, 0);
-			GetPIDController()->SetPID(0.008, 0.0001, 0.003);
+			GetPIDController()->SetPID(0.004, 0.0001, 0.003);
 			GetPIDController()->Enable();
 		}
 		else
@@ -71,13 +71,17 @@ void AlignToTarget::UsePIDOutput(double output)
 		onTargetCounter = 0;
 
 	printf("%f", output);
-	if (output >= 0)
-		output = ROT_SPEED_MIN;
-	else
+
+	if (output > 0)
+		output += ROT_SPEED_MIN;
+	else if (output < 0)
 		output -= ROT_SPEED_MIN;
+
 	if (!PIDUserDisabled && !IsFinished())
-		Robot::drivetrain->SetTankDrive(-output, output);
+		Robot::drivetrain->SetTankDrive(output/2, -output);
 	//printf("\noutput");
+
+	SmartDashboard::PutNumber("AutoAlign Output", output);
 
 	printf("wowowow %f, %u\n" , output, PIDUserDisabled);
 }
@@ -85,7 +89,7 @@ void AlignToTarget::UsePIDOutput(double output)
 // Make this return true when this Command no longer needs to run execute()
 bool AlignToTarget::IsFinished()
 {
-	return (onTargetCounter > 10) || IsTimedOut();
+	return (onTargetCounter > 10);// || IsTimedOut();
 	//Only end if the PID controller is done AND it HASN'T been user disabled (meaning it succeeded)
 }
 

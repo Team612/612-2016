@@ -43,6 +43,7 @@ void Robot::RobotInit()
 	//server.reset(CameraServer::GetInstance());
 
 	chooser.reset(new SendableChooser());
+	autoChooser.reset(new SendableChooser());
 
 
 
@@ -110,25 +111,6 @@ void Robot::TeleopPeriodic()
 {
 	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
-
-#ifdef SHOOTERBACKUP
-    auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
-    if(gunner > TOLERANCE)
-    {
-    	printf("Fire\n");
-        ;
-    }
-    else if (gunner < -TOLERANCE)
-    {
-    	printf("Intake\n");
-        Intake();
-    }
-    else
-    {
-    	//printf("Stop\n");p
-        Stop();
-    }
-	#endif
     PeriodicSmartDashboard();
 }
 
