@@ -172,10 +172,11 @@ bool Vision::UpdateCurrentTarget()
 
 std::shared_ptr<VisionTarget> Vision::GetTrackedGoal()
 {
-	if (!TargetExists(goal->GetID()))
+	if (goal == NULL || !TargetExists(goal->GetID()))
 	{
 		UpdateCurrentTarget();
 	}
+
 	return goal;
 }
 
