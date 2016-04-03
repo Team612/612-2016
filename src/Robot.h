@@ -8,9 +8,9 @@
 #include <Subsystems/Drivetrain.h>
 #include <Subsystems/ShooterWheels.h>
 #include <Subsystems/ShooterRotation.h>
-#include <Subsystems/ShooterActuator.h>
 #include <Subsystems/Shifter.h>
 #include <Subsystems/Arm.h>
+#include <Subsystems/Pneumatics.h>
 
 #include <OI.h>
 
@@ -31,7 +31,8 @@ public:
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<ShooterRotation> shooterrotation;
 	static std::shared_ptr<ShooterWheels> shooterwheels;
-	static std::shared_ptr<ShooterActuator> shooteractuator;
+	//static std::shared_ptr<ShooterActuator> shooteractuator;
+	static std::shared_ptr<Pneumatics> pneumatics;
 	static std::shared_ptr<Shifter> shifter;
 	static std::shared_ptr<Arm> arm;
 

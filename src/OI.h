@@ -7,8 +7,7 @@ class OI
 private:
 	std::shared_ptr<Joystick> gunner;
 	//std::shared_ptr<JoystickButton> fireButton; //when pressed
-	std::shared_ptr<JoystickButton> servoPush; //while held
-	std::shared_ptr<JoystickButton> servoClamp; //while held
+	std::shared_ptr<JoystickButton> shoot; //when pressed
 
 	std::shared_ptr<Joystick> driver;
 	std::shared_ptr<JoystickButton> resetButton; //wot?

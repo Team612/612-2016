@@ -1,21 +1,17 @@
 #include <Commands/Shooter/ShooterControl.h>
-#include <Commands/Shooter/FireShooter.h>
-#include "Commands/Shooter/ActuatorActivate.h"
-#include "Commands/Shooter/ActuateRelease.h"
 #include "OI.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/SetGear.h"
+#include <Commands/Shooter/Shoot.h>
 
 OI::OI()
 {
 	//GUNNER
 	gunner.reset(new Joystick(1));
 
-	servoPush.reset(new JoystickButton(gunner.get(), 1));
-	servoPush->WhileHeld(new ActuatorActivate());
-	//servoPush->WhenReleased(new FireShooter(ShooterActuatorPosition::Neutral, true));
-	servoPush->WhenReleased(new ActuateRelease());
+	shoot.reset(new JoystickButton(gunner.get(), 1));
+	shoot->WhenPressed(new Shoot(true));
 
 	//DRIVER
 	driver.reset(new Joystick(0));
