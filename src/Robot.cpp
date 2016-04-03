@@ -56,7 +56,7 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new Autonomous(5.0f, 0.5f));
+	autonomousCommand.reset(new Autonomous(8.0f, 0.6f));
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
 	//armjoystick.reset(new ArmJoystick());
@@ -177,6 +177,7 @@ void Robot::PeriodicSmartDashboard()
 	//printf("NavX Pitch (in degrees): %f\n", RobotMap::NavX.get()->GetPitch());
 	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX.get()->GetRoll());
 	//printf("NavX Roll (in degrees): %f\n", RobotMap::NavX.get()->GetRoll());
+	SmartDashboard::PutNumber("NavX Yaw compared to starting position (in degrees)", (float) (this->robot_yaw - RobotMap::NavX.get()->GetYaw()));
 }
 
 START_ROBOT_CLASS(Robot);
