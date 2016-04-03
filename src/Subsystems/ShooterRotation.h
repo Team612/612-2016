@@ -39,8 +39,8 @@ public:
 	float gain_switch = 0.6f; // Error value (Volts) at which the controller switches between PID and P control.
 	
 	// Common setpoints, tied to buttons.
-	const float HOME_SETPOINT = 0;
-	const float INTAKE_SETPOINT = 3;
+	const float HOME_SETPOINT = 1.7;
+	const float INTAKE_SETPOINT = 3.4;
 	const float LOGOAL_SETPOINT = 0;
 	const float HIGOAL_SETPOINT = 0;
 	

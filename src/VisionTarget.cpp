@@ -96,7 +96,7 @@ std::shared_ptr<VisionTarget> VisionTarget::FindClosestAspect(double aspect,
 		std::vector<std::shared_ptr<VisionTarget>> targets)
 {
 	int closest = 0; //i.e. closest to the given number
-	for (int x = 1; x < targets.size(); x++)
+	for (int x = 1; x < (int)targets.size(); x++)
 	{
 		if (abs(aspect - targets[x]->GetAspectRatio()) <
 				abs(aspect - targets[closest]->GetAspectRatio()))
