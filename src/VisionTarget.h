@@ -8,6 +8,8 @@
 class VisionTarget
 {
 public:
+	static const int PARAM_COUNT = 5;
+
 	VisionTarget(std::vector<int> initPoints, int id); //See "Set()"
 	virtual ~VisionTarget();
 
@@ -20,6 +22,8 @@ public:
 
 	int GetWidth();
 	int GetHeight();
+
+	int GetHeightConvex();
 
 	double GetAspectRatio(); //width/height
 
@@ -37,8 +41,12 @@ private:
 	int y;
 	int width;
 	int height;
+	int hHeight;
 
 	int id; //The tracking ID as given by RoboRealm
+
+	Point MakePoint(int x, int y);
+
 };
 
 #endif /* VISIONTARGET_H_ */

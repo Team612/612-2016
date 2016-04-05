@@ -31,7 +31,7 @@ void Vision::PullValues()
 	printf("test1\n");
 
 	llvm::ArrayRef<double> arr;
-	std::vector<double> coords = table->GetNumberArray("BOUNDING_COORDINATES",
+	std::vector<double> coords = table->GetNumberArray(BOUNDING_KEY,
 			arr);
 	/* Okay, so this is a thing that is long enough that I had to make a block comment. Basically,
 	 * RoboRealm doesn't automatically overwrite the BOUNDING_COORDINATES variable (which makes
@@ -43,7 +43,7 @@ void Vision::PullValues()
 	 */
 
 	llvm::ArrayRef<double> arr2;
-	std::vector<double> ids = table->GetNumberArray("IDS", arr2);
+	std::vector<double> ids = table->GetNumberArray(IDS_KEY, arr2);
 	//An array of all things being tracked, conveniently in the same order as the bounding coords
 
 	int targetCount = ids.size();
@@ -53,16 +53,10 @@ void Vision::PullValues()
 	{
 		printf("test2");
 		std::vector<int> vec;
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < VisionTarget::PARAM_COUNT; i++)
 		{
-			vec.push_back((int) coords[(x * 4) + i]);
+			vec.push_back((int) coords[(x * VisionTarget::PARAM_COUNT) + i]);
 		}
-		/* Another bug with RoboRealm: it refuses to track the lower-most bounding box no-
-		 * matter what we do. To solve this, I put a small rectangle on the bottom of the screen
-		 * which RoboRealm detects as an object and excludes, while including what we need it to.
-		 * Bounding boxes, despite their lack of updating, don't have this problem so I have to
-		 * exclude the first 8 items on the bounding list.
-		 */
 
 		//Only updates if it finds that the ID already exists
 		if (TargetExists(ids[x]))

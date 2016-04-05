@@ -13,44 +13,27 @@ VisionTarget::~VisionTarget()
 
 Point VisionTarget::GetUL()
 {
-	Point p;
-	p.x = x;
-	p.y = y;
-	return p;
+	return MakePoint(x, y);
 }
 
 Point VisionTarget::GetLL()
 {
-	Point p;
-	p.x = x;
-	p.y = y + height;
-	return p;
+	return MakePoint(x, y + height);
 }
 
 Point VisionTarget::GetUR()
 {
-	Point p;
-	p.x = x + width;
-	p.y = y;
-	return p;
+	return MakePoint(x + width, y);
 }
 
 Point VisionTarget::GetLR()
 {
-	Point p;
-	p.x = x + width;
-	p.y = y + height;
-	return p;
+	return MakePoint(x + width, y + height);
 }
 
 Point VisionTarget::GetCenter()
 {
-	Point c;
-
-	c.x = x + GetWidth()/2;
-	c.y = y + GetHeight()/2;
-
-	return c;
+	return MakePoint(x + GetWidth()/2, y + GetHeight()/2);
 }
 
 int VisionTarget::GetWidth()
@@ -63,16 +46,28 @@ int VisionTarget::GetHeight()
 	return height;
 }
 
+int VisionTarget::GetHeightConvex()
+{
+	return hHeight;
+}
+
 int VisionTarget::GetID()
 {
 	return id;
 }
 
 void VisionTarget::Set(std::vector<int> setPoints) {
-	x = setPoints[0];
-	y = setPoints[1];
-	width = setPoints[2];
-	height = setPoints[3];
+	if (setPoints.size() == PARAM_COUNT)
+	{
+		x = setPoints[0];
+		y = setPoints[1];
+		width = setPoints[2];
+		height = setPoints[3];
+		hHeight = setPoints[4];
+	}
+	else
+		printf("Warning: Not enough parameters passed from camera");
+
 }
 
 
@@ -106,4 +101,11 @@ std::shared_ptr<VisionTarget> VisionTarget::FindClosestAspect(double aspect,
 	}
 
 	return targets[closest];
+}
+
+Point VisionTarget::MakePoint(int x, int y)
+{
+	Point p;
+	p.x = x;
+	p.y = y;
 }

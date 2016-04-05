@@ -10,6 +10,9 @@
 class Vision: public Subsystem
 {
 private:
+	static const std::string BOUNDING_KEY = "BOUNDING_COORDINATES";
+	static const std::string IDS_KEY = "IDS";
+
 	std::shared_ptr<NetworkTable> table = NULL;
 	std::vector<std::shared_ptr<VisionTarget>> targets;
 
