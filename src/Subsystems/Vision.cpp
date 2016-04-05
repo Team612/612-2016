@@ -8,9 +8,6 @@ Vision::Vision() :
 	NetworkTable::SetPort(1735); //I think this is the default port but just to be safe
 	table = NetworkTable::GetTable("Vision");
 
-	DigitalOutput * jetson = new DigitalOutput(0);
-	jetson->Pulse(0.0016);
-
 
 	// \/ Comment this bit out if we haven't bothered to plug a camera in \/
 	//CameraServer::GetInstance()->SetQuality(50);
@@ -154,7 +151,7 @@ bool Vision::UpdateCurrentTarget()
 	if (GetTargetAmount() > 0)
 	{
 		goal = VisionTarget::FindClosestAspect(TARGET_ASPECT, GetAllTargets());
-		std::printf("Info: UpdateCurrentTarget()");
+		std::printf("Info: UpdateCurrentTarget()\n");
 		return true;
 	}
 	else

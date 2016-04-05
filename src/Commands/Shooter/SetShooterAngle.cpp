@@ -68,10 +68,10 @@ double SetShooterAngle::CalcAngle()
 	{
 		double h = Robot::vision.get()->GetTrackedGoal()->GetHeight();
 		double x = (0.0001592 * pow(h, 2)) - (0.06046*h) + 6.9204;
-		printf("\nDistance Calculation: %f", x);
+		printf("Info: Distance Calculation: %f\n", x);
 		double y = TARGET_HEIGHT_OFF_GROUND;
 		double v = BOULDER_LAUNCH_SPEED;
-		double g = 9.8; //gravity
+		double g = 9.81; //gravity -- meters/sec^2
 		double sq = pow(v, 4) - (g * (g * (x * x) + 2 * y * (v * v)));
 
 		sq = sqrt(abs(sq));
@@ -82,5 +82,5 @@ double SetShooterAngle::CalcAngle()
 		return angleInDegrees;
 	}
 	else
-		return 0.0;
+		return 0.0; //failsafe
 }

@@ -1,10 +1,25 @@
-#ifndef SIMPLEAUTONOMOUS_H_
-#define SIMPLEAUTONOMOUS_H_
+#pragma once
 
-#include "WPILib.h"
+#include "Commands/CommandGroup.h"
 #include "Robot.h"
+#include <Timer.h>
 
-class SimpleAutonomous : public Command {
+class SimpleAutonomous: public CommandGroup
+{
+private:
+	float time;
+	float speedL;
+	float speedR;
+	float original_speed;
+
+	double start_time;
+	double current_time;
+
+	Timer* autoTime;
+
+	const int THRESHOLD         = 5; //degrees
+	const int MAX_YAW_ERROR     = 10; //degrees
+	const float INCREMENT       = 1.05;
 public:
 	SimpleAutonomous(float time, float speed);
 	void Initialize();
@@ -12,16 +27,4 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
-
-private:
-	float time;
-	float speed;
-	Timer* autoTime;
-	float start_time;
-	float current_time;
-
 };
-
-
-
-#endif /* SRC_COMMANDS_AUTONOMOUS_AUTONOMOUS_H_ */

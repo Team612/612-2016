@@ -24,7 +24,7 @@ private:
 	const int TEST_ANGLE = 45;
 public:
 	enum Defense {PORTCULLIS, CHEVAL_DE_FRISE, MOAT, RAMPARTS, DRAW_BRIDGE, SALLY_PORT, ROCK_WALL, ROUGH_TERRAIN, LOW_BAR, NONE};
-	std::unique_ptr<Command> autonomousCommand;
+	std::unique_ptr<CommandGroup> autonomousCommand;
 	std::unique_ptr<Command> drivejoystick;
 	std::unique_ptr<Command> autowheels;
 	std::unique_ptr<Command> armJoystick;
@@ -45,13 +45,6 @@ public:
 
 	static float robot_yaw;
 
-	std::shared_ptr<SendableChooser> chooser;
-
-	//std::shared_ptr<CameraServer> server;
-
-	static std::shared_ptr<SendableChooser> autoChooser;
-
-	//CameraServer* server = CameraServer::GetInstance();
 	Timer * time = new Timer();
 
 	virtual void RobotInit();

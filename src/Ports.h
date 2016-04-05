@@ -44,5 +44,9 @@ namespace IDS
 	//Spike
 	const int shooterSpike 				= 0;  //Relay
 
+	//Jetson
+	const int jetsonI                   = 8;
+	const int jetsonO                   = 9;
+
 	//const SPI::Port NavX                = 0; //TODO Change depending on how NavX is wired!
 }

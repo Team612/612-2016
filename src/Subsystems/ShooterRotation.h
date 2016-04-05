@@ -53,15 +53,6 @@ public:
 	void SetSetpoint(float set);
 
 public:
-	//const double MAX_ANGLE = 288; //full forwards
-	//const double MIN_ANGLE = 79.2; //full inwards
-
-	//const double MIN_VOLTS = 1.17f;
-	//const double MAX_VOLTS = 4.0f;
-
-	//const double HOME_POS = 0; //full inwards
-	//const double INTAKE_POS = 208.8; //full forwards
-
 	ShooterRotation();
 	//void SetSpeed(float speed);
 	void SetAngle(double pos); //in degrees range 0-208.8
