@@ -44,7 +44,7 @@ void SetShooterAngle::Initialize()
 
 void SetShooterAngle::Execute()
 {
-	Robot::shooterrotation.get()->ShootPos(end_angle);
+	Robot::shooterrotation.get()->SetAngle(end_angle);
 }
 
 bool SetShooterAngle::IsFinished()

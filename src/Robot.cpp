@@ -127,10 +127,10 @@ void Robot::TestPeriodic()
 void Robot::InitSmartDashboard()
 {
 	//ShooterPID
-	SmartDashboard::PutNumber("P", 0.0);
-	SmartDashboard::PutNumber("I", 0.0);
-	SmartDashboard::PutNumber("D", 0.0);
-	SmartDashboard::PutNumber("Angle", 0.0);
+//	SmartDashboard::PutNumber("P", 0.0);
+//	SmartDashboard::PutNumber("I", 0.0);
+//	SmartDashboard::PutNumber("D", 0.0);
+	SmartDashboard::PutNumber("Shooter Angle", 0.0);
 
 	//Commands for debugging
 	shooterrotation->SmartDashboardOutput();
@@ -152,8 +152,10 @@ void Robot::InitSmartDashboard()
 
 void Robot::PeriodicSmartDashboard()
 {
+	Robot::shooterrotation->SmartDashboardOutput();
 
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
+	SmartDashboard::PutNumber("Shooter Absolute Encoder Rounded", RobotMap::shooterAbsEncoder.get()->GetVoltageRound());
 
 	//SmartDashboard::PutBoolean("Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch.get()->Get());
 	//SmartDashboard::PutBoolean("Second Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch2.get()->Get());

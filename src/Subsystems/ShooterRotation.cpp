@@ -16,25 +16,16 @@ ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 	SmartDashboard::PutNumber("Gain Switch", gain_switch);
 }
 
-//void ShooterRotation::SetAngle(double pos) //0-208.8 degrees
-//{
-	/*
-	std::printf("sets angle\n");
-	this->pos = pos;
-	double angle = pos + MIN_ANGLE;
-	if (angle < MAX_ANGLE && angle > MIN_ANGLE)
+void ShooterRotation::SetAngle(double angle) //0-208.8 degrees
+{
+	PIDEnable(true);
+	if (angle <= MAX_ANGLE && angle >= MIN_ANGLE)
 	{
-		GetPIDController()->SetSetpoint(AngleToVolts(angle));
-		std::printf("SetAngle()\n");
+		pid->SetSetpoint(AngleToVolts(0.0023 * pow(angle, 2) + (0.6562 * angle) - 4.2465));
 	}
+}
 
 
-#ifdef DEBUG
-	std::printf("Angle: %f\n", angle);
-	std::printf("Voltage: %f\n", AngleToVolts(angle));
-#endif
-*/
-//}
 
 void ShooterRotation::InitDefaultCommand()
 {
@@ -76,21 +67,14 @@ void ShooterRotation::HomePos()
 {
 	if(!pid->IsEnabled())
 		PIDEnable(true);
-	SetSetpoint(HOME_SETPOINT);
-}
-
-void ShooterRotation::ShootPos(float angle)
-{
-	if(!pid->IsEnabled())
-		PIDEnable(true);
-	SetSetpoint(ConvertAngleToAbsolute(angle));
+	SetAngle(HOME_ANGLE);
 }
 
 void ShooterRotation::IntakePos()
 {
 	if(!pid->IsEnabled())
 		PIDEnable(true);
-	SetSetpoint(INTAKE_SETPOINT);
+	SetAngle(INTAKE_ANGLE);
 }
 
 void ShooterRotation::Stop()
@@ -101,9 +85,7 @@ void ShooterRotation::Stop()
 void ShooterRotation::PIDEnable(bool enabled)
 {
 	if(enabled) 
-	{
 		pid->Enable();
-	}
 	else
 		pid->Disable();
 }
@@ -114,7 +96,7 @@ void ShooterRotation::SmartDashboardOutput()
 	SmartDashboard::PutNumber("Shooter Rotation Motor Out", pid->Get());
 	SmartDashboard::PutData("PID Controller", pid);
 	SmartDashboard::PutNumber("Shooter Rotation Error", pid->GetError());
-	SmartDashboard::PutNumber("PID Integrated Error", pid->GetIntegratedError());
+	//SmartDashboard::PutNumber("PID Integrated Error", pid->GetIntegratedError());
 	gain_switch = SmartDashboard::GetNumber("Gain Switch", .6);
 }
 

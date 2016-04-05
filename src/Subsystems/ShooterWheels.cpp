@@ -15,7 +15,7 @@ ShooterWheels::ShooterWheels() :
 	this->wheelControllerLeft.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonLeft.get()));
 	this->wheelControllerLeft->SetTolerance(this->kTol);
 	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
-	this->CANTalonLeft->SetInverted(true);
+	this->CANTalonRight->SetInverted(true);
 	this->hallCounterRight.reset(new PIDEdgeCounter(RobotMap::flywheelHallR));
 	this->wheelControllerRight.reset(new PIDController(this->kP, this->kI, this->kD, this->hallCounterLeft.get(), this->CANTalonRight.get()));
 	this->wheelControllerRight->SetTolerance(this->kTol);
