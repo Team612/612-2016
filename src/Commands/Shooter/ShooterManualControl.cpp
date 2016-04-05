@@ -1,20 +1,20 @@
-#include <Commands/Shooter/ShooterManuelControl.h>
+#include <Commands/Shooter/ShooterManualControl.h>
 #include "Robot.h"
 
-ShooterManuelControl::ShooterManuelControl()
+ShooterManualControl::ShooterManualControl()
 {
     Requires(Robot::shooterwheels.get());
 }
 
 // Called just before this Command runs the first time
-void ShooterManuelControl::Initialize()
+void ShooterManualControl::Initialize()
 {
 	Robot::shooterwheels->Disable();
-	Robot::shooterwheels->StartManuel();
+	Robot::shooterwheels->StartManual();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterManuelControl::Execute()
+void ShooterManualControl::Execute()
 {
     auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
     if(gunner > TOLERANCE)
@@ -37,14 +37,14 @@ void ShooterManuelControl::Execute()
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterManuelControl::IsFinished()
+bool ShooterManualControl::IsFinished()
 {
 	//printf("Shooter IsFinished\n");
 	return false;
 }
 
 // Called once after isFinished returns true
-void ShooterManuelControl::End()
+void ShooterManualControl::End()
 {
 	printf("Ending");
 	Stop();
@@ -52,23 +52,23 @@ void ShooterManuelControl::End()
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShooterManuelControl::Interrupted()
+void ShooterManualControl::Interrupted()
 {
 	printf("Interrupted");
     End();
 }
 
-void ShooterManuelControl::Fire()
+void ShooterManualControl::Fire()
 {
-	Robot::shooterwheels->ManuelSet(1);
+	Robot::shooterwheels->ManualSet(1);
 }
 
-void ShooterManuelControl::Intake()
+void ShooterManualControl::Intake()
 {
-	Robot::shooterwheels->ManuelSet(-.5);
+	Robot::shooterwheels->ManualSet(-.5);
 }
 
-void ShooterManuelControl::Stop()
+void ShooterManualControl::Stop()
 {
-	Robot::shooterwheels->ManuelSet(0);
+	Robot::shooterwheels->ManualSet(0);
 }
