@@ -16,7 +16,7 @@
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-std::shared_ptr<ShooterActuator> Robot::shooteractuator;
+std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
@@ -24,6 +24,14 @@ std::shared_ptr<Vision> Robot::vision;
 std::shared_ptr<SendableChooser> Robot::autoChooser;
 
 bool Robot::inverted;
+float Robot::robot_yaw;
+
+/*
+ * robot_yaw exists so we don't have to worry about calibrating the NavX
+ * before every match. We just get the initial yaw and compare the current
+ * yaw with the initial. We only need to know if we're off by whatever
+ * amount.
+ */
 
 
 void Robot::RobotInit()
@@ -34,10 +42,9 @@ void Robot::RobotInit()
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
-	shooteractuator.reset(new ShooterActuator());
-	shifter.reset(new Shifter());
 	vision.reset(new Vision());
-
+	pneumatics.reset(new Pneumatics());
+	shifter.reset(new Shifter());
 	oi.reset(new OI());
 
 	//server.reset(CameraServer::GetInstance());
@@ -66,6 +73,7 @@ void Robot::RobotInit()
  * This function is called when the disabled button is hit.
  * You can use it to reset subsystems before shutting down.
  */
+
 void Robot::DisabledInit()
 {
 
@@ -78,15 +86,14 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-	shifter->Set(Shifter::LOW);
 	align->Start();
-//	autonomousCommand.reset((Command *) autoChooser->GetSelected());
-//	std::printf("Info: Set Auto command!\n");
-//
-//	if (autonomousCommand.get() != nullptr)
-//		autonomousCommand->Start();
+	shifter->Set(Shifter::LOW);
+	robot_yaw = RobotMap::NavX.get()->GetYaw();
+	printf("Initial Autonomous Robot Yaw: %f\n", robot_yaw);
+	//autonomousCommand.reset((Command *) chooser->GetSelected());
 
-
+	if (autonomousCommand.get() != nullptr)
+		autonomousCommand->Start();
 }
 
 void Robot::AutonomousPeriodic()
@@ -94,18 +101,23 @@ void Robot::AutonomousPeriodic()
 	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
+	//server.get()->SetQuality(50);
+	//server.get()->StartAutomaticCapture("cam1");
+	robot_yaw = RobotMap::NavX.get()->GetYaw();
 }
 
 void Robot::TeleopInit()
 {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-		
+
 	drivejoystick->Start();
 	armJoystick->Start();
 	shifter->Set(Shifter::LOW);
 	//shooterrotation->PIDEnable(true);
 }
+
+
 
 void Robot::TeleopPeriodic()
 {
@@ -159,8 +171,8 @@ void Robot::PeriodicSmartDashboard()
 
 	//SmartDashboard::PutBoolean("Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch.get()->Get());
 	//SmartDashboard::PutBoolean("Second Shooter Actuator Limit Switch", RobotMap::shooterActuatorLSwitch2.get()->Get());
-	std::printf("Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
-	std::printf("Second Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	//std::printf("Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
+	//std::printf("Second Shooter Actuator Limit Switch: %i\n", (int) RobotMap::shooterActuatorLSwitch.get()->Get());
 
 
 	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor.get()->Get());
@@ -183,7 +195,14 @@ void Robot::PeriodicSmartDashboard()
 	SmartDashboard::PutNumber("Raw IR sensor voltage", RobotMap::shooterIR->GetVoltage());
 	SmartDashboard::PutNumber("IR distance inches", ((27.86f * pow(RobotMap::shooterIR->GetVoltage(), -1.15f)) * 0.393701f));
 
+
 	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
+
+	SmartDashboard::PutNumber("NavX Pitch (in degrees)", RobotMap::NavX.get()->GetPitch());
+	//printf("NavX Pitch (in degrees): %f\n", RobotMap::NavX.get()->GetPitch());
+	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX.get()->GetRoll());
+	//printf("NavX Roll (in degrees): %f\n", RobotMap::NavX.get()->GetRoll());
+	SmartDashboard::PutNumber("NavX Yaw compared to starting position (in degrees)", (float) (this->robot_yaw - RobotMap::NavX.get()->GetYaw()));
 }
 
 START_ROBOT_CLASS(Robot);

@@ -1,7 +1,6 @@
-//Chantilly612 can into spelling!
+//Chantilly612 can into spelling please!
 
-#ifndef SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_
-#define SRC_COMMANDS_SHOOTER_SHOOTERMANUELCONTROL_H_
+#pragma once
 
 #include "Commands/Command.h"
 #include "WPILib.h"
@@ -21,4 +20,4 @@ public:
 	void End();
 	void Interrupted();
 };
-#endif
+

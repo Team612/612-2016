@@ -1,5 +1,4 @@
-#ifndef ShooterRotation_H
-#define ShooterRotation_H
+#pragma once
 //#define DEBUG
 
 #include <Commands/Subsystem.h>
@@ -97,5 +96,3 @@ public:
 
 	//PIDControl* getShooterPID();
 };
-
-#endif

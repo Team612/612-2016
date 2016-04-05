@@ -20,12 +20,15 @@ namespace IDS
 
 	// Shooter Misc
 	const int shooterActuator			= 6;  // PWM Port
-	const int shooterAbsEncoder 		= 3;  // Analog Input
+	const int shooterAbsEncoder 		= 0;  // Analog Input
+
 	const int shooterRotate 			= 1;  // CAN ID
 	const int shooterIR 				= 1;  // Analog Input
 	const int shooterActuatorLSwitch 	= 4;  // Digital Input
 	const int shooterActuatorLSwitch2	= 5;  // Digital Input
-	const int shooterActuatorMotor	 	= 5;  //CANTalon
+	const int shooterActuatorMotor	 	= 5;  // CANTalon
+	const int shooterSolenoid1			= 0;  // PCM Port
+	const int shooterSolenoid2			= 1;  // PCM Port
 
 	// Shooter Flywheels
 	const int shooterFlyL 				= 4;  // CAN ID
@@ -40,4 +43,6 @@ namespace IDS
 
 	//Spike
 	const int shooterSpike 				= 0;  //Relay
+
+	//const SPI::Port NavX                = 0; //TODO Change depending on how NavX is wired!
 }

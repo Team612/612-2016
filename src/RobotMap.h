@@ -1,8 +1,8 @@
-#ifndef ROBOTMAP_H
-#define ROBOTMAP_H
+#pragma once
 #include <WPILib.h>
 #include <Ports.h>
 #include <AbsoluteEncoder/AbsoluteEncoder.h>
+#include <NavX/AHRS.h>
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -30,10 +30,13 @@ public:
 	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch;
 	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch2;
 	static std::shared_ptr<Relay>           shooterSpike;
+	static std::shared_ptr<DoubleSolenoid>		shooterSolenoid;
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
 	static std::shared_ptr<CANTalon> flywheelMotorR;
 	static std::shared_ptr<CANTalon> armRotateMotor;
+
+	static std::shared_ptr<AHRS> NavX;
 
 	static constexpr float flywheelHallL = IDS::shooterHallL;
 	static constexpr float flywheelHallR = IDS::shooterHallR;
@@ -44,4 +47,4 @@ public:
 
 	static void init();
 };
-#endif
+

@@ -20,7 +20,5 @@ Autonomous::Autonomous()
 	AddSequential(new AutoAlign(FindTarget::RIGHT));
 	AddSequential(new SpinUp());
 	Wait(1.0);
-	AddSequential(new FireShooter(ShooterActuatorPosition::Push, true));
-	Wait(1.0);
 	AddSequential(new StopShooter());
 }

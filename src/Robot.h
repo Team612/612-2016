@@ -1,5 +1,4 @@
-#ifndef _ROBOT_H
-#define _ROBOT_H
+#pragma once
 
 #include <WPILib.h>
 #include <Commands/Command.h>
@@ -9,10 +8,10 @@
 #include <Subsystems/Drivetrain.h>
 #include <Subsystems/ShooterWheels.h>
 #include <Subsystems/ShooterRotation.h>
-#include <Subsystems/ShooterActuator.h>
 #include <Subsystems/Shifter.h>
 #include <Subsystems/Vision.h>
 #include <Subsystems/Arm.h>
+#include <Subsystems/Pneumatics.h>
 
 #include <OI.h>
 
@@ -36,12 +35,15 @@ public:
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<ShooterRotation> shooterrotation;
 	static std::shared_ptr<ShooterWheels> shooterwheels;
-	static std::shared_ptr<ShooterActuator> shooteractuator;
 	static std::shared_ptr<Shifter> shifter;
 	static std::shared_ptr<Vision> vision;
 	static std::shared_ptr<Arm> arm;
+	//static std::shared_ptr<ShooterActuator> shooteractuator;
+	static std::shared_ptr<Pneumatics> pneumatics;
 
 	static bool inverted;
+
+	static float robot_yaw;
 
 	std::shared_ptr<SendableChooser> chooser;
 
@@ -62,4 +64,3 @@ public:
 	virtual void TestInit();
 	virtual void TestPeriodic();
 };
-#endif
