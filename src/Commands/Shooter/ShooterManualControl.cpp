@@ -16,25 +16,27 @@ void ShooterManualControl::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualControl::Execute()
 {
-    auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
-    if(gunner > TOLERANCE)
+    if(Robot::getInstance().IsOperatorControl())
     {
-    	printf("Fire\n");
-        Fire();
+        auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
+        if(gunner > TOLERANCE)
+        {
+        	printf("Fire\n");
+            Fire();
+        }
+        else if (gunner < -TOLERANCE)
+        {
+        	printf("Intake\n");
+            Intake();
+        }
+        else
+        {
+        	//printf("Stop\n");
+            Stop();
+        }
     }
-    else if (gunner < -TOLERANCE)
-    {
-    	printf("Intake\n");
-        Intake();
-    }
-    else
-    {
-    	//printf("Stop\n");
-        Stop();
-    }
-
-    //printf("Shooter\n");
 }
+
 
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterManualControl::IsFinished()

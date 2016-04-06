@@ -1,18 +1,17 @@
-#ifndef StopShooter_H
-#define StopShooter_H
+#pragma once
 
 #include "Commands/Command.h"
 #include "WPILib.h"
 
-class StopShooter: public Command
+class SetShooter: public Command
 {
+	private:
+	float speed;
 public:
-	StopShooter();
+	SetShooter(float speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 };
-
-#endif
