@@ -24,7 +24,7 @@ private:
 
 	float leftLastErr = 999.9f;
 	float rightLastErr = 999.9f;
-	bool manuelstarted = false;
+	bool manualstarted = false;
 public:
 	ShooterWheels();
 	float GetLeftWheelSpeed();
@@ -34,8 +34,8 @@ public:
 	void Disable();
 	void Enable();
 	void InitDefaultCommand();
-	void ManuelSet(float speed);
-	void StartManuel();
+	void ManualSet(float speed);
+	void StartManual();
 	NetworkTables* shootertable;
 	bool enabled = false;
 };

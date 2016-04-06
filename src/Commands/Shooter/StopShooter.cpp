@@ -8,12 +8,12 @@ StopShooter::StopShooter()
 
 void StopShooter::Initialize()
 {
-	Robot::shooterwheels.get()->StartManuel();
+	Robot::shooterwheels.get()->StartManual();
+	Robot::shooterwheels.get()->ManualSet(0.0f);
 }
 
 void StopShooter::Execute()
 {
-	Robot::shooterwheels.get()->ManuelSet(0.0f);
 }
 
 bool StopShooter::IsFinished()
@@ -23,11 +23,11 @@ bool StopShooter::IsFinished()
 
 void StopShooter::End()
 {
-	Robot::shooterwheels.get()->ManuelSet(0.0f);
+	//Robot::shooterwheels.get()->ManualSet(0.0f);
 }
 
 void StopShooter::Interrupted()
 {
-	Robot::shooterwheels.get()->ManuelSet(0.0f);
-	std::printf("ERROR: StopShooter Interrupted!");
+	//Robot::shooterwheels.get()->ManualSet(0.0f);
+	//std::printf("ERROR: StopShooter Interrupted!");
 }

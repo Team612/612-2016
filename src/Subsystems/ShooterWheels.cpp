@@ -1,7 +1,7 @@
+#include <Commands/Shooter/ShooterManualControl.h>
 #include "ShooterWheels.h"
 #include "RobotMap.h"
 #include "Commands/Shooter/ShooterControl.h"
-#include "Commands/Shooter/ShooterManuelControl.h"
 
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")
@@ -27,7 +27,7 @@ void ShooterWheels::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new ShooterManuelControl());
+	SetDefaultCommand(new ShooterManualControl());
 
 }
 
@@ -90,7 +90,7 @@ void ShooterWheels::Disable()
 
 void ShooterWheels::Enable()
 {
-	manuelstarted = false;
+	manualstarted = false;
 	if(!enabled)
 	{
 		this->CANTalonLeft->Enable();
@@ -105,18 +105,18 @@ void ShooterWheels::Enable()
 	enabled = true;
 }
 
-void ShooterWheels::StartManuel()
+void ShooterWheels::StartManual()
 {
-	manuelstarted = true;
+	manualstarted = true;
 	this->CANTalonLeft->Enable();
 	this->CANTalonRight->Enable();
 	this->CANTalonLeft->SetControlMode(CANSpeedController::kPercentVbus);
 	this->CANTalonRight->SetControlMode(CANSpeedController::kPercentVbus);
 }
 
-void ShooterWheels::ManuelSet(float speed)
+void ShooterWheels::ManualSet(float speed)
 {
-	if(!manuelstarted) { StartManuel(); printf("Starting manuel mode in set"); } //Bad! Low Energy!
+	if(!manualstarted) { StartManual(); printf("Starting Manual mode in set"); }
 	this->CANTalonLeft->Set(speed);
 	this->CANTalonRight->Set(speed);
 }
