@@ -8,7 +8,10 @@
 class VisionTarget
 {
 public:
-	static const int PARAM_COUNT = 5;
+	static const int PARAM_COUNT = 4;
+
+	static const double HEIGHT;
+	static const double WIDTH;
 
 	VisionTarget(std::vector<int> initPoints, int id); //See "Set()"
 	virtual ~VisionTarget();
@@ -24,6 +27,7 @@ public:
 	int GetHeight();
 
 	int GetHeightConvex();
+	double GetDistance();
 
 	double GetAspectRatio(); //width/height
 

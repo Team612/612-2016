@@ -1,5 +1,8 @@
 #include "VisionTarget.h"
 
+const double VisionTarget::WIDTH = 0.506;
+const double VisionTarget::HEIGHT = 0.305;
+
 VisionTarget::VisionTarget(std::vector<int> initPoints, int id)
 {
 	Set(initPoints);
@@ -63,7 +66,7 @@ void VisionTarget::Set(std::vector<int> setPoints) {
 		y = setPoints[1];
 		width = setPoints[2];
 		height = setPoints[3];
-		hHeight = setPoints[4];
+		//hHeight = setPoints[4];
 	}
 	else
 		printf("Warning: Not enough parameters passed from camera");
@@ -103,9 +106,16 @@ std::shared_ptr<VisionTarget> VisionTarget::FindClosestAspect(double aspect,
 	return targets[closest];
 }
 
+double VisionTarget::GetDistance()
+{
+	double dist = HEIGHT * 480 / (2 * hHeight * tan(46 * (M_PI / 180)));
+	return dist;
+}
+
 Point VisionTarget::MakePoint(int x, int y)
 {
 	Point p;
 	p.x = x;
 	p.y = y;
+	return p;
 }
