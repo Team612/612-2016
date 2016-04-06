@@ -33,14 +33,14 @@ public:
 	AbsoluteEncoder* absEncoder;
 	
 	// PID Constants
-	float kP = 5.0f;
+	float kP = 20.0f;
 	float kI = 0.0f;
 	float kD = 0.0f;
 	float gain_switch = 0.6f; // Error value (Volts) at which the controller switches between PID and P control.
 	
 	// Common setpoints, tied to buttons.
-	const float IN_SETPOINT = 1.6;
-	const float OUT_SETPOINT = 3.42;
+	const float IN_SETPOINT = 1.428;
+	const float OUT_SETPOINT = 1.802;
 	
 	const float INTAKE_ANGLE = 186;
 	const float HOME_ANGLE = 0;
@@ -92,7 +92,7 @@ public:
 	
 	void SmartDashboardOutput();
 
-	bool getPIDOnTarget();
+	bool OnTarget();
 
 	//PIDControl* getShooterPID();
 };

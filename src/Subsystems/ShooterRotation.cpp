@@ -21,7 +21,7 @@ void ShooterRotation::SetAngle(double angle) //0-208.8 degrees
 	PIDEnable(true);
 	if (angle <= MAX_ANGLE && angle >= MIN_ANGLE)
 	{
-		pid->SetSetpoint(AngleToVolts(0.0023 * pow(angle, 2) + (0.6562 * angle) - 4.2465));
+		pid->SetSetpoint(AngleToVolts(angle));
 	}
 }
 
@@ -100,7 +100,7 @@ void ShooterRotation::SmartDashboardOutput()
 	gain_switch = SmartDashboard::GetNumber("Gain Switch", .6);
 }
 
-bool ShooterRotation::getPIDOnTarget()
+bool ShooterRotation::OnTarget()
 {
 	return pid->OnTarget();
 }
