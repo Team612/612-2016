@@ -6,12 +6,12 @@
 #include "../../../Robot.h"
 
 
-class FindTarget: public Command
+class HorizontalFind: public Command
 {
 public:
 	enum Direction {LEFT, RIGHT};
 
-	FindTarget(Direction d);
+	HorizontalFind(Direction d);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

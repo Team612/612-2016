@@ -1,6 +1,6 @@
-#include "FindTarget.h"
+#include <Commands/Autonomous/Sequences/HorizontalFind.h>
 
-FindTarget::FindTarget(Direction d)
+HorizontalFind::HorizontalFind(Direction d)
 {
 	Requires(Robot::drivetrain.get());
 	Requires(Robot::vision.get());
@@ -12,33 +12,33 @@ FindTarget::FindTarget(Direction d)
 }
 
 // Called just before this Command runs the first time
-void FindTarget::Initialize()
+void HorizontalFind::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void FindTarget::Execute()
+void HorizontalFind::Execute()
 {
 	Robot::vision->PullValues();
 	Robot::drivetrain->SetTankDrive(-(dir * 0.4), (dir * 0.4));
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool FindTarget::IsFinished()
+bool HorizontalFind::IsFinished()
 {
 	return Robot::vision->GetTargetAmount() > 0;
 }
 
 // Called once after isFinished returns true
-void FindTarget::End()
+void HorizontalFind::End()
 {
 	Robot::drivetrain->SetTankDrive(0, 0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void FindTarget::Interrupted()
+void HorizontalFind::Interrupted()
 {
 	Robot::drivetrain->SetTankDrive(0, 0);
 }

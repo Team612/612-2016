@@ -5,6 +5,7 @@
 #include "Sequences/SimpleAutonomous.h"
 #include "../Shooter/SpinUp.h"
 #include "../Shooter/StopShooter.h"
+#include "../Shooter/Shoot.h"
 #include "WPILib.h"
 
 class Autonomous: public CommandGroup

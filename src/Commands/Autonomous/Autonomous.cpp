@@ -12,13 +12,18 @@ public:
 	{
 		return IsTimedOut();
 	}
+
+	void Initialize() {}
+	void Execute() {}
+	void Interrupted() {}
+	void End() {}
 };
 
 Autonomous::Autonomous()
 {
-	AddSequential(new SimpleAutonomous(7, 0.8));
-	AddSequential(new AutoAlign(FindTarget::RIGHT));
+	AddSequential(new SimpleAutonomous(8.0f, 0.8f));
+	AddSequential(new AutoAlign(HorizontalFind::RIGHT));
 	AddSequential(new SpinUp());
-	Wait(1.0);
+	AddSequential(new Shoot(true));
 	AddSequential(new StopShooter());
 }

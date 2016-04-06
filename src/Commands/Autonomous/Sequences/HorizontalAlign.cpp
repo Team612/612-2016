@@ -1,30 +1,26 @@
-#include "AlignToTarget.h"
+#include <Commands/Autonomous/Sequences/HorizontalAlign.h>
 
-AlignToTarget::AlignToTarget() :
+HorizontalAlign::HorizontalAlign() :
 		PIDCommand("AlignToTarget", 0.001, 0.1, 0.1)
 {
-	Requires(Robot::vision.get());
 	Requires(Robot::drivetrain.get());
 	SetTimeout(8);
 }
 
 // Called just before this Command runs the first time
-void AlignToTarget::Initialize()
+void HorizontalAlign::Initialize()
 {
 	printf("test");
-	GetPIDController()->SetAbsoluteTolerance(20);
+	GetPIDController()->SetAbsoluteTolerance(40);
 	GetPIDController()->SetSetpoint(SCREEN_CENTER_X); //Point we're trying to get to
 	GetPIDController()->Disable();
 	GetPIDController()->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AlignToTarget::Execute()
+void HorizontalAlign::Execute()
 {
-	printf("lol");
-
 	//Only if we need to FIND a target
-	//TODO: Add timeout so it doesn't keep trying forever
 	if (!hasTarget)
 	{
 		hasTarget = Robot::vision.get()->UpdateCurrentTarget();
@@ -35,7 +31,7 @@ void AlignToTarget::Execute()
 		{
 			PIDUserDisabled = false;
 			//GetPIDController()->SetPID(1, 0, 0);
-			GetPIDController()->SetPID(0.004, 0.0001, 0.003);
+			GetPIDController()->SetPID(SmartDashboard::GetNumber("dP", 0.004), SmartDashboard::GetNumber("dI", 0), SmartDashboard::GetNumber("dD", 0));
 			GetPIDController()->Enable();
 		}
 		else
@@ -45,7 +41,7 @@ void AlignToTarget::Execute()
 }
 
 //Inherited from PID Command, returns the input from the vision targets
-double AlignToTarget::ReturnPIDInput()
+double HorizontalAlign::ReturnPIDInput()
 {
 	//Makes sure that the target still exists, if not, it goes bye bye
 	std::shared_ptr<VisionTarget> target = Robot::vision->GetTrackedGoal();
@@ -63,7 +59,7 @@ double AlignToTarget::ReturnPIDInput()
 	}
 }
 
-void AlignToTarget::UsePIDOutput(double output)
+void HorizontalAlign::UsePIDOutput(double output)
 {
 	if (GetPIDController()->OnTarget())
 		onTargetCounter++;
@@ -78,7 +74,7 @@ void AlignToTarget::UsePIDOutput(double output)
 		output -= ROT_SPEED_MIN;
 
 	if (!PIDUserDisabled && !IsFinished())
-		Robot::drivetrain->SetTankDrive(output/2, -output);
+		Robot::drivetrain->SetTankDrive(output, -output);
 	//printf("\noutput");
 
 	SmartDashboard::PutNumber("AutoAlign Output", output);
@@ -87,24 +83,21 @@ void AlignToTarget::UsePIDOutput(double output)
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AlignToTarget::IsFinished()
+bool HorizontalAlign::IsFinished()
 {
 	return (onTargetCounter > 10);// || IsTimedOut();
 	//Only end if the PID controller is done AND it HASN'T been user disabled (meaning it succeeded)
 }
 
 // Called once after isFinished returns true
-void AlignToTarget::End()
+void HorizontalAlign::End()
 {
 	//TODO: Calculate launch angle and move the launcher here
 	GetPIDController()->Disable();
 	Robot::drivetrain->SetTankDrive(0, 0);
-	//AlignLauncher();
 }
 
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
-void AlignToTarget::Interrupted()
+void HorizontalAlign::Interrupted()
 {
 	GetPIDController()->Disable();
 	Robot::drivetrain->SetTankDrive(0, 0);
