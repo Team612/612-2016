@@ -4,7 +4,7 @@
 SpinUp::SpinUp()
 {
 	Requires(Robot::shooterwheels.get());
-
+	SetTimeout(0.5);
 }
 
 void SpinUp::Initialize()
@@ -19,7 +19,7 @@ void SpinUp::Execute()
 
 bool SpinUp::IsFinished()
 {
-	return false;
+	return IsTimedOut();
 }
 
 void SpinUp::End()
@@ -29,5 +29,5 @@ void SpinUp::End()
 
 void SpinUp::Interrupted()
 {
-	Robot::shooterwheels.get()->ManuelSet(0.0f);
+
 }

@@ -1,3 +1,4 @@
+#include <Commands/Autonomous/Sequences/HorizontalFind.h>
 #include <Commands/Shooter/ShooterControl.h>
 #include "Robot.h"
 
@@ -6,7 +7,6 @@
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
-#include "Commands/Autonomous/Sequences/FindTarget.h"
 #include "Commands/Autonomous/Sequences/AutoAlign.h"
 #include "Commands/Drive/DriveDistance.h"
 #include <SmartDashboard/SmartDashboard.h>
@@ -60,10 +60,10 @@ void Robot::RobotInit()
 	//SmartDashboard::PutData("Autonomous", new Autonomous());
 
 	// instantiate the command used for the autonomous period
-	//autonomousCommand.reset(new Autonomous(7.0f, 1.0f));
+	autonomousCommand.reset(new Autonomous());
 	drivejoystick.reset(new DriveJoystick());
 	armJoystick.reset(new ArmJoystick());
-	align.reset(new AutoAlign(FindTarget::LEFT));
+	align.reset(new AutoAlign(HorizontalFind::LEFT));
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
 	//autowheels.reset(new AutoWheels());
@@ -86,7 +86,7 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-	align->Start();
+	//align->Start();
 	shifter->Set(Shifter::LOW);
 	robot_yaw = RobotMap::NavX.get()->GetYaw();
 	printf("Initial Autonomous Robot Yaw: %f\n", robot_yaw);
@@ -151,14 +151,18 @@ void Robot::InitSmartDashboard()
 	SmartDashboard::PutData("Drive Distance", new DriveDistance(240));
 	SmartDashboard::PutData("Shooter Test", new ShooterTest());
 	//Auto Align
-		SmartDashboard::PutData("Auto Right", new AutoAlign(FindTarget::Direction::RIGHT));
-		SmartDashboard::PutData("Auto Left", new AutoAlign(FindTarget::Direction::LEFT));
+		SmartDashboard::PutData("Auto Right", new AutoAlign(HorizontalFind::Direction::RIGHT));
+		SmartDashboard::PutData("Auto Left", new AutoAlign(HorizontalFind::Direction::LEFT));
 
 	//autonomous
 	autoChooser->AddObject("Low Bar", new SimpleAutonomous(6, 0.8f));
 	autoChooser->AddObject("Other Defense", new SimpleAutonomous(7, 0.9f));
 
 	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
+
+	SmartDashboard::PutNumber("dP", 0.004);
+	SmartDashboard::PutNumber("dI", 0);
+	SmartDashboard::PutNumber("dD", 0);
 
 }
 

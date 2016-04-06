@@ -25,8 +25,6 @@ void SimpleAutonomous::Execute()
 
 bool SimpleAutonomous::IsFinished()
 {
-	std::printf("Autonomous timer: %f\n", (float) abs(current_time - start_time));
-
 	if(abs(current_time - start_time) >= time)
 	{
 		return true;
