@@ -40,8 +40,6 @@ public:
 
 	static bool inverted;
 
-	static float robot_yaw;
-
 	Timer * time = new Timer();
 
 	virtual void RobotInit();

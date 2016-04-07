@@ -43,13 +43,13 @@ void SimpleAutonomous::Execute()
 	}
 
 	//Second check, see if we're on course
-	if(!abs(Robot::robot_yaw - RobotMap::NavX.get()->GetYaw()) < MAX_YAW_ERROR)
-		//If we're off by over 10 degrees
+	if(!(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR))
+		//If we're off by over 10 degrees (Threshold)
 	{
-		if(Robot::robot_yaw - RobotMap::NavX.get()->GetYaw() > 0)
+		if(RobotMap::NavX.get()->GetYaw() > 0)
 		{
 			/*
-			 * if the difference is positive, meaning
+			 * if the yaw is too positive, meaning
 			 * the robot is too clockwise
 			 */
 			//TODO: Make sure this rotates the right way
@@ -58,17 +58,17 @@ void SimpleAutonomous::Execute()
 			speedR *= INCREMENT;
 
 		}
-		else if(Robot::robot_yaw - RobotMap::NavX.get()->GetYaw() < 0)
+		else if(RobotMap::NavX.get()->GetYaw() < 0)
 		{
 			/*
-			 * if the difference is negative, meaning
+			 * if the yaw is too negative, meaning
 			 * the robot is too counter clockwise
 			 */
 			speedL *= INCREMENT;
 			speedR /= INCREMENT;
 		}
 	}
-	else if(abs(Robot::robot_yaw - RobotMap::NavX.get()->GetYaw()) < MAX_YAW_ERROR)
+	else if(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR)
 	//If inside the threshold
 	{
 		//make these two the same so we stop turning but maintain speed
@@ -79,7 +79,7 @@ void SimpleAutonomous::Execute()
 	}
 
 	//Third check, if everything is normal
-	if(abs(Robot::robot_yaw - RobotMap::NavX.get()->GetYaw()) < MAX_YAW_ERROR &&
+	if(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR &&
 			abs(RobotMap::NavX.get()->GetPitch()) < THRESHOLD &&
 			abs(RobotMap::NavX.get()->GetRoll()) < THRESHOLD)
 		/*

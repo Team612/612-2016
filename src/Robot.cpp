@@ -18,7 +18,6 @@ std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
 
 bool Robot::inverted;
-float Robot::robot_yaw;
 
 /*
  * robot_yaw exists so we don't have to worry about calibrating the NavX
@@ -41,6 +40,8 @@ void Robot::RobotInit()
 	shifter.reset(new Shifter());
 	oi.reset(new OI());
 
+	RobotMap::NavX.get()->ZeroYaw();
+	printf("Zeroed Yaw in init!\n");
 	InitSmartDashboard();
 
 	//SmartDashboard::PutData("FireShooter", new FireShooter());
@@ -75,8 +76,9 @@ void Robot::DisabledPeriodic()
 void Robot::AutonomousInit()
 {
 	shifter->Set(Shifter::LOW);
-	robot_yaw = RobotMap::NavX.get()->GetYaw();
-	printf("Initial Autonomous Robot Yaw: %f\n", robot_yaw);
+
+	RobotMap::NavX.get()->ZeroYaw();
+	printf("Info: Zeroed Yaw in Autonomous\n");
 
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
@@ -87,13 +89,15 @@ void Robot::AutonomousPeriodic()
 	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
-	robot_yaw = RobotMap::NavX.get()->GetYaw();
 }
 
 void Robot::TeleopInit()
 {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
+
+	RobotMap::NavX.get()->ZeroYaw();
+	printf("Info: Zeroed Yaw in Teleop\n");
 
 	drivejoystick->Start();
 	shifter->Set(Shifter::LOW);
@@ -188,7 +192,7 @@ void Robot::PeriodicSmartDashboard()
 	//printf("NavX Pitch (in degrees): %f\n", RobotMap::NavX.get()->GetPitch());
 	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX.get()->GetRoll());
 	//printf("NavX Roll (in degrees): %f\n", RobotMap::NavX.get()->GetRoll());
-	SmartDashboard::PutNumber("NavX Yaw compared to starting position (in degrees)", (float) (this->robot_yaw - RobotMap::NavX.get()->GetYaw()));
+	SmartDashboard::PutNumber("NavX Yaw compared to starting position (in degrees)", (float) (RobotMap::NavX.get()->GetYaw()));
 }
 
 START_ROBOT_CLASS(Robot);
