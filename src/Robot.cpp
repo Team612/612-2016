@@ -11,14 +11,12 @@
 #include "Commands/Drive/DriveDistance.h"
 #include <SmartDashboard/SmartDashboard.h>
 #include "Commands/Shooter/ShooterTest.h"
-#include "Commands/Arm/ArmJoystick.h"
 
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
 std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
-std::shared_ptr<Arm> Robot::arm;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
 std::shared_ptr<SendableChooser> Robot::autoChooser;
@@ -38,7 +36,6 @@ void Robot::RobotInit()
 {
 	RobotMap::init();
 
-	arm.reset(new Arm());
 	drivetrain.reset(new Drivetrain());
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
@@ -62,7 +59,6 @@ void Robot::RobotInit()
 	// instantiate the command used for the autonomous period
 	autonomousCommand.reset(new Autonomous());
 	drivejoystick.reset(new DriveJoystick());
-	armJoystick.reset(new ArmJoystick());
 	align.reset(new AutoAlign(HorizontalFind::LEFT));
 	//armjoystick.reset(new ArmJoystick());
 	//armmove.reset(new ArmMove());
