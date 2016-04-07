@@ -34,14 +34,13 @@ public:
 Autonomous::Autonomous()
 {
 	//8 seconds
-	AddSequential(new SimpleAutonomous(8, 0.6));
-	AddParallel(new AutoAlign(HorizontalFind::RIGHT));
-	AddParallel(new VerticalAlign());
+	//AddSequential(new SimpleAutonomous(8, 0.6));
+	AddSequential(new AutoAlign(HorizontalFind::RIGHT));
 	AddSequential(new SetShooter(1));
 	//2 seconds
 	AddSequential(new DelayCommand(1.5f));
 	AddSequential(new Shoot(true));
-	//AddSequential(new DelayCommand(0.5));
+	AddSequential(new DelayCommand(0.5));
 	AddSequential(new SetShooter(0));
 	//std::printf("Info: End auto!\n");
 	//leaves 5ish seconds to align horizontally and vertically

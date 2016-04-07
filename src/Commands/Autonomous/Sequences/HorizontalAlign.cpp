@@ -1,7 +1,7 @@
 #include <Commands/Autonomous/Sequences/HorizontalAlign.h>
 
 HorizontalAlign::HorizontalAlign() :
-		PIDCommand("AlignToTarget", 0.001, 0.1, 0.1)
+		PIDCommand("AlignToTarget", 0.004, 0, 0)
 {
 	Requires(Robot::drivetrain.get());
 	SetTimeout(8);
@@ -11,10 +11,11 @@ HorizontalAlign::HorizontalAlign() :
 void HorizontalAlign::Initialize()
 {
 	printf("test");
-	GetPIDController()->SetAbsoluteTolerance(40);
-	GetPIDController()->SetSetpoint(SCREEN_CENTER_X); //Point we're trying to get to
-	GetPIDController()->Disable();
-	GetPIDController()->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
+	auto pid = GetPIDController();
+	pid->SetAbsoluteTolerance(40);
+	pid->SetSetpoint(SCREEN_CENTER_X); //Point we're trying to get to
+	pid->Disable();
+	pid->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -31,8 +32,9 @@ void HorizontalAlign::Execute()
 		{
 			PIDUserDisabled = false;
 			//GetPIDController()->SetPID(1, 0, 0);
-			GetPIDController()->SetPID(SmartDashboard::GetNumber("dP", 0.004), SmartDashboard::GetNumber("dI", 0), SmartDashboard::GetNumber("dD", 0));
-			GetPIDController()->Enable();
+			auto pid = GetPIDController();
+			pid->SetPID(SmartDashboard::GetNumber("dP", 0.004), SmartDashboard::GetNumber("dI", 0), SmartDashboard::GetNumber("dD", 0));
+			pid->Enable();
 		}
 		else
 			printf("PID Enabled\n");
@@ -45,7 +47,7 @@ double HorizontalAlign::ReturnPIDInput()
 {
 	//Makes sure that the target still exists, if not, it goes bye bye
 	std::shared_ptr<VisionTarget> target = Robot::vision->GetTrackedGoal();
-	if (target == NULL)
+	if (target == nullptr)
 	{
 		PIDUserDisabled = true;
 		hasTarget = false;
@@ -62,9 +64,14 @@ double HorizontalAlign::ReturnPIDInput()
 void HorizontalAlign::UsePIDOutput(double output)
 {
 	if (GetPIDController()->OnTarget())
+	{
 		onTargetCounter++;
+	}
 	else
+	{
 		onTargetCounter = 0;
+	}
+	SmartDashboard::PutNumber("OnTarget Counter", onTargetCounter);
 
 	printf("%f", output);
 

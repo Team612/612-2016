@@ -17,11 +17,11 @@ OI::OI()
 	align.reset(new JoystickButton(gunner.get(), 4)); //y button
 	align.get()->WhenPressed(new AlignToShoot());
 
-	shooterHome.reset(new JoystickButton(gunner.get(), 3)); //x button
-	shooterHome.get()->WhenPressed(new SetShooterAngle(0));
+	//shooterHome.reset(new JoystickButton(gunner.get(), 3)); //x button
+	//shooterHome.get()->WhenPressed(new SetShooterAngle(0));
 
-	shooterIntake.reset(new JoystickButton(gunner.get(), 2)); //b button
-	shooterIntake.get()->WhenPressed(new SetShooterAngle(186));
+	//shooterIntake.reset(new JoystickButton(gunner.get(), 2)); //b button
+	//shooterIntake.get()->WhenPressed(new SetShooterAngle(186));
 
 	//DRIVER
 	driver.reset(new Joystick(0));

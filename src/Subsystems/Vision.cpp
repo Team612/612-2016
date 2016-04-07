@@ -28,37 +28,29 @@ void Vision::PullValues()
 	printf("test1\n");
 
 	llvm::ArrayRef<double> arr;
-	std::vector<double> coords = table->GetNumberArray(BOUNDING_KEY,
-			arr);
-	/* Okay, so this is a thing that is long enough that I had to make a block comment. Basically,
-	 * RoboRealm doesn't automatically overwrite the BOUNDING_COORDINATES variable (which makes
-	 * literally no sense because it updates every single other variable just fine). In order to
-	 * bypass this, I was forced to DELETE the table every tick so RoboRealm would populate it
-	 * with new values. Unfortunately, the tick speed on the RoboRealm is faster than the framerate
-	 * of the camera, hence the constant checking of whether or not bounding coordinates actually
-	 * exist.
-	 */
+	std::vector<double> coords = table->GetNumberArray(BOUNDING_KEY, arr);
 
 	llvm::ArrayRef<double> arr2;
 	std::vector<double> ids = table->GetNumberArray(IDS_KEY, arr2);
 	//An array of all things being tracked, conveniently in the same order as the bounding coords
 
-	int targetCount = ids.size();
+	int targetCount = std::min(ids.size(), coords.size() / VisionTarget::PARAM_COUNT);
 
 	//Loop to create/update VisionTargets with new bound coords
 	for (int x = 0; x < targetCount; x++)
 	{
-		printf("test2");
+		//printf("test2");
 		std::vector<int> vec;
 		for (int i = 0; i < VisionTarget::PARAM_COUNT; i++)
 		{
-			vec.push_back((int) coords[(x * VisionTarget::PARAM_COUNT) + i]);
+			if(!(coords.empty()))
+				vec.push_back((int) coords[(x * VisionTarget::PARAM_COUNT) + i]);
 		}
 
 		//Only updates if it finds that the ID already exists
 		if (TargetExists(ids[x]))
 		{
-			GetTargetById(ids[x])->Print();
+			//GetTargetById(ids[x])->Print();
 			GetTargetById(ids[x])->Set(vec);
 		}
 		//If the ID is new then we make a new target
@@ -68,7 +60,7 @@ void Vision::PullValues()
 							new VisionTarget(vec, ids[x])));
 	}
 
-	printf("\n");
+	//printf("\n");
 
 	//Goes through and deletes all of the VisionTargets that no longer exist in RoboRealm
 	for (uint32_t x = 0; x < targets.size(); x++)
@@ -151,7 +143,7 @@ bool Vision::UpdateCurrentTarget()
 	if (GetTargetAmount() > 0)
 	{
 		goal = VisionTarget::FindClosestAspect(TARGET_ASPECT, GetAllTargets());
-		std::printf("Info: UpdateCurrentTarget()\n");
+		//std::printf("Info: UpdateCurrentTarget()\n");
 		return true;
 	}
 	else
@@ -181,8 +173,8 @@ void Vision::SetTrackingID(int id)
 	std::shared_ptr<VisionTarget> target = GetTargetById(id);
 	if (target == NULL)
 	{
-		printf("Warning: No goal found with ID %u\n", id);
-		printf("Info: Attempting to set automatically...\n");
+		//printf("Warning: No goal found with ID %u\n", id);
+		//printf("Info: Attempting to set automatically...\n");
 		UpdateCurrentTarget();
 	}
 	else
@@ -193,6 +185,7 @@ void Vision::SetTrackingID(int id)
 
 int Vision::GetTrackingID()
 {
+	UpdateCurrentTarget();
 	if (goal != NULL)
 		return goal->GetID();
 	else

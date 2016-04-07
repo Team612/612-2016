@@ -96,7 +96,6 @@ void Robot::TeleopInit()
 		autonomousCommand->Cancel();
 
 	drivejoystick->Start();
-	armJoystick->Start();
 	shifter->Set(Shifter::LOW);
 	//shooterrotation->PIDEnable(true);
 }

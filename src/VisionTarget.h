@@ -43,8 +43,8 @@ public:
 private:
 	int x;
 	int y;
-	int width;
-	int height;
+	int width = 0;
+	int height = 0;
 	int hHeight;
 
 	int id; //The tracking ID as given by RoboRealm

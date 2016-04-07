@@ -15,7 +15,7 @@ public:
 	void Interrupted();
 
 	const double TARGET_HEIGHT_OFF_GROUND = 2; //in meters
-	const double BOULDER_LAUNCH_SPEED = 12.9; //in meters per second
+	const double BOULDER_LAUNCH_SPEED = 12.9 * 2 * 10; //in meters per second
 
 
 private:

@@ -108,7 +108,8 @@ std::shared_ptr<VisionTarget> VisionTarget::FindClosestAspect(double aspect,
 
 double VisionTarget::GetDistance()
 {
-	double dist = HEIGHT * 480 / (2 * hHeight * tan(46 * (M_PI / 180)));
+	double fovy = 37.5;
+	double dist	 = HEIGHT * 480 / (2 * height * tan(fovy * (M_PI / 180)));
 	return dist;
 }
 

@@ -17,16 +17,13 @@ private:
 
 	//double pos = HOME_POS;
 
-	double AngleToVolts(double angle) {return (angle * V_OVER_A) + IN_SETPOINT + BIAS;}
+	double AngleToVolts(double angle) {return (angle * V_OVER_A) + zerodegrees + BIAS;}
 
 public:
 	//TODO: These angles should be the same, but check to make sure.
 	const double MAX_ANGLE = 190.0; //full forwards
 	const double MIN_ANGLE = 0; //full inwards
 
-	//TODO: Find the actual potentiometer values.
-	const double MIN_VOLTS = 1.17f;
-	const double MAX_VOLTS = 4.0f;
 	// Hardware
 	std::shared_ptr<CANTalon> motor;
 	PIDControl* pid;
@@ -39,15 +36,15 @@ public:
 	float gain_switch = 0.6f; // Error value (Volts) at which the controller switches between PID and P control.
 	
 	// Common setpoints, tied to buttons.
-	const float IN_SETPOINT = 1.428;
-	const float OUT_SETPOINT = 1.802;
+	const float zerodegrees = 1.648;
+	const float oneeightydegrees = 2.028;
 	
-	const float INTAKE_ANGLE = 186;
+	const float INTAKE_ANGLE = 190;
 	const float HOME_ANGLE = 0;
 	const float LOGOAL_ANGLE = 0;
 	const float HIGOAL_ANGLE = 0;
 
-	const float V_OVER_A = (std::abs(OUT_SETPOINT - IN_SETPOINT) / 180.0); // Constant to convert between voltage and angle.
+	const float V_OVER_A = (std::abs(oneeightydegrees - zerodegrees) / 180.0); // Constant to convert between voltage and angle.
 	const float BIAS = 0; // Difference between home position and parallel with floor.
 	
 	void SetSetpoint(float set);

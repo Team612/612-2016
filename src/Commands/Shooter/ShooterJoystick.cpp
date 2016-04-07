@@ -27,8 +27,8 @@ void ShooterJoystick::Execute()
 	std::printf("B? " + b);*/
 	if(!buttonPushed)
 	{
-		//if(Robot::shooterrotation->PIDEnabled())
-		//	Robot::shooterrotation->PIDEnable(false);
+		if(Robot::shooterrotation->PIDEnabled())
+			Robot::shooterrotation->PIDEnable(false);
 
 		//Robot::shooterrotation->SetSetpoint(SmartDashboard::GetNumber("Setpoint", 0));
 
@@ -36,7 +36,7 @@ void ShooterJoystick::Execute()
 		if(gunner < TOLERANCE && gunner > -TOLERANCE)
 			gunner = 0;
 
-		Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Shooter Angle", 0));
+		//Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Shooter Angle", 0));
 		// Division by 2 is used for rate limiting while enabling a wider range of finer control.
 		Robot::shooterrotation->Gun(gunner / 2);
 	}
