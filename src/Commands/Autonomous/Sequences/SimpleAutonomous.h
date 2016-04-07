@@ -19,7 +19,7 @@ private:
 
 	const int THRESHOLD         = 5; //degrees
 	const int MAX_YAW_ERROR     = 10; //degrees
-	const float INCREMENT       = 1.05;
+	const float INCREMENT       = 1.005;
 public:
 	SimpleAutonomous(float time, float speed);
 	void Initialize();

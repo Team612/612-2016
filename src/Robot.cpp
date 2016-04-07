@@ -96,8 +96,8 @@ void Robot::TeleopInit()
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
-	RobotMap::NavX.get()->ZeroYaw();
-	printf("Info: Zeroed Yaw in Teleop\n");
+	//RobotMap::NavX.get()->ZeroYaw();
+	//printf("Info: Zeroed Yaw in Teleop\n");
 
 	drivejoystick->Start();
 	shifter->Set(Shifter::LOW);

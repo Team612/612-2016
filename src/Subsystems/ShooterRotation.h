@@ -36,8 +36,8 @@ public:
 	float gain_switch = 0.6f; // Error value (Volts) at which the controller switches between PID and P control.
 	
 	// Common setpoints, tied to buttons.
-	const float zerodegrees = 1.648;
-	const float oneeightydegrees = 2.028;
+	const float zerodegrees = 1.01;
+	const float oneeightydegrees = 1.41;
 	
 	const float INTAKE_ANGLE = 190;
 	const float HOME_ANGLE = 0;
