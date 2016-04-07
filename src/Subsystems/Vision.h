@@ -1,5 +1,4 @@
-#ifndef Vision_H
-#define Vision_H
+#pragma once
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
@@ -32,15 +31,7 @@ public:
 	bool TargetExists(int id); //Check if an ID exists
 	bool TargetExists(std::shared_ptr<VisionTarget> target);
 
-	//Camera constants, assume front is side with launcher
-	//static constexpr char* CAMERA_FRONT = "cam0";
-	//static constexpr char* CAMERA_REAR = "cam1";
-	//static constexpr char* CAMERA_SHOOTER = "cam2";
 	/*
-	 * Also, using char* as a string is deprecated so this completely FLOODS the console
-	 *
-	 *
-	 *
 	 * I am so sorry
 	 */
 
@@ -52,4 +43,3 @@ public:
 	void SetTrackingID(int id);
 	int GetTrackingID();
 };
-#endif

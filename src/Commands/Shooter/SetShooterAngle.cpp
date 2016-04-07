@@ -1,10 +1,6 @@
 #include "SetShooterAngle.h"
 #include "Robot.h"
 
-SetShooterAngle::SetShooterAngle()
-{
-	SetShooterAngle(Robot::shooterrotation->HOME_ANGLE);
-}
 
 SetShooterAngle::SetShooterAngle(float end_angle)
 {
@@ -32,4 +28,6 @@ void SetShooterAngle::End()
 void SetShooterAngle::Interrupted()
 {
 	Robot::shooterrotation->PIDEnable(false);
+	Robot::shooterrotation->Gun(0);
 }
+

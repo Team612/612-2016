@@ -38,6 +38,9 @@ public:
 
 	static std::shared_ptr<AHRS> NavX;
 
+	static std::shared_ptr<DigitalInput> jetsonI;
+	static std::shared_ptr<DigitalOutput> jetsonO;
+
 	static constexpr float flywheelHallL = IDS::shooterHallL;
 	static constexpr float flywheelHallR = IDS::shooterHallR;
 	

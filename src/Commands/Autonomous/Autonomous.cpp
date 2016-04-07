@@ -2,28 +2,47 @@
 
 class DelayCommand : public Command
 {
+//Ben's jankness
+private:
+	float time;
 public:
 	DelayCommand(float time)
 	{
-		SetTimeout(time);
+		this->time = time;
 	}
+
+	// Built-in antivirus to protect against terrible code from Ben
+	/*int RemoveHackers(short germx)	//set germx to the number of bacteria you want killed (Default 512)
+	{
+		char *disinfectant;
+		char *
+		disinfectant = (char *)malloc(germx);
+	}*/
+
+	void Initialize() { SetTimeout(time); }
+	void Execute() { }
 
 	bool IsFinished()
 	{
 		return IsTimedOut();
 	}
 
-	void Initialize() {}
-	void Execute() {}
-	void Interrupted() {}
-	void End() {}
+	void End() { }
+	void Interrupted() { }
 };
 
 Autonomous::Autonomous()
 {
-	AddSequential(new SimpleAutonomous(8.0f, 0.8f));
-	AddSequential(new AutoAlign(HorizontalFind::RIGHT));
-	AddSequential(new SpinUp());
+	//8 seconds
+	AddSequential(new SimpleAutonomous(8, 0.6));
+	AddParallel(new AutoAlign(HorizontalFind::RIGHT));
+	AddParallel(new VerticalAlign());
+	AddSequential(new SetShooter(1));
+	//2 seconds
+	AddSequential(new DelayCommand(1.5f));
 	AddSequential(new Shoot(true));
-	AddSequential(new StopShooter());
+	//AddSequential(new DelayCommand(0.5));
+	AddSequential(new SetShooter(0));
+	//std::printf("Info: End auto!\n");
+	//leaves 5ish seconds to align horizontally and vertically
 }

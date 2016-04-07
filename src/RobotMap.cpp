@@ -29,6 +29,9 @@ std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
 
 std::shared_ptr<AHRS> RobotMap::NavX;
 
+std::shared_ptr<DigitalInput> RobotMap::jetsonI;
+std::shared_ptr<DigitalOutput> RobotMap::jetsonO;
+
 void RobotMap::init()
 {
 	//LiveWindow *lw = LiveWindow::GetInstance();
@@ -68,4 +71,7 @@ void RobotMap::init()
     armRotateMotor.reset(new CANTalon(IDS::armRotateMotor));
 
     NavX.reset(new AHRS(SPI::Port::kMXP));
+
+    jetsonI.reset(new DigitalInput(IDS::jetsonI));
+    jetsonO.reset(new DigitalOutput(IDS::jetsonO));
 }

@@ -10,7 +10,6 @@ class SetShooterAngle: public Command
 {
 public:
 	SetShooterAngle(float end_angle);
-	SetShooterAngle();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

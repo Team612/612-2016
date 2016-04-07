@@ -2,15 +2,12 @@
 #include <Commands/Shooter/ShooterControl.h>
 #include "Robot.h"
 
-#include "CameraServer.h"
-
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Autonomous/Sequences/AutoAlign.h"
 #include "Commands/Drive/DriveDistance.h"
 #include <SmartDashboard/SmartDashboard.h>
-#include "Commands/Shooter/ShooterTest.h"
 
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
@@ -19,7 +16,6 @@ std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
-std::shared_ptr<SendableChooser> Robot::autoChooser;
 
 bool Robot::inverted;
 float Robot::robot_yaw;
@@ -29,6 +25,7 @@ float Robot::robot_yaw;
  * before every match. We just get the initial yaw and compare the current
  * yaw with the initial. We only need to know if we're off by whatever
  * amount.
+ * TODO: Test and use the method ZeroYaw()
  */
 
 
@@ -44,13 +41,6 @@ void Robot::RobotInit()
 	shifter.reset(new Shifter());
 	oi.reset(new OI());
 
-	//server.reset(CameraServer::GetInstance());
-
-	chooser.reset(new SendableChooser());
-	autoChooser.reset(new SendableChooser());
-
-
-
 	InitSmartDashboard();
 
 	//SmartDashboard::PutData("FireShooter", new FireShooter());
@@ -60,15 +50,17 @@ void Robot::RobotInit()
 	autonomousCommand.reset(new Autonomous());
 	drivejoystick.reset(new DriveJoystick());
 	align.reset(new AutoAlign(HorizontalFind::LEFT));
-	//armjoystick.reset(new ArmJoystick());
-	//armmove.reset(new ArmMove());
-	//autowheels.reset(new AutoWheels());
-}
 
-/*
- * This function is called when the disabled button is hit.
- * You can use it to reset subsystems before shutting down.
- */
+	//Jetson autostartup
+	if(RobotMap::jetsonI.get()->Get())
+		std::printf("Nvidia TX1 on\n");
+	else
+	{
+		std::printf("Nvidia TX1 off\n Attempting to turn on\n");
+		RobotMap::jetsonO.get()->Pulse(0.0016);
+		RobotMap::jetsonO.get()->Pulse(0.0016);
+	}
+}
 
 void Robot::DisabledInit()
 {
@@ -82,11 +74,9 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
-	//align->Start();
 	shifter->Set(Shifter::LOW);
 	robot_yaw = RobotMap::NavX.get()->GetYaw();
 	printf("Initial Autonomous Robot Yaw: %f\n", robot_yaw);
-	//autonomousCommand.reset((Command *) chooser->GetSelected());
 
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
@@ -97,8 +87,6 @@ void Robot::AutonomousPeriodic()
 	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
-	//server.get()->SetQuality(50);
-	//server.get()->StartAutomaticCapture("cam1");
 	robot_yaw = RobotMap::NavX.get()->GetYaw();
 }
 
@@ -145,8 +133,8 @@ void Robot::InitSmartDashboard()
 	SmartDashboard::PutData("Stop Drivetrain", new DriveSet(0.0f, 0.0f));
 	SmartDashboard::PutData("Drive Joystick", new DriveJoystick());
 	SmartDashboard::PutData("Drive Distance", new DriveDistance(240));
-	SmartDashboard::PutData("Shooter Test", new ShooterTest());
 	//Auto Align
+	/*
 		SmartDashboard::PutData("Auto Right", new AutoAlign(HorizontalFind::Direction::RIGHT));
 		SmartDashboard::PutData("Auto Left", new AutoAlign(HorizontalFind::Direction::LEFT));
 
@@ -154,12 +142,11 @@ void Robot::InitSmartDashboard()
 	autoChooser->AddObject("Low Bar", new SimpleAutonomous(6, 0.8f));
 	autoChooser->AddObject("Other Defense", new SimpleAutonomous(7, 0.9f));
 
-	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());
+	SmartDashboard::PutData("Autonomous Defense Chooser", autoChooser.get());*/
 
 	SmartDashboard::PutNumber("dP", 0.004);
 	SmartDashboard::PutNumber("dI", 0);
 	SmartDashboard::PutNumber("dD", 0);
-
 }
 
 void Robot::PeriodicSmartDashboard()

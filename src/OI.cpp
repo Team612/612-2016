@@ -2,6 +2,8 @@
 #include "OI.h"
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/SetGear.h"
+#include "Commands/Shooter/AlignToShoot.h"
+#include "Commands/Shooter/SetShooterAngle.h"
 #include <Commands/Shooter/Shoot.h>
 
 OI::OI()
@@ -9,8 +11,17 @@ OI::OI()
 	//GUNNER
 	gunner.reset(new Joystick(1));
 
-	shoot.reset(new JoystickButton(gunner.get(), 1));
-	shoot->WhenPressed(new Shoot(true));
+	shoot.reset(new JoystickButton(gunner.get(), 1)); //a button
+	shoot.get()->WhenPressed(new Shoot(true));
+
+	align.reset(new JoystickButton(gunner.get(), 4)); //y button
+	align.get()->WhenPressed(new AlignToShoot());
+
+	shooterHome.reset(new JoystickButton(gunner.get(), 3)); //x button
+	shooterHome.get()->WhenPressed(new SetShooterAngle(0));
+
+	shooterIntake.reset(new JoystickButton(gunner.get(), 2)); //b button
+	shooterIntake.get()->WhenPressed(new SetShooterAngle(186));
 
 	//DRIVER
 	driver.reset(new Joystick(0));
@@ -22,7 +33,6 @@ OI::OI()
 	lowGear->WhenPressed(new SetGear(Shifter::LOW));
 
 	highGear.reset(new JoystickButton(driver.get(), 6));
-	// TODO: Change this back to Shifter::HIGH when shifters are fixed
 	highGear->WhenPressed(new SetGear(Shifter::HIGH));
 }
 
