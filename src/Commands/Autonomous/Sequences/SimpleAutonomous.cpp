@@ -54,8 +54,8 @@ void SimpleAutonomous::Execute()
 			 */
 			//TODO: Make sure this rotates the right way
 
-			speedL /= INCREMENT;
-			speedR *= INCREMENT;
+			speedL *= INCREMENT;
+			speedR /= INCREMENT;
 
 		}
 		else if(RobotMap::NavX.get()->GetYaw() < 0)
@@ -64,8 +64,8 @@ void SimpleAutonomous::Execute()
 			 * if the yaw is too negative, meaning
 			 * the robot is too counter clockwise
 			 */
-			speedL *= INCREMENT;
-			speedR /= INCREMENT;
+			speedL /= INCREMENT;
+			speedR *= INCREMENT;
 		}
 	}
 	else if(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR)
