@@ -67,7 +67,7 @@ void ShooterManualControl::Fire()
 
 void ShooterManualControl::Intake()
 {
-	Robot::shooterwheels->ManualSet(-.5);
+	Robot::shooterwheels->ManualSet(-.7);
 }
 
 void ShooterManualControl::Stop()

@@ -15,7 +15,7 @@ OI::OI()
 	shoot.get()->WhenPressed(new Shoot(true));
 
 	align.reset(new JoystickButton(gunner.get(), 4)); //y button
-	align.get()->WhenPressed(new AlignToShoot());
+	//align.get()->WhenPressed(new AlignToShoot());
 
 	//shooterHome.reset(new JoystickButton(gunner.get(), 3)); //x button
 	//shooterHome.get()->WhenPressed(new SetShooterAngle(0));
