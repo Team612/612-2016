@@ -13,6 +13,7 @@ OI::OI()
 
 	shoot.reset(new JoystickButton(gunner.get(), 1)); //a button
 	shoot.get()->WhenPressed(new Shoot(true));
+	shoot.get()->WhenReleased(new Shoot(false));
 
 	align.reset(new JoystickButton(gunner.get(), 4)); //y button
 	//align.get()->WhenPressed(new AlignToShoot());

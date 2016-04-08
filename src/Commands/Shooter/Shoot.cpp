@@ -23,7 +23,7 @@ void Shoot::Initialize()
 
 void Shoot::Execute()
 {
-	printf("Iterations %d\n", iterations);
+	//printf("Iterations %d\n", iterations);
 	iterations++; // This is called 60 times per second
 }
 

@@ -13,6 +13,7 @@ ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 	pid->SetInputRange(0, 5);
 	pid->SetContinuous(false);
 	pid->SetAbsoluteTolerance(.1);
+	pid->SetInvertedOutput(true);
 	this->HomePos();
 	SmartDashboard::PutNumber("Gain Switch", gain_switch);
 }

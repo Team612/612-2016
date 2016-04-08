@@ -41,7 +41,7 @@ void SimpleAutonomous::Execute()
 	}
 
 	//Second check, see if we're on course
-	if(!(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR))
+	if(!(abs(RobotMap::NavX.get()->GetYaw()) < MAX_YAW_ERROR))
 		//If we're off by over 10 degrees (Threshold)
 	{
 		if(RobotMap::NavX.get()->GetYaw() > 0)
@@ -63,7 +63,7 @@ void SimpleAutonomous::Execute()
 			rotation += ADD_INCREMENT;
 		}
 	}
-	else if(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR)
+	else
 	//If inside the threshold
 	{
 		rotation = 0;
@@ -90,6 +90,7 @@ void SimpleAutonomous::Execute()
 		std::printf("Warning: Maxing out motors!\n");
 
 	std::printf("Info: Motor Speed: %f, Rotation Speed: %f\n", speed, rotation);
+	std::printf("Info: Yaw: %f\n", RobotMap::NavX.get()->GetYaw());
 	Robot::drivetrain.get()->SetArcadeDrive(speed, rotation); //update robot speed
 }
 

@@ -7,5 +7,5 @@ Pneumatics::Pneumatics() : Subsystem("Pneumatics")
 
 void Pneumatics::InitDefaultCommand()
 {
-	SetDefaultCommand(new Shoot(false));
+	//SetDefaultCommand(new Shoot(false));
 }

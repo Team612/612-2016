@@ -25,7 +25,7 @@ void Vision::PullValues()
 {
 	//If bounding coordinates actually exist in the table, if not, all of this will throw errors and
 	//everyone will die
-	printf("test1\n");
+	//printf("test1\n");
 
 	llvm::ArrayRef<double> arr;
 	std::vector<double> coords = table->GetNumberArray(BOUNDING_KEY, arr);

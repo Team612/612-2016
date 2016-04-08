@@ -77,8 +77,8 @@ void Robot::AutonomousInit()
 {
 	shifter->Set(Shifter::LOW);
 
-	RobotMap::NavX.get()->ZeroYaw();
-	printf("Info: Zeroed Yaw in Autonomous\n");
+	RobotMap::NavX.get()->Reset();
+	printf("Info: Reset NavX\n");
 
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
@@ -96,8 +96,8 @@ void Robot::TeleopInit()
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
-	//RobotMap::NavX.get()->ZeroYaw();
-	//printf("Info: Zeroed Yaw in Teleop\n");
+	RobotMap::NavX.get()->Reset();
+	printf("Info: Reset NavX\n");
 
 	drivejoystick->Start();
 	shifter->Set(Shifter::LOW);
@@ -192,7 +192,7 @@ void Robot::PeriodicSmartDashboard()
 	//printf("NavX Pitch (in degrees): %f\n", RobotMap::NavX.get()->GetPitch());
 	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX.get()->GetRoll());
 	//printf("NavX Roll (in degrees): %f\n", RobotMap::NavX.get()->GetRoll());
-	SmartDashboard::PutNumber("NavX Yaw compared to starting position (in degrees)", (float) (RobotMap::NavX.get()->GetYaw()));
+	SmartDashboard::PutNumber("NavX Yaw", (float) (RobotMap::NavX.get()->GetYaw()));
 }
 
 START_ROBOT_CLASS(Robot);
