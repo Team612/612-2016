@@ -8,8 +8,7 @@ SimpleAutonomous::SimpleAutonomous(float time, float speed)
 	Requires(Robot::drivetrain.get());
 
 	this->time = time;
-	speedL = speed;
-	speedR = speed;
+	this->speed = speed;
 	original_speed = speed;
 	//speed and original_speed start out the same
 	autoTime = new Timer();
@@ -20,7 +19,7 @@ void SimpleAutonomous::Initialize()
 {
 	autoTime->Start();
 	start_time = autoTime->Get();
-	Robot::drivetrain.get()->SetTankDrive(speedL, speedR);
+	Robot::drivetrain.get()->SetArcadeDrive(speed, 0);
 }
 
 void SimpleAutonomous::Execute()
@@ -38,8 +37,7 @@ void SimpleAutonomous::Execute()
 	{
 		std::printf("Info: Incrementing speed\n");
 		//We're on a defense, increase speed slightly, this does run 60 times a second
-		speedL *= INCREMENT;
-		speedR *= INCREMENT;
+		speed *= TIMES_INCREMENT;
 	}
 
 	//Second check, see if we're on course
@@ -52,10 +50,8 @@ void SimpleAutonomous::Execute()
 			 * if the yaw is too positive, meaning
 			 * the robot is too clockwise
 			 */
-			//TODO: Make sure this rotates the right way
 
-			speedL *= INCREMENT;
-			speedR /= INCREMENT;
+			rotation -= ADD_INCREMENT;
 
 		}
 		else if(RobotMap::NavX.get()->GetYaw() < 0)
@@ -64,22 +60,17 @@ void SimpleAutonomous::Execute()
 			 * if the yaw is too negative, meaning
 			 * the robot is too counter clockwise
 			 */
-			speedL /= INCREMENT;
-			speedR *= INCREMENT;
+			rotation += ADD_INCREMENT;
 		}
 	}
 	else if(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR)
 	//If inside the threshold
 	{
-		//make these two the same so we stop turning but maintain speed
-		if(speedL > speedR)
-			speedR = speedL;
-		else if(speedR > speedL)
-			speedL = speedR;
+		rotation = 0;
 	}
 
 	//Third check, if everything is normal
-	if(RobotMap::NavX.get()->GetYaw() < MAX_YAW_ERROR &&
+	if(abs(RobotMap::NavX.get()->GetYaw()) < MAX_YAW_ERROR &&
 			abs(RobotMap::NavX.get()->GetPitch()) < THRESHOLD &&
 			abs(RobotMap::NavX.get()->GetRoll()) < THRESHOLD)
 		/*
@@ -90,18 +81,16 @@ void SimpleAutonomous::Execute()
 	{
 		std::printf("Info: Speed reset\n");
 		//set to original speed
-		speedL = original_speed;
-		speedR = original_speed;
+		speed = original_speed;
+		rotation = 0;
 	}
 
 	//Other debugging tools
-	if(speedL > 1)
-		std::printf("Warning: Maxing out left motors!\n");
-	else if(speedR > 1)
-		std::printf("Warning: Maxing out right motors!\n");
+	if(speed > 1)
+		std::printf("Warning: Maxing out motors!\n");
 
-	std::printf("Info: Left Motor Speed: %f, Right Motor Speed: %f\n", speedL, speedR);
-	Robot::drivetrain.get()->SetTankDrive(speedL, speedR); //update robot speed
+	std::printf("Info: Motor Speed: %f, Rotation Speed: %f\n", speed, rotation);
+	Robot::drivetrain.get()->SetArcadeDrive(speed, rotation); //update robot speed
 }
 
 bool SimpleAutonomous::IsFinished()

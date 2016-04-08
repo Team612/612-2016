@@ -8,18 +8,19 @@ class SimpleAutonomous: public CommandGroup
 {
 private:
 	float time;
-	float speedL;
-	float speedR;
+	float speed;
 	float original_speed;
+	float rotation = 0;
 
 	double start_time;
 	double current_time;
 
 	Timer* autoTime;
 
-	const int THRESHOLD         = 5; //degrees
-	const int MAX_YAW_ERROR     = 10; //degrees
-	const float INCREMENT       = 1.005;
+	const int THRESHOLD                  = 5; //degrees
+	const int MAX_YAW_ERROR              = 10; //degrees
+	const float TIMES_INCREMENT          = 1.005;
+	const float ADD_INCREMENT            = 0.001;
 public:
 	SimpleAutonomous(float time, float speed);
 	void Initialize();
