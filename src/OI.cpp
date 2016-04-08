@@ -33,8 +33,8 @@ OI::OI()
 	lowGear.reset(new JoystickButton(driver.get(), 5));
 	lowGear->WhenPressed(new SetGear(Shifter::LOW));
 
-	highGear.reset(new JoystickButton(driver.get(), 6));
-	highGear->WhenPressed(new SetGear(Shifter::HIGH));
+	//highGear.reset(new JoystickButton(driver.get(), 6));
+	//highGear->WhenPressed(new SetGear(Shifter::HIGH));
 }
 
 std::shared_ptr<Joystick> OI::getDriver()
