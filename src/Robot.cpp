@@ -1,17 +1,14 @@
-#include <Commands/Autonomous/Sequences/HorizontalFind.h>
 #include "Robot.h"
-
+#include <Commands/Autonomous/Sequences/HorizontalFind.h>
 #include "Commands/Drive/DriveJoystick.h"
 #include "Commands/Drive/DriveSet.h"
 #include "Commands/Autonomous/Autonomous.h"
 #include "Commands/Autonomous/Sequences/AutoAlign.h"
-#include "Commands/Drive/DriveDistance.h"
 #include <SmartDashboard/SmartDashboard.h>
 
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<ShooterWheels> Robot::shooterwheels;
 std::shared_ptr<ShooterRotation> Robot::shooterrotation;
-std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
@@ -26,11 +23,10 @@ void Robot::RobotInit()
 	shooterwheels.reset(new ShooterWheels());
 	shooterrotation.reset(new ShooterRotation());
 	vision.reset(new Vision());
-	pneumatics.reset(new Pneumatics());
 	shifter.reset(new Shifter());
 	oi.reset(new OI());
 
-	RobotMap::NavX.get()->ZeroYaw();
+	RobotMap::NavX->ZeroYaw();
 	printf("Zeroed Yaw in init!\n");
 	InitSmartDashboard();
 
@@ -57,7 +53,7 @@ void Robot::AutonomousInit()
 {
 	shifter->Set(Shifter::LOW);
 
-	RobotMap::NavX.get()->Reset();
+	RobotMap::NavX->Reset();
 	printf("Info: Reset NavX\n");
 
 	if (autonomousCommand.get() != nullptr)
@@ -79,7 +75,7 @@ void Robot::TeleopInit()
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
 
-	RobotMap::NavX.get()->Reset();
+	RobotMap::NavX->Reset();
 	printf("Info: Reset NavX\n");
 
 	drivejoystick->Start();
@@ -133,11 +129,11 @@ void Robot::PeriodicSmartDashboard()
 {
 	Robot::shooterrotation->SmartDashboardOutput();
 
-	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterAbsEncoder.get()->GetVoltage());
-	SmartDashboard::PutNumber("Shooter Absolute Encoder Rounded", RobotMap::shooterAbsEncoder.get()->GetVoltageRound());
+	SmartDashboard::PutNumber("Shooter Absolute Encoder", RobotMap::shooterPotentiometer->GetVoltage());
+	SmartDashboard::PutNumber("Shooter Absolute Encoder Rounded", RobotMap::shooterPotentiometer->GetVoltageRound());
 
 
-	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor.get()->Get());
+	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor->Get());
 
 	SmartDashboard::PutBoolean("Inverted Controls", inverted);
 
@@ -146,9 +142,9 @@ void Robot::PeriodicSmartDashboard()
 
 	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
 
-	SmartDashboard::PutNumber("NavX Pitch (in degrees)", RobotMap::NavX.get()->GetPitch());
-	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX.get()->GetRoll());
-	SmartDashboard::PutNumber("NavX Yaw", (float) (RobotMap::NavX.get()->GetYaw()));
+	SmartDashboard::PutNumber("NavX Pitch (in degrees)", RobotMap::NavX->GetPitch());
+	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX->GetRoll());
+	SmartDashboard::PutNumber("NavX Yaw", (float) (RobotMap::NavX->GetYaw()));
 }
 
 START_ROBOT_CLASS(Robot);

@@ -10,7 +10,6 @@
 #include <Subsystems/ShooterRotation.h>
 #include <Subsystems/Shifter.h>
 #include <Subsystems/Vision.h>
-#include <Subsystems/Pneumatics.h>
 
 #include <OI.h>
 
@@ -35,7 +34,6 @@ public:
 	static std::shared_ptr<ShooterWheels> shooterwheels;
 	static std::shared_ptr<Shifter> shifter;
 	static std::shared_ptr<Vision> vision;
-	static std::shared_ptr<Pneumatics> pneumatics;
 
 	static bool inverted;
 

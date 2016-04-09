@@ -16,7 +16,7 @@ DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 0
 void DriveDistance::Initialize()
 {
 	GetPIDController()->SetSetpoint(end_distance); //point we are trying to get to
-	Robot::drivetrain.get()->SetTankDrive(SPEED, SPEED);
+	Robot::drivetrain->SetTankDrive(SPEED, SPEED);
 	GetPIDController()->SetInputRange(STARTING_DISTANCE, end_distance);
 	GetPIDController()->Enable();
 
@@ -36,7 +36,7 @@ void DriveDistance::End()
 {
 	// TODO: Should this use both encoders?
 	RobotMap::driveEncoderL->Reset();
-	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
+	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
 
 	GetPIDController()->Disable();
 }
@@ -44,17 +44,17 @@ void DriveDistance::End()
 void DriveDistance::Interrupted()
 {
 	std::printf("ERROR: DriveDistance interrupted!\n");
-	Robot::drivetrain.get()->SetTankDrive(0.0f, 0.0f);
+	Robot::drivetrain->SetTankDrive(0.0f, 0.0f);
 
 	GetPIDController()->Disable();
 }
 
 double DriveDistance::ReturnPIDInput()
 {
-	return Robot::drivetrain.get()->GetEncoderDistance();
+	return Robot::drivetrain->GetEncoderDistance();
 }
 
 void DriveDistance::UsePIDOutput(double output)
 {
-	Robot::drivetrain.get()->SetTankDrive(output, output);
+	Robot::drivetrain->SetTankDrive(output, output);
 }

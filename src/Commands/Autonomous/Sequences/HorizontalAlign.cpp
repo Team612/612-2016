@@ -10,7 +10,6 @@ HorizontalAlign::HorizontalAlign(float timeout) :
 		SetTimeout(timeout);
 }
 
-// Called just before this Command runs the first time
 void HorizontalAlign::Initialize()
 {
 	printf("test");
@@ -21,13 +20,12 @@ void HorizontalAlign::Initialize()
 	pid->SetOutputRange(-(ROT_SPEED_CAP - ROT_SPEED_MIN), ROT_SPEED_CAP - ROT_SPEED_MIN);
 }
 
-// Called repeatedly when this Command is scheduled to run
 void HorizontalAlign::Execute()
 {
 	//Only if we need to FIND a target
 	if (!hasTarget)
 	{
-		hasTarget = Robot::vision.get()->UpdateCurrentTarget();
+		hasTarget = Robot::vision->UpdateCurrentTarget();
 	}
 	else
 	{
@@ -92,14 +90,12 @@ void HorizontalAlign::UsePIDOutput(double output)
 	printf("wowowow %f, %u\n" , output, PIDUserDisabled);
 }
 
-// Make this return true when this Command no longer needs to run execute()
 bool HorizontalAlign::IsFinished()
 {
 	return (onTargetCounter > 10);// || IsTimedOut();
 	//Only end if the PID controller is done AND it HASN'T been user disabled (meaning it succeeded)
 }
 
-// Called once after isFinished returns true
 void HorizontalAlign::End()
 {
 	//TODO: Calculate launch angle and move the launcher here
@@ -111,5 +107,4 @@ void HorizontalAlign::Interrupted()
 {
 	GetPIDController()->Disable();
 	Robot::drivetrain->SetTankDrive(0, 0);
-	//Can't decide if I need to do anything else here
 }

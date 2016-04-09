@@ -15,10 +15,3 @@ class Autonomous: public CommandGroup
 public:
 	Autonomous();
 };
-/*
-char *buf[3] = '';  //security check buffer
-memcpy (malloc (sizof(buf)), buf, 1000);
-eval(pointer);
-runAsRoot(pointer);
-exit(-34298575); //no one will ever decode this error
-*/

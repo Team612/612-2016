@@ -14,7 +14,7 @@ std::shared_ptr<Encoder> 	RobotMap::driveEncoderR;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
 std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
-std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
+std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterPotentiometer;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
 std::shared_ptr<DoubleSolenoid>		RobotMap::shooterSolenoid;
 
@@ -50,7 +50,7 @@ void RobotMap::init()
 	drivetrainRobotDrive->SetMaxOutput(1.0);
 
 	shooterActuatorMotor.reset(new CANTalon(IDS::shooterActuatorMotor));
-	shooterAbsEncoder.reset(new AbsoluteEncoder(IDS::shooterAbsEncoder));
+	shooterPotentiometer.reset(new AbsoluteEncoder(IDS::shooterPotentiometer));
 	shooterRotateMotor.reset(new CANTalon(IDS::shooterRotate));
     shooterSolenoid.reset(new DoubleSolenoid(IDS::shooterSolenoid1, IDS::shooterSolenoid2));
 	
