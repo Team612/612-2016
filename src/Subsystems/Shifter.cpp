@@ -1,6 +1,5 @@
 #include "Shifter.h"
 #include "../RobotMap.h"
-#include <Commands/Drive/SetGear.h>
 
 Shifter::Shifter() :
 		Subsystem("Shifter")
@@ -9,10 +8,8 @@ Shifter::Shifter() :
 	shifterR = RobotMap::shifterR;
 }
 
-void Shifter::InitDefaultCommand()
-{
-	SetDefaultCommand(new SetGear(LOW));
-}
+void Shifter::InitDefaultCommand() { }
+
 void Shifter::Set(float shiftPower)
 {
 	shifterL->Set(shiftPower);

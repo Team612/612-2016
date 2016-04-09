@@ -18,6 +18,8 @@ OI::OI()
 	//align.get()->WhenPressed(new AlignToShoot());
 
 	//DRIVER
+	driver.reset(new Joystick(0));
+
 	lowGear.reset(new JoystickButton(driver.get(), 5));
 	lowGear->WhenPressed(new SetGear(Shifter::LOW));
 
