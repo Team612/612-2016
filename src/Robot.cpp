@@ -16,6 +16,7 @@ std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
+DriverStation& Robot::ds;
 
 bool Robot::inverted;
 bool Robot::SPYBOT;
@@ -40,6 +41,7 @@ void Robot::RobotInit()
 	pneumatics.reset(new Pneumatics());
 	shifter.reset(new Shifter());
 	oi.reset(new OI());
+	ds = DriverStation::GetInstance();
 
 	RobotMap::NavX.get()->ZeroYaw();
 	printf("Zeroed Yaw in init!\n");
@@ -70,9 +72,15 @@ void Robot::DisabledInit()
 	//SPYBOT = SmartDashboard::GetBoolean("Spy bot", false);
 }
 
-void Robot::DisabledPeriodic()
+void
+Robot::DisabledPeriodic()
 {
 	Scheduler::GetInstance()->Run();
+
+	if(ds.IsSysBrownedOut())
+	{
+		printf("ERROR: System brownout!\n");
+	}
 }
 
 void Robot::AutonomousInit()
@@ -92,6 +100,11 @@ void Robot::AutonomousPeriodic()
 	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
+
+	if(ds.IsSysBrownedOut())
+	{
+		printf("ERROR: System brownout!\n");
+	}
 }
 
 void Robot::TeleopInit()
@@ -105,6 +118,7 @@ void Robot::TeleopInit()
 	drivejoystick->Start();
 	shifter->Set(Shifter::LOW);
 	//shooterrotation->PIDEnable(true);
+
 }
 
 
@@ -114,6 +128,11 @@ void Robot::TeleopPeriodic()
 	vision->PullValues(); //Keep this above the scheduler
 	Scheduler::GetInstance()->Run();
     PeriodicSmartDashboard();
+
+	if(ds.IsSysBrownedOut())
+	{
+		printf("ERROR: System brownout!\n");
+	}
 }
 
 void Robot::TestInit()
@@ -124,6 +143,10 @@ void Robot::TestInit()
 void Robot::TestPeriodic()
 {
 	lw->Run();
+	if(ds.IsSysBrownedOut())
+	{
+		printf("ERROR: System brownout!\n");
+	}
 }
 
 void Robot::InitSmartDashboard()
@@ -144,7 +167,7 @@ void Robot::InitSmartDashboard()
 		SmartDashboard::PutData("Auto Right", new AutoAlign(HorizontalFind::Direction::RIGHT));
 		SmartDashboard::PutData("Auto Left", new AutoAlign(HorizontalFind::Direction::LEFT));
 
-	//autonomous
+++	//autonomous
 	autoChooser->AddObject("Low Bar", new SimpleAutonomous(6, 0.8f));
 	autoChooser->AddObject("Other Defense", new SimpleAutonomous(7, 0.9f));
 
@@ -199,3 +222,6 @@ void Robot::PeriodicSmartDashboard()
 }
 
 START_ROBOT_CLASS(Robot);
+++-++-+**-
+*-
+++**-
