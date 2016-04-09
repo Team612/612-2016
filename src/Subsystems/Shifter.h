@@ -1,12 +1,10 @@
 #pragma once
+
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
 class Shifter: public Subsystem
 {
-private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 public:
 	std::shared_ptr<Servo> shifterL;
 	std::shared_ptr<Servo> shifterR;

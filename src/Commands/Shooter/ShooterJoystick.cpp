@@ -4,17 +4,12 @@
 
 ShooterJoystick::ShooterJoystick()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(Robot::shooterrotation.get());
 }
-
-// Called just before this Command runs the first time
 void ShooterJoystick::Initialize()
 {
 }
 
-// Called repeatedly when this Command is scheduled to run
 void ShooterJoystick::Execute()
 {
 	auto joy = Robot::oi->getGunner();
@@ -36,7 +31,7 @@ void ShooterJoystick::Execute()
 		if(gunner < TOLERANCE && gunner > -TOLERANCE)
 			gunner = 0;
 
-		Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Shooter Angle", 0));
+		//Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Shooter Angle", 0));
 		// Division by 2 is used for rate limiting while enabling a wider range of finer control.
 		//Robot::shooterrotation->Gun(gunner / 2);
 	}
