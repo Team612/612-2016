@@ -10,6 +10,7 @@ DriveDistance::DriveDistance(float end_distance) : PIDCommand("DriveDistance", 0
 
 	GetPIDController()->SetContinuous(true); //?
 	GetPIDController()->SetOutputRange(-1.0f, 1.0f);
+	GetPIDController()->SetPercentTolerance(0.05);
 }
 
 void DriveDistance::Initialize()

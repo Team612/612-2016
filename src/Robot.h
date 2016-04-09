@@ -39,6 +39,7 @@ public:
 	static std::shared_ptr<Pneumatics> pneumatics;
 
 	static bool inverted;
+	static bool SPYBOT;
 
 	Timer * time = new Timer();
 

@@ -8,7 +8,7 @@ class SetShooter: public Command
 	private:
 	float speed;
 public:
-	SetShooter(float speed);
+	SetShooter(float speed, float timout = 0);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

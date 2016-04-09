@@ -9,7 +9,7 @@
 class HorizontalAlign: public PIDCommand //PID for rotation
 {
 public:
-	HorizontalAlign();
+	HorizontalAlign(float timeout = 0);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
