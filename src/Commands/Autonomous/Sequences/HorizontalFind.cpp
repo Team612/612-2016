@@ -1,6 +1,6 @@
 #include <Commands/Autonomous/Sequences/HorizontalFind.h>
 
-HorizontalFind::HorizontalFind(Direction d)
+HorizontalFind::HorizontalFind(Direction d, float timeout)
 {
 	Requires(Robot::drivetrain.get());
 	Requires(Robot::vision.get());
@@ -9,6 +9,9 @@ HorizontalFind::HorizontalFind(Direction d)
 		dir = 1;
 	else
 		dir = -1;
+
+	if (timeout != 0)
+		SetTimeout(timeout);
 }
 
 // Called just before this Command runs the first time

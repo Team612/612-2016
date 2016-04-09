@@ -7,7 +7,7 @@
 class VerticalAlign: public Command
 {
 public:
-	VerticalAlign();
+	VerticalAlign(float timeout = 0);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

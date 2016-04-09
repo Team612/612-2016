@@ -11,7 +11,7 @@ class HorizontalFind: public Command
 public:
 	enum Direction {LEFT, RIGHT};
 
-	HorizontalFind(Direction d);
+	HorizontalFind(Direction d, float timeout = 0);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
