@@ -18,6 +18,7 @@ std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
 
 bool Robot::inverted;
+bool Robot::SPYBOT;
 
 /*
  * robot_yaw exists so we don't have to worry about calibrating the NavX
@@ -61,11 +62,12 @@ void Robot::RobotInit()
 		RobotMap::jetsonO.get()->Pulse(0.0016);
 		RobotMap::jetsonO.get()->Pulse(0.0016);
 	}
+	SPYBOT = SmartDashboard::GetBoolean("Spy bot", false);
 }
 
 void Robot::DisabledInit()
 {
-
+	//SPYBOT = SmartDashboard::GetBoolean("Spy bot", false);
 }
 
 void Robot::DisabledPeriodic()
@@ -75,6 +77,7 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit()
 {
+	SPYBOT = SmartDashboard::GetBoolean("Spy bot", false); //set this on the dashboard yo!
 	shifter->Set(Shifter::LOW);
 
 	RobotMap::NavX.get()->Reset();

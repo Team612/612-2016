@@ -1,7 +1,7 @@
 #include "SetShooter.h"
 #include "Robot.h"
 
-SetShooter::SetShooter(float speed, float timeout = 0)
+SetShooter::SetShooter(float speed, float timeout)
 {
 	Requires(Robot::shooterwheels.get());
 	this->speed = speed;
@@ -22,7 +22,10 @@ void SetShooter::Execute()
 
 bool SetShooter::IsFinished()
 {
-	return false;
+	if(IsTimedOut())
+		return true;
+	else
+		return false;
 }
 
 void SetShooter::End()

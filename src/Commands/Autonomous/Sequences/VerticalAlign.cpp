@@ -1,6 +1,6 @@
 #include "VerticalAlign.h"
 
-VerticalAlign::VerticalAlign(float timeout = 0)
+VerticalAlign::VerticalAlign(float timeout)
 {
 	Requires(Robot::shooterrotation.get());
 	printf("va const\n");

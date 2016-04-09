@@ -1,6 +1,6 @@
 #include <Commands/Autonomous/Sequences/HorizontalAlign.h>
 
-HorizontalAlign::HorizontalAlign(float timeout = 0) :
+HorizontalAlign::HorizontalAlign(float timeout) :
 		PIDCommand("AlignToTarget", 0.004, 0, 0)
 {
 	Requires(Robot::drivetrain.get());

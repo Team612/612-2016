@@ -39,7 +39,7 @@ public:
 	static std::shared_ptr<Pneumatics> pneumatics;
 
 	static bool inverted;
-	static const bool SPYBOT = SmartDashboard::GetBoolean("Spy bot", false); //set this on the dashboard yo!
+	static bool SPYBOT;
 
 	Timer * time = new Timer();
 

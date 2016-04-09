@@ -1,13 +1,6 @@
-/*
- * Shoot.cpp
- *
- *  Created on: Mar 30, 2016
- *      Author: user
- */
+#include "Shoot.h"
 
-#include <Commands/Shooter/Shoot.h>
-
-Shoot::Shoot(bool push, float timeout = 0)
+Shoot::Shoot(bool push, float timeout)
 {
 	Requires(Robot::pneumatics.get());
 	this->solenoid = RobotMap::shooterSolenoid.get();
@@ -32,7 +25,10 @@ void Shoot::Execute()
 
 bool Shoot::IsFinished()
 {
-	return solenoid->Get() == (push ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
+	if(IsTimedOut())
+		return true;
+	else
+		return solenoid->Get() == (push ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 /*
 	return iterations > (int)(SECONDS_TO_WAIT * 60);
 */
