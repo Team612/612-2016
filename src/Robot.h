@@ -37,7 +37,6 @@ public:
 	static std::shared_ptr<Vision> vision;
 	//static std::shared_ptr<ShooterActuator> shooteractuator;
 	static std::shared_ptr<Pneumatics> pneumatics;
-	static DriverStation& ds;
 
 	static bool inverted;
 

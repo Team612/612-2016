@@ -16,7 +16,6 @@ std::shared_ptr<Pneumatics> Robot::pneumatics;
 std::shared_ptr<Shifter> Robot::shifter;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Vision> Robot::vision;
-DriverStation& Robot::ds;
 
 bool Robot::inverted;
 
@@ -40,7 +39,6 @@ void Robot::RobotInit()
 	pneumatics.reset(new Pneumatics());
 	shifter.reset(new Shifter());
 	oi.reset(new OI());
-	ds = DriverStation::GetInstance();
 
 	RobotMap::NavX.get()->ZeroYaw();
 	printf("Zeroed Yaw in init!\n");
@@ -75,7 +73,7 @@ Robot::DisabledPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 
-	if(ds.IsSysBrownedOut())
+	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
@@ -98,7 +96,7 @@ void Robot::AutonomousPeriodic()
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
 
-	if(ds.IsSysBrownedOut())
+	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
@@ -126,7 +124,7 @@ void Robot::TeleopPeriodic()
 	Scheduler::GetInstance()->Run();
     PeriodicSmartDashboard();
 
-	if(ds.IsSysBrownedOut())
+	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
@@ -140,7 +138,7 @@ void Robot::TestInit()
 void Robot::TestPeriodic()
 {
 	lw->Run();
-	if(ds.IsSysBrownedOut())
+	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
@@ -219,6 +217,3 @@ void Robot::PeriodicSmartDashboard()
 }
 
 START_ROBOT_CLASS(Robot);
-++-++-+**-
-*-
-++**-
