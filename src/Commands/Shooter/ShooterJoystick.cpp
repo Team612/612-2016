@@ -41,7 +41,7 @@ void ShooterJoystick::Execute()
 			Robot::shooterrotation->PIDEnable(true);
 		if(x) Robot::shooterrotation->HomePos();
 		if(b) Robot::shooterrotation->IntakePos();
-		//if(y) Robot::shooterrotation->SetAngle(Robot::shooterrotation->HIGOAL_ANGLE);
+		if(y) Robot::shooterrotation->SetAngle(Robot::shooterrotation->HIGOAL_ANGLE);
 	}
 }
 

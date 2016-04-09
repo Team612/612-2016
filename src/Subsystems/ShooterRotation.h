@@ -41,8 +41,8 @@ public:
 	
 	const float INTAKE_ANGLE = 190;
 	const float HOME_ANGLE = 0;
-	const float LOGOAL_ANGLE = 0;
-	const float HIGOAL_ANGLE = 0;
+	const float LOGOAL_ANGLE = 180;
+	const float HIGOAL_ANGLE = 55;
 
 	const float V_OVER_A = (std::abs(oneeightydegrees - zerodegrees) / 180.0); // Constant to convert between voltage and angle.
 	const float BIAS = 0; // Difference between home position and parallel with floor.
