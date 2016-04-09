@@ -5,11 +5,6 @@
 
 AlignToShoot::AlignToShoot()
 {
+	SetInterruptible(true);
 	AddSequential(new AutoAlign(HorizontalFind::RIGHT));
-	AddSequential(new VerticalAlign());
-}
-
-bool AlignToShoot::IsInterruptable()
-{
-	return true;
 }
