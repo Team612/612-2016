@@ -222,6 +222,3 @@ void Robot::PeriodicSmartDashboard()
 }
 
 START_ROBOT_CLASS(Robot);
-++-++-+**-
-*-
-++**-
