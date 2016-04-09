@@ -7,12 +7,15 @@
 
 #include <Commands/Shooter/Shoot.h>
 
-Shoot::Shoot(bool push)
+Shoot::Shoot(bool push, float timeout = 0)
 {
 	Requires(Robot::pneumatics.get());
 	this->solenoid = RobotMap::shooterSolenoid.get();
 	this->push = push;
 	this->iterations = 0;
+
+	if(timeout != 0)
+		SetTimeout(timeout);
 }
 
 void Shoot::Initialize()

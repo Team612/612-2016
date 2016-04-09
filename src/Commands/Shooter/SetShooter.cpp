@@ -1,10 +1,13 @@
 #include "SetShooter.h"
 #include "Robot.h"
 
-SetShooter::SetShooter(float speed)
+SetShooter::SetShooter(float speed, float timeout = 0)
 {
 	Requires(Robot::shooterwheels.get());
 	this->speed = speed;
+
+	if(timeout != 0)
+		SetTimeout(timeout);
 }
 
 void SetShooter::Initialize()

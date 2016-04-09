@@ -2,14 +2,17 @@
 #include "Robot.h"
 
 
-SetShooterAngle::SetShooterAngle(float end_angle)
+SetShooterAngle::SetShooterAngle(float end_angle, float timeout = 0)
 {
 	Requires(Robot::shooterrotation.get());
 	this->end_angle = end_angle;
+	if(timeout != 0)
+		SetTimeout(timeout);
 }
 
 void SetShooterAngle::Initialize()
 {
+	Robot::shooterrotation->PIDEnable(true);
 	Robot::shooterrotation.get()->SetAngle(end_angle);
 }
 

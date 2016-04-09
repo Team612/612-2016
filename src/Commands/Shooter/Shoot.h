@@ -12,7 +12,7 @@ private:
 	const float SECONDS_TO_WAIT = .5;
 
 public:
-	Shoot(bool push);
+	Shoot(bool push, float timeout = 0);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

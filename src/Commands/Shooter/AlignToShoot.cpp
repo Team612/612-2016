@@ -6,4 +6,5 @@
 AlignToShoot::AlignToShoot()
 {
 	AddSequential(new AutoAlign(HorizontalFind::RIGHT));
+	AddSequential(new VerticalAlign());
 }
