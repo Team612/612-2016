@@ -26,10 +26,6 @@ public:
 	static std::shared_ptr<CANTalon> 		shooterActuatorMotor;
 	static std::shared_ptr<AbsoluteEncoder> shooterAbsEncoder;
 	static std::shared_ptr<CANTalon> 		shooterRotateMotor;
-	static std::shared_ptr<AnalogInput> 	shooterIR;
-	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch;
-	static std::shared_ptr<DigitalInput>	shooterActuatorLSwitch2;
-	static std::shared_ptr<Relay>           shooterSpike;
 	static std::shared_ptr<DoubleSolenoid>		shooterSolenoid;
 	
 	static std::shared_ptr<CANTalon> flywheelMotorL;
@@ -38,15 +34,12 @@ public:
 
 	static std::shared_ptr<AHRS> NavX;
 
-	static std::shared_ptr<DigitalInput> jetsonI;
-	static std::shared_ptr<DigitalOutput> jetsonO;
-
 	static constexpr float flywheelHallL = IDS::shooterHallL;
 	static constexpr float flywheelHallR = IDS::shooterHallR;
 	
 	// TODO: These are only used in the Hall Effect control method
-	static constexpr float flywheelShootSpeed = 40.0f;
-	static constexpr float flywheelIntakeSpeed = -20.0f;
+	//static constexpr float flywheelShootSpeed = 40.0f;
+	//static constexpr float flywheelIntakeSpeed = -20.0f;
 
 	static void init();
 };

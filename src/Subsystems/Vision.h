@@ -23,7 +23,7 @@ public:
 	Vision();
 	void InitDefaultCommand();
 	void PullValues();
-	void SetCamera(const char* camera);
+	//void SetCamera(const char* camera);
 
 	std::vector<std::shared_ptr<VisionTarget>> GetAllTargets(); //List all detected vision targets
 	int GetTargetAmount(); //Amount of detected vision targets (targets.size())

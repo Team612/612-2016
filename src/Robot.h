@@ -35,11 +35,9 @@ public:
 	static std::shared_ptr<ShooterWheels> shooterwheels;
 	static std::shared_ptr<Shifter> shifter;
 	static std::shared_ptr<Vision> vision;
-	//static std::shared_ptr<ShooterActuator> shooteractuator;
 	static std::shared_ptr<Pneumatics> pneumatics;
 
 	static bool inverted;
-	static bool SPYBOT;
 
 	Timer * time = new Timer();
 

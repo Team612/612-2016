@@ -14,12 +14,8 @@ std::shared_ptr<Encoder> 	RobotMap::driveEncoderR;
 std::shared_ptr<RobotDrive> RobotMap::drivetrainRobotDrive;
 
 std::shared_ptr<CANTalon>       	RobotMap::shooterActuatorMotor;
-std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch;
-std::shared_ptr<DigitalInput>       RobotMap::shooterActuatorLSwitch2;
 std::shared_ptr<AbsoluteEncoder>	RobotMap::shooterAbsEncoder;
 std::shared_ptr<CANTalon>    		RobotMap::shooterRotateMotor;
-std::shared_ptr<AnalogInput> 		RobotMap::shooterIR;
-std::shared_ptr<Relay>              RobotMap::shooterSpike;
 std::shared_ptr<DoubleSolenoid>		RobotMap::shooterSolenoid;
 
 std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorL;
@@ -28,9 +24,6 @@ std::shared_ptr<CANTalon> 	RobotMap::flywheelMotorR;
 std::shared_ptr<CANTalon> RobotMap::armRotateMotor;
 
 std::shared_ptr<AHRS> RobotMap::NavX;
-
-std::shared_ptr<DigitalInput> RobotMap::jetsonI;
-std::shared_ptr<DigitalOutput> RobotMap::jetsonO;
 
 void RobotMap::init()
 {
@@ -59,10 +52,6 @@ void RobotMap::init()
 	shooterActuatorMotor.reset(new CANTalon(IDS::shooterActuatorMotor));
 	shooterAbsEncoder.reset(new AbsoluteEncoder(IDS::shooterAbsEncoder));
 	shooterRotateMotor.reset(new CANTalon(IDS::shooterRotate));
-	shooterIR.reset(new AnalogInput(IDS::shooterIR));
-    shooterActuatorLSwitch.reset(new DigitalInput(IDS::shooterActuatorLSwitch));
-    shooterActuatorLSwitch2.reset(new DigitalInput(IDS::shooterActuatorLSwitch2));
-    shooterSpike.reset(new Relay(IDS::shooterSpike, Relay::Direction::kForwardOnly));
     shooterSolenoid.reset(new DoubleSolenoid(IDS::shooterSolenoid1, IDS::shooterSolenoid2));
 	
 	flywheelMotorL.reset(new CANTalon(IDS::shooterFlyL));
@@ -71,7 +60,4 @@ void RobotMap::init()
     armRotateMotor.reset(new CANTalon(IDS::armRotateMotor));
 
     NavX.reset(new AHRS(SPI::Port::kMXP));
-
-    jetsonI.reset(new DigitalInput(IDS::jetsonI));
-    jetsonO.reset(new DigitalOutput(IDS::jetsonO));
 }
