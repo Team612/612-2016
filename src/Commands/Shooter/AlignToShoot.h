@@ -7,5 +7,6 @@ class AlignToShoot: public CommandGroup
 {
 public:
 	AlignToShoot();
+	bool ();
 };
 

@@ -9,10 +9,7 @@ VisionTarget::VisionTarget(std::vector<int> initPoints, int id)
 	this->id = id;
 }
 
-VisionTarget::~VisionTarget()
-{
-	// TODO Auto-generated destructor stub
-}
+VisionTarget::~VisionTarget() { }
 
 Point VisionTarget::GetUL()
 {

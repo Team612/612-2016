@@ -32,7 +32,7 @@ void ShooterJoystick::Execute()
 		Robot::shooterrotation->SetAngle(SmartDashboard::GetNumber("Shooter Angle", 0));
 		#else
 		// Division by 2 is used for rate limiting while enabling a wider range of finer control.
-		//Robot::shooterrotation->Gun(gunner / 2);
+		Robot::shooterrotation->Gun(gunner / 2);
 		#endif
 	}
 	else
@@ -41,7 +41,7 @@ void ShooterJoystick::Execute()
 			Robot::shooterrotation->PIDEnable(true);
 		if(x) Robot::shooterrotation->HomePos();
 		if(b) Robot::shooterrotation->IntakePos();
-		if(y) Robot::shooterrotation->SetAngle(Robot::shooterrotation->HIGOAL_ANGLE);
+		//if(y) Robot::shooterrotation->SetAngle(Robot::shooterrotation->HIGOAL_ANGLE);
 	}
 }
 

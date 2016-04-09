@@ -20,6 +20,8 @@ std::shared_ptr<Vision> Robot::vision;
 bool Robot::inverted;
 bool Robot::SPYBOT;
 
+//#define BROWNOUT
+
 /*
  * robot_yaw exists so we don't have to worry about calibrating the NavX
  * before every match. We just get the initial yaw and compare the current
@@ -75,10 +77,12 @@ Robot::DisabledPeriodic()
 {
 	Scheduler::GetInstance()->Run();
 
+#ifdef BROWNOUT
 	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
+#endif
 }
 
 void Robot::AutonomousInit()
@@ -99,10 +103,12 @@ void Robot::AutonomousPeriodic()
 	Scheduler::GetInstance()->Run();
 	PeriodicSmartDashboard();
 
+#ifdef BROWNOUT
 	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
+#endif
 }
 
 void Robot::TeleopInit()
@@ -127,10 +133,12 @@ void Robot::TeleopPeriodic()
 	Scheduler::GetInstance()->Run();
     PeriodicSmartDashboard();
 
+#ifdef BROWNOUT
 	if(DriverStation::GetInstance().IsSysBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}
+#endif
 }
 
 void Robot::TestInit()
