@@ -13,10 +13,10 @@
 class RobotMap
 {
 public:
-	static std::shared_ptr<Talon> 		driveTalonFL;
-	static std::shared_ptr<Talon> 		driveTalonRL;
-	static std::shared_ptr<Talon> 		driveTalonFR;
-	static std::shared_ptr<Talon> 		driveTalonRR;
+	static std::shared_ptr<CANTalon> 		driveTalonFL;
+	static std::shared_ptr<CANTalon> 		driveTalonRL;
+	static std::shared_ptr<CANTalon> 		driveTalonFR;
+	static std::shared_ptr<CANTalon> 		driveTalonRR;
 	static std::shared_ptr<Servo> 		shifterL;
 	static std::shared_ptr<Servo> 		shifterR;
 	static std::shared_ptr<Encoder> 	driveEncoderL;

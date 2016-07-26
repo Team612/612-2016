@@ -3,10 +3,10 @@
 #include <map>
 #include <string>
 
-std::shared_ptr<Talon>  	RobotMap::driveTalonFL;
-std::shared_ptr<Talon> 		RobotMap::driveTalonRL;
-std::shared_ptr<Talon> 		RobotMap::driveTalonFR;
-std::shared_ptr<Talon> 		RobotMap::driveTalonRR;
+std::shared_ptr<CANTalon>  	RobotMap::driveTalonFL;
+std::shared_ptr<CANTalon> 		RobotMap::driveTalonRL;
+std::shared_ptr<CANTalon> 		RobotMap::driveTalonFR;
+std::shared_ptr<CANTalon> 		RobotMap::driveTalonRR;
 std::shared_ptr<Servo> 		RobotMap::shifterL;
 std::shared_ptr<Servo> 		RobotMap::shifterR;
 std::shared_ptr<Encoder> 	RobotMap::driveEncoderL;
@@ -36,10 +36,10 @@ void RobotMap::init()
 {
 	//LiveWindow *lw = LiveWindow::GetInstance();
 
-	driveTalonFL.reset(new Talon(IDS::driveFL)); // Front-left
-	driveTalonRL.reset(new Talon(IDS::driveRL)); // Rear-left
-	driveTalonFR.reset(new Talon(IDS::driveFR)); // Front-right
-	driveTalonRR.reset(new Talon(IDS::driveRR)); // Rear-right
+	driveTalonFL.reset(new CANTalon(IDS::driveFL)); // Front-left
+	driveTalonRL.reset(new CANTalon(IDS::driveRL)); // Rear-left
+	driveTalonFR.reset(new CANTalon(IDS::driveFR)); // Front-right
+	driveTalonRR.reset(new CANTalon(IDS::driveRR)); // Rear-right
 	
 	shifterL.reset(new Servo(IDS::shifterL));
 	shifterR.reset(new Servo(IDS::shifterR));
