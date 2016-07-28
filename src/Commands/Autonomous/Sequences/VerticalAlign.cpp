@@ -57,7 +57,7 @@ void VerticalAlign::AlignShooter()
 		std::shared_ptr<VisionTarget> target = Robot::vision->GetTrackedGoal();
 		double angle = CalcAngle(target->GetDistance());
 		SmartDashboard::PutNumber("VA Angle", angle);
-		SmartDashboard::PutNumber("VA Distance", Robot::vision.get()->GetTrackedGoal()->GetDistance());
+		SmartDashboard::PutNumber("VA Distance", Robot::vision->GetTrackedGoal()->GetDistance());
 		Robot::shooterrotation->SetAngle(angle);
 	}
 

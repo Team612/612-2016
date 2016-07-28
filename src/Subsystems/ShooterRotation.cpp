@@ -7,7 +7,7 @@ ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 	motor = RobotMap::shooterRotateMotor;
 	motor->SetInverted(true);
 	motor->SetControlMode(CANSpeedController::kPercentVbus);
-	absEncoder = RobotMap::shooterAbsEncoder.get();
+	absEncoder = RobotMap::shooterPotentiometer.get();
 	pid = new PIDControl(kP, kI, kD, absEncoder, motor.get());
 	pid->SetOutputRange(-.5, .5);
 	pid->SetInputRange(0, 5);
@@ -42,25 +42,6 @@ void ShooterRotation::Gun(float gunner_axis)
 
 void ShooterRotation::SetSetpoint(float set)
 {
-	/*
-	// Gain scheduling
-	if(pid->GetI() != 0)
-		kI = pid->GetI();
-	if(pid->GetD() != 0)
-		kD = pid->GetD();
-
-	bool limit_closed = (bool)(motor->IsFwdLimitSwitchClosed()) | (bool)(motor->IsRevLimitSwitchClosed());
-
-	if(abs(pid->GetError()) > gain_switch || limit_closed)
-	{
-		pid->SetPID(pid->GetP(), 0, 0);
-	}
-	else
-	{
-		pid->SetPID(pid->GetP(), kI, kD);
-	}
-	*/
-
 	pid->SetSetpoint(set);
 }
 
@@ -93,6 +74,7 @@ void ShooterRotation::PIDEnable(bool enabled)
 }
 
 void ShooterRotation::SmartDashboardOutput()
+//Robot::SmartDashboardPeriodic()
 {
 	SmartDashboard::PutNumber("Shooter Absolute Encoder", absEncoder->GetVoltageRound());
 	SmartDashboard::PutNumber("Shooter Rotation Motor Out", pid->Get());

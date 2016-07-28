@@ -6,14 +6,12 @@ class OI
 {
 private:
 	std::shared_ptr<Joystick> gunner;
-	//std::shared_ptr<JoystickButton> fireButton; //when pressed
 	std::shared_ptr<JoystickButton> shoot; //when pressed
 	std::shared_ptr<JoystickButton> align;
 	std::shared_ptr<JoystickButton> shooterHome;
 	std::shared_ptr<JoystickButton> shooterIntake;
 
 	std::shared_ptr<Joystick> driver;
-	std::shared_ptr<JoystickButton> resetButton; //wot?
 	std::shared_ptr<JoystickButton> reverseControls; //while held
 	std::shared_ptr<JoystickButton> lowGear; //when pressed
 	std::shared_ptr<JoystickButton> highGear; //when pressed

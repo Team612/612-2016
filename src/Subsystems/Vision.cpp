@@ -7,26 +7,17 @@ Vision::Vision() :
 {
 	NetworkTable::SetPort(1735); //I think this is the default port but just to be safe
 	table = NetworkTable::GetTable("Vision");
-
-
-	// \/ Comment this bit out if we haven't bothered to plug a camera in \/
-	//CameraServer::GetInstance()->SetQuality(50);
-	//SetCamera(camera);
 	goal = NULL;
 }
 
-void Vision::InitDefaultCommand()
-{
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
-}
+void Vision::InitDefaultCommand() { }
 
 void Vision::PullValues()
 {
-	//If bounding coordinates actually exist in the table, if not, all of this will throw errors and
-	//everyone will die
-	//printf("test1\n");
-
+	/*
+	 * If bounding coordinates actually exist in the table, if not, all of this will throw errors and
+	 * everyone will die
+	 */
 	llvm::ArrayRef<double> arr;
 	std::vector<double> coords = table->GetNumberArray(BOUNDING_KEY, arr);
 
@@ -39,18 +30,15 @@ void Vision::PullValues()
 	//Loop to create/update VisionTargets with new bound coords
 	for (int x = 0; x < targetCount; x++)
 	{
-		//printf("test2");
 		std::vector<int> vec;
 		for (int i = 0; i < VisionTarget::PARAM_COUNT; i++)
 		{
 			if(!(coords.empty()))
 				vec.push_back((int) coords[(x * VisionTarget::PARAM_COUNT) + i]);
 		}
-
 		//Only updates if it finds that the ID already exists
 		if (TargetExists(ids[x]))
 		{
-			//GetTargetById(ids[x])->Print();
 			GetTargetById(ids[x])->Set(vec);
 		}
 		//If the ID is new then we make a new target
@@ -59,8 +47,6 @@ void Vision::PullValues()
 					std::shared_ptr<VisionTarget>(
 							new VisionTarget(vec, ids[x])));
 	}
-
-	//printf("\n");
 
 	//Goes through and deletes all of the VisionTargets that no longer exist in RoboRealm
 	for (uint32_t x = 0; x < targets.size(); x++)
@@ -83,13 +69,10 @@ void Vision::PullValues()
 	}
 }
 
-void Vision::SetCamera(const char* camera)
+/*void Vision::SetCamera(const char* camera)
 {
-	//This only works once because I can't figure out how to STOP automatic capture
-	//I might have to do it manually (i.e. image by image)
-	//Which would suck
 	CameraServer::GetInstance()->StartAutomaticCapture(camera);
-}
+}*/
 
 std::vector<std::shared_ptr<VisionTarget>> Vision::GetAllTargets()
 {

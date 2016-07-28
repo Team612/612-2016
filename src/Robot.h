@@ -10,7 +10,6 @@
 #include <Subsystems/ShooterRotation.h>
 #include <Subsystems/Shifter.h>
 #include <Subsystems/Vision.h>
-#include <Subsystems/Pneumatics.h>
 
 #include <OI.h>
 
@@ -27,19 +26,16 @@ public:
 	std::unique_ptr<Command> drivejoystick;
 	std::unique_ptr<Command> autowheels;
 	std::unique_ptr<Command> align;
-	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
 
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<ShooterRotation> shooterrotation;
 	static std::shared_ptr<ShooterWheels> shooterwheels;
 	static std::shared_ptr<Shifter> shifter;
+	static std::unique_ptr<OI> oi;
 	static std::shared_ptr<Vision> vision;
-	//static std::shared_ptr<ShooterActuator> shooteractuator;
-	static std::shared_ptr<Pneumatics> pneumatics;
 
 	static bool inverted;
-	static bool SPYBOT;
 
 	Timer * time = new Timer();
 

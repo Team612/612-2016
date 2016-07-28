@@ -12,12 +12,12 @@ SetShooter::SetShooter(float speed, float timeout)
 
 void SetShooter::Initialize()
 {
-	Robot::shooterwheels.get()->StartManual();
+	Robot::shooterwheels->StartManual();
 }
 
 void SetShooter::Execute()
 {
-	Robot::shooterwheels.get()->ManualSet(speed);
+	Robot::shooterwheels->ManualSet(speed);
 }
 
 bool SetShooter::IsFinished()
@@ -30,10 +30,10 @@ bool SetShooter::IsFinished()
 
 void SetShooter::End()
 {
-
+	Robot::shooterwheels->ManualSet(0.0f);
 }
 
 void SetShooter::Interrupted()
 {
-	Robot::shooterwheels.get()->ManualSet(0.0f);
+	Robot::shooterwheels->ManualSet(0.0f);
 }

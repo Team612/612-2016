@@ -1,7 +1,6 @@
 #include <Commands/Shooter/ShooterManualControl.h>
 #include "ShooterWheels.h"
 #include "RobotMap.h"
-#include "Commands/Shooter/ShooterControl.h"
 
 ShooterWheels::ShooterWheels() :
 		Subsystem("ShooterWheels")
@@ -25,10 +24,7 @@ ShooterWheels::ShooterWheels() :
 
 void ShooterWheels::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
 	SetDefaultCommand(new ShooterManualControl());
-
 }
 
 void ShooterWheels::SetWheelSpeed(float speed)
@@ -56,13 +52,11 @@ void ShooterWheels::SetWheelSpeed(float speed)
 
 float ShooterWheels::GetLeftWheelSpeed()
 {
-//	return this->wheelControllerLeft->Get();
     return this->hallCounterLeft->Get();
 }
 
 float ShooterWheels::GetRightWheelSpeed()
 {
-    //return this->wheelControllerRight->Get();
     return this->hallCounterRight->Get();
 }
 
@@ -116,7 +110,11 @@ void ShooterWheels::StartManual()
 
 void ShooterWheels::ManualSet(float speed)
 {
-	if(!manualstarted) { StartManual(); printf("Starting Manual mode in set"); }
+	if(!manualstarted)
+	{
+		StartManual();
+		printf("Starting Manual mode in set");
+	}
 	this->CANTalonLeft->Set(speed);
 	this->CANTalonRight->Set(speed);
 }

@@ -14,7 +14,7 @@ SetShooterAngle::SetShooterAngle(float end_angle, float timeout)
 void SetShooterAngle::Initialize()
 {
 	Robot::shooterrotation->PIDEnable(true);
-	Robot::shooterrotation.get()->SetAngle(end_angle);
+	Robot::shooterrotation->SetAngle(end_angle);
 }
 
 void SetShooterAngle::Execute() {}
@@ -24,7 +24,7 @@ bool SetShooterAngle::IsFinished()
 	if(IsTimedOut())
 		return true;
 	else
-		return Robot::shooterrotation.get()->OnTarget();
+		return Robot::shooterrotation->OnTarget();
 }
 
 void SetShooterAngle::End()

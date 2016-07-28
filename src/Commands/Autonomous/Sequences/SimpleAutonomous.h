@@ -7,15 +7,9 @@
 class SimpleAutonomous: public CommandGroup
 {
 private:
-	float time;
 	float speed;
 	float original_speed;
 	float rotation = 0;
-
-	double start_time;
-	double current_time;
-
-	Timer* autoTime;
 
 	const int THRESHOLD                  = 5; //degrees
 	const int MAX_YAW_ERROR              = 3; //degrees

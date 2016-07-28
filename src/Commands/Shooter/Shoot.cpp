@@ -2,7 +2,6 @@
 
 Shoot::Shoot(bool push, float timeout)
 {
-	Requires(Robot::pneumatics.get());
 	this->solenoid = RobotMap::shooterSolenoid.get();
 	this->push = push;
 	this->iterations = 0;
@@ -19,7 +18,6 @@ void Shoot::Initialize()
 
 void Shoot::Execute()
 {
-	//printf("Iterations %d\n", iterations);
 	iterations++; // This is called 60 times per second
 }
 
@@ -29,15 +27,8 @@ bool Shoot::IsFinished()
 		return true;
 	else
 		return solenoid->Get() == (push ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
-/*
-	return iterations > (int)(SECONDS_TO_WAIT * 60);
-*/
 }
 
-void Shoot::End()
-{
-}
+void Shoot::End() { }
 
-void Shoot::Interrupted()
-{
-}
+void Shoot::Interrupted() { }

@@ -1,9 +1,9 @@
 #ifndef AUTO_ALIGN_H
 #define AUTO_ALIGN_H
 
-#include <Commands/Autonomous/Sequences/HorizontalAlign.h>
-#include <Commands/Autonomous/Sequences/HorizontalFind.h>
-#include <Commands/Autonomous/Sequences/VerticalAlign.h>
+#include "HorizontalAlign.h"
+#include "HorizontalFind.h"
+#include "VerticalAlign.h"
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 

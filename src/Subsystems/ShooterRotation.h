@@ -15,12 +15,9 @@ private:
 
 	std::shared_ptr<CANTalon> RotateMotor;
 
-	//double pos = HOME_POS;
-
 	double AngleToVolts(double angle) {return (angle * V_OVER_A) + zerodegrees + BIAS;}
 
 public:
-	//TODO: These angles should be the same, but check to make sure.
 	const double MAX_ANGLE = 190.0; //full forwards
 	const double MIN_ANGLE = 0; //full inwards
 
@@ -42,7 +39,7 @@ public:
 	const float INTAKE_ANGLE = 190;
 	const float HOME_ANGLE = 0;
 	const float LOGOAL_ANGLE = 180;
-	const float HIGOAL_ANGLE = 55;
+	const float HIGOAL_ANGLE = 55; //from spy corner
 
 	const float V_OVER_A = (std::abs(oneeightydegrees - zerodegrees) / 180.0); // Constant to convert between voltage and angle.
 	const float BIAS = 0; // Difference between home position and parallel with floor.
@@ -51,18 +48,7 @@ public:
 
 public:
 	ShooterRotation();
-	//void SetSpeed(float speed);
-	void SetAngle(double pos); //in degrees range 0-208.8
-	/*void IncrementAngle(double inc);
-	void ShooterHome();
-	float GetSpeed();
-	void SetMode(CANTalon::ControlMode mode);
-	void SetPIDEnabled(bool enabled);
-	void SetPID(double p, double i, double d);*/
-	/*
-	double ReturnPIDInput();
-	void UsePIDOutput(double output);
-	*/
+	void SetAngle(double pos);
 	
 	void InitDefaultCommand();
 	
