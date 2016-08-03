@@ -3,8 +3,8 @@
 namespace IDS
 {
 	// Drivetrain Talons
-	const int driveFL					= 1;  // CAN ID
-	const int driveRL					= 2;  // CAN ID
+	const int driveFL					= 2;  // CAN ID
+	const int driveRL					= 1;  // CAN ID
 	const int driveFR					= 3;  // CAN ID
 	const int driveRR					= 4;  // CAN ID
 

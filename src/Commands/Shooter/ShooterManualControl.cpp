@@ -51,12 +51,12 @@ void ShooterManualControl::Interrupted()
 
 void ShooterManualControl::Fire()
 {
-	Robot::shooterwheels->ManualSet(1);
+	Robot::shooterwheels->ManualSet(-1);
 }
 
 void ShooterManualControl::Intake()
 {
-	Robot::shooterwheels->ManualSet(-1);
+	Robot::shooterwheels->ManualSet(1);
 }
 
 void ShooterManualControl::Stop()
