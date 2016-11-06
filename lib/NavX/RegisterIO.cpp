@@ -7,6 +7,7 @@
 
 #include "RegisterIO.h"
 #include "IMURegisters.h"
+#include "HAL_Fix.h"
 
 RegisterIO::RegisterIO( IRegisterIO *io_provider,
         uint8_t update_rate_hz,

@@ -6,6 +6,7 @@
  */
 
 #include "SerialIO.h"
+#include "HAL_Fix.h"
 
 static const double IO_TIMEOUT_SECONDS = 1.0;
 

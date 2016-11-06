@@ -4,7 +4,7 @@
 #include "PIDOutput.h"
 #include <math.h>
 #include <vector>
-#include "HAL/HAL.hpp"
+#include "HAL/HAL.h"
 
 static const std::string kP = "p";
 static const std::string kI = "i";
@@ -64,7 +64,7 @@ void PIDControl::Initialize(float Kp, float Ki, float Kd, float Kf,
 
 	static int32_t instances = 0;
 	instances++;
-	HALReport(HALUsageReporting::kResourceType_PIDController, instances);
+	HAL_Report(HALUsageReporting::kResourceType_PIDController, instances);
 }
 
 PIDControl::~PIDControl() {

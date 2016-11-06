@@ -14,7 +14,7 @@ void ShooterManualControl::Initialize()
 
 void ShooterManualControl::Execute()
 {
-    if(Robot::getInstance().IsOperatorControl())
+    if(RobotState::IsOperatorControl())
     {
         auto gunner = -Robot::oi->getGunner()->GetRawAxis(1);
         if(gunner > TOLERANCE)

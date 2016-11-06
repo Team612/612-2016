@@ -19,6 +19,8 @@
 #include "RegisterIOI2C.h"
 #include "SerialIO.h"
 
+typedef int (*FUNCPTR)(...);
+
 static const uint8_t    NAVX_DEFAULT_UPDATE_RATE_HZ         = 60;
 static const int        YAW_HISTORY_LENGTH                  = 10;
 static const int16_t    DEFAULT_ACCEL_FSR_G                 = 2;

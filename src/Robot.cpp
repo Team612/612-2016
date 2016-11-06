@@ -113,7 +113,7 @@ void Robot::TestInit()
 void Robot::TestPeriodic()
 {
 	lw->Run();
-	if(DriverStation::GetInstance().IsSysBrownedOut())
+	if(DriverStation::GetInstance().IsBrownedOut())
 	{
 		printf("ERROR: System brownout!\n");
 	}

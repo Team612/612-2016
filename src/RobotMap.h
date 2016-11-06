@@ -3,6 +3,7 @@
 #include <Ports.h>
 #include <AbsoluteEncoder/AbsoluteEncoder.h>
 #include <NavX/AHRS.h>
+#include <CANTalon.h>
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into

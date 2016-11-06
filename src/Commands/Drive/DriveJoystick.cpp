@@ -18,7 +18,7 @@ void DriveJoystick::Execute()
 {
 	Robot::drivetrain->GetEncoderDistance();
 
-	if(Robot::getInstance().IsOperatorControl())
+	if(RobotState::IsOperatorControl())
 	{
 		if (Robot::oi->getDriver()->GetRawAxis(3) <= 0.1)
 		{
