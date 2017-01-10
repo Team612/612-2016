@@ -18,7 +18,7 @@ Chantilly Robotics' robot also utilizes the navX-MXP board. Its library has been
 |------------------|-------------------------------------------------|
 |IBEW              |[Company Website](http://www.ibew.org)           |
 |Bechtel           |[Company Website](http://www.bechtel.com)        |
-|Booze Allen       |[Company Website](http://www.boozallen.com)      |
+|Booz Allen       |[Company Website](http://www.boozallen.com)      |
 |Northrup Grumman  |[Company Website](http://www.northropgrumman.com)|
 |The Morris Family |Personal Contribution                            |
 |Chipotle          |[Company Website](http://www.chipotle.com)       |
