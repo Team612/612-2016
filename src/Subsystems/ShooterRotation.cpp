@@ -1,12 +1,13 @@
 #include "ShooterRotation.h"
 #include "RobotMap.h"
 #include "Commands/Shooter/ShooterJoystick.h"
+#include <CANSpeedController.h>
 
 ShooterRotation::ShooterRotation() : Subsystem("ShooterAngle")
 {
 	motor = RobotMap::shooterRotateMotor;
 	motor->SetInverted(true);
-	motor->SetControlMode(CANSpeedController::kPercentVbus);
+	//motor->SetControlMode(CANSpeedController::kPercentVbus);
 	absEncoder = RobotMap::shooterPotentiometer.get();
 	pid = new PIDControl(kP, kI, kD, absEncoder, motor.get());
 	pid->SetOutputRange(-.5, .5);

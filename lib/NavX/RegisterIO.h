@@ -16,6 +16,7 @@
 #include "IBoardCapabilities.h"
 #include "IIOCompleteNotification.h"
 #include <WPILib.h>
+#include <Task.h>
 
 class RegisterIO : public IIOProvider {
 private:

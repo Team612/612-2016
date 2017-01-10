@@ -9,6 +9,7 @@
 #define SRC_AHRS_H_
 
 #include <WPILib.h>
+#include <Task.h>
 
 class IIOProvider;
 class ContinuousAngleTracker;

@@ -4,6 +4,8 @@
 #include "WPILib.h"
 #include <cmath>
 
+struct Point { int x; int y; };
+
 //Represents basically a bounding box (with a few perks)
 class VisionTarget
 {

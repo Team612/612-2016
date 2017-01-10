@@ -5,6 +5,7 @@
 #include "LiveWindow/LiveWindow.h"
 #include "PIDInterface.h"
 #include "PIDSource.h"
+#include <PIDOutput.h>
 #include "Notifier.h"
 #include "HAL/cpp/priority_mutex.h"
 #include "Timer.h"
@@ -13,8 +14,6 @@
 
 #include <atomic>
 #include <queue>
-
-class PIDOutput;
 
 /**
  * Class implements a PID Control Loop.
@@ -47,7 +46,8 @@ class PIDControl : public LiveWindowSendable,
   virtual double GetD() const override;
   virtual double GetF() const;
 
-  virtual void SetSetpoint(float setpoint) override;
+  virtual void SetSetpoint(double setpoint) override;
+  //virtual void SetSetpoint(float setpoint) override;
   virtual double GetSetpoint() const override;
   double GetDeltaSetpoint() const;
 

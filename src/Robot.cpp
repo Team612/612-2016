@@ -144,14 +144,14 @@ void Robot::PeriodicSmartDashboard()
 	SmartDashboard::PutNumber("Shooter Absolute Encoder Rounded", RobotMap::shooterPotentiometer->GetVoltageRound());
 
 
-	SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor->Get());
+	//SmartDashboard::PutNumber("Shooter Actuator Motor", (double) RobotMap::shooterActuatorMotor->Get());
 
 	SmartDashboard::PutBoolean("Inverted Controls", inverted);
 
 	SmartDashboard::PutNumber("Left Shifter", RobotMap::shifterL->Get());
 	SmartDashboard::PutNumber("Right Shifter", RobotMap::shifterR->Get());
 
-	SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
+	//SmartDashboard::PutNumber("Rotation Speed", RobotMap::shooterRotateMotor->Get());
 
 	SmartDashboard::PutNumber("NavX Pitch (in degrees)", RobotMap::NavX->GetPitch());
 	SmartDashboard::PutNumber("NavX Roll (in degrees)", RobotMap::NavX->GetRoll());
