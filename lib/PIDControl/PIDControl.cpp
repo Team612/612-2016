@@ -335,7 +335,7 @@ void PIDControl::SetOutputRange(float minimumOutput, float maximumOutput) {
  * Clears the queue for GetAvgError().
  * @param setpoint the desired setpoint
  */
-void PIDControl::SetSetpoint(float setpoint) {
+void PIDControl::SetSetpoint(double setpoint) {
 	{
 		std::lock_guard<priority_recursive_mutex> sync(m_mutex);
 

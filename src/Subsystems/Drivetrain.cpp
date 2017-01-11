@@ -82,7 +82,7 @@ double Drivetrain::GetAverageEncoderDistance()
 	return ((this->GetEncoderDistance()) + (this->GetEncoderDistance()))/2;
 }
 
-std::shared_ptr<TalonSRX> Drivetrain::GetTalons(int id)
+std::shared_ptr<CANTalon> Drivetrain::GetTalons(int id)
 {
 	switch(id)
 	{

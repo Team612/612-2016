@@ -15,8 +15,8 @@ private:
     const float kI = .4f;
     const float kD = .4f;
     const float kTol = 0.05f;  // tolerance (within kTol * output)
-	std::shared_ptr<TalonSRX> TalonSRXLeft;
-	std::shared_ptr<TalonSRX> TalonSRXRight;
+	std::shared_ptr<CANTalon> CANTalonLeft;
+	std::shared_ptr<CANTalon> CANTalonRight;
 	std::shared_ptr<PIDEdgeCounter> hallCounterLeft;
 	std::shared_ptr<PIDEdgeCounter> hallCounterRight;
 	std::shared_ptr<PIDController> wheelControllerLeft;

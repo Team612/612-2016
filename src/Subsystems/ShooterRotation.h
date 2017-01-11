@@ -3,7 +3,7 @@
 
 #include <Commands/Subsystem.h>
 #include <WPILib.h>
-#include <TalonSRX.h>
+#include <CANTalon.h>
 #include <AbsoluteEncoder.h>
 #include <PIDControl.h>
 #include <cmath>
@@ -13,7 +13,7 @@ class ShooterRotation : public Subsystem
 private:
 	double PositionToVolts(double angle);
 
-	std::shared_ptr<TalonSRX> RotateMotor;
+	std::shared_ptr<CANTalon> RotateMotor;
 
 	double AngleToVolts(double angle) {return (angle * V_OVER_A) + zerodegrees + BIAS;}
 
@@ -22,7 +22,7 @@ public:
 	const double MIN_ANGLE = 0; //full inwards
 
 	// Hardware
-	std::shared_ptr<TalonSRX> motor;
+	std::shared_ptr<CANTalon> motor;
 	PIDControl* pid;
 	AbsoluteEncoder* absEncoder;
 	

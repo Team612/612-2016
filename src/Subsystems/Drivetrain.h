@@ -3,16 +3,16 @@
 #include "Commands/Subsystem.h"
 #include "RobotDrive.h"
 #include "WPILib.h"
-#include <TalonSRX.h>
+#include <CANTalon.h>
 
 class Drivetrain: public Subsystem
 {
 private:
 	bool controls_inverted;
-	std::shared_ptr<TalonSRX> Talon1;
-	std::shared_ptr<TalonSRX> Talon2;
-	std::shared_ptr<TalonSRX> Talon3;
-	std::shared_ptr<TalonSRX> Talon4;
+	std::shared_ptr<CANTalon> Talon1;
+	std::shared_ptr<CANTalon> Talon2;
+	std::shared_ptr<CANTalon> Talon3;
+	std::shared_ptr<CANTalon> Talon4;
 	std::shared_ptr<RobotDrive> robotDrive;
 	std::shared_ptr<Encoder> encoder;
 	std::shared_ptr<Encoder> encoder2;
@@ -28,7 +28,7 @@ public:
 	double GetEncoder2Distance();
 	double GetAverageEncoderDistance();
 	void InitDefaultCommand();
-	std::shared_ptr<TalonSRX> GetTalons(int id);
+	std::shared_ptr<CANTalon> GetTalons(int id);
 
 	void PIDDisable();
 	void PIDEnable();

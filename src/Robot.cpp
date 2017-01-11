@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "Robot.h"
 #include <Commands/Autonomous/Sequences/HorizontalFind.h>
 #include "Commands/Drive/DriveJoystick.h"
